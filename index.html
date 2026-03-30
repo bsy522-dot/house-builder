@@ -1,0 +1,1185 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
+<title>한옥 짓기 - 한국 전통 건축 체험</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
+body{font-family:'Noto Sans KR',sans-serif;background:#1a1a2e;color:#fff;overflow:hidden;height:100vh;width:100vw}
+
+/* ===== Top Bar ===== */
+#topBar{position:fixed;top:0;left:0;right:0;height:56px;background:linear-gradient(135deg,#2d1b0e 0%,#4a2c17 100%);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;border-bottom:2px solid #c4956a;box-shadow:0 2px 12px rgba(0,0,0,.5)}
+#topBar h1{font-size:18px;font-weight:700;color:#f5deb3;text-shadow:1px 1px 2px rgba(0,0,0,.6);letter-spacing:1px}
+#topBar .mode-label{font-size:13px;color:#c4956a;margin-left:8px;font-weight:400}
+.top-btns{display:flex;gap:8px}
+.top-btns button{background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.2);color:#f5deb3;padding:6px 14px;border-radius:20px;font-size:13px;cursor:pointer;font-family:inherit;transition:all .2s}
+.top-btns button:hover,.top-btns button.active{background:rgba(196,149,106,.4);border-color:#c4956a}
+
+/* ===== 3D Canvas ===== */
+#canvas3d{position:fixed;top:56px;left:0;right:0;bottom:0}
+
+/* ===== Side Panel ===== */
+#sidePanel{position:fixed;top:56px;right:0;width:340px;bottom:0;background:linear-gradient(180deg,rgba(30,20,10,.95) 0%,rgba(20,14,8,.97) 100%);backdrop-filter:blur(12px);border-left:2px solid #5a3a20;z-index:90;display:flex;flex-direction:column;overflow:hidden;transition:transform .3s}
+#sidePanel.hidden{transform:translateX(100%)}
+
+.panel-section{padding:14px 16px}
+.panel-section+.panel-section{border-top:1px solid rgba(196,149,106,.2)}
+
+.section-title{font-size:14px;font-weight:700;color:#c4956a;margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.section-title .icon{font-size:18px}
+
+/* Steps */
+.step-list{display:flex;flex-direction:column;gap:4px;max-height:240px;overflow-y:auto}
+.step-item{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:8px;cursor:pointer;transition:all .2s;border:1px solid transparent;font-size:13px}
+.step-item:hover{background:rgba(196,149,106,.1)}
+.step-item.active{background:rgba(196,149,106,.2);border-color:#c4956a}
+.step-item.done{opacity:.6}
+.step-item .step-num{width:24px;height:24px;border-radius:50%;background:rgba(255,255,255,.1);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0}
+.step-item.active .step-num{background:#c4956a;color:#2d1b0e}
+.step-item.done .step-num{background:#4a7c59;color:#fff}
+.step-item .step-name{flex:1;font-weight:500}
+
+/* Description */
+#descBox{background:rgba(196,149,106,.08);border:1px solid rgba(196,149,106,.25);border-radius:10px;padding:14px;font-size:13px;line-height:1.7;color:#e8d5c0;min-height:80px}
+#descBox .part-name{font-size:16px;font-weight:700;color:#f5deb3;margin-bottom:6px}
+#descBox .part-role{color:#c4956a;font-size:12px;margin-bottom:6px}
+
+/* Material selector */
+.mat-options{display:flex;flex-wrap:wrap;gap:6px}
+.mat-btn{padding:6px 12px;border-radius:16px;border:1px solid rgba(196,149,106,.3);background:rgba(255,255,255,.06);color:#e8d5c0;font-size:12px;cursor:pointer;font-family:inherit;transition:all .2s}
+.mat-btn:hover{background:rgba(196,149,106,.2)}
+.mat-btn.selected{background:#c4956a;color:#2d1b0e;font-weight:600;border-color:#c4956a}
+
+/* Build button */
+#buildBtn{width:100%;padding:14px;border:none;border-radius:10px;font-size:16px;font-weight:700;cursor:pointer;font-family:inherit;transition:all .2s;margin-top:8px}
+#buildBtn.ready{background:linear-gradient(135deg,#c4956a,#a0714a);color:#fff;box-shadow:0 4px 16px rgba(196,149,106,.3)}
+#buildBtn.ready:hover{transform:translateY(-1px);box-shadow:0 6px 20px rgba(196,149,106,.4)}
+#buildBtn.done{background:#4a7c59;color:#fff}
+#buildBtn:disabled{background:#555;color:#999;cursor:not-allowed}
+
+/* Complete overlay */
+#completeOverlay{position:fixed;top:0;left:0;right:0;bottom:0;background:rgba(0,0,0,.85);z-index:200;display:none;align-items:center;justify-content:center;flex-direction:column}
+#completeOverlay.show{display:flex}
+.complete-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:32px 40px;text-align:center;max-width:500px;width:90%}
+.complete-card h2{font-size:28px;color:#f5deb3;margin-bottom:8px}
+.complete-card p{color:#c4956a;font-size:15px;margin-bottom:20px;line-height:1.6}
+.complete-card .stats{display:flex;gap:20px;justify-content:center;margin-bottom:20px}
+.complete-card .stat{text-align:center}
+.complete-card .stat-val{font-size:24px;font-weight:700;color:#f5deb3}
+.complete-card .stat-label{font-size:12px;color:#c4956a}
+.complete-card button{padding:12px 32px;border:none;border-radius:24px;font-size:15px;font-weight:600;cursor:pointer;font-family:inherit;margin:4px 8px}
+.btn-view{background:#c4956a;color:#2d1b0e}
+.btn-reset{background:rgba(255,255,255,.1);color:#f5deb3;border:1px solid #c4956a!important}
+
+/* Mode selection */
+#modeSelect{position:fixed;top:0;left:0;right:0;bottom:0;background:linear-gradient(135deg,#1a1a2e 0%,#2d1b0e 50%,#1a1a2e 100%);z-index:300;display:flex;align-items:center;justify-content:center;flex-direction:column}
+#modeSelect.hidden{display:none}
+#modeSelect h1{font-size:36px;color:#f5deb3;margin-bottom:8px;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+#modeSelect .subtitle{color:#c4956a;font-size:16px;margin-bottom:40px}
+.mode-cards{display:flex;gap:24px;flex-wrap:wrap;justify-content:center;padding:0 20px}
+.mode-card{width:280px;background:rgba(196,149,106,.08);border:2px solid rgba(196,149,106,.2);border-radius:16px;padding:28px 24px;cursor:pointer;transition:all .3s;text-align:center}
+.mode-card:hover{transform:translateY(-4px);border-color:#c4956a;background:rgba(196,149,106,.15);box-shadow:0 8px 32px rgba(196,149,106,.2)}
+.mode-card .mode-icon{font-size:56px;margin-bottom:12px}
+.mode-card h3{font-size:20px;color:#f5deb3;margin-bottom:8px}
+.mode-card p{font-size:13px;color:#c4956a;line-height:1.6}
+
+/* Toggle panel button (mobile) */
+#togglePanel{display:none;position:fixed;bottom:16px;right:16px;z-index:95;width:52px;height:52px;border-radius:50%;background:#c4956a;border:none;color:#2d1b0e;font-size:24px;cursor:pointer;box-shadow:0 4px 16px rgba(0,0,0,.4)}
+
+/* Scrollbar */
+::-webkit-scrollbar{width:4px}
+::-webkit-scrollbar-track{background:transparent}
+::-webkit-scrollbar-thumb{background:#5a3a20;border-radius:2px}
+
+/* Progress bar */
+#progressBar{height:4px;background:rgba(255,255,255,.1);position:relative}
+#progressFill{height:100%;background:linear-gradient(90deg,#c4956a,#f5deb3);transition:width .4s;width:0}
+
+/* Info tooltip on 3D labels */
+.label-3d{position:absolute;background:rgba(45,27,14,.9);border:1px solid #c4956a;border-radius:8px;padding:6px 10px;font-size:11px;color:#f5deb3;pointer-events:none;white-space:nowrap;transform:translate(-50%,-100%);opacity:0;transition:opacity .3s}
+.label-3d.show{opacity:1}
+
+@media(max-width:768px){
+  #sidePanel{width:100%;top:auto;bottom:0;height:50vh;border-left:none;border-top:2px solid #5a3a20}
+  #sidePanel.hidden{transform:translateY(100%)}
+  #togglePanel{display:block}
+  #topBar h1{font-size:15px}
+  .mode-card{width:240px}
+  #modeSelect h1{font-size:26px}
+}
+</style>
+</head>
+<body>
+
+<!-- Mode Selection Screen -->
+<div id="modeSelect">
+  <h1>한국 건축 체험</h1>
+  <p class="subtitle">직접 지어보며 배우는 건축 이야기</p>
+  <div class="mode-cards">
+    <div class="mode-card" onclick="startGame('hanok')">
+      <div class="mode-icon">🏯</div>
+      <h3>전통 한옥</h3>
+      <p>주초돌부터 기와까지<br>500년 전통 한옥의 비밀을<br>하나하나 배워보세요</p>
+    </div>
+    <div class="mode-card" onclick="startGame('modern')">
+      <div class="mode-icon">🏠</div>
+      <h3>현대 주택</h3>
+      <p>콘크리트 기초부터 인테리어까지<br>현대 건축의 과정을<br>체험해보세요</p>
+    </div>
+  </div>
+</div>
+
+<!-- Top Bar -->
+<div id="topBar" style="display:none">
+  <div style="display:flex;align-items:center">
+    <h1 id="gameTitle">한옥 짓기</h1>
+    <span class="mode-label" id="modeLabel">전통 한옥 모드</span>
+  </div>
+  <div class="top-btns">
+    <button id="btnCompare" onclick="toggleCompare()" style="display:none">비교</button>
+    <button onclick="resetGame()">처음으로</button>
+    <button id="btnToggleSide" onclick="toggleSide()">패널</button>
+  </div>
+</div>
+
+<div id="progressBar" style="display:none"><div id="progressFill"></div></div>
+
+<!-- 3D Canvas -->
+<canvas id="canvas3d" style="display:none"></canvas>
+
+<!-- Side Panel -->
+<div id="sidePanel" class="hidden">
+  <div class="panel-section">
+    <div class="section-title"><span class="icon">📐</span> 건축 단계</div>
+    <div id="stepList" class="step-list"></div>
+  </div>
+  <div class="panel-section">
+    <div id="descBox">
+      <div class="part-name">시작하기</div>
+      <div class="part-role">아래 단계를 선택하세요</div>
+      <div>집을 짓는 순서를 따라가며 각 부분의 이름과 역할을 배워보세요!</div>
+    </div>
+  </div>
+  <div class="panel-section" id="matSection" style="display:none">
+    <div class="section-title"><span class="icon">🪵</span> 재질 선택</div>
+    <div id="matOptions" class="mat-options"></div>
+  </div>
+  <div class="panel-section">
+    <button id="buildBtn" class="ready" onclick="buildStep()">짓기 시작!</button>
+  </div>
+</div>
+
+<button id="togglePanel" onclick="toggleSide()">📋</button>
+
+<!-- Complete Overlay -->
+<div id="completeOverlay">
+  <div class="complete-card">
+    <h2 id="completeTitle">축하합니다!</h2>
+    <p id="completeMsg">멋진 한옥을 완성했어요!</p>
+    <div class="stats">
+      <div class="stat"><div class="stat-val" id="statSteps">0</div><div class="stat-label">건축 단계</div></div>
+      <div class="stat"><div class="stat-val" id="statParts">0</div><div class="stat-label">사용 부품</div></div>
+    </div>
+    <div>
+      <button class="btn-view" onclick="startViewing()">감상하기</button>
+      <button class="btn-reset" onclick="resetGame()">다시 짓기</button>
+    </div>
+  </div>
+</div>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
+<script>
+/* ========================================
+   한옥 짓기 - 한국 전통 건축 체험 게임
+   ======================================== */
+
+// ===== Data =====
+const HANOK_STEPS = [
+  {
+    name: '기단', part: 'gidan',
+    desc: '기단은 집의 맨 아래 돌로 쌓은 단이에요.',
+    detail: '땅에서 올라오는 습기를 막고, 집을 높여서 비바람을 피하게 해줘요. 옛날에는 신분에 따라 기단의 높이가 달랐어요!',
+    materials: [{name:'화강석',color:0xb0a090},{name:'자연석',color:0x8a8070}]
+  },
+  {
+    name: '주초돌', part: 'jucho',
+    desc: '기둥 아래 놓는 넓적한 돌이에요.',
+    detail: '나무 기둥이 땅의 습기를 빨아들이지 않도록 막아주는 아주 중요한 돌이에요. 둥근 것, 네모난 것 등 여러 모양이 있어요.',
+    materials: [{name:'둥근돌',color:0xa09888},{name:'네모돌',color:0x989080}]
+  },
+  {
+    name: '기둥', part: 'gidung',
+    desc: '집을 떠받치는 나무 기둥이에요.',
+    detail: '한옥의 기둥은 보통 소나무로 만들어요. 곧고 튼튼한 소나무를 골라 세워요. 기둥 사이의 간격을 "칸"이라고 불러요!',
+    materials: [{name:'소나무',color:0xc4956a},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '보', part: 'bo',
+    desc: '기둥 위에 가로로 놓는 큰 나무에요.',
+    detail: '기둥과 기둥을 연결하면서 지붕의 무게를 기둥에 전달해요. "대들보"는 가장 크고 중요한 보예요. 상량식 때 대들보에 글을 써요!',
+    materials: [{name:'소나무',color:0xc4956a},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '도리', part: 'dori',
+    desc: '보 위에 세로 방향으로 놓는 나무에요.',
+    detail: '서까래를 받쳐주는 역할을 해요. 맨 꼭대기의 도리를 "마룻도리(종도리)"라고 불러요. 도리의 개수에 따라 3량, 5량 집이라고 해요.',
+    materials: [{name:'소나무',color:0xc4956a},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '서까래', part: 'seokkarae',
+    desc: '도리 위에 비스듬히 놓는 가느다란 나무에요.',
+    detail: '지붕의 모양을 만들어요. 한옥 지붕의 아름다운 곡선은 서까래 덕분이에요! 서까래 끝이 살짝 올라가는 것을 "처마"라고 해요.',
+    materials: [{name:'소나무',color:0xb8895e},{name:'대나무',color:0x7a9a3a}]
+  },
+  {
+    name: '개판과 기와', part: 'giwa',
+    desc: '서까래 위에 널빤지(개판)를 깔고 그 위에 기와를 올려요.',
+    detail: '기와는 흙으로 빚어서 높은 온도에서 구워 만들어요. 비가 와도 물이 새지 않아요! 기와 끝에 있는 동그란 무늬를 "막새"라고 해요.',
+    materials: [{name:'회기와',color:0x5a5a5a},{name:'청기와',color:0x2a5a6a}]
+  },
+  {
+    name: '벽체와 창호', part: 'changho',
+    desc: '벽을 만들고 문과 창문을 달아요.',
+    detail: '한옥의 벽은 나무틀에 흙을 발라 만들어요. 창호는 나무살에 한지를 붙인 거예요. 빛이 은은하게 들어오고 공기도 통해요!',
+    materials: [{name:'흙벽+창호지',color:0xe8dcc8},{name:'판벽+창호지',color:0xc4a882}]
+  },
+  {
+    name: '마루', part: 'maru',
+    desc: '나무로 만든 시원한 바닥이에요.',
+    detail: '대청마루는 여름에 시원하게 지낼 수 있는 곳이에요. 바닥 아래로 바람이 지나가서 자연 에어컨 같아요! 가족이 모여 이야기하는 곳이에요.',
+    materials: [{name:'소나무마루',color:0xdeb887},{name:'참나무마루',color:0xb8860b}]
+  },
+  {
+    name: '온돌', part: 'ondol',
+    desc: '세계에서 한국만 가진 바닥 난방이에요!',
+    detail: '아궁이에서 불을 때면 뜨거운 연기가 방바닥 아래 길(고래)을 지나가면서 방바닥을 따뜻하게 데워요. 겨울에도 따뜻하게 잘 수 있어요!',
+    materials: [{name:'구들장',color:0x8b7355},{name:'황토구들',color:0xc4a35a}]
+  }
+];
+
+const MODERN_STEPS = [
+  {
+    name: '기초 공사', part: 'foundation',
+    desc: '콘크리트로 집의 기초를 만들어요.',
+    detail: '땅을 파고 철근을 넣은 뒤 콘크리트를 부어서 튼튼한 기초를 만들어요. 이것이 집 전체의 무게를 지탱해요!',
+    materials: [{name:'콘크리트',color:0x888888},{name:'강화콘크리트',color:0x707070}]
+  },
+  {
+    name: '골조', part: 'frame',
+    desc: '집의 뼈대를 세워요.',
+    detail: '철근과 콘크리트, 또는 철골로 건물의 뼈대를 만들어요. 사람의 뼈처럼 집을 튼튼하게 세워주는 역할이에요!',
+    materials: [{name:'철근콘크리트',color:0x808080},{name:'경량철골',color:0xa0a0b0}]
+  },
+  {
+    name: '벽체', part: 'walls',
+    desc: '벽을 쌓아요.',
+    detail: '벽돌이나 시멘트 블록으로 벽을 만들어요. 안쪽에는 단열재를 넣어서 여름에는 시원하고 겨울에는 따뜻하게 해줘요!',
+    materials: [{name:'빨간벽돌',color:0xb54a32},{name:'시멘트블록',color:0x999999}]
+  },
+  {
+    name: '지붕', part: 'roof',
+    desc: '비와 눈을 막아주는 지붕을 올려요.',
+    detail: '경사 지붕은 비가 잘 흘러내리고, 평평한 지붕은 옥상을 만들 수 있어요. 방수 처리를 꼼꼼히 해야 해요!',
+    materials: [{name:'슬레이트',color:0x556677},{name:'기와형',color:0x443333}]
+  },
+  {
+    name: '창문', part: 'windows',
+    desc: '빛과 바람이 들어오는 창문을 달아요.',
+    detail: '이중유리 창문은 소리도 막아주고 열도 잘 보존해요. 한옥의 창호지 문과 비교하면 어떤 점이 다를까요?',
+    materials: [{name:'이중유리',color:0x87CEEB},{name:'삼중유리',color:0x6CB4D9}]
+  },
+  {
+    name: '현관문', part: 'door',
+    desc: '집의 출입구인 현관문을 달아요.',
+    detail: '현대 주택의 문은 철이나 강화목으로 만들어요. 방범과 단열을 동시에 해줘요. 한옥의 대문과 비교해보세요!',
+    materials: [{name:'철제문',color:0x666666},{name:'원목문',color:0x8B6914}]
+  },
+  {
+    name: '바닥', part: 'floor',
+    desc: '걸어 다닐 바닥을 깔아요.',
+    detail: '요즘은 온수 파이프를 바닥에 깔아서 따뜻하게 해요. 한옥의 온돌에서 발전한 거예요! 한국의 바닥 난방이 세계로 퍼지고 있어요.',
+    materials: [{name:'원목마루',color:0xDEB887},{name:'타일',color:0xD2C8B0}]
+  },
+  {
+    name: '인테리어', part: 'interior',
+    desc: '가구를 놓고 예쁘게 꾸며요.',
+    detail: '부엌, 거실, 침실을 꾸며서 편안한 공간을 만들어요. 한옥은 마루와 방으로 구분했지만, 현대 주택은 용도별로 나눠요.',
+    materials: [{name:'모던스타일',color:0xEEEEEE},{name:'내추럴',color:0xC4A882}]
+  }
+];
+
+// ===== State =====
+let gameMode = null; // 'hanok' or 'modern'
+let currentStep = 0;
+let steps = [];
+let selectedMaterials = {};
+let builtParts = {};
+let isComplete = false;
+let isViewing = false;
+
+// ===== Three.js =====
+let scene, camera, renderer, controls;
+let buildGroup;
+let autoRotate = false;
+let mouseDown = false, mouseX = 0, mouseY = 0;
+let camTheta = Math.PI/4, camPhi = Math.PI/4, camDist = 12;
+let targetTheta = camTheta, targetPhi = camPhi, targetDist = camDist;
+let touchDist = 0;
+let labelElements = [];
+
+function initThree() {
+  const canvas = document.getElementById('canvas3d');
+  scene = new THREE.Scene();
+
+  // Sky gradient
+  scene.background = new THREE.Color(0x87CEEB);
+  scene.fog = new THREE.Fog(0x87CEEB, 30, 80);
+
+  camera = new THREE.PerspectiveCamera(50, window.innerWidth / (window.innerHeight - 56), 0.1, 100);
+  updateCamera();
+
+  renderer = new THREE.WebGLRenderer({ canvas, antialias: true });
+  renderer.setSize(window.innerWidth, window.innerHeight - 56);
+  renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+  renderer.shadowMap.enabled = true;
+  renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+  renderer.toneMapping = THREE.ACESFilmicToneMapping;
+  renderer.toneMappingExposure = 1.1;
+
+  // Lights
+  const ambLight = new THREE.AmbientLight(0xfff5e6, 0.5);
+  scene.add(ambLight);
+
+  const sunLight = new THREE.DirectionalLight(0xfff8e7, 1.0);
+  sunLight.position.set(8, 12, 6);
+  sunLight.castShadow = true;
+  sunLight.shadow.mapSize.set(2048, 2048);
+  sunLight.shadow.camera.left = -15;
+  sunLight.shadow.camera.right = 15;
+  sunLight.shadow.camera.top = 15;
+  sunLight.shadow.camera.bottom = -15;
+  scene.add(sunLight);
+
+  const fillLight = new THREE.DirectionalLight(0xaaccff, 0.3);
+  fillLight.position.set(-5, 6, -4);
+  scene.add(fillLight);
+
+  // Ground
+  const groundGeo = new THREE.PlaneGeometry(60, 60);
+  const groundMat = new THREE.MeshStandardMaterial({ color: 0x5a7a3a, roughness: 0.9 });
+  const ground = new THREE.Mesh(groundGeo, groundMat);
+  ground.rotation.x = -Math.PI / 2;
+  ground.position.y = -0.01;
+  ground.receiveShadow = true;
+  scene.add(ground);
+
+  // Yard (stone floor around building)
+  const yardGeo = new THREE.PlaneGeometry(14, 12);
+  const yardMat = new THREE.MeshStandardMaterial({ color: 0xb0a898, roughness: 0.8 });
+  const yard = new THREE.Mesh(yardGeo, yardMat);
+  yard.rotation.x = -Math.PI / 2;
+  yard.position.y = 0.01;
+  yard.receiveShadow = true;
+  scene.add(yard);
+
+  // Simple background trees
+  for (let i = 0; i < 10; i++) {
+    const angle = (i / 10) * Math.PI * 2;
+    const r = 15 + Math.random() * 8;
+    addTree(Math.cos(angle) * r, Math.sin(angle) * r);
+  }
+
+  buildGroup = new THREE.Group();
+  scene.add(buildGroup);
+
+  // Mouse/touch controls
+  canvas.addEventListener('mousedown', onMouseDown);
+  canvas.addEventListener('mousemove', onMouseMove);
+  canvas.addEventListener('mouseup', onMouseUp);
+  canvas.addEventListener('wheel', onWheel);
+  canvas.addEventListener('touchstart', onTouchStart, { passive: false });
+  canvas.addEventListener('touchmove', onTouchMove, { passive: false });
+  canvas.addEventListener('touchend', onTouchEnd);
+
+  window.addEventListener('resize', onResize);
+  animate();
+}
+
+function addTree(x, z) {
+  const trunk = new THREE.Mesh(
+    new THREE.CylinderGeometry(0.15, 0.2, 2, 6),
+    new THREE.MeshStandardMaterial({ color: 0x6b4226 })
+  );
+  trunk.position.set(x, 1, z);
+  trunk.castShadow = true;
+  scene.add(trunk);
+
+  const leaves = new THREE.Mesh(
+    new THREE.SphereGeometry(1.2 + Math.random() * 0.5, 8, 6),
+    new THREE.MeshStandardMaterial({ color: 0x2d5a1e + Math.floor(Math.random() * 0x001a00) })
+  );
+  leaves.position.set(x, 2.5 + Math.random() * 0.5, z);
+  leaves.castShadow = true;
+  scene.add(leaves);
+}
+
+function updateCamera() {
+  camTheta += (targetTheta - camTheta) * 0.1;
+  camPhi += (targetPhi - camPhi) * 0.1;
+  camDist += (targetDist - camDist) * 0.1;
+  camPhi = Math.max(0.1, Math.min(Math.PI / 2 - 0.05, camPhi));
+  camDist = Math.max(5, Math.min(25, camDist));
+
+  camera.position.x = Math.sin(camTheta) * Math.cos(camPhi) * camDist;
+  camera.position.y = Math.sin(camPhi) * camDist;
+  camera.position.z = Math.cos(camTheta) * Math.cos(camPhi) * camDist;
+  camera.lookAt(0, 2, 0);
+}
+
+function onMouseDown(e) { mouseDown = true; mouseX = e.clientX; mouseY = e.clientY; }
+function onMouseMove(e) {
+  if (!mouseDown) return;
+  const dx = e.clientX - mouseX, dy = e.clientY - mouseY;
+  targetTheta -= dx * 0.008;
+  targetPhi += dy * 0.008;
+  mouseX = e.clientX; mouseY = e.clientY;
+}
+function onMouseUp() { mouseDown = false; }
+function onWheel(e) { targetDist += e.deltaY * 0.01; }
+
+function onTouchStart(e) {
+  e.preventDefault();
+  if (e.touches.length === 1) {
+    mouseDown = true;
+    mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    touchDist = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+  }
+}
+function onTouchMove(e) {
+  e.preventDefault();
+  if (e.touches.length === 1 && mouseDown) {
+    const dx = e.touches[0].clientX - mouseX, dy = e.touches[0].clientY - mouseY;
+    targetTheta -= dx * 0.008;
+    targetPhi += dy * 0.008;
+    mouseX = e.touches[0].clientX; mouseY = e.touches[0].clientY;
+  } else if (e.touches.length === 2) {
+    const d = Math.hypot(e.touches[0].clientX - e.touches[1].clientX, e.touches[0].clientY - e.touches[1].clientY);
+    targetDist -= (d - touchDist) * 0.03;
+    touchDist = d;
+  }
+}
+function onTouchEnd() { mouseDown = false; }
+
+function onResize() {
+  camera.aspect = window.innerWidth / (window.innerHeight - 56);
+  camera.updateProjectionMatrix();
+  renderer.setSize(window.innerWidth, window.innerHeight - 56);
+}
+
+function animate() {
+  requestAnimationFrame(animate);
+  if (autoRotate) targetTheta += 0.005;
+  updateCamera();
+  renderer.render(scene, camera);
+}
+
+// ===== Building Functions =====
+
+function createMaterial(color, roughness = 0.7) {
+  return new THREE.MeshStandardMaterial({ color, roughness, metalness: 0.05 });
+}
+
+function buildHanokPart(partName, matColor) {
+  const g = new THREE.Group();
+  const mat = createMaterial(matColor);
+
+  switch (partName) {
+    case 'gidan': {
+      // Stone platform
+      const base = new THREE.Mesh(new THREE.BoxGeometry(8, 0.6, 6), mat);
+      base.position.y = 0.3;
+      base.castShadow = true; base.receiveShadow = true;
+      g.add(base);
+      // Decorative stone edge lines
+      const edgeMat = createMaterial(matColor - 0x101010);
+      for (let i = 0; i < 4; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(8.1, 0.08, 0.08), edgeMat);
+        line.position.set(0, 0.15 * (i+1), 3.01);
+        g.add(line);
+        const line2 = line.clone();
+        line2.position.z = -3.01;
+        g.add(line2);
+      }
+      break;
+    }
+    case 'jucho': {
+      // Foundation stones under each pillar position
+      const positions = [[-3,0,-2],[-3,0,2],[3,0,-2],[3,0,2],[-1,0,-2],[-1,0,2],[1,0,-2],[1,0,2]];
+      positions.forEach(p => {
+        const stone = new THREE.Mesh(new THREE.CylinderGeometry(0.4, 0.45, 0.25, 8), mat);
+        stone.position.set(p[0], 0.72, p[2]);
+        stone.castShadow = true;
+        g.add(stone);
+      });
+      break;
+    }
+    case 'gidung': {
+      // Pillars
+      const positions = [[-3,0,-2],[-3,0,2],[3,0,-2],[3,0,2],[-1,0,-2],[-1,0,2],[1,0,-2],[1,0,2]];
+      positions.forEach(p => {
+        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 3.2, 12), mat);
+        pillar.position.set(p[0], 2.45, p[2]);
+        pillar.castShadow = true;
+        g.add(pillar);
+      });
+      break;
+    }
+    case 'bo': {
+      // Horizontal beams connecting pillars (front-back direction)
+      const beamMat = mat;
+      [[-3,2],[-1,2],[1,2],[3,2]].forEach(xz => {
+        const beam = new THREE.Mesh(new THREE.BoxGeometry(0.2, 0.3, 4.2), beamMat);
+        beam.position.set(xz[0], 3.9, 0);
+        beam.castShadow = true;
+        g.add(beam);
+      });
+      // Cross beams (left-right direction)
+      [[-2,2],[2,2]].forEach(xz => {
+        const beam = new THREE.Mesh(new THREE.BoxGeometry(6.2, 0.25, 0.2), beamMat);
+        beam.position.set(0, 3.95 + xz[1]*0.01, xz[0]);
+        beam.castShadow = true;
+        g.add(beam);
+      });
+      break;
+    }
+    case 'dori': {
+      // Purlins - longitudinal beams on top of beams
+      const ridgeH = 5.5;
+      // Ridge purlin (마룻도리)
+      const ridge = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 6.4, 8), mat);
+      ridge.rotation.z = Math.PI / 2;
+      ridge.position.set(0, ridgeH, 0);
+      ridge.castShadow = true;
+      g.add(ridge);
+      // Side purlins (중도리)
+      [-1.8, 1.8].forEach(z => {
+        const purlin = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 6.4, 8), mat);
+        purlin.rotation.z = Math.PI / 2;
+        purlin.position.set(0, 4.5, z);
+        purlin.castShadow = true;
+        g.add(purlin);
+      });
+      // Eave purlins (주심도리)
+      [-2.2, 2.2].forEach(z => {
+        const purlin = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 6.4, 8), mat);
+        purlin.rotation.z = Math.PI / 2;
+        purlin.position.set(0, 4.05, z);
+        purlin.castShadow = true;
+        g.add(purlin);
+      });
+      // King posts (대공) - support ridge from beam
+      [-2, 0, 2].forEach(x => {
+        const post = new THREE.Mesh(new THREE.BoxGeometry(0.15, 1.4, 0.15), mat);
+        post.position.set(x, 4.8, 0);
+        post.castShadow = true;
+        g.add(post);
+      });
+      break;
+    }
+    case 'seokkarae': {
+      // Rafters from ridge to eaves
+      const rafterCount = 16;
+      for (let i = 0; i < rafterCount; i++) {
+        const x = -3.2 + (6.4 / (rafterCount - 1)) * i;
+        // Front side
+        const rafter1 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.08, 2.8), mat);
+        rafter1.position.set(x, 4.7, 1.2);
+        rafter1.rotation.x = 0.45;
+        rafter1.castShadow = true;
+        g.add(rafter1);
+        // Back side
+        const rafter2 = rafter1.clone();
+        rafter2.position.z = -1.2;
+        rafter2.rotation.x = -0.45;
+        g.add(rafter2);
+      }
+      break;
+    }
+    case 'giwa': {
+      // Roof surface with slight curve
+      const roofShape = new THREE.Shape();
+      roofShape.moveTo(-3.8, 0);
+      roofShape.lineTo(3.8, 0);
+      roofShape.lineTo(3.8, 0.15);
+      roofShape.lineTo(-3.8, 0.15);
+      roofShape.closePath();
+
+      // Front roof slope
+      const frontRoof = new THREE.Mesh(new THREE.BoxGeometry(7.8, 0.2, 3.2), mat);
+      frontRoof.position.set(0, 4.7, 1.5);
+      frontRoof.rotation.x = 0.45;
+      frontRoof.castShadow = true;
+      g.add(frontRoof);
+      // Back roof slope
+      const backRoof = frontRoof.clone();
+      backRoof.position.z = -1.5;
+      backRoof.rotation.x = -0.45;
+      g.add(backRoof);
+      // Ridge cap
+      const ridgeCap = new THREE.Mesh(new THREE.BoxGeometry(8, 0.25, 0.5), mat);
+      ridgeCap.position.set(0, 5.55, 0);
+      ridgeCap.castShadow = true;
+      g.add(ridgeCap);
+      // Ridge end decorations
+      [-4.2, 4.2].forEach(x => {
+        const dec = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.5, 0.6), mat);
+        dec.position.set(x, 5.6, 0);
+        dec.castShadow = true;
+        g.add(dec);
+      });
+      // Tile texture lines
+      for (let i = 0; i < 12; i++) {
+        const z = 0.15 + i * 0.25;
+        const line = new THREE.Mesh(new THREE.BoxGeometry(7.6, 0.05, 0.06), createMaterial(matColor + 0x0a0a0a));
+        line.position.set(0, 4.75 + i * 0.065, z * 0.95);
+        line.rotation.x = 0.45;
+        g.add(line);
+        const line2 = line.clone();
+        line2.position.z = -(z * 0.95);
+        line2.rotation.x = -0.45;
+        g.add(line2);
+      }
+      break;
+    }
+    case 'changho': {
+      // Walls
+      const wallMat = createMaterial(matColor, 0.9);
+      // Front wall segments (with openings)
+      const frontWallL = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.8, 0.12), wallMat);
+      frontWallL.position.set(-2, 2, 2);
+      frontWallL.castShadow = true;
+      g.add(frontWallL);
+      const frontWallR = new THREE.Mesh(new THREE.BoxGeometry(1.8, 2.8, 0.12), wallMat);
+      frontWallR.position.set(2, 2, 2);
+      frontWallR.castShadow = true;
+      g.add(frontWallR);
+      // Back wall
+      const backWall = new THREE.Mesh(new THREE.BoxGeometry(6, 2.8, 0.12), wallMat);
+      backWall.position.set(0, 2, -2);
+      backWall.castShadow = true;
+      g.add(backWall);
+      // Side walls
+      [-3, 3].forEach(x => {
+        const side = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.8, 4), wallMat);
+        side.position.set(x, 2, 0);
+        side.castShadow = true;
+        g.add(side);
+      });
+      // Windows (창호) - lattice frames
+      const frameMat = createMaterial(0x8b6914, 0.6);
+      const paperMat = createMaterial(0xfff8f0, 0.95);
+      // Front windows
+      [-0.5, 0.5].forEach(x => {
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(1.2, 2.2, 0.06), paperMat);
+        frame.position.set(x, 2, 2.05);
+        g.add(frame);
+        // Lattice
+        for (let ly = 0; ly < 5; ly++) {
+          const h = new THREE.Mesh(new THREE.BoxGeometry(1.15, 0.03, 0.03), frameMat);
+          h.position.set(x, 1.1 + ly * 0.5, 2.08);
+          g.add(h);
+        }
+        for (let lx = 0; lx < 4; lx++) {
+          const v = new THREE.Mesh(new THREE.BoxGeometry(0.03, 2.15, 0.03), frameMat);
+          v.position.set(x - 0.45 + lx * 0.3, 2, 2.08);
+          g.add(v);
+        }
+      });
+      break;
+    }
+    case 'maru': {
+      // Wooden floor (대청마루)
+      const floorMat = createMaterial(matColor, 0.6);
+      // Main floor area (center, open)
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(3.8, 0.1, 3.6), floorMat);
+      floor.position.set(0, 0.65, 0);
+      floor.receiveShadow = true;
+      g.add(floor);
+      // Floor board lines
+      for (let i = 0; i < 10; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(3.7, 0.02, 0.02), createMaterial(matColor - 0x1a1a0a));
+        line.position.set(0, 0.71, -1.7 + i * 0.38);
+        g.add(line);
+      }
+      // Support posts under floor
+      [[-1,0,-1],[-1,0,1],[1,0,-1],[1,0,1]].forEach(p => {
+        const post = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 0.5, 6), createMaterial(0x8b6914));
+        post.position.set(p[0], 0.45, p[2]);
+        g.add(post);
+      });
+      break;
+    }
+    case 'ondol': {
+      // Ondol heating system (shown as cross-section style)
+      const ondolMat = createMaterial(matColor, 0.85);
+      // Ondol floor (left room)
+      const ondolFloor = new THREE.Mesh(new THREE.BoxGeometry(2, 0.15, 3.6), ondolMat);
+      ondolFloor.position.set(-2, 0.68, 0);
+      ondolFloor.receiveShadow = true;
+      g.add(ondolFloor);
+      // Right room
+      const ondolFloor2 = new THREE.Mesh(new THREE.BoxGeometry(2, 0.15, 3.6), ondolMat);
+      ondolFloor2.position.set(2, 0.68, 0);
+      ondolFloor2.receiveShadow = true;
+      g.add(ondolFloor2);
+      // Agungi (firebox) - visible on the side
+      const agungi = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.5, 0.5), createMaterial(0x333333));
+      agungi.position.set(-3.3, 0.45, 1.5);
+      agungi.castShadow = true;
+      g.add(agungi);
+      // Fire glow
+      const fire = new THREE.Mesh(new THREE.BoxGeometry(0.3, 0.2, 0.2), createMaterial(0xff6600, 0.3));
+      fire.position.set(-3.3, 0.35, 1.5);
+      g.add(fire);
+      // Chimney
+      const chimney = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.18, 2.5, 8), createMaterial(0x666666));
+      chimney.position.set(3.4, 1.8, -1.5);
+      chimney.castShadow = true;
+      g.add(chimney);
+      // Smoke effect (small spheres)
+      for (let i = 0; i < 4; i++) {
+        const smoke = new THREE.Mesh(
+          new THREE.SphereGeometry(0.08 + i * 0.04, 6, 6),
+          new THREE.MeshStandardMaterial({ color: 0xcccccc, transparent: true, opacity: 0.4 - i * 0.08 })
+        );
+        smoke.position.set(3.4 + Math.random() * 0.1, 3.1 + i * 0.3, -1.5 + Math.random() * 0.1);
+        g.add(smoke);
+      }
+      break;
+    }
+  }
+  return g;
+}
+
+function buildModernPart(partName, matColor) {
+  const g = new THREE.Group();
+  const mat = createMaterial(matColor);
+
+  switch (partName) {
+    case 'foundation': {
+      const base = new THREE.Mesh(new THREE.BoxGeometry(7, 0.8, 6), mat);
+      base.position.y = 0.4;
+      base.castShadow = true; base.receiveShadow = true;
+      g.add(base);
+      // Foundation bolts
+      for (let x = -3; x <= 3; x += 1.5) {
+        for (let z = -2.5; z <= 2.5; z += 2.5) {
+          const bolt = new THREE.Mesh(new THREE.CylinderGeometry(0.05, 0.05, 0.15, 6), createMaterial(0x444444));
+          bolt.position.set(x, 0.85, z);
+          g.add(bolt);
+        }
+      }
+      break;
+    }
+    case 'frame': {
+      // Columns
+      const cols = [[-3,-2.5],[-3,2.5],[3,-2.5],[3,2.5],[0,-2.5],[0,2.5]];
+      cols.forEach(p => {
+        const col = new THREE.Mesh(new THREE.BoxGeometry(0.3, 4, 0.3), mat);
+        col.position.set(p[0], 2.8, p[1]);
+        col.castShadow = true;
+        g.add(col);
+      });
+      // Beams
+      [[-2.5, 2.5]].forEach(z => {
+        const beam = new THREE.Mesh(new THREE.BoxGeometry(6.3, 0.3, 0.25), mat);
+        beam.position.set(0, 4.8, z[0]);
+        beam.castShadow = true;
+        g.add(beam);
+        const beam2 = beam.clone();
+        beam2.position.z = z[1];
+        g.add(beam2);
+      });
+      // Cross beams
+      [-3, 0, 3].forEach(x => {
+        const cb = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.3, 5.2), mat);
+        cb.position.set(x, 4.8, 0);
+        cb.castShadow = true;
+        g.add(cb);
+      });
+      break;
+    }
+    case 'walls': {
+      // Front wall with window openings
+      const wallH = 3.8;
+      const wallY = 2.7;
+      // Back
+      const back = new THREE.Mesh(new THREE.BoxGeometry(6.2, wallH, 0.2), mat);
+      back.position.set(0, wallY, -2.5);
+      back.castShadow = true;
+      g.add(back);
+      // Sides
+      [-3.1, 3.1].forEach(x => {
+        const side = new THREE.Mesh(new THREE.BoxGeometry(0.2, wallH, 5), mat);
+        side.position.set(x, wallY, 0);
+        side.castShadow = true;
+        g.add(side);
+      });
+      // Front - split for door/window holes
+      const ftop = new THREE.Mesh(new THREE.BoxGeometry(6.2, 1, 0.2), mat);
+      ftop.position.set(0, 4.3, 2.5);
+      ftop.castShadow = true;
+      g.add(ftop);
+      // Front left
+      const fl = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.6, 0.2), mat);
+      fl.position.set(-2.35, 2.1, 2.5);
+      fl.castShadow = true;
+      g.add(fl);
+      // Front right
+      const fr = new THREE.Mesh(new THREE.BoxGeometry(1.5, 2.6, 0.2), mat);
+      fr.position.set(2.35, 2.1, 2.5);
+      fr.castShadow = true;
+      g.add(fr);
+      // Front middle (between door and window)
+      const fm = new THREE.Mesh(new THREE.BoxGeometry(0.4, 2.6, 0.2), mat);
+      fm.position.set(0, 2.1, 2.5);
+      fm.castShadow = true;
+      g.add(fm);
+      break;
+    }
+    case 'roof': {
+      // Sloped roof
+      const roofL = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.2, 3.5), mat);
+      roofL.position.set(0, 5.4, 1.5);
+      roofL.rotation.x = 0.3;
+      roofL.castShadow = true;
+      g.add(roofL);
+      const roofR = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.2, 3.5), mat);
+      roofR.position.set(0, 5.4, -1.5);
+      roofR.rotation.x = -0.3;
+      roofR.castShadow = true;
+      g.add(roofR);
+      // Ridge
+      const ridge = new THREE.Mesh(new THREE.BoxGeometry(7.4, 0.15, 0.4), mat);
+      ridge.position.set(0, 5.85, 0);
+      g.add(ridge);
+      break;
+    }
+    case 'windows': {
+      const glassMat = new THREE.MeshStandardMaterial({ color: matColor, transparent: true, opacity: 0.5, roughness: 0.1, metalness: 0.2 });
+      const frameMat = createMaterial(0x555555, 0.3);
+      // Front windows
+      [-1.2, 1.2].forEach(x => {
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(1.3, 1.6, 0.08), frameMat);
+        frame.position.set(x, 2.6, 2.54);
+        g.add(frame);
+        const glass = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.4, 0.04), glassMat);
+        glass.position.set(x, 2.6, 2.56);
+        g.add(glass);
+        // Cross bars
+        const h = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.03, 0.05), frameMat);
+        h.position.set(x, 2.6, 2.57);
+        g.add(h);
+        const v = new THREE.Mesh(new THREE.BoxGeometry(0.03, 1.5, 0.05), frameMat);
+        v.position.set(x, 2.6, 2.57);
+        g.add(v);
+      });
+      // Side windows
+      [-3.14, 3.14].forEach(x => {
+        const frame = new THREE.Mesh(new THREE.BoxGeometry(0.08, 1.2, 1.5), frameMat);
+        frame.position.set(x, 2.8, 0);
+        g.add(frame);
+        const glass = new THREE.Mesh(new THREE.BoxGeometry(0.04, 1, 1.3), glassMat);
+        glass.position.set(x, 2.8, 0);
+        g.add(glass);
+      });
+      break;
+    }
+    case 'door': {
+      const doorMat = createMaterial(matColor, 0.5);
+      // Door frame
+      const frame = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.5, 0.1), doorMat);
+      frame.position.set(-0.7, 2, 2.55);
+      frame.castShadow = true;
+      g.add(frame);
+      // Door handle
+      const handle = new THREE.Mesh(new THREE.BoxGeometry(0.08, 0.3, 0.08), createMaterial(0xccaa00, 0.2));
+      handle.position.set(-0.2, 2, 2.62);
+      g.add(handle);
+      break;
+    }
+    case 'floor': {
+      const floorMat = createMaterial(matColor, 0.5);
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(5.8, 0.1, 4.6), floorMat);
+      floor.position.y = 0.85;
+      floor.receiveShadow = true;
+      g.add(floor);
+      // Floor lines
+      for (let i = 0; i < 12; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(5.7, 0.02, 0.02), createMaterial(matColor - 0x151510));
+        line.position.set(0, 0.91, -2.1 + i * 0.38);
+        g.add(line);
+      }
+      break;
+    }
+    case 'interior': {
+      // Simple furniture
+      const furnMat = createMaterial(matColor, 0.6);
+      // Sofa
+      const sofa = new THREE.Mesh(new THREE.BoxGeometry(2, 0.6, 0.8), furnMat);
+      sofa.position.set(0, 1.2, -1.5);
+      sofa.castShadow = true;
+      g.add(sofa);
+      const sBack = new THREE.Mesh(new THREE.BoxGeometry(2, 0.5, 0.15), furnMat);
+      sBack.position.set(0, 1.65, -1.85);
+      g.add(sBack);
+      // Table
+      const table = new THREE.Mesh(new THREE.BoxGeometry(1.2, 0.06, 0.7), createMaterial(0x8b6914));
+      table.position.set(0, 1.25, -0.5);
+      g.add(table);
+      [[-0.5,0,-0.2],[-0.5,0,0.15],[0.5,0,-0.2],[0.5,0,0.15]].forEach(p => {
+        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.05, 0.35, 0.05), createMaterial(0x8b6914));
+        leg.position.set(p[0], 1.05, -0.5 + p[2]);
+        g.add(leg);
+      });
+      // Kitchen counter
+      const counter = new THREE.Mesh(new THREE.BoxGeometry(1.5, 0.9, 0.6), createMaterial(0xcccccc));
+      counter.position.set(2, 1.3, -1.5);
+      counter.castShadow = true;
+      g.add(counter);
+      break;
+    }
+  }
+  return g;
+}
+
+// ===== Game Logic =====
+
+function startGame(mode) {
+  gameMode = mode;
+  steps = mode === 'hanok' ? HANOK_STEPS : MODERN_STEPS;
+  currentStep = 0;
+  selectedMaterials = {};
+  builtParts = {};
+  isComplete = false;
+  isViewing = false;
+  autoRotate = false;
+
+  document.getElementById('modeSelect').classList.add('hidden');
+  document.getElementById('topBar').style.display = 'flex';
+  document.getElementById('progressBar').style.display = 'block';
+  document.getElementById('canvas3d').style.display = 'block';
+  document.getElementById('sidePanel').classList.remove('hidden');
+
+  if (mode === 'hanok') {
+    document.getElementById('gameTitle').textContent = '한옥 짓기';
+    document.getElementById('modeLabel').textContent = '전통 한옥 모드';
+  } else {
+    document.getElementById('gameTitle').textContent = '주택 짓기';
+    document.getElementById('modeLabel').textContent = '현대 주택 모드';
+  }
+
+  if (!renderer) initThree();
+  else {
+    // Clear previous build
+    while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
+  }
+
+  renderStepList();
+  selectStep(0);
+  updateProgress();
+}
+
+function renderStepList() {
+  const list = document.getElementById('stepList');
+  list.innerHTML = '';
+  steps.forEach((s, i) => {
+    const div = document.createElement('div');
+    div.className = 'step-item' + (i === currentStep ? ' active' : '') + (builtParts[s.part] ? ' done' : '');
+    div.innerHTML = `<div class="step-num">${builtParts[s.part] ? '✓' : i + 1}</div><div class="step-name">${s.name}</div>`;
+    div.onclick = () => selectStep(i);
+    list.appendChild(div);
+  });
+}
+
+function selectStep(idx) {
+  currentStep = idx;
+  const step = steps[idx];
+
+  // Update step list highlight
+  document.querySelectorAll('.step-item').forEach((el, i) => {
+    el.classList.toggle('active', i === idx);
+  });
+
+  // Update description
+  const desc = document.getElementById('descBox');
+  desc.innerHTML = `
+    <div class="part-name">${step.name}</div>
+    <div class="part-role">${step.desc}</div>
+    <div>${step.detail}</div>
+  `;
+
+  // Update material options
+  if (step.materials && !builtParts[step.part]) {
+    document.getElementById('matSection').style.display = 'block';
+    const opts = document.getElementById('matOptions');
+    opts.innerHTML = '';
+    step.materials.forEach((m, mi) => {
+      const btn = document.createElement('button');
+      btn.className = 'mat-btn' + ((selectedMaterials[step.part] || 0) === mi ? ' selected' : '');
+      btn.textContent = m.name;
+      btn.onclick = () => {
+        selectedMaterials[step.part] = mi;
+        opts.querySelectorAll('.mat-btn').forEach((b, bi) => b.classList.toggle('selected', bi === mi));
+      };
+      opts.appendChild(btn);
+    });
+    if (selectedMaterials[step.part] === undefined) selectedMaterials[step.part] = 0;
+  } else {
+    document.getElementById('matSection').style.display = 'none';
+  }
+
+  // Update build button
+  const btn = document.getElementById('buildBtn');
+  if (builtParts[step.part]) {
+    btn.textContent = '완성됨!';
+    btn.className = 'done';
+    btn.disabled = true;
+  } else {
+    // Check prerequisites
+    const canBuild = idx === 0 || builtParts[steps[idx - 1].part];
+    btn.textContent = canBuild ? `${step.name} 짓기!` : `먼저 ${steps[idx - 1].name}을(를) 지으세요`;
+    btn.className = canBuild ? 'ready' : '';
+    btn.disabled = !canBuild;
+  }
+}
+
+function buildStep() {
+  const step = steps[currentStep];
+  if (builtParts[step.part]) return;
+
+  const matIdx = selectedMaterials[step.part] || 0;
+  const matColor = step.materials[matIdx].color;
+
+  let part;
+  if (gameMode === 'hanok') {
+    part = buildHanokPart(step.part, matColor);
+  } else {
+    part = buildModernPart(step.part, matColor);
+  }
+
+  // Animate part appearing (scale up)
+  part.scale.set(0.01, 0.01, 0.01);
+  buildGroup.add(part);
+  builtParts[step.part] = part;
+
+  // Animate
+  let progress = 0;
+  const animIn = () => {
+    progress += 0.04;
+    if (progress >= 1) {
+      part.scale.set(1, 1, 1);
+      afterBuild();
+      return;
+    }
+    const ease = 1 - Math.pow(1 - progress, 3);
+    part.scale.set(ease, ease, ease);
+    requestAnimationFrame(animIn);
+  };
+  animIn();
+}
+
+function afterBuild() {
+  renderStepList();
+  updateProgress();
+
+  // Check if all built
+  const allBuilt = steps.every(s => builtParts[s.part]);
+  if (allBuilt) {
+    isComplete = true;
+    document.getElementById('statSteps').textContent = steps.length;
+    document.getElementById('statParts').textContent = buildGroup.children.length;
+    document.getElementById('completeTitle').textContent = gameMode === 'hanok' ? '한옥 완성!' : '주택 완성!';
+    document.getElementById('completeMsg').textContent = gameMode === 'hanok'
+      ? '멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.'
+      : '현대 주택을 완성했어요! 한옥과 비교해 보세요.';
+    document.getElementById('btnCompare').style.display = 'inline-block';
+    setTimeout(() => {
+      document.getElementById('completeOverlay').classList.add('show');
+    }, 600);
+  } else {
+    // Move to next step
+    const nextIdx = currentStep + 1;
+    if (nextIdx < steps.length) selectStep(nextIdx);
+    else selectStep(currentStep);
+  }
+
+  // Update button
+  const btn = document.getElementById('buildBtn');
+  btn.textContent = '완성됨!';
+  btn.className = 'done';
+  btn.disabled = true;
+}
+
+function updateProgress() {
+  const done = steps.filter(s => builtParts[s.part]).length;
+  const pct = (done / steps.length) * 100;
+  document.getElementById('progressFill').style.width = pct + '%';
+}
+
+function startViewing() {
+  isViewing = true;
+  autoRotate = true;
+  document.getElementById('completeOverlay').classList.remove('show');
+  document.getElementById('sidePanel').classList.add('hidden');
+  targetDist = 14;
+  targetPhi = Math.PI / 5;
+}
+
+function toggleCompare() {
+  // Show comparison info
+  const info = gameMode === 'hanok'
+    ? '한옥 vs 현대 주택:\n\n' +
+      '기단 vs 콘크리트 기초: 한옥은 자연석, 현대는 콘크리트\n' +
+      '나무 기둥 vs 철근: 한옥은 소나무, 현대는 철근콘크리트\n' +
+      '온돌 vs 바닥 난방: 온돌이 현대 바닥 난방의 원조!\n' +
+      '창호지 vs 유리: 한지는 숨쉬고, 유리는 단열이 좋아요\n' +
+      '기와 vs 슬레이트: 기와는 100년, 슬레이트는 30년 수명'
+    : '현대 주택 vs 한옥:\n\n' +
+      '콘크리트 vs 자연석: 현대는 강하지만 한옥은 자연친화적\n' +
+      '바닥 난방 vs 온돌: 현대 바닥난방은 온돌에서 발전했어요!\n' +
+      '유리창 vs 창호지: 유리는 투명, 창호지는 은은한 빛\n' +
+      '에어컨 vs 대청마루: 마루 아래로 바람이 지나가는 자연 냉방!';
+  alert(info);
+}
+
+function toggleSide() {
+  document.getElementById('sidePanel').classList.toggle('hidden');
+}
+
+function resetGame() {
+  document.getElementById('completeOverlay').classList.remove('show');
+  document.getElementById('topBar').style.display = 'none';
+  document.getElementById('progressBar').style.display = 'none';
+  document.getElementById('canvas3d').style.display = 'none';
+  document.getElementById('sidePanel').classList.add('hidden');
+  document.getElementById('modeSelect').classList.remove('hidden');
+  document.getElementById('btnCompare').style.display = 'none';
+  autoRotate = false;
+  isComplete = false;
+  isViewing = false;
+  if (buildGroup) {
+    while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
+  }
+  builtParts = {};
+  selectedMaterials = {};
+  targetTheta = Math.PI / 4;
+  targetPhi = Math.PI / 4;
+  targetDist = 12;
+}
+</script>
+</body>
+</html>
