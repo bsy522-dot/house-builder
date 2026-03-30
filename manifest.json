@@ -1,0 +1,17 @@
+{
+  "name": "한옥 짓기 - 한국 전통 건축 체험",
+  "short_name": "한옥짓기",
+  "description": "한국 전통 한옥 건축 체험 게임",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#2d1b0e",
+  "theme_color": "#2d1b0e",
+  "icons": [
+    {
+      "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232d1b0e'/%3E%3Cpath d='M32 12L6 30h52z' fill='%23C4956A'/%3E%3Cpath d='M10 30v22h44V30' fill='%23f5deb3'/%3E%3Crect x='20' y='36' width='10' height='16' rx='1' fill='%234a2c17'/%3E%3Crect x='36' y='36' width='8' height='8' fill='none' stroke='%234a2c17' stroke-width='1.5'/%3E%3C/svg%3E",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}
