@@ -10,8 +10,7 @@
 <meta name="theme-color" content="#2d1b0e">
 <style>
 *{margin:0;padding:0;box-sizing:border-box}
-@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&display=swap');
-body{font-family:'Noto Sans KR',sans-serif;background:#1a1a2e;color:#fff;overflow:hidden;height:100vh;width:100vw}
+body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot;,&quot;Malgun Gothic&quot;,&quot;Noto Sans KR&quot;,sans-serif;background:#1a1a2e;color:#fff;overflow:hidden;height:100vh;width:100vw;-webkit-tap-highlight-color:transparent}
 
 /* ===== Top Bar ===== */
 #topBar{position:fixed;top:0;left:0;right:0;height:56px;background:linear-gradient(135deg,#2d1b0e 0%,#4a2c17 100%);display:flex;align-items:center;justify-content:space-between;padding:0 16px;z-index:100;border-bottom:2px solid #c4956a;box-shadow:0 2px 12px rgba(0,0,0,.5)}
@@ -105,34 +104,190 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1a1a2e;color:#fff;overflo
 .label-3d{position:absolute;background:rgba(45,27,14,.9);border:1px solid #c4956a;border-radius:8px;padding:6px 10px;font-size:11px;color:#f5deb3;pointer-events:none;white-space:nowrap;transform:translate(-50%,-100%);opacity:0;transition:opacity .3s}
 .label-3d.show{opacity:1}
 
+/* ===== Audio/Day toggle buttons (floating) ===== */
+.float-btn{position:fixed;z-index:96;width:44px;height:44px;border-radius:50%;background:rgba(45,27,14,.85);border:1px solid #c4956a;color:#f5deb3;font-size:18px;cursor:pointer;box-shadow:0 3px 12px rgba(0,0,0,.4);display:none;align-items:center;justify-content:center;transition:all .2s}
+.float-btn:hover{background:#c4956a;color:#2d1b0e;transform:scale(1.05)}
+#btnMute{top:68px;right:16px}
+#btnDay{top:116px;right:16px}
+#btnHelp{top:164px;right:16px}
+
+/* ===== Tutorial overlay ===== */
+#tutorial{position:fixed;inset:0;background:rgba(0,0,0,.85);z-index:350;display:none;align-items:center;justify-content:center;padding:16px}
+#tutorial.show{display:flex}
+.tut-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:28px 32px;max-width:520px;width:100%;text-align:center}
+.tut-card h2{font-size:24px;color:#f5deb3;margin-bottom:12px}
+.tut-card .tut-icon{font-size:56px;margin-bottom:10px}
+.tut-card p{color:#e8d5c0;line-height:1.7;font-size:14px;margin-bottom:18px}
+.tut-card ul{text-align:left;color:#e8d5c0;font-size:13px;line-height:1.9;list-style:none;background:rgba(0,0,0,.25);padding:14px 18px;border-radius:10px;margin-bottom:18px}
+.tut-card ul li{display:flex;align-items:center;gap:8px}
+.tut-card ul li::before{content:&quot;\25C6&quot;;color:#c4956a;font-size:10px}
+.tut-card .tut-btns{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.tut-card button{padding:10px 22px;border:none;border-radius:20px;font-size:14px;font-weight:600;cursor:pointer;font-family:inherit}
+.tut-next{background:#c4956a;color:#2d1b0e}
+.tut-skip{background:rgba(255,255,255,.1);color:#f5deb3;border:1px solid #c4956a!important}
+
+/* ===== Achievement toast ===== */
+#achToast{position:fixed;top:72px;left:50%;transform:translateX(-50%) translateY(-20px);z-index:400;background:linear-gradient(135deg,#4a2c17,#6a3c1f);border:2px solid #f5deb3;border-radius:14px;padding:12px 20px;display:flex;align-items:center;gap:12px;box-shadow:0 6px 24px rgba(0,0,0,.6);opacity:0;pointer-events:none;transition:all .4s cubic-bezier(.2,1.4,.4,1)}
+#achToast.show{opacity:1;transform:translateX(-50%) translateY(0)}
+#achToast .ach-icon{font-size:28px}
+#achToast .ach-text{text-align:left}
+#achToast .ach-title{font-size:11px;color:#c4956a;font-weight:600;letter-spacing:1px}
+#achToast .ach-name{font-size:14px;color:#f5deb3;font-weight:700}
+
+/* ===== Quiz overlay ===== */
+#quizOverlay{position:fixed;inset:0;background:rgba(0,0,0,.9);z-index:250;display:none;align-items:center;justify-content:center;padding:16px}
+#quizOverlay.show{display:flex}
+.quiz-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:28px 32px;max-width:540px;width:100%}
+.quiz-card .quiz-header{display:flex;justify-content:space-between;align-items:center;margin-bottom:16px}
+.quiz-card .quiz-title{font-size:18px;color:#f5deb3;font-weight:700}
+.quiz-card .quiz-progress{font-size:12px;color:#c4956a}
+.quiz-card .quiz-q{font-size:16px;color:#f5deb3;line-height:1.6;margin-bottom:18px;padding:14px;background:rgba(0,0,0,.25);border-radius:10px}
+.quiz-options{display:flex;flex-direction:column;gap:8px;margin-bottom:16px}
+.quiz-opt{padding:12px 16px;border:1.5px solid rgba(196,149,106,.35);background:rgba(255,255,255,.05);color:#e8d5c0;border-radius:10px;cursor:pointer;font-family:inherit;font-size:14px;text-align:left;transition:all .2s}
+.quiz-opt:hover:not(:disabled){background:rgba(196,149,106,.15);border-color:#c4956a}
+.quiz-opt.correct{background:rgba(74,124,89,.4);border-color:#4a7c59;color:#fff}
+.quiz-opt.wrong{background:rgba(180,60,60,.4);border-color:#b43c3c;color:#fff}
+.quiz-opt:disabled{cursor:not-allowed}
+.quiz-feedback{padding:12px;border-radius:10px;font-size:13px;line-height:1.6;color:#e8d5c0;background:rgba(196,149,106,.12);border:1px solid rgba(196,149,106,.3);display:none;margin-bottom:14px}
+.quiz-feedback.show{display:block}
+.quiz-card .quiz-btns{display:flex;gap:10px;justify-content:flex-end}
+.quiz-card .quiz-btn{padding:10px 20px;border:none;border-radius:18px;font-weight:600;cursor:pointer;font-family:inherit;font-size:13px}
+.q-next{background:#c4956a;color:#2d1b0e}
+.q-skip{background:rgba(255,255,255,.08);color:#c4956a;border:1px solid #c4956a!important}
+
+/* ===== Fact card ===== */
+#factCard{position:fixed;bottom:20px;left:20px;max-width:300px;background:linear-gradient(135deg,rgba(45,27,14,.95),rgba(74,44,23,.95));border:1px solid #c4956a;border-radius:12px;padding:14px 16px;z-index:85;display:none;box-shadow:0 4px 20px rgba(0,0,0,.5);animation:factIn .5s}
+#factCard.show{display:block}
+#factCard .fact-title{font-size:11px;color:#c4956a;font-weight:700;letter-spacing:1px;margin-bottom:6px}
+#factCard .fact-text{font-size:12px;color:#f5deb3;line-height:1.6}
+#factCard .fact-close{position:absolute;top:6px;right:8px;background:none;border:none;color:#c4956a;cursor:pointer;font-size:16px;padding:0}
+@keyframes factIn{from{opacity:0;transform:translateY(10px)}to{opacity:1;transform:translateY(0)}}
+
+/* ===== Loading screen ===== */
+#loadingScreen{position:fixed;inset:0;background:#1a1a2e;z-index:500;display:flex;align-items:center;justify-content:center;flex-direction:column;transition:opacity .5s}
+#loadingScreen.hidden{opacity:0;pointer-events:none}
+.spinner{width:56px;height:56px;border:4px solid rgba(196,149,106,.25);border-top-color:#c4956a;border-radius:50%;animation:spin 1s linear infinite;margin-bottom:14px}
+@keyframes spin{to{transform:rotate(360deg)}}
+#loadingScreen p{color:#c4956a;font-size:13px;letter-spacing:1px}
+
+/* Keyboard hint */
+.kbd-hint{position:fixed;bottom:12px;right:12px;font-size:10px;color:rgba(196,149,106,.5);z-index:80;pointer-events:none;display:none}
+.kbd-hint kbd{background:rgba(255,255,255,.1);padding:1px 5px;border-radius:3px;font-size:10px;color:#c4956a}
+@media(min-width:769px){.kbd-hint.show{display:block}}
+
 @media(max-width:768px){
-  #sidePanel{width:100%;top:auto;bottom:0;height:50vh;border-left:none;border-top:2px solid #5a3a20}
+  #sidePanel{width:100%;top:auto;bottom:0;height:55vh;border-left:none;border-top:2px solid #5a3a20}
   #sidePanel.hidden{transform:translateY(100%)}
   #togglePanel{display:block}
   #topBar h1{font-size:15px}
   .mode-card{width:240px}
   #modeSelect h1{font-size:26px}
+  #btnMute,#btnDay,#btnHelp{width:40px;height:40px;font-size:16px}
+  #btnMute{top:64px}
+  #btnDay{top:110px}
+  #btnHelp{top:156px}
+  #factCard{left:10px;right:10px;max-width:none;bottom:12px}
+  .tut-card{padding:20px 22px}
+  .tut-card h2{font-size:20px}
+  .quiz-card{padding:22px 20px}
 }
 </style>
 </head>
 <body>
+
+<!-- Loading Screen -->
+<div id="loadingScreen">
+  <div class="spinner"></div>
+  <p>한국 건축 체험을 준비하고 있어요...</p>
+</div>
 
 <!-- Mode Selection Screen -->
 <div id="modeSelect">
   <h1>한국 건축 체험</h1>
   <p class="subtitle">직접 지어보며 배우는 건축 이야기</p>
   <div class="mode-cards">
-    <div class="mode-card" onclick="startGame('hanok')">
+    <div class="mode-card" onclick="startGame(&#39;hanok&#39;)">
       <div class="mode-icon">🏯</div>
       <h3>전통 한옥</h3>
       <p>주초돌부터 기와까지<br>500년 전통 한옥의 비밀을<br>하나하나 배워보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#888">10 단계 &middot; 양반가</div>
     </div>
-    <div class="mode-card" onclick="startGame('modern')">
+    <div class="mode-card" onclick="startGame(&#39;choga&#39;)">
+      <div class="mode-icon">🌾</div>
+      <h3>초가집</h3>
+      <p>볏짚 지붕의 소박한 집<br>서민의 따뜻한 보금자리를<br>지어보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#888">7 단계 &middot; 서민가</div>
+    </div>
+    <div class="mode-card" onclick="startGame(&#39;modern&#39;)">
       <div class="mode-icon">🏠</div>
       <h3>현대 주택</h3>
       <p>콘크리트 기초부터 인테리어까지<br>현대 건축의 과정을<br>체험해보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#888">8 단계 &middot; 철근콘크리트</div>
     </div>
   </div>
+  <div id="progressBadge" style="margin-top:28px;font-size:12px;color:#888"></div>
+</div>
+
+<!-- Tutorial -->
+<div id="tutorial">
+  <div class="tut-card">
+    <div class="tut-icon">🎓</div>
+    <h2 id="tutTitle">한국 건축 체험에 오신 걸 환영해요!</h2>
+    <p id="tutBody">단계별로 집을 직접 짓고, 각 부분의 이름과 역할을 배워보세요. 완성 후에는 퀴즈도 풀어볼 수 있어요!</p>
+    <ul id="tutList">
+      <li>왼쪽/오른쪽 드래그로 회전, 휠로 확대/축소</li>
+      <li>단계마다 재료를 고를 수 있어요</li>
+      <li>완성하면 감상 모드와 퀴즈가 열려요</li>
+      <li>스페이스바로 짓기, R키로 리셋</li>
+    </ul>
+    <div class="tut-btns">
+      <button class="tut-skip" onclick="closeTutorial()">건너뛰기</button>
+      <button class="tut-next" onclick="closeTutorial()">시작하기</button>
+    </div>
+  </div>
+</div>
+
+<!-- Achievement Toast -->
+<div id="achToast">
+  <div class="ach-icon">🏆</div>
+  <div class="ach-text">
+    <div class="ach-title">업적 달성!</div>
+    <div class="ach-name" id="achName">첫 건축</div>
+  </div>
+</div>
+
+<!-- Quiz Overlay -->
+<div id="quizOverlay">
+  <div class="quiz-card">
+    <div class="quiz-header">
+      <div class="quiz-title">🧠 건축 퀴즈</div>
+      <div class="quiz-progress" id="quizProgress">1 / 3</div>
+    </div>
+    <div class="quiz-q" id="quizQ"></div>
+    <div class="quiz-options" id="quizOpts"></div>
+    <div class="quiz-feedback" id="quizFb"></div>
+    <div class="quiz-btns">
+      <button class="quiz-btn q-skip" onclick="closeQuiz()">나가기</button>
+      <button class="quiz-btn q-next" id="quizNextBtn" onclick="nextQuiz()" style="display:none">다음 문제</button>
+    </div>
+  </div>
+</div>
+
+<!-- Fact Card -->
+<div id="factCard">
+  <button class="fact-close" onclick="hideFact()">&times;</button>
+  <div class="fact-title">🏛️ 건축 상식</div>
+  <div class="fact-text" id="factText"></div>
+</div>
+
+<!-- Floating buttons -->
+<button id="btnMute" class="float-btn" onclick="toggleMute()" title="소리 켜기/끄기">🔊</button>
+<button id="btnDay" class="float-btn" onclick="toggleDayNight()" title="낮/밤 전환">☀️</button>
+<button id="btnHelp" class="float-btn" onclick="showTutorial()" title="도움말">❔</button>
+
+<!-- Keyboard hint -->
+<div class="kbd-hint" id="kbdHint">
+  <kbd>Space</kbd> 짓기 &nbsp; <kbd>←→</kbd> 회전 &nbsp; <kbd>R</kbd> 리셋 &nbsp; <kbd>M</kbd> 음소거 &nbsp; <kbd>N</kbd> 낮/밤
 </div>
 
 <!-- Top Bar -->
@@ -187,8 +342,9 @@ body{font-family:'Noto Sans KR',sans-serif;background:#1a1a2e;color:#fff;overflo
       <div class="stat"><div class="stat-val" id="statParts">0</div><div class="stat-label">사용 부품</div></div>
     </div>
     <div>
-      <button class="btn-view" onclick="startViewing()">감상하기</button>
-      <button class="btn-reset" onclick="resetGame()">다시 짓기</button>
+      <button class="btn-view" onclick="startQuiz()">🧠 퀴즈 풀기</button>
+      <button class="btn-view" onclick="startViewing()">👀 감상하기</button>
+      <button class="btn-reset" onclick="resetGame()">🔄 다시 짓기</button>
     </div>
   </div>
 </div>
@@ -314,24 +470,486 @@ const MODERN_STEPS = [
   }
 ];
 
+// ===== Choga-jip (thatched cottage) Steps =====
+const CHOGA_STEPS = [
+  {
+    name: '다진땅', part: 'ground',
+    desc: '흙을 평평하게 다져 바닥을 만들어요.',
+    detail: '초가집은 기단 없이 땅을 단단히 다져서 지어요. 서민들은 구할 수 있는 재료로 집을 지었어요.',
+    materials: [{name:'황토',color:0x9a6f3a},{name:'진흙',color:0x7a5030}]
+  },
+  {
+    name: '주춧돌', part: 'stone',
+    desc: '기둥 아래 받칠 작은 돌을 놓아요.',
+    detail: '초가집도 기둥이 썩지 않도록 돌 위에 세웠어요. 주변에서 구한 자연석을 그대로 사용했어요.',
+    materials: [{name:'강돌',color:0x888078},{name:'막돌',color:0x6a6258}]
+  },
+  {
+    name: '기둥', part: 'pillars',
+    desc: '통나무 기둥을 세워요.',
+    detail: '초가집 기둥은 한옥보다 간단하지만 튼튼해요. 소나무나 참나무를 다듬지 않고 그대로 쓰기도 했어요.',
+    materials: [{name:'소나무',color:0xb8895e},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '대들보', part: 'beams',
+    desc: '기둥 위에 수평 보를 얹어요.',
+    detail: '대들보는 지붕 무게를 기둥에 전달해요. 초가집의 대들보는 2~3개로 소박해요.',
+    materials: [{name:'소나무',color:0xb8895e},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '초가지붕', part: 'thatch',
+    desc: '볏짚을 엮어 지붕을 올려요!',
+    detail: '가을 추수 후 나온 볏짚으로 지붕을 엮어요. 매년 새 볏짚으로 갈아야 해서 "이엉잇기"라는 공동작업을 했어요!',
+    materials: [{name:'황금볏짚',color:0xd4a54a},{name:'묵은볏짚',color:0xa88030}]
+  },
+  {
+    name: '흙벽', part: 'mudwall',
+    desc: '대나무 틀에 황토를 발라요.',
+    detail: '욋가지(나무 틀) 사이에 짚과 섞은 황토를 발라 벽을 만들어요. 여름엔 시원하고 겨울엔 따뜻해요!',
+    materials: [{name:'황토',color:0xc0976a},{name:'백토',color:0xe0c8a0}]
+  },
+  {
+    name: '봉당과 창', part: 'door',
+    desc: '출입구와 작은 창을 만들어요.',
+    detail: '봉당(토방)은 신발을 벗는 공간이에요. 창은 작게 내어 추위를 막았어요. 소박하지만 지혜로운 설계예요!',
+    materials: [{name:'나무문',color:0x8b6914},{name:'싸리문',color:0x6b4b1a}]
+  }
+];
+
+// ===== Achievements =====
+const ACHIEVEMENTS = {
+  first_build: { icon:'🔨', name:'첫 망치질', desc:'첫 부품을 지었어요' },
+  complete_hanok: { icon:'🏯', name:'한옥 장인', desc:'한옥을 완성했어요' },
+  complete_modern: { icon:'🏠', name:'현대 건축가', desc:'현대 주택을 완성했어요' },
+  complete_choga: { icon:'🌾', name:'초가 농부', desc:'초가집을 완성했어요' },
+  master_builder: { icon:'👑', name:'건축 대가', desc:'세 가지 건축 모두 완성' },
+  material_explorer: { icon:'🎨', name:'재료 탐험가', desc:'10가지 재료를 사용' },
+  quiz_master: { icon:'🧠', name:'퀴즈 마스터', desc:'퀴즈 전부 정답' },
+  night_owl: { icon:'🌙', name:'달밤의 건축가', desc:'밤에 집을 지었어요' }
+};
+
+// ===== Quizzes =====
+const QUIZZES = {
+  hanok: [
+    { q:'한옥 기둥 아래 놓아 습기를 막는 돌의 이름은?', opts:['기단','주초돌','마룻돌','장대석'], answer:1,
+      exp:'주초돌은 나무 기둥을 땅의 습기로부터 보호해요.' },
+    { q:'세계에서 한국만 가진 독특한 바닥 난방 시스템은?', opts:['마루','대청','온돌','아궁이'], answer:2,
+      exp:'온돌은 아궁이의 열이 방바닥 아래 고래를 지나며 방을 데워요.' },
+    { q:'한옥 지붕의 가장 윗부분 도리를 뭐라고 부르나요?', opts:['주심도리','중도리','마룻도리','처마도리'], answer:2,
+      exp:'마룻도리(종도리)는 지붕 꼭대기를 받쳐요. 상량식을 여기서 해요.' }
+  ],
+  modern: [
+    { q:'현대 주택의 바닥 난방은 어디서 유래했나요?', opts:['일본 다다미','한국 온돌','로마 하이포코스트','중국 캉'], answer:1,
+      exp:'한국 온돌이 현대 바닥 난방의 원조예요. 이제 세계로 퍼지고 있어요!' },
+    { q:'이중유리 창문의 가장 큰 장점은?', opts:['예뻐서','단열과 방음','가벼워서','싸서'], answer:1,
+      exp:'두 유리 사이 공기층이 열과 소리를 모두 막아줘요.' },
+    { q:'철근콘크리트에서 철근의 역할은?', opts:['무게 줄이기','인장력 담당','단열','방수'], answer:1,
+      exp:'콘크리트는 누르는 힘에 강하지만 당기는 힘에 약해요. 철근이 그걸 보완해요.' }
+  ],
+  choga: [
+    { q:'초가지붕은 주로 무엇으로 만들었나요?', opts:['볏짚','갈대','대나무','나무껍질'], answer:0,
+      exp:'가을 추수 후 나온 볏짚으로 지붕을 엮었어요. 매년 교체했답니다.' },
+    { q:'초가지붕을 새로 엮는 마을 공동작업을 뭐라고 하나요?', opts:['두레','이엉잇기','품앗이','김매기'], answer:1,
+      exp:'이엉잇기는 가을마다 마을 사람들이 함께 지붕을 갈아주던 풍습이에요.' },
+    { q:'흙벽을 만들 때 황토에 무엇을 섞었나요?', opts:['모래','풀','짚','톱밥'], answer:2,
+      exp:'짚을 섞으면 흙벽이 갈라지지 않고 튼튼해져요.' }
+  ]
+};
+
+// ===== Did You Know? Facts =====
+const FACTS = {
+  gidan: '옛날에는 신분에 따라 기단의 높이가 달랐어요. 양반집은 높고, 서민은 낮았죠.',
+  jucho: '주초돌은 한옥이 400~500년을 버틴 비결 중 하나예요!',
+  gidung: '한옥 기둥은 못 없이 이음새만으로 조립해요. 지진에도 잘 버텨요.',
+  bo: '"대들보"는 가장 크고 중요한 보. 상량식에 글을 새겨요.',
+  dori: '3량집, 5량집은 도리의 개수에 따라 붙는 이름이에요.',
+  seokkarae: '한옥의 아름다운 지붕 곡선은 서까래 덕분이에요!',
+  giwa: '청기와는 왕실만 쓸 수 있었어요. 서민은 회기와를 사용했죠.',
+  changho: '한지는 숨을 쉬어 결로가 생기지 않아요. 자연 공기청정기!',
+  maru: '대청마루 밑으로 바람이 지나 여름에도 시원해요. 자연 에어컨!',
+  ondol: '온돌은 세계 최초의 바닥 난방. 로마보다 훨씬 앞섰어요!',
+  foundation: '강화콘크리트는 일반 콘크리트보다 2배 튼튼해요.',
+  frame: '경량철골은 내진 설계에 유리해요. 지진에 강해요.',
+  walls: '단열재는 여름 에너지 30%, 겨울 40%를 절약해줘요.',
+  roof: '방수 시트는 최소 3겹 이상 겹쳐 덮어요.',
+  windows: '삼중유리는 에너지 효율이 일반 유리의 4배예요.',
+  door: '현관문의 도어락은 대한민국이 세계 점유율 1위예요!',
+  floor: '우리나라 바닥 난방은 온돌에서 출발해 세계로 퍼졌어요.',
+  interior: '한옥은 좌식, 서양식은 입식. 용도별로 공간을 나눠요.',
+  ground: '흙을 다질 때 "달구질"을 했어요. 여러 명이 리듬 맞춰서요!',
+  stone: '초가집 주춧돌은 강가에서 주운 막돌도 괜찮았어요.',
+  pillars: '다듬지 않은 "도랑주"는 나무 모양을 그대로 살렸어요.',
+  beams: '서민 초가집은 대들보 2~3개로 간단히 지었어요.',
+  thatch: '초가집은 따뜻하고 통기성도 좋지만 불에 약했어요.',
+  mudwall: '짚 섞은 흙벽은 신기하게 갈라지지 않고 튼튼해요.',
+};
+
 // ===== State =====
-let gameMode = null; // 'hanok' or 'modern'
+let gameMode = null; // 'hanok' | 'modern' | 'choga'
 let currentStep = 0;
 let steps = [];
 let selectedMaterials = {};
 let builtParts = {};
 let isComplete = false;
 let isViewing = false;
+let muted = false;
+let isNight = false;
+let audioCtx = null;
+let masterGain = null;
+let ambientInterval = null;
+let particles = [];
+let achievementsEarned = {};
+let materialsUsedSet = new Set();
+let quizState = { list:[], idx:0, correct:0 };
 
 // ===== Three.js =====
 let scene, camera, renderer, controls;
-let buildGroup;
+let buildGroup, particleGroup;
+let sunLight, ambLight, fillLight;
 let autoRotate = false;
 let mouseDown = false, mouseX = 0, mouseY = 0;
 let camTheta = Math.PI/4, camPhi = Math.PI/4, camDist = 12;
 let targetTheta = camTheta, targetPhi = camPhi, targetDist = camDist;
 let touchDist = 0;
 let labelElements = [];
+
+// ===== Audio Engine (Web Audio API) =====
+function ensureAudio() {
+  if (audioCtx) return audioCtx;
+  try {
+    const Ctx = window.AudioContext || window.webkitAudioContext;
+    if (!Ctx) return null;
+    audioCtx = new Ctx();
+    masterGain = audioCtx.createGain();
+    masterGain.gain.value = muted ? 0 : 0.35;
+    masterGain.connect(audioCtx.destination);
+  } catch(e) { audioCtx = null; }
+  return audioCtx;
+}
+
+function playTone(freq, dur, type, vol, attack, decay) {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+  const osc = ctx.createOscillator();
+  const g = ctx.createGain();
+  osc.type = type || 'sine';
+  osc.frequency.value = freq;
+  const now = ctx.currentTime;
+  const a = attack || 0.005;
+  const d = decay || dur;
+  g.gain.setValueAtTime(0, now);
+  g.gain.linearRampToValueAtTime((vol||0.3), now + a);
+  g.gain.exponentialRampToValueAtTime(0.0001, now + d);
+  osc.connect(g);
+  g.connect(masterGain);
+  osc.start(now);
+  osc.stop(now + d + 0.05);
+}
+
+function playNoise(dur, vol, filterFreq, filterType) {
+  const ctx = ensureAudio();
+  if (!ctx) return;
+  if (ctx.state === 'suspended') ctx.resume();
+  const buf = ctx.createBuffer(1, Math.floor(ctx.sampleRate * dur), ctx.sampleRate);
+  const data = buf.getChannelData(0);
+  for (let i=0; i<data.length; i++) data[i] = (Math.random()*2-1) * (1 - i/data.length);
+  const src = ctx.createBufferSource();
+  src.buffer = buf;
+  const filter = ctx.createBiquadFilter();
+  filter.type = filterType || 'bandpass';
+  filter.frequency.value = filterFreq || 2000;
+  const g = ctx.createGain();
+  g.gain.value = vol || 0.25;
+  src.connect(filter); filter.connect(g); g.connect(masterGain);
+  src.start();
+}
+
+// Sound effects
+const SFX = {
+  click: () => playTone(880, 0.08, 'triangle', 0.15, 0.002, 0.08),
+  hammer: () => { playNoise(0.12, 0.35, 1200, 'lowpass'); setTimeout(()=>playTone(180, 0.1, 'sine', 0.25), 8); },
+  saw: () => { playNoise(0.35, 0.18, 3000, 'highpass'); },
+  stone: () => { playNoise(0.25, 0.3, 400, 'lowpass'); playTone(90, 0.2, 'sine', 0.2); },
+  wood: () => { playTone(220, 0.18, 'triangle', 0.25); playNoise(0.1, 0.15, 1500, 'bandpass'); },
+  tile: () => { playTone(1200, 0.08, 'triangle', 0.2); setTimeout(()=>playTone(1600, 0.12, 'triangle', 0.18), 60); },
+  straw: () => { playNoise(0.4, 0.18, 4500, 'highpass'); },
+  complete: () => {
+    const notes = [523, 659, 784, 1047];
+    notes.forEach((n, i) => setTimeout(()=>playTone(n, 0.35, 'triangle', 0.32, 0.01, 0.4), i*110));
+  },
+  achievement: () => {
+    playTone(880, 0.12, 'triangle', 0.28);
+    setTimeout(()=>playTone(1320, 0.15, 'triangle', 0.28), 100);
+    setTimeout(()=>playTone(1760, 0.25, 'triangle', 0.28, 0.01, 0.3), 220);
+  },
+  wrong: () => playTone(160, 0.25, 'sawtooth', 0.22),
+  correct: () => { playTone(660, 0.1, 'triangle', 0.28); setTimeout(()=>playTone(990, 0.18, 'triangle', 0.28), 90); },
+};
+
+function playBuildSfx(partName) {
+  // Pick sound based on part type
+  const stones = ['gidan','jucho','foundation','stone'];
+  const woods = ['gidung','bo','dori','seokkarae','maru','pillars','beams','frame'];
+  const tiles = ['giwa','roof'];
+  const windows = ['changho','windows','door'];
+  const straws = ['thatch'];
+  if (stones.includes(partName)) SFX.stone();
+  else if (woods.includes(partName)) SFX.wood();
+  else if (tiles.includes(partName)) SFX.tile();
+  else if (windows.includes(partName)) SFX.click();
+  else if (straws.includes(partName)) SFX.straw();
+  else SFX.hammer();
+}
+
+function startAmbient() {
+  // Bird chirp every ~6-10s (only during day)
+  if (ambientInterval) clearInterval(ambientInterval);
+  ambientInterval = setInterval(() => {
+    if (muted || isNight) return;
+    const ctx = ensureAudio();
+    if (!ctx) return;
+    const base = 1800 + Math.random()*800;
+    playTone(base, 0.08, 'triangle', 0.08);
+    setTimeout(()=>playTone(base*1.2, 0.1, 'triangle', 0.08), 80);
+  }, 6000 + Math.random()*4000);
+}
+
+// ===== Particle System =====
+function spawnDustParticles(x, y, z, color, count) {
+  if (!particleGroup) return;
+  const c = count || 18;
+  for (let i=0; i<c; i++) {
+    const geo = new THREE.SphereGeometry(0.05 + Math.random()*0.08, 4, 4);
+    const mat = new THREE.MeshBasicMaterial({ color: color || 0xd4c0a0, transparent:true, opacity:0.7 });
+    const p = new THREE.Mesh(geo, mat);
+    p.position.set(x + (Math.random()-0.5)*1.5, y, z + (Math.random()-0.5)*1.5);
+    p.userData = {
+      vx: (Math.random()-0.5) * 0.08,
+      vy: 0.05 + Math.random()*0.08,
+      vz: (Math.random()-0.5) * 0.08,
+      life: 1.0,
+      decay: 0.012 + Math.random()*0.008
+    };
+    particleGroup.add(p);
+    particles.push(p);
+  }
+}
+
+function spawnFireworks(x, y, z) {
+  const colors = [0xff6b6b, 0xffd93d, 0x6bcb77, 0x4d96ff, 0xffa07a];
+  for (let i=0; i<30; i++) {
+    const geo = new THREE.SphereGeometry(0.08, 6, 6);
+    const mat = new THREE.MeshBasicMaterial({ color: colors[Math.floor(Math.random()*colors.length)], transparent:true, opacity:1 });
+    const p = new THREE.Mesh(geo, mat);
+    p.position.set(x, y, z);
+    const angle = Math.random() * Math.PI * 2;
+    const elev = Math.random() * Math.PI * 0.5;
+    const speed = 0.15 + Math.random()*0.1;
+    p.userData = {
+      vx: Math.cos(angle) * Math.cos(elev) * speed,
+      vy: Math.sin(elev) * speed + 0.1,
+      vz: Math.sin(angle) * Math.cos(elev) * speed,
+      life: 1.0,
+      decay: 0.018 + Math.random()*0.008,
+      gravity: true
+    };
+    particleGroup.add(p);
+    particles.push(p);
+  }
+}
+
+function updateParticles() {
+  for (let i=particles.length-1; i>=0; i--) {
+    const p = particles[i];
+    const u = p.userData;
+    p.position.x += u.vx;
+    p.position.y += u.vy;
+    p.position.z += u.vz;
+    if (u.gravity) u.vy -= 0.008;
+    u.life -= u.decay;
+    p.material.opacity = Math.max(0, u.life);
+    if (u.life <= 0) {
+      particleGroup.remove(p);
+      p.geometry.dispose();
+      p.material.dispose();
+      particles.splice(i, 1);
+    }
+  }
+}
+
+// ===== Save/Load =====
+function loadProgress() {
+  try {
+    const raw = localStorage.getItem('house-builder-v2');
+    if (!raw) return {};
+    return JSON.parse(raw);
+  } catch(e) { return {}; }
+}
+function saveProgress(data) {
+  try { localStorage.setItem('house-builder-v2', JSON.stringify(data)); } catch(e) {}
+}
+function updateProgressBadge() {
+  const data = loadProgress();
+  const completed = data.completed || {};
+  const count = Object.keys(completed).length;
+  const el = document.getElementById('progressBadge');
+  if (!el) return;
+  if (count === 0) { el.textContent = ''; return; }
+  const icons = { hanok:'🏯', modern:'🏠', choga:'🌾' };
+  const done = Object.keys(completed).map(k => icons[k]||'').join(' ');
+  el.textContent = `완성한 건축: ${done} (${count}/3)`;
+}
+
+// ===== Achievements =====
+function earnAchievement(id) {
+  const data = loadProgress();
+  data.achievements = data.achievements || {};
+  if (data.achievements[id]) return;
+  data.achievements[id] = Date.now();
+  saveProgress(data);
+  const ach = ACHIEVEMENTS[id];
+  if (!ach) return;
+  const toast = document.getElementById('achToast');
+  toast.querySelector('.ach-icon').textContent = ach.icon;
+  document.getElementById('achName').textContent = ach.name;
+  toast.classList.add('show');
+  SFX.achievement();
+  setTimeout(() => toast.classList.remove('show'), 3200);
+}
+
+function checkMasterBuilder() {
+  const data = loadProgress();
+  const c = data.completed || {};
+  if (c.hanok && c.modern && c.choga) earnAchievement('master_builder');
+}
+
+// ===== Tutorial =====
+function showTutorial() {
+  document.getElementById('tutorial').classList.add('show');
+}
+function closeTutorial() {
+  document.getElementById('tutorial').classList.remove('show');
+  const data = loadProgress();
+  data.tutorialSeen = true;
+  saveProgress(data);
+  SFX.click();
+}
+function maybeShowTutorial() {
+  const data = loadProgress();
+  if (!data.tutorialSeen) showTutorial();
+}
+
+// ===== Fact Card =====
+let factTimer = null;
+function showFact(partName) {
+  const text = FACTS[partName];
+  if (!text) return;
+  const card = document.getElementById('factCard');
+  document.getElementById('factText').innerHTML = text;
+  card.classList.add('show');
+  clearTimeout(factTimer);
+  factTimer = setTimeout(hideFact, 7000);
+}
+function hideFact() {
+  document.getElementById('factCard').classList.remove('show');
+}
+
+// ===== Quiz =====
+function startQuiz() {
+  const list = QUIZZES[gameMode];
+  if (!list) return;
+  quizState = { list, idx:0, correct:0 };
+  document.getElementById('completeOverlay').classList.remove('show');
+  document.getElementById('quizOverlay').classList.add('show');
+  renderQuiz();
+}
+function renderQuiz() {
+  const q = quizState.list[quizState.idx];
+  document.getElementById('quizProgress').textContent = `${quizState.idx+1} / ${quizState.list.length}`;
+  document.getElementById('quizQ').textContent = q.q;
+  const opts = document.getElementById('quizOpts');
+  opts.innerHTML = '';
+  q.opts.forEach((opt, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'quiz-opt';
+    btn.textContent = opt;
+    btn.onclick = () => answerQuiz(i);
+    opts.appendChild(btn);
+  });
+  document.getElementById('quizFb').classList.remove('show');
+  document.getElementById('quizNextBtn').style.display = 'none';
+}
+function answerQuiz(idx) {
+  const q = quizState.list[quizState.idx];
+  const opts = document.querySelectorAll('.quiz-opt');
+  opts.forEach((o, i) => {
+    o.disabled = true;
+    if (i === q.answer) o.classList.add('correct');
+    else if (i === idx) o.classList.add('wrong');
+  });
+  if (idx === q.answer) { quizState.correct++; SFX.correct(); }
+  else { SFX.wrong(); }
+  const fb = document.getElementById('quizFb');
+  fb.textContent = (idx === q.answer ? '✓ 정답! ' : '✗ 오답. ') + q.exp;
+  fb.classList.add('show');
+  document.getElementById('quizNextBtn').style.display = quizState.idx < quizState.list.length - 1 ? 'inline-block' : 'inline-block';
+  document.getElementById('quizNextBtn').textContent = quizState.idx < quizState.list.length - 1 ? '다음 문제' : '결과 보기';
+}
+function nextQuiz() {
+  quizState.idx++;
+  if (quizState.idx >= quizState.list.length) {
+    // Show result
+    const opts = document.getElementById('quizOpts');
+    opts.innerHTML = '';
+    document.getElementById('quizQ').textContent = `결과: ${quizState.correct} / ${quizState.list.length} 정답!`;
+    document.getElementById('quizProgress').textContent = '완료';
+    const fb = document.getElementById('quizFb');
+    fb.textContent = quizState.correct === quizState.list.length ? '🏆 완벽해요! 모두 정답!' :
+      quizState.correct >= 2 ? '👍 잘했어요!' : '💪 다시 도전해보세요!';
+    fb.classList.add('show');
+    document.getElementById('quizNextBtn').style.display = 'none';
+    if (quizState.correct === quizState.list.length) earnAchievement('quiz_master');
+    return;
+  }
+  renderQuiz();
+}
+function closeQuiz() {
+  document.getElementById('quizOverlay').classList.remove('show');
+  SFX.click();
+}
+
+// ===== Mute / Day-Night =====
+function toggleMute() {
+  muted = !muted;
+  document.getElementById('btnMute').textContent = muted ? '🔇' : '🔊';
+  if (masterGain) masterGain.gain.value = muted ? 0 : 0.35;
+  const data = loadProgress(); data.muted = muted; saveProgress(data);
+}
+
+function toggleDayNight() {
+  isNight = !isNight;
+  document.getElementById('btnDay').textContent = isNight ? '🌙' : '☀️';
+  applyDayNight();
+  SFX.click();
+  if (isNight) earnAchievement('night_owl');
+}
+function applyDayNight() {
+  if (!scene) return;
+  if (isNight) {
+    scene.background = new THREE.Color(0x0a1228);
+    scene.fog = new THREE.Fog(0x0a1228, 25, 70);
+    if (sunLight) { sunLight.color.setHex(0x9aa8ff); sunLight.intensity = 0.45; }
+    if (ambLight) { ambLight.color.setHex(0x3040a0); ambLight.intensity = 0.35; }
+    if (fillLight) fillLight.intensity = 0.15;
+  } else {
+    scene.background = new THREE.Color(0x87CEEB);
+    scene.fog = new THREE.Fog(0x87CEEB, 30, 80);
+    if (sunLight) { sunLight.color.setHex(0xfff8e7); sunLight.intensity = 1.0; }
+    if (ambLight) { ambLight.color.setHex(0xfff5e6); ambLight.intensity = 0.5; }
+    if (fillLight) fillLight.intensity = 0.3;
+  }
+}
 
 function initThree() {
   const canvas = document.getElementById('canvas3d');
@@ -353,10 +971,10 @@ function initThree() {
   renderer.toneMappingExposure = 1.1;
 
   // Lights
-  const ambLight = new THREE.AmbientLight(0xfff5e6, 0.5);
+  ambLight = new THREE.AmbientLight(0xfff5e6, 0.5);
   scene.add(ambLight);
 
-  const sunLight = new THREE.DirectionalLight(0xfff8e7, 1.0);
+  sunLight = new THREE.DirectionalLight(0xfff8e7, 1.0);
   sunLight.position.set(8, 12, 6);
   sunLight.castShadow = true;
   sunLight.shadow.mapSize.set(2048, 2048);
@@ -366,7 +984,7 @@ function initThree() {
   sunLight.shadow.camera.bottom = -15;
   scene.add(sunLight);
 
-  const fillLight = new THREE.DirectionalLight(0xaaccff, 0.3);
+  fillLight = new THREE.DirectionalLight(0xaaccff, 0.3);
   fillLight.position.set(-5, 6, -4);
   scene.add(fillLight);
 
@@ -397,6 +1015,9 @@ function initThree() {
 
   buildGroup = new THREE.Group();
   scene.add(buildGroup);
+
+  particleGroup = new THREE.Group();
+  scene.add(particleGroup);
 
   // Mouse/touch controls
   canvas.addEventListener('mousedown', onMouseDown);
@@ -487,6 +1108,7 @@ function animate() {
   requestAnimationFrame(animate);
   if (autoRotate) targetTheta += 0.005;
   updateCamera();
+  updateParticles();
   renderer.render(scene, camera);
 }
 
@@ -954,6 +1576,177 @@ function buildModernPart(partName, matColor) {
       counter.position.set(2, 1.3, -1.5);
       counter.castShadow = true;
       g.add(counter);
+      // Bed
+      const bed = new THREE.Mesh(new THREE.BoxGeometry(1.6, 0.35, 1), createMaterial(0xaa8866));
+      bed.position.set(-1.8, 1.08, -1.5);
+      bed.castShadow = true;
+      g.add(bed);
+      const pillow = new THREE.Mesh(new THREE.BoxGeometry(0.4, 0.12, 0.3), createMaterial(0xffffff));
+      pillow.position.set(-2.3, 1.32, -1.5);
+      g.add(pillow);
+      // Lamp
+      const lamp = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.15, 0.4, 8), createMaterial(0xf5deb3));
+      lamp.position.set(0.8, 1.5, -0.3);
+      g.add(lamp);
+      break;
+    }
+  }
+  return g;
+}
+
+// ===== Choga-jip (Thatched Cottage) Builder =====
+function buildChogaPart(partName, matColor) {
+  const g = new THREE.Group();
+  const mat = createMaterial(matColor);
+
+  switch (partName) {
+    case 'ground': {
+      // Compacted earth floor
+      const base = new THREE.Mesh(new THREE.CylinderGeometry(4, 4.3, 0.25, 20), mat);
+      base.position.y = 0.12;
+      base.castShadow = true; base.receiveShadow = true;
+      g.add(base);
+      // Edge ring
+      const edge = new THREE.Mesh(new THREE.TorusGeometry(4, 0.08, 6, 24), createMaterial(matColor - 0x101010));
+      edge.rotation.x = Math.PI/2;
+      edge.position.y = 0.25;
+      g.add(edge);
+      break;
+    }
+    case 'stone': {
+      // Irregular round stones at 6 positions
+      const positions = [[-2.4,0,-1.6],[-2.4,0,1.6],[2.4,0,-1.6],[2.4,0,1.6],[0,0,-1.6],[0,0,1.6]];
+      positions.forEach(p => {
+        const stone = new THREE.Mesh(new THREE.DodecahedronGeometry(0.32, 0), mat);
+        stone.position.set(p[0], 0.35, p[2]);
+        stone.rotation.set(Math.random(), Math.random(), Math.random());
+        stone.castShadow = true;
+        g.add(stone);
+      });
+      break;
+    }
+    case 'pillars': {
+      // Rough log pillars
+      const positions = [[-2.4,0,-1.6],[-2.4,0,1.6],[2.4,0,-1.6],[2.4,0,1.6],[0,0,-1.6],[0,0,1.6]];
+      positions.forEach(p => {
+        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.22, 2.8, 8), mat);
+        pillar.position.set(p[0], 1.8, p[2]);
+        pillar.rotation.y = Math.random() * 0.15;
+        pillar.castShadow = true;
+        g.add(pillar);
+      });
+      break;
+    }
+    case 'beams': {
+      // Simple horizontal beams
+      [[-1.6,2.9],[1.6,2.9]].forEach(xz => {
+        const beam = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 5, 8), mat);
+        beam.rotation.z = Math.PI/2;
+        beam.position.set(0, xz[1], xz[0]);
+        beam.castShadow = true;
+        g.add(beam);
+      });
+      // Cross ridge beam
+      const ridge = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, 4, 8), mat);
+      ridge.position.set(0, 3.3, 0);
+      ridge.castShadow = true;
+      g.add(ridge);
+      // King posts
+      [-1.5, 1.5].forEach(x => {
+        const post = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 0.5, 6), mat);
+        post.position.set(x, 3.1, 0);
+        g.add(post);
+      });
+      break;
+    }
+    case 'thatch': {
+      // Dome-ish thatched roof
+      const thatchMat = new THREE.MeshStandardMaterial({ color: matColor, roughness: 0.95 });
+      // Main rounded dome
+      const dome = new THREE.Mesh(new THREE.SphereGeometry(3.2, 20, 10, 0, Math.PI*2, 0, Math.PI/2.4), thatchMat);
+      dome.scale.set(1, 0.9, 0.75);
+      dome.position.set(0, 2.9, 0);
+      dome.castShadow = true;
+      g.add(dome);
+      // Straw tufts for texture
+      for (let i = 0; i < 40; i++) {
+        const a = Math.random() * Math.PI * 2;
+        const r = 2.5 + Math.random() * 0.7;
+        const y = 2.9 + Math.random() * 1.1;
+        const tuft = new THREE.Mesh(
+          new THREE.ConeGeometry(0.12, 0.35, 4),
+          new THREE.MeshStandardMaterial({ color: matColor + (Math.random() > 0.5 ? 0x0a0806 : -0x0a0806), roughness: 0.95 })
+        );
+        tuft.position.set(Math.cos(a) * r, y, Math.sin(a) * r * 0.75);
+        tuft.rotation.set(Math.random()*0.6, a, Math.random()*0.6);
+        g.add(tuft);
+      }
+      // Rope binding around edge
+      const rope = new THREE.Mesh(new THREE.TorusGeometry(3.1, 0.06, 6, 24), createMaterial(0x8a7040));
+      rope.rotation.x = Math.PI/2;
+      rope.scale.set(1, 0.75, 1);
+      rope.position.y = 2.9;
+      g.add(rope);
+      break;
+    }
+    case 'mudwall': {
+      const wallMat = createMaterial(matColor, 0.95);
+      // Back wall
+      const back = new THREE.Mesh(new THREE.BoxGeometry(5, 2.5, 0.22), wallMat);
+      back.position.set(0, 1.55, -1.75);
+      back.castShadow = true;
+      g.add(back);
+      // Left/right
+      [-2.5, 2.5].forEach(x => {
+        const side = new THREE.Mesh(new THREE.BoxGeometry(0.22, 2.5, 3.5), wallMat);
+        side.position.set(x, 1.55, 0);
+        side.castShadow = true;
+        g.add(side);
+      });
+      // Front left/right
+      const fl = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.5, 0.22), wallMat);
+      fl.position.set(-1.8, 1.55, 1.75);
+      fl.castShadow = true;
+      g.add(fl);
+      const fr = new THREE.Mesh(new THREE.BoxGeometry(1.4, 2.5, 0.22), wallMat);
+      fr.position.set(1.8, 1.55, 1.75);
+      fr.castShadow = true;
+      g.add(fr);
+      // Front top
+      const ft = new THREE.Mesh(new THREE.BoxGeometry(5, 0.7, 0.22), wallMat);
+      ft.position.set(0, 2.45, 1.75);
+      ft.castShadow = true;
+      g.add(ft);
+      break;
+    }
+    case 'door': {
+      const doorMat = createMaterial(matColor, 0.75);
+      // Wooden door
+      const door = new THREE.Mesh(new THREE.BoxGeometry(1.1, 1.8, 0.08), doorMat);
+      door.position.set(0, 1.2, 1.8);
+      door.castShadow = true;
+      g.add(door);
+      // Plank lines
+      [-0.3, 0, 0.3].forEach(x => {
+        const plank = new THREE.Mesh(new THREE.BoxGeometry(0.04, 1.7, 0.01), createMaterial(matColor - 0x181010));
+        plank.position.set(x, 1.2, 1.85);
+        g.add(plank);
+      });
+      // Small window (bongang)
+      const win = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.5, 0.05), createMaterial(0xfff5d0, 0.3));
+      win.position.set(-1.7, 1.9, 1.82);
+      g.add(win);
+      const winFrame = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.5, 0.04), createMaterial(0x6b4b1a));
+      winFrame.position.set(-1.7, 1.9, 1.85);
+      g.add(winFrame);
+      const winFrame2 = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.03, 0.04), createMaterial(0x6b4b1a));
+      winFrame2.position.set(-1.7, 1.9, 1.85);
+      g.add(winFrame2);
+      // Step stone (디딤돌)
+      const step = new THREE.Mesh(new THREE.BoxGeometry(0.9, 0.15, 0.5), createMaterial(0x8a8070));
+      step.position.set(0, 0.32, 2.2);
+      step.castShadow = true;
+      g.add(step);
       break;
     }
   }
@@ -963,11 +1756,14 @@ function buildModernPart(partName, matColor) {
 // ===== Game Logic =====
 
 function startGame(mode) {
+  SFX.click();
+  ensureAudio();
   gameMode = mode;
-  steps = mode === 'hanok' ? HANOK_STEPS : MODERN_STEPS;
+  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : MODERN_STEPS;
   currentStep = 0;
   selectedMaterials = {};
   builtParts = {};
+  materialsUsedSet = new Set();
   isComplete = false;
   isViewing = false;
   autoRotate = false;
@@ -977,10 +1773,17 @@ function startGame(mode) {
   document.getElementById('progressBar').style.display = 'block';
   document.getElementById('canvas3d').style.display = 'block';
   document.getElementById('sidePanel').classList.remove('hidden');
+  document.getElementById('btnMute').style.display = 'flex';
+  document.getElementById('btnDay').style.display = 'flex';
+  document.getElementById('btnHelp').style.display = 'flex';
+  document.getElementById('kbdHint').classList.add('show');
 
   if (mode === 'hanok') {
     document.getElementById('gameTitle').textContent = '한옥 짓기';
     document.getElementById('modeLabel').textContent = '전통 한옥 모드';
+  } else if (mode === 'choga') {
+    document.getElementById('gameTitle').textContent = '초가집 짓기';
+    document.getElementById('modeLabel').textContent = '서민가 초가 모드';
   } else {
     document.getElementById('gameTitle').textContent = '주택 짓기';
     document.getElementById('modeLabel').textContent = '현대 주택 모드';
@@ -990,11 +1793,23 @@ function startGame(mode) {
   else {
     // Clear previous build
     while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
+    // Clear particles
+    while (particleGroup && particleGroup.children.length) {
+      const p = particleGroup.children[0];
+      particleGroup.remove(p);
+      if (p.geometry) p.geometry.dispose();
+      if (p.material) p.material.dispose();
+    }
+    particles = [];
   }
+
+  applyDayNight();
+  startAmbient();
 
   renderStepList();
   selectStep(0);
   updateProgress();
+  maybeShowTutorial();
 }
 
 function renderStepList() {
@@ -1068,17 +1883,35 @@ function buildStep() {
   const matIdx = selectedMaterials[step.part] || 0;
   const matColor = step.materials[matIdx].color;
 
+  // Track materials used (for achievement)
+  materialsUsedSet.add(gameMode + ':' + step.part + ':' + matIdx);
+  const data = loadProgress();
+  data.materialsUsed = data.materialsUsed || {};
+  data.materialsUsed[gameMode + ':' + step.part + ':' + matIdx] = true;
+  saveProgress(data);
+  if (Object.keys(data.materialsUsed).length >= 10) earnAchievement('material_explorer');
+
   let part;
-  if (gameMode === 'hanok') {
-    part = buildHanokPart(step.part, matColor);
-  } else {
-    part = buildModernPart(step.part, matColor);
-  }
+  if (gameMode === 'hanok') part = buildHanokPart(step.part, matColor);
+  else if (gameMode === 'choga') part = buildChogaPart(step.part, matColor);
+  else part = buildModernPart(step.part, matColor);
+
+  // Play construction sound
+  playBuildSfx(step.part);
+
+  // Dust particles
+  spawnDustParticles(0, 1.5, 0, matColor, 20);
 
   // Animate part appearing (scale up)
   part.scale.set(0.01, 0.01, 0.01);
   buildGroup.add(part);
   builtParts[step.part] = part;
+
+  // Show fact card
+  showFact(step.part);
+
+  // First build achievement
+  if (Object.keys(builtParts).length === 1) earnAchievement('first_build');
 
   // Animate
   let progress = 0;
@@ -1104,16 +1937,31 @@ function afterBuild() {
   const allBuilt = steps.every(s => builtParts[s.part]);
   if (allBuilt) {
     isComplete = true;
+    SFX.complete();
+    spawnFireworks(0, 6, 0);
+    setTimeout(() => spawnFireworks(-3, 5, 2), 200);
+    setTimeout(() => spawnFireworks(3, 5, -2), 400);
+
+    // Save completion
+    const data = loadProgress();
+    data.completed = data.completed || {};
+    data.completed[gameMode] = Date.now();
+    saveProgress(data);
+    earnAchievement(gameMode === 'hanok' ? 'complete_hanok' : gameMode === 'choga' ? 'complete_choga' : 'complete_modern');
+    setTimeout(checkMasterBuilder, 500);
+
     document.getElementById('statSteps').textContent = steps.length;
     document.getElementById('statParts').textContent = buildGroup.children.length;
-    document.getElementById('completeTitle').textContent = gameMode === 'hanok' ? '한옥 완성!' : '주택 완성!';
-    document.getElementById('completeMsg').textContent = gameMode === 'hanok'
-      ? '멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.'
+    const title = gameMode === 'hanok' ? '한옥 완성!' : gameMode === 'choga' ? '초가집 완성!' : '주택 완성!';
+    const msg = gameMode === 'hanok' ? '멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.'
+      : gameMode === 'choga' ? '소박하고 따뜻한 초가집을 완성했어요! 서민의 지혜가 담긴 집이에요.'
       : '현대 주택을 완성했어요! 한옥과 비교해 보세요.';
+    document.getElementById('completeTitle').textContent = title;
+    document.getElementById('completeMsg').textContent = msg;
     document.getElementById('btnCompare').style.display = 'inline-block';
     setTimeout(() => {
       document.getElementById('completeOverlay').classList.add('show');
-    }, 600);
+    }, 900);
   } else {
     // Move to next step
     const nextIdx = currentStep + 1;
@@ -1165,6 +2013,7 @@ function toggleSide() {
 }
 
 function resetGame() {
+  SFX.click();
   document.getElementById('completeOverlay').classList.remove('show');
   document.getElementById('topBar').style.display = 'none';
   document.getElementById('progressBar').style.display = 'none';
@@ -1172,18 +2021,69 @@ function resetGame() {
   document.getElementById('sidePanel').classList.add('hidden');
   document.getElementById('modeSelect').classList.remove('hidden');
   document.getElementById('btnCompare').style.display = 'none';
+  document.getElementById('btnMute').style.display = 'none';
+  document.getElementById('btnDay').style.display = 'none';
+  document.getElementById('btnHelp').style.display = 'none';
+  document.getElementById('kbdHint').classList.remove('show');
+  hideFact();
   autoRotate = false;
   isComplete = false;
   isViewing = false;
   if (buildGroup) {
     while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
   }
+  if (particleGroup) {
+    while (particleGroup.children.length) {
+      const p = particleGroup.children[0];
+      particleGroup.remove(p);
+      if (p.geometry) p.geometry.dispose();
+      if (p.material) p.material.dispose();
+    }
+    particles = [];
+  }
   builtParts = {};
   selectedMaterials = {};
   targetTheta = Math.PI / 4;
   targetPhi = Math.PI / 4;
   targetDist = 12;
+  updateProgressBadge();
 }
+
+// ===== Keyboard shortcuts =====
+window.addEventListener('keydown', (e) => {
+  if (document.getElementById('modeSelect').classList.contains('hidden') === false) return;
+  if (document.getElementById('tutorial').classList.contains('show')) { if (e.key === 'Escape' || e.key === 'Enter') closeTutorial(); return; }
+  if (document.getElementById('quizOverlay').classList.contains('show')) { if (e.key === 'Escape') closeQuiz(); return; }
+  if (e.key === ' ' || e.key === 'Enter') {
+    e.preventDefault();
+    const btn = document.getElementById('buildBtn');
+    if (btn && !btn.disabled) btn.click();
+  } else if (e.key === 'ArrowLeft') targetTheta += 0.25;
+  else if (e.key === 'ArrowRight') targetTheta -= 0.25;
+  else if (e.key === 'ArrowUp') targetPhi = Math.max(0.1, targetPhi - 0.15);
+  else if (e.key === 'ArrowDown') targetPhi = Math.min(Math.PI/2 - 0.05, targetPhi + 0.15);
+  else if (e.key === '+' || e.key === '=') targetDist = Math.max(5, targetDist - 1);
+  else if (e.key === '-' || e.key === '_') targetDist = Math.min(25, targetDist + 1);
+  else if (e.key === 'r' || e.key === 'R') { if (confirm('처음으로 돌아갈까요?')) resetGame(); }
+  else if (e.key === 'm' || e.key === 'M') toggleMute();
+  else if (e.key === 'n' || e.key === 'N') toggleDayNight();
+});
+
+// ===== Initialization =====
+(function init() {
+  const data = loadProgress();
+  muted = !!data.muted;
+  document.getElementById('btnMute').textContent = muted ? '🔇' : '🔊';
+  updateProgressBadge();
+  setTimeout(() => {
+    document.getElementById('loadingScreen').classList.add('hidden');
+  }, 300);
+
+  // Register service worker for offline PWA
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('sw.js').catch(() => {});
+  }
+})();
 </script>
 </body>
 </html>

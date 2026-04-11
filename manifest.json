@@ -1,7 +1,7 @@
 {
-  "name": "한옥 짓기 - 한국 전통 건축 체험",
-  "short_name": "한옥짓기",
-  "description": "한국 전통 한옥 건축 체험 게임",
+  "name": "한국 건축 체험 - 한옥/초가집/현대주택 짓기",
+  "short_name": "건축체험",
+  "description": "한옥, 초가집, 현대주택을 직접 짓는 3D 건축 학습 게임",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
