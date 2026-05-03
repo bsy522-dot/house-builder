@@ -1,9 +1,10 @@
-// Service worker for House Builder PWA
-const CACHE_NAME = 'house-builder-v2';
+// Service worker for House Builder PWA v3
+const CACHE_NAME = 'house-builder-v3';
 const URLS = [
   './',
   './index.html',
-  './manifest.json'
+  './manifest.json',
+  'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
 self.addEventListener('install', (e) => {
@@ -25,7 +26,6 @@ self.addEventListener('activate', (e) => {
 self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
-  // Only cache same-origin and allowed CDNs
   const url = new URL(req.url);
   if (url.origin !== location.origin && !url.hostname.endsWith('cloudflare.com')) return;
   e.respondWith(

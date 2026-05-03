@@ -191,6 +191,46 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
   .tut-card h2{font-size:20px}
   .quiz-card{padding:22px 20px}
 }
+
+/* ===== v3.0: Season System ===== */
+.season-selector{display:flex;gap:4px;margin-left:8px}
+.season-btn{background:rgba(255,255,255,.08);border:1px solid rgba(255,255,255,.15);color:#e8d5c0;padding:4px 10px;border-radius:14px;font-size:11px;cursor:pointer;transition:all .2s;white-space:nowrap}
+.season-btn:hover{background:rgba(196,149,106,.25)}
+.season-btn.active{background:rgba(196,149,106,.45);border-color:#c4956a;color:#f5deb3;font-weight:600}
+#weatherCanvas{position:fixed;top:56px;left:0;right:0;bottom:0;pointer-events:none;z-index:5}
+
+/* ===== v3.0: Photo Mode ===== */
+#btnPhoto{top:212px;right:16px}
+@media(max-width:768px){#btnPhoto{top:202px;width:40px;height:40px;font-size:16px}}
+
+/* ===== v3.0: Stats Panel ===== */
+#statsPanel{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:260;display:none;align-items:center;justify-content:center;padding:16px}
+#statsPanel.show{display:flex}
+.stats-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:28px 32px;max-width:560px;width:100%;max-height:80vh;overflow-y:auto}
+.stats-card h2{font-size:22px;color:#f5deb3;margin-bottom:16px;text-align:center}
+.stats-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-bottom:18px}
+.stat-box{background:rgba(0,0,0,.3);border:1px solid rgba(196,149,106,.2);border-radius:10px;padding:14px;text-align:center}
+.stat-box .s-val{font-size:28px;font-weight:700;color:#f5deb3}
+.stat-box .s-lbl{font-size:11px;color:#c4956a;margin-top:4px}
+.ach-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:8px}
+.ach-item{display:flex;align-items:center;gap:8px;background:rgba(0,0,0,.2);border-radius:8px;padding:8px 10px;border:1px solid rgba(196,149,106,.15)}
+.ach-item.earned{border-color:#4a7c59;background:rgba(74,124,89,.15)}
+.ach-item .ai{font-size:22px}
+.ach-item .at{font-size:12px;color:#e8d5c0}
+.ach-item .at small{display:block;color:#888;font-size:10px}
+.stats-card .close-btn{display:block;margin:16px auto 0;padding:10px 28px;border:none;border-radius:20px;background:#c4956a;color:#2d1b0e;font-weight:600;font-size:14px;cursor:pointer;font-family:inherit}
+
+/* ===== v3.0: BGM indicator ===== */
+#btnBGM{top:260px;right:16px}
+@media(max-width:768px){#btnBGM{top:248px;width:40px;height:40px;font-size:16px}}
+
+/* ===== v3.0: Mode card - giwajip glow ===== */
+.mode-card.giwajip-card{border-color:rgba(180,120,60,.4)}
+.mode-card.giwajip-card:hover{border-color:#d4a04a;box-shadow:0 8px 32px rgba(212,160,74,.25)}
+
+/* ===== v3.0: Walkthrough button ===== */
+#btnWalk{top:308px;right:16px}
+@media(max-width:768px){#btnWalk{top:294px;width:40px;height:40px;font-size:16px}}
 </style>
 </head>
 <body>
@@ -217,6 +257,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
       <h3>초가집</h3>
       <p>볏짚 지붕의 소박한 집<br>서민의 따뜻한 보금자리를<br>지어보세요</p>
       <div style="margin-top:10px;font-size:11px;color:#888">7 단계 &middot; 서민가</div>
+    </div>
+    <div class="mode-card giwajip-card" onclick="startGame(&#39;giwajip&#39;)">
+      <div class="mode-icon">🏛️</div>
+      <h3>기와집 (양반가)</h3>
+      <p>화려한 공포와 팔작지붕<br>격조 높은 양반가의 건축을<br>체험해보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#d4a04a">9 단계 &middot; 양반 저택</div>
     </div>
     <div class="mode-card" onclick="startGame(&#39;modern&#39;)">
       <div class="mode-icon">🏠</div>
@@ -284,10 +330,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
 <button id="btnMute" class="float-btn" onclick="toggleMute()" title="소리 켜기/끄기">🔊</button>
 <button id="btnDay" class="float-btn" onclick="toggleDayNight()" title="낮/밤 전환">☀️</button>
 <button id="btnHelp" class="float-btn" onclick="showTutorial()" title="도움말">❔</button>
+<button id="btnPhoto" class="float-btn" onclick="takeScreenshot()" title="사진 찍기">📸</button>
+<button id="btnBGM" class="float-btn" onclick="toggleBGM()" title="배경음악">🎵</button>
+<button id="btnWalk" class="float-btn" onclick="toggleWalkthrough()" title="워크스루">🚶</button>
+
+<!-- Weather Canvas -->
+<canvas id="weatherCanvas" style="display:none"></canvas>
+
+<!-- Stats Panel -->
+<div id="statsPanel">
+  <div class="stats-card">
+    <h2>🏗️ 건축 통계</h2>
+    <div class="stats-grid" id="statsGrid"></div>
+    <h3 style="color:#c4956a;font-size:14px;margin-bottom:10px">🏆 업적 현황</h3>
+    <div class="ach-grid" id="achGrid"></div>
+    <button class="close-btn" onclick="closeStats()">닫기</button>
+  </div>
+</div>
 
 <!-- Keyboard hint -->
 <div class="kbd-hint" id="kbdHint">
-  <kbd>Space</kbd> 짓기 &nbsp; <kbd>←→</kbd> 회전 &nbsp; <kbd>R</kbd> 리셋 &nbsp; <kbd>M</kbd> 음소거 &nbsp; <kbd>N</kbd> 낮/밤
+  <kbd>Space</kbd> 짓기 &nbsp; <kbd>←→</kbd> 회전 &nbsp; <kbd>R</kbd> 리셋 &nbsp; <kbd>M</kbd> 음소거 &nbsp; <kbd>N</kbd> 낮/밤 &nbsp; <kbd>B</kbd> BGM &nbsp; <kbd>P</kbd> 사진 &nbsp; <kbd>1-4</kbd> 계절
 </div>
 
 <!-- Top Bar -->
@@ -297,7 +360,14 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
     <span class="mode-label" id="modeLabel">전통 한옥 모드</span>
   </div>
   <div class="top-btns">
+    <div class="season-selector" id="seasonSelector" style="display:none">
+      <button class="season-btn active" onclick="setSeason(&#39;spring&#39;)">🌸봄</button>
+      <button class="season-btn" onclick="setSeason(&#39;summer&#39;)">☀️여름</button>
+      <button class="season-btn" onclick="setSeason(&#39;autumn&#39;)">🍂가을</button>
+      <button class="season-btn" onclick="setSeason(&#39;winter&#39;)">❄️겨울</button>
+    </div>
     <button id="btnCompare" onclick="toggleCompare()" style="display:none">비교</button>
+    <button onclick="showStats()">통계</button>
     <button onclick="resetGame()">처음으로</button>
     <button id="btnToggleSide" onclick="toggleSide()">패널</button>
   </div>
@@ -344,6 +414,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
     <div>
       <button class="btn-view" onclick="startQuiz()">🧠 퀴즈 풀기</button>
       <button class="btn-view" onclick="startViewing()">👀 감상하기</button>
+      <button class="btn-view" onclick="takeScreenshot()">📸 사진 찍기</button>
       <button class="btn-reset" onclick="resetGame()">🔄 다시 짓기</button>
     </div>
   </div>
@@ -516,16 +587,82 @@ const CHOGA_STEPS = [
   }
 ];
 
+// ===== Giwajip (Tile-roofed Yangban House) Steps =====
+const GIWAJIP_STEPS = [
+  {
+    name: '높은 기단', part: 'g_gidan',
+    desc: '양반가는 기단이 높고 정교해요.',
+    detail: '양반 저택의 기단은 다듬은 화강석을 정교하게 쌓아요. 높은 기단은 높은 신분을 상징하고, 습기와 벌레를 막아줘요.',
+    materials: [{name:'다듬돌',color:0xc0b8a8},{name:'장대석',color:0xa8a098}]
+  },
+  {
+    name: '주초석', part: 'g_jucho',
+    desc: '기둥 받침돌을 정교하게 놓아요.',
+    detail: '양반가의 주초석은 연꽃이나 팔각 모양으로 다듬었어요. 초가집의 막돌과는 격이 달라요!',
+    materials: [{name:'연꽃주초',color:0xb0a898},{name:'팔각주초',color:0xa09888}]
+  },
+  {
+    name: '원기둥', part: 'g_gidung',
+    desc: '둥글게 다듬은 기둥을 세워요.',
+    detail: '양반가는 원기둥(원주)을 사용해요. 기둥 위에 익공이나 주두를 올려 지붕 하중을 분산해요.',
+    materials: [{name:'소나무 원주',color:0xc4956a},{name:'느티나무 원주',color:0xa87d4a}]
+  },
+  {
+    name: '공포', part: 'g_gongpo',
+    desc: '기둥 위 화려한 받침 구조예요.',
+    detail: '공포(栱包)는 기둥 위에서 지붕을 받치는 장식적 구조예요. 익공, 주두, 소로로 이루어져 있어요. 궁궐이나 사찰에서 더 화려해요!',
+    materials: [{name:'이익공',color:0xc4956a},{name:'삼익공',color:0xb88050}]
+  },
+  {
+    name: '대들보와 도리', part: 'g_bo',
+    desc: '큰 보와 도리를 올려요.',
+    detail: '양반가의 대들보는 특별히 좋은 소나무를 엄선해요. 도리는 5개를 올려 "5량집"이라 불러요.',
+    materials: [{name:'소나무',color:0xc4956a},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '서까래', part: 'g_seokkarae',
+    desc: '촘촘하고 정교한 서까래예요.',
+    detail: '양반가 서까래는 간격이 좁고 균일해요. 겹처마(부연)를 달아 처마 곡선이 더 아름다워요.',
+    materials: [{name:'소나무',color:0xb8895e},{name:'전나무',color:0xa0854e}]
+  },
+  {
+    name: '팔작지붕', part: 'g_roof',
+    desc: '가장 화려한 지붕 형태예요.',
+    detail: '팔작지붕은 네 면 모두 경사가 있으면서 양쪽에 삼각형 합각(박공)이 있어요. 양반가의 품격을 보여줘요!',
+    materials: [{name:'회기와',color:0x555555},{name:'암키와',color:0x4a4a4a}]
+  },
+  {
+    name: '벽체와 창호', part: 'g_changho',
+    desc: '화려한 창호와 벽을 완성해요.',
+    detail: '양반가 창호는 꽃살문, 아자살문 등 다양한 문양이에요. 대청은 사방을 열어 개방할 수 있어요.',
+    materials: [{name:'꽃살문',color:0xf0e4d0},{name:'아자살문',color:0xe8d8c0}]
+  },
+  {
+    name: '마루와 온돌', part: 'g_interior',
+    desc: '넓은 대청과 안방을 갖춰요.',
+    detail: '양반가는 대청마루가 넓고, 안방/사랑방/건넌방 등 여러 방이 있어요. 사랑채와 안채가 분리된 것이 특징이에요.',
+    materials: [{name:'대청소나무',color:0xdeb887},{name:'안방참나무',color:0xb8860b}]
+  }
+];
+
 // ===== Achievements =====
 const ACHIEVEMENTS = {
   first_build: { icon:'🔨', name:'첫 망치질', desc:'첫 부품을 지었어요' },
   complete_hanok: { icon:'🏯', name:'한옥 장인', desc:'한옥을 완성했어요' },
   complete_modern: { icon:'🏠', name:'현대 건축가', desc:'현대 주택을 완성했어요' },
   complete_choga: { icon:'🌾', name:'초가 농부', desc:'초가집을 완성했어요' },
-  master_builder: { icon:'👑', name:'건축 대가', desc:'세 가지 건축 모두 완성' },
+  complete_giwajip: { icon:'🏛️', name:'양반 건축가', desc:'기와집을 완성했어요' },
+  master_builder: { icon:'👑', name:'건축 대가', desc:'네 가지 건축 모두 완성' },
   material_explorer: { icon:'🎨', name:'재료 탐험가', desc:'10가지 재료를 사용' },
   quiz_master: { icon:'🧠', name:'퀴즈 마스터', desc:'퀴즈 전부 정답' },
-  night_owl: { icon:'🌙', name:'달밤의 건축가', desc:'밤에 집을 지었어요' }
+  night_owl: { icon:'🌙', name:'달밤의 건축가', desc:'밤에 집을 지었어요' },
+  photographer: { icon:'📸', name:'건축 사진가', desc:'사진을 3장 찍었어요' },
+  season_builder: { icon:'🍂', name:'사계절 건축가', desc:'모든 계절에서 건축' },
+  speed_builder: { icon:'⚡', name:'번개 건축가', desc:'3분 안에 완성' },
+  all_materials: { icon:'💎', name:'재료 수집가', desc:'20가지 재료 사용' },
+  night_master: { icon:'🌠', name:'밤의 대가', desc:'밤에 3종 이상 완성' },
+  walkthrough: { icon:'🚶', name:'산책자', desc:'워크스루 모드 사용' },
+  bgm_lover: { icon:'🎶', name:'음악 감상가', desc:'BGM을 5분 이상 감상' }
 };
 
 // ===== Quizzes =====
@@ -548,11 +685,19 @@ const QUIZZES = {
   ],
   choga: [
     { q:'초가지붕은 주로 무엇으로 만들었나요?', opts:['볏짚','갈대','대나무','나무껍질'], answer:0,
-      exp:'가을 추수 후 나온 볏짚으로 지붕을 엮었어요. 매년 교체했답니다.' },
-    { q:'초가지붕을 새로 엮는 마을 공동작업을 뭐라고 하나요?', opts:['두레','이엉잇기','품앗이','김매기'], answer:1,
-      exp:'이엉잇기는 가을마다 마을 사람들이 함께 지붕을 갈아주던 풍습이에요.' },
+      exp:'가을 ��수 �� 나온 볏짚으로 지붕을 엮었어요. 매년 교체했��니다.' },
+    { q:'초가지붕�� 새로 ���는 마을 공동작업을 뭐라고 하나요?', opts:['두레','이엉잇기','품앗이','김매기'], answer:1,
+      exp:'이엉잇기는 ��을마다 마을 사람들이 함께 지붕을 갈아주던 풍습이에���.' },
     { q:'흙벽을 만들 때 황토에 무엇을 섞었나요?', opts:['모래','풀','짚','톱밥'], answer:2,
-      exp:'짚을 섞으면 흙벽이 갈라지지 않고 튼튼해져요.' }
+      exp:'짚을 섞으면 흙벽이 갈��지지 않고 튼튼해져요.' }
+  ],
+  giwajip: [
+    { q:'기둥 위에서 지붕을 받치는 화려한 장식 구조의 이름은?', opts:['두공','공포','추녀','처마'], answer:1,
+      exp:'공포(栱包)는 기둥과 지붕 사이에서 하중을 분산하는 한국 건축의 꽃이에요!' },
+    { q:'팔작지붕의 양쪽 삼각형 벽면을 뭐라고 부르나요?', opts:['합각','박공','처마','용마루'], answer:0,
+      exp:'합각(合閣)은 팔작지붕의 양쪽 삼각 부분이에요. 박공이라고도 불러요.' },
+    { q:'양반가에서 남자 주인이 사용하는 별도 건물을 뭐라고 하나요?', opts:['안채','별채','사랑채','행랑채'], answer:2,
+      exp:'사랑채는 남성 공간으로 손님 접대와 학문을 하던 곳이에요.' }
   ]
 };
 
@@ -581,7 +726,16 @@ const FACTS = {
   pillars: '다듬지 않은 "도랑주"는 나무 모양을 그대로 살렸어요.',
   beams: '서민 초가집은 대들보 2~3개로 간단히 지었어요.',
   thatch: '초가집은 따뜻하고 통기성도 좋지만 불에 약했어요.',
-  mudwall: '짚 섞은 흙벽은 신기하게 갈라지지 않고 튼튼해요.',
+  mudwall: '짚 섞은 흙벽은 ���기하게 갈라지지 않고 튼튼해요.',
+  g_gidan: '양반 저택의 기단은 장대석으로 3단 이상 쌓았어요. 높을수록 높은 품계!',
+  g_jucho: '연꽃 주초석은 불교의 영향을 받은 것이에요. 정교한 조각이 아름다워���.',
+  g_gidung: '양반가 원기둥은 배흘림이라는 기법으로 가운데가 약간 부풀어 있어요.',
+  g_gongpo: '공포가 화려할수록 건물의 격이 높아요. 궁궐은 다포식, 사찰은 주심포식이에요.',
+  g_bo: '5량집의 대들보에는 상량문을 써서 집을 지은 날짜와 바람을 기록했어요.',
+  g_seokkarae: '겹처마의 부연은 빗물이 더 멀리 떨어지게 해서 벽을 보��해요.',
+  g_roof: '팔작지붕의 용마루 끝에는 취두(鷲頭)라는 독수리 장식을 올렸어요.',
+  g_changho: '꽃살문의 문양은 모란(부귀), 국화(절개), 매화(지조)를 뜻해요.',
+  g_interior: '양반가 대청마루에서는 제사를 지내고, 가족 행사를 열었어요.'
 };
 
 // ===== State =====
@@ -612,6 +766,23 @@ let camTheta = Math.PI/4, camPhi = Math.PI/4, camDist = 12;
 let targetTheta = camTheta, targetPhi = camPhi, targetDist = camDist;
 let touchDist = 0;
 let labelElements = [];
+
+// v3.0 state
+let currentSeason = 'spring';
+let bgmPlaying = false;
+let bgmOscillators = [];
+let bgmGain = null;
+let bgmStartTime = 0;
+let bgmTotalTime = 0;
+let weatherParticles = [];
+let weatherCtx = null;
+let weatherAnimId = null;
+let photoCount = 0;
+let gameStartTime = 0;
+let seasonsUsed = new Set();
+let isWalkthrough = false;
+let walkCamY = 2.2;
+let walkCamAngle = 0;
 
 // ===== Audio Engine (Web Audio API) =====
 function ensureAudio() {
@@ -715,6 +886,223 @@ function startAmbient() {
   }, 6000 + Math.random()*4000);
 }
 
+// ===== v3.0: BGM System (Korean Pentatonic) =====
+function startBGM() {
+  const ctx = ensureAudio();
+  if (!ctx || bgmPlaying) return;
+  bgmPlaying = true;
+  bgmStartTime = Date.now();
+  bgmGain = ctx.createGain();
+  bgmGain.gain.value = muted ? 0 : 0.08;
+  bgmGain.connect(masterGain);
+  const pentatonic = [262,294,330,392,440,524,588,660,784,880];
+  function playBGMNote() {
+    if (!bgmPlaying) return;
+    const note = pentatonic[Math.floor(Math.random()*pentatonic.length)];
+    const osc = ctx.createOscillator();
+    const g = ctx.createGain();
+    osc.type = currentSeason === 'winter' ? 'sine' : currentSeason === 'autumn' ? 'triangle' : 'sine';
+    osc.frequency.value = note * (currentSeason === 'winter' ? 0.5 : 1);
+    const now = ctx.currentTime;
+    g.gain.setValueAtTime(0, now);
+    g.gain.linearRampToValueAtTime(0.12, now + 0.1);
+    g.gain.exponentialRampToValueAtTime(0.001, now + 1.8);
+    osc.connect(g);
+    g.connect(bgmGain);
+    osc.start(now);
+    osc.stop(now + 2);
+    bgmOscillators.push(osc);
+    osc.onended = () => { const i = bgmOscillators.indexOf(osc); if(i>=0) bgmOscillators.splice(i,1); };
+    if (bgmPlaying) setTimeout(playBGMNote, 800 + Math.random()*1200);
+  }
+  playBGMNote();
+  setTimeout(playBGMNote, 400);
+}
+function stopBGM() {
+  bgmPlaying = false;
+  if (bgmStartTime > 0) bgmTotalTime += (Date.now() - bgmStartTime) / 1000;
+  bgmStartTime = 0;
+  bgmOscillators.forEach(o => { try { o.stop(); } catch(e){} });
+  bgmOscillators = [];
+}
+function toggleBGM() {
+  if (bgmPlaying) { stopBGM(); document.getElementById('btnBGM').textContent = '🎵'; }
+  else { startBGM(); document.getElementById('btnBGM').textContent = '🎶'; }
+  SFX.click();
+  if (bgmTotalTime >= 300) earnAchievement('bgm_lover');
+}
+
+// ===== v3.0: Season System =====
+function setSeason(s) {
+  currentSeason = s;
+  seasonsUsed.add(s);
+  document.querySelectorAll('.season-btn').forEach(b => b.classList.toggle('active', b.textContent.includes(
+    s === 'spring' ? '봄' : s === 'summer' ? '여름' : s === 'autumn' ? '가을' : '겨울'
+  )));
+  applySeasonVisuals();
+  startWeather();
+  SFX.click();
+  if (seasonsUsed.size >= 4) earnAchievement('season_builder');
+}
+
+function applySeasonVisuals() {
+  if (!scene) return;
+  const colors = {
+    spring: { bg:0x9DD5F5, fog:0x9DD5F5, ground:0x5a8a3a, tree:0x3d7a2e },
+    summer: { bg:0x5DADE2, fog:0x5DADE2, ground:0x4a7a2a, tree:0x2d6a1e },
+    autumn: { bg:0xE8C47A, fog:0xE8C47A, ground:0x8a7a3a, tree:0x9a5a1e },
+    winter: { bg:0xC8D6E5, fog:0xC8D6E5, ground:0xd0d0d0, tree:0x7a7a6a }
+  };
+  const c = colors[currentSeason] || colors.spring;
+  if (!isNight) {
+    scene.background = new THREE.Color(c.bg);
+    scene.fog = new THREE.Fog(c.bg, 30, 80);
+  }
+  scene.traverse(obj => {
+    if (obj.isMesh && obj.geometry && obj.geometry.type === 'PlaneGeometry' && obj.geometry.parameters.width === 60) {
+      obj.material.color.setHex(c.ground);
+    }
+  });
+}
+
+function startWeather() {
+  const wc = document.getElementById('weatherCanvas');
+  if (!wc) return;
+  if (currentSeason === 'spring' || currentSeason === 'summer' || currentSeason === 'autumn' || currentSeason === 'winter') {
+    wc.style.display = 'block';
+    wc.width = window.innerWidth;
+    wc.height = window.innerHeight - 56;
+    weatherCtx = wc.getContext('2d');
+    weatherParticles = [];
+    if (weatherAnimId) cancelAnimationFrame(weatherAnimId);
+    animateWeather();
+  }
+}
+
+function animateWeather() {
+  if (!weatherCtx) return;
+  const W = weatherCtx.canvas.width, H = weatherCtx.canvas.height;
+  weatherCtx.clearRect(0, 0, W, H);
+  const maxP = currentSeason === 'winter' ? 120 : currentSeason === 'summer' ? 80 : currentSeason === 'autumn' ? 40 : 30;
+  while (weatherParticles.length < maxP) {
+    weatherParticles.push({
+      x: Math.random() * W,
+      y: -10 - Math.random() * 50,
+      vx: currentSeason === 'autumn' ? 1 + Math.random() * 2 : (Math.random() - 0.5) * 0.5,
+      vy: currentSeason === 'winter' ? 0.8 + Math.random() * 1.2 : currentSeason === 'summer' ? 6 + Math.random() * 4 : 1 + Math.random() * 1.5,
+      size: currentSeason === 'winter' ? 2 + Math.random() * 3 : currentSeason === 'summer' ? 1 : 3 + Math.random() * 3,
+      rot: Math.random() * Math.PI * 2,
+      rotSpeed: (Math.random() - 0.5) * 0.05
+    });
+  }
+  for (let i = weatherParticles.length - 1; i >= 0; i--) {
+    const p = weatherParticles[i];
+    p.x += p.vx; p.y += p.vy; p.rot += p.rotSpeed;
+    if (p.y > H + 20 || p.x > W + 20 || p.x < -20) { weatherParticles.splice(i, 1); continue; }
+    weatherCtx.save();
+    weatherCtx.translate(p.x, p.y);
+    weatherCtx.rotate(p.rot);
+    if (currentSeason === 'spring') {
+      weatherCtx.fillStyle = 'rgba(255,182,193,0.7)';
+      for (let j = 0; j < 5; j++) {
+        weatherCtx.beginPath();
+        const a = (j / 5) * Math.PI * 2;
+        weatherCtx.ellipse(Math.cos(a) * p.size * 0.4, Math.sin(a) * p.size * 0.4, p.size * 0.35, p.size * 0.2, a, 0, Math.PI * 2);
+        weatherCtx.fill();
+      }
+    } else if (currentSeason === 'summer') {
+      weatherCtx.strokeStyle = 'rgba(180,200,255,0.35)';
+      weatherCtx.lineWidth = 1.5;
+      weatherCtx.beginPath(); weatherCtx.moveTo(0, 0); weatherCtx.lineTo(0, 12); weatherCtx.stroke();
+    } else if (currentSeason === 'autumn') {
+      const leafColors = ['rgba(200,80,20,0.7)','rgba(220,160,30,0.7)','rgba(180,50,10,0.7)'];
+      weatherCtx.fillStyle = leafColors[i % 3];
+      weatherCtx.beginPath();
+      weatherCtx.moveTo(0, -p.size);
+      weatherCtx.quadraticCurveTo(p.size, -p.size * 0.3, 0, p.size);
+      weatherCtx.quadraticCurveTo(-p.size, -p.size * 0.3, 0, -p.size);
+      weatherCtx.fill();
+    } else {
+      weatherCtx.fillStyle = 'rgba(255,255,255,0.8)';
+      weatherCtx.beginPath(); weatherCtx.arc(0, 0, p.size * 0.5, 0, Math.PI * 2); weatherCtx.fill();
+    }
+    weatherCtx.restore();
+  }
+  weatherAnimId = requestAnimationFrame(animateWeather);
+}
+
+function stopWeather() {
+  if (weatherAnimId) cancelAnimationFrame(weatherAnimId);
+  weatherAnimId = null;
+  weatherParticles = [];
+  const wc = document.getElementById('weatherCanvas');
+  if (wc) { wc.style.display = 'none'; const c = wc.getContext('2d'); if(c) c.clearRect(0,0,wc.width,wc.height); }
+}
+
+// ===== v3.0: Photo Mode =====
+function takeScreenshot() {
+  if (!renderer) return;
+  renderer.render(scene, camera);
+  const dataUrl = renderer.domElement.toDataURL('image/png');
+  const link = document.createElement('a');
+  const modeName = gameMode === 'hanok' ? '한옥' : gameMode === 'choga' ? '초가집' : gameMode === 'giwajip' ? '기와집' : '현대주택';
+  link.download = `건축체험_${modeName}_${currentSeason}.png`;
+  link.href = dataUrl;
+  link.click();
+  photoCount++;
+  const data = loadProgress();
+  data.photoCount = (data.photoCount || 0) + 1;
+  saveProgress(data);
+  if (data.photoCount >= 3) earnAchievement('photographer');
+  SFX.achievement();
+}
+
+// ===== v3.0: Walkthrough Mode =====
+function toggleWalkthrough() {
+  isWalkthrough = !isWalkthrough;
+  document.getElementById('btnWalk').textContent = isWalkthrough ? '🏠' : '🚶';
+  if (isWalkthrough) {
+    walkCamY = 2.2;
+    walkCamAngle = 0;
+    earnAchievement('walkthrough');
+  } else {
+    targetTheta = Math.PI / 4;
+    targetPhi = Math.PI / 4;
+    targetDist = 12;
+  }
+  SFX.click();
+}
+
+// ===== v3.0: Stats Panel =====
+function showStats() {
+  const data = loadProgress();
+  const completed = data.completed || {};
+  const achs = data.achievements || {};
+  const mats = data.materialsUsed ? Object.keys(data.materialsUsed).length : 0;
+  const photos = data.photoCount || 0;
+  const grid = document.getElementById('statsGrid');
+  grid.innerHTML = `
+    <div class="stat-box"><div class="s-val">${Object.keys(completed).length}</div><div class="s-lbl">완성한 건축</div></div>
+    <div class="stat-box"><div class="s-val">${Object.keys(achs).length}</div><div class="s-lbl">획득 업적</div></div>
+    <div class="stat-box"><div class="s-val">${mats}</div><div class="s-lbl">사용한 재료</div></div>
+    <div class="stat-box"><div class="s-val">${photos}</div><div class="s-lbl">촬영한 사진</div></div>
+    <div class="stat-box"><div class="s-val">${Math.floor(bgmTotalTime / 60)}분</div><div class="s-lbl">BGM 감상</div></div>
+    <div class="stat-box"><div class="s-val">${seasonsUsed.size}/4</div><div class="s-lbl">경험한 계절</div></div>
+  `;
+  const achGrid = document.getElementById('achGrid');
+  achGrid.innerHTML = '';
+  Object.entries(ACHIEVEMENTS).forEach(([id, ach]) => {
+    const earned = !!achs[id];
+    achGrid.innerHTML += `<div class="ach-item ${earned ? 'earned' : ''}"><div class="ai">${earned ? ach.icon : '🔒'}</div><div class="at">${ach.name}<small>${earned ? ach.desc : '미달성'}</small></div></div>`;
+  });
+  document.getElementById('statsPanel').classList.add('show');
+  SFX.click();
+}
+function closeStats() {
+  document.getElementById('statsPanel').classList.remove('show');
+  SFX.click();
+}
+
 // ===== Particle System =====
 function spawnDustParticles(x, y, z, color, count) {
   if (!particleGroup) return;
@@ -796,9 +1184,9 @@ function updateProgressBadge() {
   const el = document.getElementById('progressBadge');
   if (!el) return;
   if (count === 0) { el.textContent = ''; return; }
-  const icons = { hanok:'🏯', modern:'🏠', choga:'🌾' };
+  const icons = { hanok:'🏯', choga:'🌾', giwajip:'🏛️', modern:'🏠' };
   const done = Object.keys(completed).map(k => icons[k]||'').join(' ');
-  el.textContent = `완성한 건축: ${done} (${count}/3)`;
+  el.textContent = `완성한 건축: ${done} (${count}/4)`;
 }
 
 // ===== Achievements =====
@@ -821,7 +1209,8 @@ function earnAchievement(id) {
 function checkMasterBuilder() {
   const data = loadProgress();
   const c = data.completed || {};
-  if (c.hanok && c.modern && c.choga) earnAchievement('master_builder');
+  if (c.hanok && c.modern && c.choga && c.giwajip) earnAchievement('master_builder');
+  if (Object.keys(data.materialsUsed || {}).length >= 20) earnAchievement('all_materials');
 }
 
 // ===== Tutorial =====
@@ -1106,8 +1495,17 @@ function onResize() {
 
 function animate() {
   requestAnimationFrame(animate);
-  if (autoRotate) targetTheta += 0.005;
-  updateCamera();
+  if (isWalkthrough) {
+    walkCamAngle += 0.003;
+    const r = 2.5;
+    camera.position.x = Math.sin(walkCamAngle) * r;
+    camera.position.y = walkCamY;
+    camera.position.z = Math.cos(walkCamAngle) * r;
+    camera.lookAt(0, 2, 0);
+  } else {
+    if (autoRotate) targetTheta += 0.005;
+    updateCamera();
+  }
   updateParticles();
   renderer.render(scene, camera);
 }
@@ -1753,13 +2151,181 @@ function buildChogaPart(partName, matColor) {
   return g;
 }
 
+// ===== Giwajip (Yangban Tile House) Builder =====
+function buildGiwajipPart(partName, matColor) {
+  const g = new THREE.Group();
+  const mat = createMaterial(matColor);
+  switch (partName) {
+    case 'g_gidan': {
+      const base = new THREE.Mesh(new THREE.BoxGeometry(9, 0.9, 7), mat);
+      base.position.y = 0.45; base.castShadow = true; base.receiveShadow = true;
+      g.add(base);
+      for (let i = 0; i < 5; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(9.1, 0.06, 0.06), createMaterial(matColor - 0x0a0a0a));
+        line.position.set(0, 0.18 * (i+1), 3.51); g.add(line);
+        const l2 = line.clone(); l2.position.z = -3.51; g.add(l2);
+      }
+      const step = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.45, 1), mat);
+      step.position.set(0, 0.22, 4); step.castShadow = true; g.add(step);
+      break;
+    }
+    case 'g_jucho': {
+      const positions = [[-3.5,0,-2.5],[-3.5,0,2.5],[3.5,0,-2.5],[3.5,0,2.5],[-1.5,0,-2.5],[-1.5,0,2.5],[1.5,0,-2.5],[1.5,0,2.5],[0,0,0]];
+      positions.forEach(p => {
+        const stone = new THREE.Mesh(new THREE.CylinderGeometry(0.5, 0.55, 0.3, 12), mat);
+        stone.position.set(p[0], 0.95, p[2]); stone.castShadow = true; g.add(stone);
+        const deco = new THREE.Mesh(new THREE.TorusGeometry(0.35, 0.05, 6, 12), createMaterial(matColor - 0x101010));
+        deco.rotation.x = Math.PI/2; deco.position.set(p[0], 1.12, p[2]); g.add(deco);
+      });
+      break;
+    }
+    case 'g_gidung': {
+      const positions = [[-3.5,0,-2.5],[-3.5,0,2.5],[3.5,0,-2.5],[3.5,0,2.5],[-1.5,0,-2.5],[-1.5,0,2.5],[1.5,0,-2.5],[1.5,0,2.5]];
+      positions.forEach(p => {
+        const mid = 0.22, bot = 0.2, top = 0.2;
+        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(top, bot, 3.8, 16), mat);
+        pillar.position.set(p[0], 3.0, p[2]); pillar.castShadow = true; g.add(pillar);
+      });
+      break;
+    }
+    case 'g_gongpo': {
+      const positions = [[-3.5,-2.5],[-3.5,2.5],[3.5,-2.5],[3.5,2.5],[-1.5,-2.5],[-1.5,2.5],[1.5,-2.5],[1.5,2.5]];
+      positions.forEach(p => {
+        const judu = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.2, 0.6), mat);
+        judu.position.set(p[0], 4.95, p[1]); g.add(judu);
+        for (let i = 0; i < 2; i++) {
+          const wing = new THREE.Mesh(new THREE.BoxGeometry(1.2 + i*0.4, 0.12, 0.4), mat);
+          wing.position.set(p[0], 5.08 + i*0.14, p[1]); g.add(wing);
+        }
+        const soro = new THREE.Mesh(new THREE.BoxGeometry(0.25, 0.18, 0.25), createMaterial(matColor + 0x0a0a0a));
+        soro.position.set(p[0], 5.4, p[1]); g.add(soro);
+      });
+      break;
+    }
+    case 'g_bo': {
+      [[-2.5,2.5]].forEach(z => {
+        const beam = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.35, 0.28), mat);
+        beam.position.set(0, 5.55, z[0]); beam.castShadow = true; g.add(beam);
+        const b2 = beam.clone(); b2.position.z = z[1]; g.add(b2);
+      });
+      [-3.5,-1.5,0,1.5,3.5].forEach(x => {
+        const cb = new THREE.Mesh(new THREE.BoxGeometry(0.28, 0.35, 5.2), mat);
+        cb.position.set(x, 5.55, 0); cb.castShadow = true; g.add(cb);
+      });
+      const ridge = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.14, 7.5, 8), mat);
+      ridge.rotation.z = Math.PI/2; ridge.position.set(0, 7.2, 0); ridge.castShadow = true; g.add(ridge);
+      [-2.5,0,2.5].forEach(x => {
+        const post = new THREE.Mesh(new THREE.BoxGeometry(0.18, 1.6, 0.18), mat);
+        post.position.set(x, 6.35, 0); g.add(post);
+      });
+      [-1.8,1.8].forEach(z => {
+        const purlin = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 7.5, 8), mat);
+        purlin.rotation.z = Math.PI/2; purlin.position.set(0, 6.0, z); g.add(purlin);
+      });
+      break;
+    }
+    case 'g_seokkarae': {
+      const count = 20;
+      for (let i = 0; i < count; i++) {
+        const x = -3.8 + (7.6 / (count-1)) * i;
+        const r1 = new THREE.Mesh(new THREE.BoxGeometry(0.06, 0.07, 3.4), mat);
+        r1.position.set(x, 6.2, 1.4); r1.rotation.x = 0.38; r1.castShadow = true; g.add(r1);
+        const r2 = r1.clone(); r2.position.z = -1.4; r2.rotation.x = -0.38; g.add(r2);
+      }
+      break;
+    }
+    case 'g_roof': {
+      const frontR = new THREE.Mesh(new THREE.BoxGeometry(8.5, 0.22, 3.8), mat);
+      frontR.position.set(0, 6.3, 1.7); frontR.rotation.x = 0.38; frontR.castShadow = true; g.add(frontR);
+      const backR = frontR.clone(); backR.position.z = -1.7; backR.rotation.x = -0.38; g.add(backR);
+      const ridgeCap = new THREE.Mesh(new THREE.BoxGeometry(8.8, 0.3, 0.6), mat);
+      ridgeCap.position.set(0, 7.3, 0); g.add(ridgeCap);
+      [-4.6,4.6].forEach(x => {
+        const dec = new THREE.Mesh(new THREE.ConeGeometry(0.3, 0.6, 6), mat);
+        dec.position.set(x, 7.55, 0); g.add(dec);
+      });
+      [-3.8,3.8].forEach(x => {
+        const gable = new THREE.Mesh(new THREE.BufferGeometry(), mat);
+        const verts = new Float32Array([
+          x, 5.5, -2.8, x, 5.5, 2.8, x, 7.2, 0
+        ]);
+        gable.setAttribute('position', new THREE.BufferAttribute(verts, 3));
+        gable.computeVertexNormals();
+        const gableMesh = new THREE.Mesh(gable, createMaterial(0xe8dcc8, 0.9));
+        gableMesh.castShadow = true; g.add(gableMesh);
+      });
+      for (let i = 0; i < 14; i++) {
+        const z = 0.2 + i * 0.22;
+        const line = new THREE.Mesh(new THREE.BoxGeometry(8.3, 0.04, 0.05), createMaterial(matColor + 0x080808));
+        line.position.set(0, 6.35 + i*0.06, z*0.9); line.rotation.x = 0.38; g.add(line);
+        const l2 = line.clone(); l2.position.z = -(z*0.9); l2.rotation.x = -0.38; g.add(l2);
+      }
+      break;
+    }
+    case 'g_changho': {
+      const wallMat = createMaterial(matColor, 0.9);
+      const backW = new THREE.Mesh(new THREE.BoxGeometry(7.2, 3.5, 0.14), wallMat);
+      backW.position.set(0, 2.7, -2.5); backW.castShadow = true; g.add(backW);
+      [-3.6,3.6].forEach(x => {
+        const side = new THREE.Mesh(new THREE.BoxGeometry(0.14, 3.5, 5), wallMat);
+        side.position.set(x, 2.7, 0); side.castShadow = true; g.add(side);
+      });
+      const fl = new THREE.Mesh(new THREE.BoxGeometry(2.2, 3.5, 0.14), wallMat);
+      fl.position.set(-2.5, 2.7, 2.5); fl.castShadow = true; g.add(fl);
+      const fr = new THREE.Mesh(new THREE.BoxGeometry(2.2, 3.5, 0.14), wallMat);
+      fr.position.set(2.5, 2.7, 2.5); fr.castShadow = true; g.add(fr);
+      const fTop = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.8, 0.14), wallMat);
+      fTop.position.set(0, 4.15, 2.5); g.add(fTop);
+      const frameMat = createMaterial(0x8b6914, 0.6);
+      const paperMat = createMaterial(0xfff5e0, 0.95);
+      [-0.7,0.7].forEach(x => {
+        const paper = new THREE.Mesh(new THREE.BoxGeometry(1.3, 2.8, 0.06), paperMat);
+        paper.position.set(x, 2.4, 2.56); g.add(paper);
+        for (let h = 0; h < 6; h++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(1.25, 0.025, 0.03), frameMat);
+          bar.position.set(x, 1.2 + h*0.5, 2.59); g.add(bar);
+        }
+        for (let v = 0; v < 5; v++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(0.025, 2.7, 0.03), frameMat);
+          bar.position.set(x - 0.5 + v*0.26, 2.4, 2.59); g.add(bar);
+        }
+        const diag1 = new THREE.Mesh(new THREE.BoxGeometry(0.03, 0.8, 0.03), frameMat);
+        diag1.rotation.z = 0.6; diag1.position.set(x, 3.4, 2.59); g.add(diag1);
+        const diag2 = diag1.clone(); diag2.rotation.z = -0.6; g.add(diag2);
+      });
+      break;
+    }
+    case 'g_interior': {
+      const floorMat = createMaterial(matColor, 0.6);
+      const mainFloor = new THREE.Mesh(new THREE.BoxGeometry(5, 0.12, 4.6), floorMat);
+      mainFloor.position.set(0, 0.96, 0); mainFloor.receiveShadow = true; g.add(mainFloor);
+      for (let i = 0; i < 12; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(4.9, 0.02, 0.02), createMaterial(matColor - 0x151510));
+        line.position.set(0, 1.03, -2.1 + i*0.38); g.add(line);
+      }
+      const ondol = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.15, 4.6), createMaterial(0x8b7355, 0.85));
+      ondol.position.set(-2.75, 0.98, 0); ondol.receiveShadow = true; g.add(ondol);
+      const ondol2 = new THREE.Mesh(new THREE.BoxGeometry(2.5, 0.15, 4.6), createMaterial(0x8b7355, 0.85));
+      ondol2.position.set(2.75, 0.98, 0); ondol2.receiveShadow = true; g.add(ondol2);
+      const agungi = new THREE.Mesh(new THREE.BoxGeometry(0.7, 0.6, 0.6), createMaterial(0x333333));
+      agungi.position.set(-3.8, 0.5, 1.8); agungi.castShadow = true; g.add(agungi);
+      const fire = new THREE.Mesh(new THREE.BoxGeometry(0.35, 0.25, 0.25), createMaterial(0xff6600, 0.3));
+      fire.position.set(-3.8, 0.4, 1.8); g.add(fire);
+      const chimney = new THREE.Mesh(new THREE.CylinderGeometry(0.18, 0.2, 3, 8), createMaterial(0x666666));
+      chimney.position.set(3.9, 2.2, -1.8); chimney.castShadow = true; g.add(chimney);
+      break;
+    }
+  }
+  return g;
+}
+
 // ===== Game Logic =====
 
 function startGame(mode) {
   SFX.click();
   ensureAudio();
   gameMode = mode;
-  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : MODERN_STEPS;
+  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : mode === 'giwajip' ? GIWAJIP_STEPS : MODERN_STEPS;
   currentStep = 0;
   selectedMaterials = {};
   builtParts = {};
@@ -1767,6 +2333,8 @@ function startGame(mode) {
   isComplete = false;
   isViewing = false;
   autoRotate = false;
+  isWalkthrough = false;
+  gameStartTime = Date.now();
 
   document.getElementById('modeSelect').classList.add('hidden');
   document.getElementById('topBar').style.display = 'flex';
@@ -1776,6 +2344,10 @@ function startGame(mode) {
   document.getElementById('btnMute').style.display = 'flex';
   document.getElementById('btnDay').style.display = 'flex';
   document.getElementById('btnHelp').style.display = 'flex';
+  document.getElementById('btnPhoto').style.display = 'flex';
+  document.getElementById('btnBGM').style.display = 'flex';
+  document.getElementById('btnWalk').style.display = 'flex';
+  document.getElementById('seasonSelector').style.display = 'flex';
   document.getElementById('kbdHint').classList.add('show');
 
   if (mode === 'hanok') {
@@ -1784,6 +2356,9 @@ function startGame(mode) {
   } else if (mode === 'choga') {
     document.getElementById('gameTitle').textContent = '초가집 짓기';
     document.getElementById('modeLabel').textContent = '서민가 초가 모드';
+  } else if (mode === 'giwajip') {
+    document.getElementById('gameTitle').textContent = '기와집 짓기';
+    document.getElementById('modeLabel').textContent = '양반가 기와집 모드';
   } else {
     document.getElementById('gameTitle').textContent = '주택 짓기';
     document.getElementById('modeLabel').textContent = '현대 주택 모드';
@@ -1791,7 +2366,8 @@ function startGame(mode) {
 
   if (!renderer) initThree();
   else {
-    // Clear previous build
+    // Clear previous build (dispose geometry/material to prevent GPU leak)
+    buildGroup.traverse(obj => { if (obj.geometry) obj.geometry.dispose(); if (obj.material) obj.material.dispose(); });
     while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
     // Clear particles
     while (particleGroup && particleGroup.children.length) {
@@ -1804,7 +2380,9 @@ function startGame(mode) {
   }
 
   applyDayNight();
+  applySeasonVisuals();
   startAmbient();
+  startWeather();
 
   renderStepList();
   selectStep(0);
@@ -1894,6 +2472,7 @@ function buildStep() {
   let part;
   if (gameMode === 'hanok') part = buildHanokPart(step.part, matColor);
   else if (gameMode === 'choga') part = buildChogaPart(step.part, matColor);
+  else if (gameMode === 'giwajip') part = buildGiwajipPart(step.part, matColor);
   else part = buildModernPart(step.part, matColor);
 
   // Play construction sound
@@ -1947,15 +2526,30 @@ function afterBuild() {
     data.completed = data.completed || {};
     data.completed[gameMode] = Date.now();
     saveProgress(data);
-    earnAchievement(gameMode === 'hanok' ? 'complete_hanok' : gameMode === 'choga' ? 'complete_choga' : 'complete_modern');
+    const achMap = { hanok:'complete_hanok', choga:'complete_choga', giwajip:'complete_giwajip', modern:'complete_modern' };
+    earnAchievement(achMap[gameMode] || 'complete_modern');
     setTimeout(checkMasterBuilder, 500);
+    const elapsed = (Date.now() - gameStartTime) / 1000;
+    if (elapsed < 180) earnAchievement('speed_builder');
+    if (isNight) {
+      const nightData = loadProgress();
+      nightData.nightCompleted = nightData.nightCompleted || {};
+      nightData.nightCompleted[gameMode] = true;
+      saveProgress(nightData);
+      if (Object.keys(nightData.nightCompleted).length >= 3) earnAchievement('night_master');
+    }
 
     document.getElementById('statSteps').textContent = steps.length;
     document.getElementById('statParts').textContent = buildGroup.children.length;
-    const title = gameMode === 'hanok' ? '한옥 완성!' : gameMode === 'choga' ? '초가집 완성!' : '주택 완성!';
-    const msg = gameMode === 'hanok' ? '멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.'
-      : gameMode === 'choga' ? '소박하고 따뜻한 초가집을 완성했어요! 서민의 지혜가 담긴 집이에요.'
-      : '현대 주택을 완성했어요! 한옥과 비교해 보세요.';
+    const titles = { hanok:'한옥 완성!', choga:'초가집 완성!', giwajip:'기와집 완성!', modern:'주택 완성!' };
+    const msgs = {
+      hanok:'멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.',
+      choga:'소박하고 따뜻한 초가집을 완성했어요! 서민의 지혜가 담긴 집이에요.',
+      giwajip:'화려한 양반가 기와집을 완성했어요! 공포와 팔작지붕의 아름다움을 감상하세요.',
+      modern:'현대 주택을 완성했어요! 한옥과 비교해 보세요.'
+    };
+    const title = titles[gameMode] || '완성!';
+    const msg = msgs[gameMode] || '멋진 건축을 완성했어요!';
     document.getElementById('completeTitle').textContent = title;
     document.getElementById('completeMsg').textContent = msg;
     document.getElementById('btnCompare').style.display = 'inline-block';
@@ -2024,12 +2618,20 @@ function resetGame() {
   document.getElementById('btnMute').style.display = 'none';
   document.getElementById('btnDay').style.display = 'none';
   document.getElementById('btnHelp').style.display = 'none';
+  document.getElementById('btnPhoto').style.display = 'none';
+  document.getElementById('btnBGM').style.display = 'none';
+  document.getElementById('btnWalk').style.display = 'none';
+  document.getElementById('seasonSelector').style.display = 'none';
   document.getElementById('kbdHint').classList.remove('show');
   hideFact();
+  stopBGM();
+  stopWeather();
+  isWalkthrough = false;
   autoRotate = false;
   isComplete = false;
   isViewing = false;
   if (buildGroup) {
+    buildGroup.traverse(obj => { if (obj.geometry) obj.geometry.dispose(); if (obj.material) obj.material.dispose(); });
     while (buildGroup.children.length) buildGroup.remove(buildGroup.children[0]);
   }
   if (particleGroup) {
@@ -2067,6 +2669,13 @@ window.addEventListener('keydown', (e) => {
   else if (e.key === 'r' || e.key === 'R') { if (confirm('처음으로 돌아갈까요?')) resetGame(); }
   else if (e.key === 'm' || e.key === 'M') toggleMute();
   else if (e.key === 'n' || e.key === 'N') toggleDayNight();
+  else if (e.key === 'b' || e.key === 'B') toggleBGM();
+  else if (e.key === 'p' || e.key === 'P') takeScreenshot();
+  else if (e.key === 'w' || e.key === 'W') toggleWalkthrough();
+  else if (e.key === '1') setSeason('spring');
+  else if (e.key === '2') setSeason('summer');
+  else if (e.key === '3') setSeason('autumn');
+  else if (e.key === '4') setSeason('winter');
 });
 
 // ===== Initialization =====

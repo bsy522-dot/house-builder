@@ -1,11 +1,13 @@
 {
-  "name": "한국 건축 체험 - 한옥/초가집/현대주택 짓기",
+  "name": "한국 건축 체험 - 한옥/기와집/초가집/현대주택 짓기",
   "short_name": "건축체험",
-  "description": "한옥, 초가집, 현대주택을 직접 짓는 3D 건축 학습 게임",
+  "description": "한옥, 기와집(양반가), 초가집, 현대주택을 직접 짓는 3D 건축 학습 게임. 4계절, BGM, 워크스루, 사진 모드 포함.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
   "theme_color": "#2d1b0e",
+  "categories": ["education", "games"],
+  "lang": "ko",
   "icons": [
     {
       "src": "data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%232d1b0e'/%3E%3Cpath d='M32 12L6 30h52z' fill='%23C4956A'/%3E%3Cpath d='M10 30v22h44V30' fill='%23f5deb3'/%3E%3Crect x='20' y='36' width='10' height='16' rx='1' fill='%234a2c17'/%3E%3Crect x='36' y='36' width='8' height='8' fill='none' stroke='%234a2c17' stroke-width='1.5'/%3E%3C/svg%3E",
@@ -13,5 +15,11 @@
       "type": "image/svg+xml",
       "purpose": "any maskable"
     }
+  ],
+  "shortcuts": [
+    {"name": "한옥 짓기", "url": "./index.html?mode=hanok"},
+    {"name": "기와집 짓기", "url": "./index.html?mode=giwajip"},
+    {"name": "초가집 짓기", "url": "./index.html?mode=choga"},
+    {"name": "현대주택 짓기", "url": "./index.html?mode=modern"}
   ]
 }
