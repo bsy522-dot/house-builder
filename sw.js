@@ -1,5 +1,5 @@
-// Service worker for House Builder PWA v3
-const CACHE_NAME = 'house-builder-v3';
+// Service worker for House Builder PWA v4
+const CACHE_NAME = 'house-builder-v4';
 const URLS = [
   './',
   './index.html',
