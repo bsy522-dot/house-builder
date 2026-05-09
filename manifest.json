@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 - 한옥/기와집/초가집/현대주택 짓기",
+  "name": "한국 건축 체험 - 한옥/기와집/초가집/서원/현대주택 짓기",
   "short_name": "건축체험",
-  "description": "한옥, 기와집(양반가), 초가집, 현대주택을 직접 짓는 3D 건축 학습 게임. 4계절, BGM, 워크스루, 사진 모드 포함.",
+  "description": "한옥, 기와집(양반가), 초가집, 서원, 현대주택을 직접 짓는 3D 건축 학습 게임. 5가지 건축 모드, 4계절, BGM, 워크스루, 사진 모드, 건축 비교 포함.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -20,6 +20,7 @@
     {"name": "한옥 짓기", "url": "./index.html?mode=hanok"},
     {"name": "기와집 짓기", "url": "./index.html?mode=giwajip"},
     {"name": "초가집 짓기", "url": "./index.html?mode=choga"},
-    {"name": "현대주택 짓기", "url": "./index.html?mode=modern"}
+    {"name": "현대주택 짓기", "url": "./index.html?mode=modern"},
+    {"name": "서원 짓기", "url": "./index.html?mode=seowon"}
   ]
 }

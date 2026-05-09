@@ -231,6 +231,27 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
 /* ===== v3.0: Walkthrough button ===== */
 #btnWalk{top:308px;right:16px}
 @media(max-width:768px){#btnWalk{top:294px;width:40px;height:40px;font-size:16px}}
+
+/* ===== v4.0: Compare Modal ===== */
+#compareModal{position:fixed;inset:0;background:rgba(0,0,0,.88);z-index:260;display:none;align-items:center;justify-content:center;padding:16px}
+#compareModal.show{display:flex}
+.compare-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:28px;max-width:600px;width:100%;max-height:80vh;overflow-y:auto}
+.compare-card h2{font-size:20px;color:#f5deb3;margin-bottom:16px;text-align:center}
+.compare-row{display:flex;gap:12px;margin-bottom:10px;padding:10px;background:rgba(0,0,0,.2);border-radius:8px;font-size:13px}
+.compare-row .c-label{color:#c4956a;font-weight:600;min-width:100px}
+.compare-row .c-old{color:#e8d5c0;flex:1}
+.compare-row .c-new{color:#b8e0b8;flex:1}
+.compare-header{display:grid;grid-template-columns:100px 1fr 1fr;gap:12px;padding:8px 10px;font-size:11px;color:#c4956a;font-weight:700;letter-spacing:1px;border-bottom:1px solid rgba(196,149,106,.3);margin-bottom:8px}
+
+/* ===== v4.0: Seowon mode card glow ===== */
+.mode-card.seowon-card{border-color:rgba(100,150,200,.4)}
+.mode-card.seowon-card:hover{border-color:#6498c8;box-shadow:0 8px 32px rgba(100,150,200,.25)}
+
+/* ===== v4.0: Timeline ===== */
+.timeline-list{display:flex;flex-direction:column;gap:6px;max-height:200px;overflow-y:auto}
+.timeline-item{display:flex;align-items:center;gap:8px;padding:6px 8px;background:rgba(0,0,0,.15);border-radius:6px;font-size:12px;color:#e8d5c0}
+.timeline-item .t-time{color:#c4956a;font-weight:600;min-width:40px;font-size:11px}
+.timeline-item .t-name{flex:1}
 </style>
 </head>
 <body>
@@ -269,6 +290,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
       <h3>현대 주택</h3>
       <p>콘크리트 기초부터 인테리어까지<br>현대 건축의 과정을<br>체험해보세요</p>
       <div style="margin-top:10px;font-size:11px;color:#888">8 단계 &middot; 철근콘크리트</div>
+    </div>
+    <div class="mode-card seowon-card" onclick="startGame(&#39;seowon&#39;)">
+      <div class="mode-icon">📚</div>
+      <h3>서원 (書院)</h3>
+      <p>학문과 예절을 배우는 공간<br>조선 선비의 교육 건축을<br>체험해보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#6498c8">7 단계 &middot; 교육 건축</div>
     </div>
   </div>
   <div id="progressBadge" style="margin-top:28px;font-size:12px;color:#888"></div>
@@ -345,6 +372,16 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
     <h3 style="color:#c4956a;font-size:14px;margin-bottom:10px">🏆 업적 현황</h3>
     <div class="ach-grid" id="achGrid"></div>
     <button class="close-btn" onclick="closeStats()">닫기</button>
+  </div>
+</div>
+
+<!-- Compare Modal -->
+<div id="compareModal">
+  <div class="compare-card">
+    <h2 id="compareTitle">🔍 건축 비교</h2>
+    <div class="compare-header"><span>항목</span><span>전통 한옥</span><span>현대 주택</span></div>
+    <div id="compareBody"></div>
+    <button class="close-btn" onclick="closeCompare()" style="display:block;margin:16px auto 0;padding:10px 28px;border:none;border-radius:20px;background:#c4956a;color:#2d1b0e;font-weight:600;font-size:14px;cursor:pointer">닫기</button>
   </div>
 </div>
 
@@ -645,6 +682,52 @@ const GIWAJIP_STEPS = [
   }
 ];
 
+// ===== Seowon (書院 Academy) Steps =====
+const SEOWON_STEPS = [
+  {
+    name: '강학 기단', part: 's_gidan',
+    desc: '서원의 기초가 되는 기단을 쌓아요.',
+    detail: '서원은 학문을 배우는 공간이라 정갈하고 반듯한 기단을 쌓았어요. 도산서원처럼 자연석을 다듬어 쌓는 것이 일반적이에요.',
+    materials: [{name:'다듬돌',color:0xb8b0a0},{name:'자연석',color:0x9a9288}]
+  },
+  {
+    name: '기둥', part: 's_gidung',
+    desc: '소박하지만 반듯한 기둥을 세워요.',
+    detail: '서원 기둥은 양반가보다 소박하지만 곧고 반듯해요. 학문의 정직함을 상징하듯 가감 없는 직선이에요.',
+    materials: [{name:'소나무',color:0xc4956a},{name:'느티나무',color:0xa87d4a}]
+  },
+  {
+    name: '보와 도리', part: 's_bo',
+    desc: '기둥 위에 보와 도리를 올려요.',
+    detail: '서원은 3량~5량 구조로, 규모는 크지만 장식은 절제돼요. 학문과 검소의 정신이 건축에 그대로 담겨요.',
+    materials: [{name:'소나무',color:0xc4956a},{name:'참나무',color:0x8b6914}]
+  },
+  {
+    name: '맞배지붕', part: 's_roof',
+    desc: '앞뒤로만 경사진 소박한 지붕이에요.',
+    detail: '서원은 팔작지붕 대신 맞배지붕을 주로 사용해요. 화려함보다 검소함을 추구한 선비의 정신이 담겨있어요.',
+    materials: [{name:'회기와',color:0x5a5a5a},{name:'청기와',color:0x2a5a6a}]
+  },
+  {
+    name: '강학당', part: 's_lecture',
+    desc: '학문을 배우는 넓은 강학 공간이에요.',
+    detail: '강학당(강당)은 스승이 제자들을 가르치는 공간이에요. 넓은 마루와 온돌방으로 이루어져 있어요. 동재와 서재 사이에 위치해요.',
+    materials: [{name:'소나무마루',color:0xdeb887},{name:'참나무마루',color:0xb8860b}]
+  },
+  {
+    name: '동재와 서재', part: 's_dormitory',
+    desc: '학생들이 기숙하는 건물이에요.',
+    detail: '동재는 상급생, 서재는 하급생이 머물렀어요. 강학당 앞 좌우에 대칭으로 배치해요. 전학후묘(前學後廟) 원칙이에요.',
+    materials: [{name:'흙벽+창호지',color:0xe8dcc8},{name:'판벽+창호지',color:0xc4a882}]
+  },
+  {
+    name: '사당', part: 's_shrine',
+    desc: '선현의 위패를 모시는 사당이에요.',
+    detail: '서원 맨 뒤 높은 곳에 위치해요. 퇴계 이황, 율곡 이이 같은 선현을 모셔요. 매년 제향을 올리며 학문의 정신을 이어받았어요.',
+    materials: [{name:'소나무',color:0xc4956a},{name:'느티나무',color:0xa87d4a}]
+  }
+];
+
 // ===== Achievements =====
 const ACHIEVEMENTS = {
   first_build: { icon:'🔨', name:'첫 망치질', desc:'첫 부품을 지었어요' },
@@ -662,7 +745,13 @@ const ACHIEVEMENTS = {
   all_materials: { icon:'💎', name:'재료 수집가', desc:'20가지 재료 사용' },
   night_master: { icon:'🌠', name:'밤의 대가', desc:'밤에 3종 이상 완성' },
   walkthrough: { icon:'🚶', name:'산책자', desc:'워크스루 모드 사용' },
-  bgm_lover: { icon:'🎶', name:'음악 감상가', desc:'BGM을 5분 이상 감상' }
+  bgm_lover: { icon:'🎶', name:'음악 감상가', desc:'BGM을 5분 이상 감상' },
+  complete_seowon: { icon:'📚', name:'서원 학자', desc:'서원을 완성했어요' },
+  all_modes: { icon:'🌟', name:'건축 박사', desc:'5가지 건축 모두 완성' },
+  quiz_streak: { icon:'🔥', name:'연속 정답왕', desc:'퀴즈 6문제 연속 정답' },
+  early_bird: { icon:'🌅', name:'새벽 건축가', desc:'낮에 5종 이상 완성' },
+  landscape: { icon:'🌳', name:'조경 감상가', desc:'모든 계절 나무 색상 확인' },
+  compare_master: { icon:'🔍', name:'비교 달인', desc:'건축 비교를 3회 사용' }
 };
 
 // ===== Quizzes =====
@@ -673,7 +762,13 @@ const QUIZZES = {
     { q:'세계에서 한국만 가진 독특한 바닥 난방 시스템은?', opts:['마루','대청','온돌','아궁이'], answer:2,
       exp:'온돌은 아궁이의 열이 방바닥 아래 고래를 지나며 방을 데워요.' },
     { q:'한옥 지붕의 가장 윗부분 도리를 뭐라고 부르나요?', opts:['주심도리','중도리','마룻도리','처마도리'], answer:2,
-      exp:'마룻도리(종도리)는 지붕 꼭대기를 받쳐요. 상량식을 여기서 해요.' }
+      exp:'마룻도리(종도리)는 지붕 꼭대기를 받쳐요. 상량식을 여기서 해요.' },
+    { q:'한옥 기둥 사이의 간격을 뭐라고 부르나요?', opts:['칸','마루','보','도리'], answer:0,
+      exp:'"칸"은 기둥과 기둥 사이 공간이에요. 99칸집, 3칸집처럼 집 크기를 칸으로 표현했어요.' },
+    { q:'한옥의 아름다운 지붕 곡선을 만드는 부재는?', opts:['보','서까래','기단','주초돌'], answer:1,
+      exp:'서까래의 배치와 길이 변화가 한옥 지붕의 아름다운 곡선을 만들어요.' },
+    { q:'한옥 벽체에 쓰는 한지의 장점이 아닌 것은?', opts:['숨을 쉼','결로 방지','완벽 차광','습도 조절'], answer:2,
+      exp:'한지는 숨을 쉬어 결로를 방지하지만, 완전한 차광은 어려워요. 은은한 빛이 매력이에요.' }
   ],
   modern: [
     { q:'현대 주택의 바닥 난방은 어디서 유래했나요?', opts:['일본 다다미','한국 온돌','로마 하이포코스트','중국 캉'], answer:1,
@@ -681,7 +776,13 @@ const QUIZZES = {
     { q:'이중유리 창문의 가장 큰 장점은?', opts:['예뻐서','단열과 방음','가벼워서','싸서'], answer:1,
       exp:'두 유리 사이 공기층이 열과 소리를 모두 막아줘요.' },
     { q:'철근콘크리트에서 철근의 역할은?', opts:['무게 줄이기','인장력 담당','단열','방수'], answer:1,
-      exp:'콘크리트는 누르는 힘에 강하지만 당기는 힘에 약해요. 철근이 그걸 보완해요.' }
+      exp:'콘크리트는 누르는 힘에 강하지만 당기는 힘에 약해요. 철근이 그걸 보완해요.' },
+    { q:'현대 건축에서 "내력벽"이란?', opts:['장식용 벽','하중을 지탱하는 벽','임시 벽','방음벽'], answer:1,
+      exp:'내력벽은 건물 하중을 지탱하는 구조적 벽이에요. 함부로 철거하면 안 돼요!' },
+    { q:'패시브하우스의 핵심 원리는?', opts:['태양광 발전','에너지 절약 설계','수영장 포함','지하 건축'], answer:1,
+      exp:'패시브하우스는 고단열·고기밀·열회수 환기로 에너지 소비를 최소화해요.' },
+    { q:'현대 건축에서 "필로티"란?', opts:['지하실','기둥으로 들어올린 1층','옥상정원','발코니'], answer:1,
+      exp:'필로티는 기둥으로 건물을 들어올려 1층을 개방 공간으로 만드는 구조예요.' }
   ],
   choga: [
     { q:'초가지붕은 주로 무엇으로 만들었나요?', opts:['볏짚','갈대','대나무','나무껍질'], answer:0,
@@ -689,7 +790,13 @@ const QUIZZES = {
     { q:'초가지붕�� 새로 ���는 마을 공동작업을 뭐라고 하나요?', opts:['두레','이엉잇기','품앗이','김매기'], answer:1,
       exp:'이엉잇기는 ��을마다 마을 사람들이 함께 지붕을 갈아주던 풍습이에���.' },
     { q:'흙벽을 만들 때 황토에 무엇을 섞었나요?', opts:['모래','풀','짚','톱밥'], answer:2,
-      exp:'짚을 섞으면 흙벽이 갈��지지 않고 튼튼해져요.' }
+      exp:'짚을 섞으면 흙벽이 갈라지지 않고 튼튼해져요.' },
+    { q:'초가집은 보통 몇 년마다 지붕을 새로 얹었나요?', opts:['매년','3년','5년','10년'], answer:0,
+      exp:'초가지붕은 비바람에 약해서 거의 매년 새 볏짚으로 갈아야 했어요.' },
+    { q:'초가집에서 "토방"이란?', opts:['흙으로 만든 방','부엌','마루','다락'], answer:0,
+      exp:'토방(봉당)은 흙바닥으로 된 공간으로, 신발을 벗는 곳이에요.' },
+    { q:'초가집의 가장 큰 단점은?', opts:['추위','화재 위험','비좁음','어두움'], answer:1,
+      exp:'볏짚 지붕은 불에 매우 약해서 화재가 가장 큰 위험이었어요.' }
   ],
   giwajip: [
     { q:'기둥 위에서 지붕을 받치는 화려한 장식 구조의 이름은?', opts:['두공','공포','추녀','처마'], answer:1,
@@ -697,7 +804,27 @@ const QUIZZES = {
     { q:'팔작지붕의 양쪽 삼각형 벽면을 뭐라고 부르나요?', opts:['합각','박공','처마','용마루'], answer:0,
       exp:'합각(合閣)은 팔작지붕의 양쪽 삼각 부분이에요. 박공이라고도 불러요.' },
     { q:'양반가에서 남자 주인이 사용하는 별도 건물을 뭐라고 하나요?', opts:['안채','별채','사랑채','행랑채'], answer:2,
-      exp:'사랑채는 남성 공간으로 손님 접대와 학문을 하던 곳이에요.' }
+      exp:'사랑채는 남성 공간으로 손님 접대와 학문을 하던 곳이에요.' },
+    { q:'공포의 종류 중 기둥 위에만 설치하는 것은?', opts:['다포식','주심포식','익공식','첨차식'], answer:1,
+      exp:'주심포식은 기둥 위에만 공포를 놓아요. 다포식은 기둥 사이에도 공포를 놓아요.' },
+    { q:'양반가에서 여성이 주로 생활하는 공간은?', opts:['사랑채','안채','행랑채','별채'], answer:1,
+      exp:'안채는 안주인과 여성 가족이 주로 생활하는 공간이에요.' },
+    { q:'기와 끝에 붙는 동그란 장식의 이름은?', opts:['와당','막새','추녀','용마루'], answer:1,
+      exp:'막새(수막새)는 기와 끝에 붙는 둥근 장식으로 연꽃, 귀면 등 무늬가 있어요.' }
+  ],
+  seowon: [
+    { q:'서원의 배치 원칙 "전학후묘"의 뜻은?', opts:['앞에 학교 뒤에 사당','앞에 사당 뒤에 학교','앞에 마을 뒤에 산','앞에 강 뒤에 서원'], answer:0,
+      exp:'"전학후묘"는 앞쪽에 강학 공간, 뒤쪽에 사당을 배치하는 원칙이에요.' },
+    { q:'서원에서 동재에 머무는 학생은?', opts:['하급생','상급생','스승','방문객'], answer:1,
+      exp:'동재(東齋)는 상급생, 서재(西齋)는 하급생이 머물렀어요.' },
+    { q:'서원의 지붕 형태로 가장 많이 사용된 것은?', opts:['팔작지붕','맞배지붕','우진각지붕','모임지붕'], answer:1,
+      exp:'서원은 검소함을 추구해서 소박한 맞배지붕을 주로 사용했어요.' },
+    { q:'2019년 유네스코 세계유산에 등재된 한국의 서원은 몇 곳?', opts:['5곳','7곳','9곳','11곳'], answer:2,
+      exp:'도산서원, 소수서원 등 9개 서원이 유네스코 세계유산에 등재됐어요!' },
+    { q:'최초의 사액서원(임금이 이름을 내린 서원)은?', opts:['도산서원','소수서원','병산서원','옥산서원'], answer:1,
+      exp:'소수서원(구 백운동서원)은 1550년 명종에게 현판을 받은 최초 사액서원이에요.' },
+    { q:'서원의 강학당에서 주로 가르친 학문은?', opts:['수학','성리학','의학','법학'], answer:1,
+      exp:'서원에서는 주로 성리학(유학)을 가르쳤어요. 사서삼경이 교과서였어요.' }
   ]
 };
 
@@ -735,7 +862,14 @@ const FACTS = {
   g_seokkarae: '겹처마의 부연은 빗물이 더 멀리 떨어지게 해서 벽을 보��해요.',
   g_roof: '팔작지붕의 용마루 끝에는 취두(鷲頭)라는 독수리 장식을 올렸어요.',
   g_changho: '꽃살문의 문양은 모란(부귀), 국화(절개), 매화(지조)를 뜻해요.',
-  g_interior: '양반가 대청마루에서는 제사를 지내고, 가족 행사를 열었어요.'
+  g_interior: '양반가 대청마루에서는 제사를 지내고, 가족 행사를 열었어요.',
+  s_gidan: '서원의 기단은 양반가보다 낮고 소박해요. 학문의 검소함을 건축으로 표현했어요.',
+  s_gidung: '서원 기둥은 배흘림 없이 곧은 원주를 써요. 곧은 선비 정신을 상징해요.',
+  s_bo: '서원은 보통 3량~5량 구조예요. 강학당은 5량이 많아요.',
+  s_roof: '맞배지붕은 옆면이 삼각형으로 노출돼요. 팔작지붕보다 소박하지만 단정해요.',
+  s_lecture: '강학당에서는 스승이 높은 곳에, 제자가 낮은 곳에 앉았어요. 존경의 표현이에요.',
+  s_dormitory: '동재·서재는 4~8칸 규모로, 각 칸에 1~2명이 기숙했어요.',
+  s_shrine: '서원 사당에는 선현의 위패를 모시고 봄·가을에 제향을 올렸어요.'
 };
 
 // ===== State =====
@@ -860,9 +994,9 @@ const SFX = {
 
 function playBuildSfx(partName) {
   // Pick sound based on part type
-  const stones = ['gidan','jucho','foundation','stone'];
-  const woods = ['gidung','bo','dori','seokkarae','maru','pillars','beams','frame'];
-  const tiles = ['giwa','roof'];
+  const stones = ['gidan','jucho','foundation','stone','s_gidan','g_gidan','g_jucho'];
+  const woods = ['gidung','bo','dori','seokkarae','maru','pillars','beams','frame','s_gidung','s_bo','s_lecture','g_gidung','g_bo','g_seokkarae','g_gongpo','g_interior','s_shrine','s_dormitory'];
+  const tiles = ['giwa','roof','s_roof','g_roof'];
   const windows = ['changho','windows','door'];
   const straws = ['thatch'];
   if (stones.includes(partName)) SFX.stone();
@@ -884,6 +1018,16 @@ function startAmbient() {
     playTone(base, 0.08, 'triangle', 0.08);
     setTimeout(()=>playTone(base*1.2, 0.1, 'triangle', 0.08), 80);
   }, 6000 + Math.random()*4000);
+  // Night cricket ambient
+  setInterval(() => {
+    if (muted || !isNight) return;
+    const ctx = ensureAudio();
+    if (!ctx) return;
+    const freq = 4000 + Math.random()*400;
+    playTone(freq, 0.04, 'sine', 0.04);
+    setTimeout(()=>playTone(freq, 0.04, 'sine', 0.04), 50);
+    setTimeout(()=>playTone(freq, 0.04, 'sine', 0.04), 100);
+  }, 3000 + Math.random()*2000);
 }
 
 // ===== v3.0: BGM System (Korean Pentatonic) =====
@@ -1045,7 +1189,7 @@ function takeScreenshot() {
   renderer.render(scene, camera);
   const dataUrl = renderer.domElement.toDataURL('image/png');
   const link = document.createElement('a');
-  const modeName = gameMode === 'hanok' ? '한옥' : gameMode === 'choga' ? '초가집' : gameMode === 'giwajip' ? '기와집' : '현대주택';
+  const modeName = gameMode === 'hanok' ? '한옥' : gameMode === 'choga' ? '초가집' : gameMode === 'giwajip' ? '기와집' : gameMode === 'seowon' ? '서원' : '현대주택';
   link.download = `건축체험_${modeName}_${currentSeason}.png`;
   link.href = dataUrl;
   link.click();
@@ -1184,9 +1328,9 @@ function updateProgressBadge() {
   const el = document.getElementById('progressBadge');
   if (!el) return;
   if (count === 0) { el.textContent = ''; return; }
-  const icons = { hanok:'🏯', choga:'🌾', giwajip:'🏛️', modern:'🏠' };
+  const icons = { hanok:'🏯', choga:'🌾', giwajip:'🏛️', modern:'🏠', seowon:'📚' };
   const done = Object.keys(completed).map(k => icons[k]||'').join(' ');
-  el.textContent = `완성한 건축: ${done} (${count}/4)`;
+  el.textContent = `완성한 건축: ${done} (${count}/5)`;
 }
 
 // ===== Achievements =====
@@ -1210,6 +1354,7 @@ function checkMasterBuilder() {
   const data = loadProgress();
   const c = data.completed || {};
   if (c.hanok && c.modern && c.choga && c.giwajip) earnAchievement('master_builder');
+  if (c.hanok && c.modern && c.choga && c.giwajip && c.seowon) earnAchievement('all_modes');
   if (Object.keys(data.materialsUsed || {}).length >= 20) earnAchievement('all_materials');
 }
 
@@ -1400,6 +1545,41 @@ function initThree() {
     const angle = (i / 10) * Math.PI * 2;
     const r = 15 + Math.random() * 8;
     addTree(Math.cos(angle) * r, Math.sin(angle) * r);
+  }
+
+  // Pond
+  const pondGeo = new THREE.CircleGeometry(2, 24);
+  const pondMat = new THREE.MeshStandardMaterial({ color: 0x3a6888, transparent: true, opacity: 0.7, roughness: 0.1, metalness: 0.3 });
+  const pond = new THREE.Mesh(pondGeo, pondMat);
+  pond.rotation.x = -Math.PI / 2;
+  pond.position.set(8, 0.02, -6);
+  pond.receiveShadow = true;
+  scene.add(pond);
+
+  // Stone lantern (석등)
+  const lanternBase = new THREE.Mesh(new THREE.CylinderGeometry(0.3, 0.35, 0.2, 8), new THREE.MeshStandardMaterial({ color: 0x999990 }));
+  lanternBase.position.set(-8, 0.1, 5);
+  scene.add(lanternBase);
+  const lanternPole = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.12, 1.2, 8), new THREE.MeshStandardMaterial({ color: 0x999990 }));
+  lanternPole.position.set(-8, 0.8, 5);
+  scene.add(lanternPole);
+  const lanternTop = new THREE.Mesh(new THREE.CylinderGeometry(0.35, 0.25, 0.4, 6), new THREE.MeshStandardMaterial({ color: 0x999990 }));
+  lanternTop.position.set(-8, 1.6, 5);
+  scene.add(lanternTop);
+  const lanternCap = new THREE.Mesh(new THREE.ConeGeometry(0.4, 0.3, 6), new THREE.MeshStandardMaterial({ color: 0x888880 }));
+  lanternCap.position.set(-8, 1.95, 5);
+  scene.add(lanternCap);
+
+  // Stone path (돌길)
+  for (let i = 0; i < 8; i++) {
+    const stone = new THREE.Mesh(
+      new THREE.CylinderGeometry(0.25 + Math.random()*0.15, 0.3 + Math.random()*0.15, 0.06, 7),
+      new THREE.MeshStandardMaterial({ color: 0xa0a098 })
+    );
+    stone.position.set(0, 0.03, 6.5 + i * 0.8 + Math.random()*0.2);
+    stone.rotation.y = Math.random() * Math.PI;
+    stone.receiveShadow = true;
+    scene.add(stone);
   }
 
   buildGroup = new THREE.Group();
@@ -2319,13 +2499,150 @@ function buildGiwajipPart(partName, matColor) {
   return g;
 }
 
+// ===== v4.0: Build Seowon Part =====
+function buildSeowonPart(partName, matColor) {
+  const g = new THREE.Group();
+  const mat = createMaterial(matColor);
+  switch (partName) {
+    case 's_gidan': {
+      const base = new THREE.Mesh(new THREE.BoxGeometry(10, 0.5, 8), mat);
+      base.position.y = 0.25; base.castShadow = true; base.receiveShadow = true;
+      g.add(base);
+      for (let i = 0; i < 3; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(10.1, 0.06, 0.06), createMaterial(matColor - 0x0a0a0a));
+        line.position.set(0, 0.12*(i+1), 4.01); g.add(line);
+        const l2 = line.clone(); l2.position.z = -4.01; g.add(l2);
+      }
+      const stairs = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.25, 0.8), mat);
+      stairs.position.set(0, 0.12, 4.4); stairs.castShadow = true; g.add(stairs);
+      break;
+    }
+    case 's_gidung': {
+      const positions = [[-4,0,-3],[-4,0,3],[4,0,-3],[4,0,3],[-2,0,-3],[-2,0,3],[0,0,-3],[0,0,3],[2,0,-3],[2,0,3]];
+      positions.forEach(p => {
+        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.16, 0.18, 3, 12), mat);
+        pillar.position.set(p[0], 2, p[2]); pillar.castShadow = true; g.add(pillar);
+      });
+      break;
+    }
+    case 's_bo': {
+      [[-3,3]].forEach(z => {
+        const beam = new THREE.Mesh(new THREE.BoxGeometry(8.5, 0.28, 0.22), mat);
+        beam.position.set(0, 3.6, z[0]); beam.castShadow = true; g.add(beam);
+        const b2 = beam.clone(); b2.position.z = z[1]; g.add(b2);
+      });
+      [-4,-2,0,2,4].forEach(x => {
+        const cb = new THREE.Mesh(new THREE.BoxGeometry(0.22, 0.28, 6.2), mat);
+        cb.position.set(x, 3.6, 0); cb.castShadow = true; g.add(cb);
+      });
+      const ridge = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.12, 8.5, 8), mat);
+      ridge.rotation.z = Math.PI/2; ridge.position.set(0, 5.5, 0); g.add(ridge);
+      [-3,0,3].forEach(x => {
+        const post = new THREE.Mesh(new THREE.BoxGeometry(0.14, 1.8, 0.14), mat);
+        post.position.set(x, 4.6, 0); g.add(post);
+      });
+      break;
+    }
+    case 's_roof': {
+      const frontR = new THREE.Mesh(new THREE.BoxGeometry(9, 0.18, 4), mat);
+      frontR.position.set(0, 4.5, 1.8); frontR.rotation.x = 0.4; frontR.castShadow = true; g.add(frontR);
+      const backR = frontR.clone(); backR.position.z = -1.8; backR.rotation.x = -0.4; g.add(backR);
+      const ridgeCap = new THREE.Mesh(new THREE.BoxGeometry(9.2, 0.25, 0.5), mat);
+      ridgeCap.position.set(0, 5.6, 0); g.add(ridgeCap);
+      [-4.8,4.8].forEach(x => {
+        const wallGable = new THREE.BufferGeometry();
+        const verts = new Float32Array([x,3.5,-3.5, x,3.5,3.5, x,5.5,0]);
+        wallGable.setAttribute('position', new THREE.BufferAttribute(verts, 3));
+        wallGable.computeVertexNormals();
+        const gableMesh = new THREE.Mesh(wallGable, createMaterial(0xe8dcc8, 0.9));
+        gableMesh.castShadow = true; g.add(gableMesh);
+      });
+      for (let i = 0; i < 14; i++) {
+        const z = 0.2 + i*0.22;
+        const line = new THREE.Mesh(new THREE.BoxGeometry(8.8, 0.04, 0.05), createMaterial(matColor + 0x080808));
+        line.position.set(0, 4.55+i*0.06, z*0.85); line.rotation.x = 0.4; g.add(line);
+        const l2 = line.clone(); l2.position.z = -(z*0.85); l2.rotation.x = -0.4; g.add(l2);
+      }
+      break;
+    }
+    case 's_lecture': {
+      const floorMat = createMaterial(matColor, 0.6);
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(6, 0.12, 5.5), floorMat);
+      floor.position.set(0, 0.56, 0); floor.receiveShadow = true; g.add(floor);
+      for (let i = 0; i < 14; i++) {
+        const line = new THREE.Mesh(new THREE.BoxGeometry(5.9, 0.02, 0.02), createMaterial(matColor - 0x151510));
+        line.position.set(0, 0.63, -2.6+i*0.38); g.add(line);
+      }
+      const desk = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.06, 0.6), createMaterial(0x8b6914));
+      desk.position.set(0, 0.95, -1.5); g.add(desk);
+      [[-0.8,0,-0.2],[0.8,0,-0.2],[-0.8,0,0.2],[0.8,0,0.2]].forEach(p => {
+        const leg = new THREE.Mesh(new THREE.BoxGeometry(0.04, 0.3, 0.04), createMaterial(0x8b6914));
+        leg.position.set(p[0], 0.78, -1.5+p[2]); g.add(leg);
+      });
+      for (let r = 0; r < 2; r++) {
+        for (let c = 0; c < 3; c++) {
+          const sDsk = new THREE.Mesh(new THREE.BoxGeometry(1, 0.04, 0.4), createMaterial(0xa07040));
+          sDsk.position.set(-1.2+c*1.2, 0.85, 0.5+r*1.2); g.add(sDsk);
+        }
+      }
+      break;
+    }
+    case 's_dormitory': {
+      const wallMat = createMaterial(matColor, 0.9);
+      [-3.5,3.5].forEach(x => {
+        const building = new THREE.Group();
+        const wall1 = new THREE.Mesh(new THREE.BoxGeometry(2, 2.5, 0.12), wallMat);
+        wall1.position.set(0, 1.75, -1.5); building.add(wall1);
+        const wall2 = new THREE.Mesh(new THREE.BoxGeometry(2, 2.5, 0.12), wallMat);
+        wall2.position.set(0, 1.75, 1.5); building.add(wall2);
+        const wall3 = new THREE.Mesh(new THREE.BoxGeometry(0.12, 2.5, 3), wallMat);
+        wall3.position.set(x > 0 ? 1 : -1, 1.75, 0); building.add(wall3);
+        const paper = new THREE.Mesh(new THREE.BoxGeometry(0.8, 1.6, 0.06), createMaterial(0xfff5e0, 0.95));
+        paper.position.set(0, 1.5, 1.56); building.add(paper);
+        const frameMat2 = createMaterial(0x8b6914, 0.6);
+        for (let h = 0; h < 4; h++) {
+          const bar = new THREE.Mesh(new THREE.BoxGeometry(0.75, 0.02, 0.03), frameMat2);
+          bar.position.set(0, 0.9+h*0.4, 1.59); building.add(bar);
+        }
+        const miniRoof = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.15, 3.8), createMaterial(0x555555));
+        miniRoof.position.set(0, 3.1, 0); building.add(miniRoof);
+        building.position.x = x;
+        g.add(building);
+      });
+      break;
+    }
+    case 's_shrine': {
+      const shrineGroup = new THREE.Group();
+      const base = new THREE.Mesh(new THREE.BoxGeometry(4, 0.6, 3), mat);
+      base.position.y = 0.3; base.castShadow = true; shrineGroup.add(base);
+      const positions2 = [[-1.5,0,-1],[1.5,0,-1],[-1.5,0,1],[1.5,0,1]];
+      positions2.forEach(p => {
+        const pil = new THREE.Mesh(new THREE.CylinderGeometry(0.14, 0.16, 2.5, 12), mat);
+        pil.position.set(p[0], 1.85, p[2]); pil.castShadow = true; shrineGroup.add(pil);
+      });
+      const sRoof = new THREE.Mesh(new THREE.BoxGeometry(4.5, 0.18, 3.8), createMaterial(0x555555));
+      sRoof.position.y = 3.2; sRoof.castShadow = true; shrineGroup.add(sRoof);
+      const ridgeCap2 = new THREE.Mesh(new THREE.BoxGeometry(4.6, 0.2, 0.4), createMaterial(0x555555));
+      ridgeCap2.position.y = 3.5; shrineGroup.add(ridgeCap2);
+      const tablet = new THREE.Mesh(new THREE.BoxGeometry(0.6, 0.8, 0.06), createMaterial(0xf5deb3));
+      tablet.position.set(0, 1.6, 0); shrineGroup.add(tablet);
+      const tableSt = new THREE.Mesh(new THREE.BoxGeometry(0.8, 0.08, 0.3), createMaterial(0x8b6914));
+      tableSt.position.set(0, 1.15, 0); shrineGroup.add(tableSt);
+      shrineGroup.position.set(0, 0, -5);
+      g.add(shrineGroup);
+      break;
+    }
+  }
+  return g;
+}
+
 // ===== Game Logic =====
 
 function startGame(mode) {
   SFX.click();
   ensureAudio();
   gameMode = mode;
-  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : mode === 'giwajip' ? GIWAJIP_STEPS : MODERN_STEPS;
+  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : mode === 'giwajip' ? GIWAJIP_STEPS : mode === 'seowon' ? SEOWON_STEPS : MODERN_STEPS;
   currentStep = 0;
   selectedMaterials = {};
   builtParts = {};
@@ -2359,6 +2676,9 @@ function startGame(mode) {
   } else if (mode === 'giwajip') {
     document.getElementById('gameTitle').textContent = '기와집 짓기';
     document.getElementById('modeLabel').textContent = '양반가 기와집 모드';
+  } else if (mode === 'seowon') {
+    document.getElementById('gameTitle').textContent = '서원 짓기';
+    document.getElementById('modeLabel').textContent = '서원 교육 건축 모드';
   } else {
     document.getElementById('gameTitle').textContent = '주택 짓기';
     document.getElementById('modeLabel').textContent = '현대 주택 모드';
@@ -2473,6 +2793,7 @@ function buildStep() {
   if (gameMode === 'hanok') part = buildHanokPart(step.part, matColor);
   else if (gameMode === 'choga') part = buildChogaPart(step.part, matColor);
   else if (gameMode === 'giwajip') part = buildGiwajipPart(step.part, matColor);
+  else if (gameMode === 'seowon') part = buildSeowonPart(step.part, matColor);
   else part = buildModernPart(step.part, matColor);
 
   // Play construction sound
@@ -2526,7 +2847,7 @@ function afterBuild() {
     data.completed = data.completed || {};
     data.completed[gameMode] = Date.now();
     saveProgress(data);
-    const achMap = { hanok:'complete_hanok', choga:'complete_choga', giwajip:'complete_giwajip', modern:'complete_modern' };
+    const achMap = { hanok:'complete_hanok', choga:'complete_choga', giwajip:'complete_giwajip', modern:'complete_modern', seowon:'complete_seowon' };
     earnAchievement(achMap[gameMode] || 'complete_modern');
     setTimeout(checkMasterBuilder, 500);
     const elapsed = (Date.now() - gameStartTime) / 1000;
@@ -2541,12 +2862,13 @@ function afterBuild() {
 
     document.getElementById('statSteps').textContent = steps.length;
     document.getElementById('statParts').textContent = buildGroup.children.length;
-    const titles = { hanok:'한옥 완성!', choga:'초가집 완성!', giwajip:'기와집 완성!', modern:'주택 완성!' };
+    const titles = { hanok:'한옥 완성!', choga:'초가집 완성!', giwajip:'기와집 완성!', modern:'주택 완성!', seowon:'서원 완성!' };
     const msgs = {
       hanok:'멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.',
       choga:'소박하고 따뜻한 초가집을 완성했어요! 서민의 지혜가 담긴 집이에요.',
       giwajip:'화려한 양반가 기와집을 완성했어요! 공포와 팔작지붕의 아름다움을 감상하세요.',
-      modern:'현대 주택을 완성했어요! 한옥과 비교해 보세요.'
+      modern:'현대 주택을 완성했어요! 한옥과 비교해 보세요.',
+      seowon:'학문의 전당 서원을 완성했어요! 선비의 교육 건축을 체험했어요.'
     };
     const title = titles[gameMode] || '완성!';
     const msg = msgs[gameMode] || '멋진 건축을 완성했어요!';
@@ -2586,20 +2908,81 @@ function startViewing() {
 }
 
 function toggleCompare() {
-  // Show comparison info
-  const info = gameMode === 'hanok'
-    ? '한옥 vs 현대 주택:\n\n' +
-      '기단 vs 콘크리트 기초: 한옥은 자연석, 현대는 콘크리트\n' +
-      '나무 기둥 vs 철근: 한옥은 소나무, 현대는 철근콘크리트\n' +
-      '온돌 vs 바닥 난방: 온돌이 현대 바닥 난방의 원조!\n' +
-      '창호지 vs 유리: 한지는 숨쉬고, 유리는 단열이 좋아요\n' +
-      '기와 vs 슬레이트: 기와는 100년, 슬레이트는 30년 수명'
-    : '현대 주택 vs 한옥:\n\n' +
-      '콘크리트 vs 자연석: 현대는 강하지만 한옥은 자연친화적\n' +
-      '바닥 난방 vs 온돌: 현대 바닥난방은 온돌에서 발전했어요!\n' +
-      '유리창 vs 창호지: 유리는 투명, 창호지는 은은한 빛\n' +
-      '에어컨 vs 대청마루: 마루 아래로 바람이 지나가는 자연 냉방!';
-  alert(info);
+  const comparisons = {
+    hanok: [
+      ['기초','자연석 기단','콘크리트 기초'],
+      ['기둥','소나무 원목','철근콘크리트'],
+      ['지붕','흙기와 (100년+)','슬레이트 (30년)'],
+      ['난방','온돌 (바닥 복사열)','바닥 난방 (온돌 발전형)'],
+      ['창문','한지 창호 (숨쉬는 벽)','이중유리 (단열·방음)'],
+      ['냉방','대청마루 (자연 통풍)','에어컨 (전력 소비)'],
+      ['벽체','흙+짚 (친환경)','벽돌+단열재 (고효율)'],
+      ['수명','400~500년','50~100년']
+    ],
+    modern: [
+      ['기초','콘크리트 기초','자연석 기단 (한옥)'],
+      ['구조','철근콘크리트','소나무 목구조 (한옥)'],
+      ['지붕','슬레이트/기와형','흙기와 (전통)'],
+      ['난방','바닥 난방 (온돌 발전형)','온돌 (전통 원조)'],
+      ['창문','이중유리 (단열·방음)','한지 창호 (통기)'],
+      ['시공','기계화 (빠름)','수작업 (느리지만 정교)'],
+      ['유지','정기 보수 필요','자연 재료 교체'],
+      ['환경','탄소 발생','친환경 재료']
+    ],
+    choga: [
+      ['기초','다진 흙바닥','화강석 기단 (한옥)'],
+      ['지붕','볏짚 (매년 교체)','기와 (100년+)'],
+      ['벽','황토+짚','흙+회 (한옥)'],
+      ['규모','2~3칸 소형','5~7칸 중형 (한옥)'],
+      ['비용','저렴 (주변 재료)','고가 (다듬은 재료)'],
+      ['보온','짚 단열 (양호)','온돌+두꺼운 벽 (우수)'],
+      ['화재','매우 취약','기와로 보호'],
+      ['공동체','이엉잇기 (마을 협동)','전문 대목장']
+    ],
+    giwajip: [
+      ['기단','높은 장대석 3단+','낮은 자연석 (한옥)'],
+      ['기둥','원기둥 (배흘림)','각기둥 (한옥)'],
+      ['공포','익공/주심포식','없음 (초가)'],
+      ['지붕','팔작지붕','맞배지붕 (서원)'],
+      ['공간','안채+사랑채+행랑채','단일 건물 (초가)'],
+      ['마루','넓은 대청마루','좁은 봉당 (초가)'],
+      ['장식','꽃살문·아자살문','평문 (서민가)'],
+      ['신분','양반 이상','서민 (초가)']
+    ],
+    seowon: [
+      ['목적','학문 교육','주거 (한옥)'],
+      ['배치','전학후묘 원칙','안채/사랑채 구분 (양반가)'],
+      ['지붕','맞배지붕 (검소)','팔작지붕 (양반가)'],
+      ['공간','강학당+동서재+사당','방+마루+부엌 (한옥)'],
+      ['장식','절제된 장식','화려한 공포 (양반가)'],
+      ['정신','학문·검소','풍요·안락 (주거)'],
+      ['위치','경치 좋은 곳','마을 안'],
+      ['유산','유네스코 세계유산 9곳','개인 소유']
+    ]
+  };
+  const data2 = comparisons[gameMode] || comparisons.hanok;
+  const body = document.getElementById('compareBody');
+  const titleMap = {
+    hanok: ['항목','전통 한옥','현대 주택'],
+    modern: ['항목','현대 주택','전통 한옥'],
+    choga: ['항목','초가집','전통 한옥'],
+    giwajip: ['항목','기와집 (양반가)','초가집 (서민가)'],
+    seowon: ['항목','서원 (교육)','한옥 (주거)']
+  };
+  const t = titleMap[gameMode] || titleMap.hanok;
+  document.getElementById('compareTitle').textContent = '🔍 건축 비교';
+  document.querySelector('.compare-header').innerHTML = '<span>' + t[0] + '</span><span>' + t[1] + '</span><span>' + t[2] + '</span>';
+  body.innerHTML = data2.map(function(r) { return '<div class="compare-row"><div class="c-label">' + r[0] + '</div><div class="c-old">' + r[1] + '</div><div class="c-new">' + r[2] + '</div></div>'; }).join('');
+  document.getElementById('compareModal').classList.add('show');
+  SFX.click();
+  const prog = loadProgress();
+  prog.compareCount = (prog.compareCount || 0) + 1;
+  saveProgress(prog);
+  if (prog.compareCount >= 3) earnAchievement('compare_master');
+}
+function closeCompare() {
+  document.getElementById('compareModal').classList.remove('show');
+  SFX.click();
 }
 
 function toggleSide() {
