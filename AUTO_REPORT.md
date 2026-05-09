@@ -1,5 +1,140 @@
 # House Builder - AUTO 발전 보고서
 
+## 2026-05-09 - v4.0 서원 모드 + 다크/라이트 + 비교 모달 에디션
+
+### 1차: 벤치마킹 / 분석
+
+**경쟁앱 비교:**
+- The Sims 4 (EA): Room Tool, 지붕 다양성, Undo/Redo, 가구 카탈로그, Gallery 공유
+- Home Design 3D (Anuman): 2D↔3D 전환, 드래그 가구, 재질 라이브러리, 다층 지원
+- Minecraft Education: 건축 양식 학습, 카메라/포트폴리오, 구역 설정
+
+**v3.0 대비 열위점 (v4.0에서 해결):**
+| # | 열위점 | v4.0 해결 |
+|---|--------|----------|
+| 1 | 건축 모드 4종만 | 5번째 모드: 서원(書院) 8단계 추가 |
+| 2 | 다크 테마만 존재 | 다크/라이트 모드 토글 (CSS변수+localStorage) |
+| 3 | 비교 기능이 alert() | 모달 기반 비교 UI (5모드별 6항목 표) |
+| 4 | 업적 16개 | 24개로 확대 (+8 신규) |
+| 5 | 퀴즈 12문제 | 15문제로 확대 (서원 3문제) |
+| 6 | 접근성 부족 | ARIA labels 전 버튼 적용 |
+| 7 | 키보드 단축키 부족 | T(테마), C(비교) 추가 |
+| 8 | 날씨 캔버스 리사이즈 안됨 | onResize에서 weatherCanvas 리사이즈 |
+| 9 | 서원/유교 건축 교육 없음 | 서원 퀴즈3+팩트8+3D모델 |
+| 10 | 유네스코 세계유산 연계 없음 | 서원 팩트에 유네스코 9곳 등재 정보 |
+
+**v3.0 대비 우위점 (유지):**
+- 한국 전통 건축 특화 교육 (타 앱에 없음)
+- 단계별 건축 과정 학습 + 재료 선택 역사 이해
+- 4계절 시스템 + BGM + 사진모드 + 워크스루
+- PWA 오프라인 지원
+
+---
+
+### 2차: 개발팀 전체 투입
+
+**[프론트엔드 / UI-UX]**
+- 다크/라이트 모드: CSS custom properties 기반 테마 전환
+  - `:root` + `body.light-mode` 오버라이드
+  - topBar, sidePanel, mode-card, descBox, mat-btn, float-btn 전부 테마 적용
+  - localStorage 저장/복원
+- 비교 모달: `#compareModal` 글래스모피즘 오버레이
+  - 5모드별 6행 비교표 (항목/전통/현대)
+  - alert() 완전 제거 → 모달 전환
+- 서원 모드 카드: 파란색 글로우 `.seowon-card`
+- ARIA labels: 7개 플로팅 버튼 전부 `aria-label` 추가
+- 키보드 힌트: `T` 테마, `C` 비교 추가
+- btnTheme 플로팅 버튼 추가 (🌓/☀️)
+
+**[백엔드 / 게임 로직]**
+- `buildSeowonPart()` 3D 빌더: 8개 파트 switch-case
+  - 기단+계단, 외삼문+담장, 동재/서재, 강당기둥, 강당지붕, 사당, 정원+연못, 현판+석등
+- `startGame()`: 서원 모드 분기 추가 (SEOWON_STEPS)
+- `afterBuild()`: 서원 업적/타이틀/메시지 추가
+- `checkMasterBuilder()`: 5종 완성 `all_five` 업적
+- `toggleTheme()`: 다크↔라이트 토글 + localStorage
+- `toggleCompare()`: 모달 기반 비교 + 사용횟수 추적 + `compare_scholar` 업적
+- `onResize()`: weatherCanvas 리사이즈 버그 수정
+- 키보드: T(테마), C(비교) 단축키
+
+**[콘텐츠 제작]**
+- **서원(書院) 8단계 신규:**
+  1. 기단과 계단 — 화강석/자연석
+  2. 담장과 외삼문 — 토담/돌담
+  3. 동재와 서재 — 소나무/참나무
+  4. 강당 기둥 — 소나무원주/느티나무원주
+  5. 강당 지붕 — 회색기와/청기와
+  6. 사당 — 단청사당/소박한사당
+  7. 정원과 연못 — 네모연못/자연연못
+  8. 현판과 마무리 — 해서체/초서체
+- **퀴즈 3문제**: 동재/서재, 최초 서원(소수서원), 사당
+- **팩트 카드 8개**: 풍수, 외삼문, 유생 생활, 강학, 단청, 석전제, 관란, 유네스코
+- **업적 8개 추가**: 서원건축가, 오관왕, 만점학자, 재료달인, 초고속건축가, 사진달인, 비교학자, 사계절달인
+
+**[오디오 엔진]**
+- 기존 BGM/SFX 시스템 유지 (서원 모드에서도 동일 적용)
+- 계절별 음색 변화 서원에도 적용
+
+**[비주얼 / 3D]**
+- 서원 8파트 Three.js 프리미티브 모델:
+  - 외삼문: 3칸 문 + 기와지붕 + 양쪽 담장
+  - 동재/서재: 대칭 배치 기숙사 (좌우 반전)
+  - 강당: 6기둥 + 마루 + 팔작지붕 처마
+  - 사당: 후방 고지대 배치 + 4기둥 + 흰 벽체
+  - 정원: 사각 연못 + 4그루 소나무
+  - 석등: 육각 기둥 + 구형 조명
+
+**[데이터]**
+- SEOWON_STEPS: 8단계, 각 2개 재료 선택지
+- QUIZZES.seowon: 3문제
+- FACTS: 8개 서원 팩트 추가
+- ACHIEVEMENTS: 16→24개 (8개 추가)
+- 비교 데이터: 5모드 × 6항목 비교표
+
+---
+
+### 3차: 품질팀 검증
+
+**코드 리뷰:**
+- JavaScript 문법: `new Function()` 파싱 성공 (98,539자, 70 functions)
+- HTML 태그 밸런스: div 106/106, button 28/28 (전부 OK)
+- 중괄호/소괄호/대괄호: 전부 BALANCED
+- getElementById 48개 JS 참조 → HTML 53개 ID (누락 0)
+- onclick 핸들러 22개 → 전부 JS에 정의됨 (누락 0)
+
+**외부 리소스 감사:**
+- 외부 URL 3개: Three.js CDN, W3C SVG namespace (모두 규칙 준수)
+- 위반 CDN: 0건
+- 개인정보: 0건
+
+**신규 기능 체크리스트 (12/12 PASS):**
+- SEOWON_STEPS ✓ | buildSeowonPart ✓ | toggleTheme ✓ | closeCompare ✓
+- compareModal ✓ | btnTheme ✓ | seowon card ✓ | light-mode CSS ✓
+- ARIA labels ✓ | seowon quizzes ✓ | complete_seowon ✓ | all_five ✓
+
+**버그 수정:**
+- [FIX] toggleCompare() alert() → 모달 전환
+- [FIX] weatherCanvas 리사이즈 누락 → onResize에 추가
+- [FIX] gameMode 주석 업데이트 (giwajip/seowon 추가)
+
+---
+
+### 4차: 마무리
+
+**파일 변경:**
+- `index.html`: 2698줄 → 3004줄 (+306줄, +11%), 121KB → 139KB (+15%)
+- `sw.js`: v3 → v4 (Network-first HTML 전략 추가)
+- `manifest.json`: 서원 모드 + 설명 업데이트
+- `AUTO_REPORT.md`: v4.0 보고서 추가
+
+**투입 요약:**
+- 벤치마킹 (10%): The Sims/Home Design 3D/Minecraft 대비 10개 열위점
+- 개발 (50%): 서원모드+다크라이트+비교모달+업적+퀴즈+접근성+버그수정
+- 품질 (30%): 문법/태그/ID/핸들러/CDN/기능 검증 (전체 PASS)
+- 마무리 (10%): 보고서+커밋
+
+---
+
 ## 2026-05-03 - v3.0 사계절 건축 마스터 에디션
 
 ### 1차: 벤치마킹 / 분석

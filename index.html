@@ -231,6 +231,41 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
 /* ===== v3.0: Walkthrough button ===== */
 #btnWalk{top:308px;right:16px}
 @media(max-width:768px){#btnWalk{top:294px;width:40px;height:40px;font-size:16px}}
+
+/* ===== v4.0: Dark/Light Mode ===== */
+:root{--bg-primary:#1a1a2e;--bg-panel:rgba(30,20,10,.95);--text-primary:#fff;--text-secondary:#c4956a;--accent:#c4956a;--border:rgba(196,149,106,.2)}
+body.light-mode{--bg-primary:#f5f0e8;--bg-panel:rgba(255,248,238,.97);--text-primary:#2d1b0e;--text-secondary:#7a5a3a;--accent:#8b6914;--border:rgba(139,105,20,.25)}
+body.light-mode #topBar{background:linear-gradient(135deg,#d4b896 0%,#c4956a 100%)}
+body.light-mode #sidePanel{background:var(--bg-panel);border-left-color:var(--accent)}
+body.light-mode .step-item:hover{background:rgba(139,105,20,.1)}
+body.light-mode .mode-card{background:rgba(45,27,14,.08);border-color:rgba(45,27,14,.2);color:#2d1b0e}
+body.light-mode .mode-card:hover{border-color:#8b6914;box-shadow:0 8px 32px rgba(139,105,20,.2)}
+body.light-mode #descBox{background:rgba(139,105,20,.06);border-color:rgba(139,105,20,.2);color:#4a3520}
+body.light-mode .mat-btn{background:rgba(139,105,20,.1);border-color:rgba(139,105,20,.3);color:#2d1b0e}
+body.light-mode .float-btn{background:rgba(45,27,14,.08);color:#2d1b0e;border-color:rgba(45,27,14,.2)}
+
+/* ===== v4.0: Compare Modal ===== */
+#compareModal{position:fixed;inset:0;background:rgba(0,0,0,.7);display:none;align-items:center;justify-content:center;z-index:600;backdrop-filter:blur(4px)}
+#compareModal.show{display:flex}
+.compare-card{background:linear-gradient(135deg,#2d1b0e,#4a2c17);border:2px solid #c4956a;border-radius:16px;padding:28px;max-width:500px;width:90%;max-height:80vh;overflow-y:auto;color:#f5deb3}
+.compare-card h3{font-size:18px;margin-bottom:16px;text-align:center}
+.compare-row{display:flex;justify-content:space-between;padding:8px 0;border-bottom:1px solid rgba(196,149,106,.2);font-size:13px}
+.compare-row span:first-child{color:#c4956a;font-weight:600}
+body.light-mode .compare-card{background:linear-gradient(135deg,#f5f0e8,#e8dcc8);color:#2d1b0e}
+
+/* ===== v4.0: Save Slots ===== */
+.save-slots{display:flex;gap:8px;margin:12px 0}
+.save-slot{flex:1;padding:10px 8px;background:rgba(196,149,106,.1);border:1px solid rgba(196,149,106,.3);border-radius:8px;color:#f5deb3;font-size:11px;cursor:pointer;text-align:center;transition:all .2s}
+.save-slot:hover,.save-slot.active{border-color:#c4956a;background:rgba(196,149,106,.25)}
+.save-slot .slot-label{font-weight:700;margin-bottom:4px}
+
+/* ===== v4.0: Seowon Card Glow ===== */
+.seowon-card{border-color:rgba(100,149,237,.4)!important;box-shadow:0 0 20px rgba(100,149,237,.15)}
+.seowon-card:hover{border-color:rgba(100,149,237,.7)!important;box-shadow:0 0 30px rgba(100,149,237,.3)}
+
+/* ===== v4.0: Theme Toggle Button ===== */
+#btnTheme{top:356px;right:16px}
+@media(max-width:768px){#btnTheme{top:340px;width:40px;height:40px;font-size:16px}}
 </style>
 </head>
 <body>
@@ -269,6 +304,12 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
       <h3>현대 주택</h3>
       <p>콘크리트 기초부터 인테리어까지<br>현대 건축의 과정을<br>체험해보세요</p>
       <div style="margin-top:10px;font-size:11px;color:#888">8 단계 &middot; 철근콘크리트</div>
+    </div>
+    <div class="mode-card seowon-card" onclick="startGame(&#39;seowon&#39;)">
+      <div class="mode-icon">📚</div>
+      <h3>서원 (書院)</h3>
+      <p>유교 성현을 모시는 학당<br>조선 선비의 배움터를<br>직접 지어보세요</p>
+      <div style="margin-top:10px;font-size:11px;color:#6495ed">8 단계 &middot; 유교 서원</div>
     </div>
   </div>
   <div id="progressBadge" style="margin-top:28px;font-size:12px;color:#888"></div>
@@ -327,12 +368,13 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
 </div>
 
 <!-- Floating buttons -->
-<button id="btnMute" class="float-btn" onclick="toggleMute()" title="소리 켜기/끄기">🔊</button>
-<button id="btnDay" class="float-btn" onclick="toggleDayNight()" title="낮/밤 전환">☀️</button>
-<button id="btnHelp" class="float-btn" onclick="showTutorial()" title="도움말">❔</button>
-<button id="btnPhoto" class="float-btn" onclick="takeScreenshot()" title="사진 찍기">📸</button>
-<button id="btnBGM" class="float-btn" onclick="toggleBGM()" title="배경음악">🎵</button>
-<button id="btnWalk" class="float-btn" onclick="toggleWalkthrough()" title="워크스루">🚶</button>
+<button id="btnMute" class="float-btn" onclick="toggleMute()" title="소리 켜기/끄기" aria-label="소리 켜기/끄기">🔊</button>
+<button id="btnDay" class="float-btn" onclick="toggleDayNight()" title="낮/밤 전환" aria-label="낮/밤 전환">☀️</button>
+<button id="btnHelp" class="float-btn" onclick="showTutorial()" title="도움말" aria-label="도움말">❔</button>
+<button id="btnPhoto" class="float-btn" onclick="takeScreenshot()" title="사진 찍기" aria-label="사진 찍기">📸</button>
+<button id="btnBGM" class="float-btn" onclick="toggleBGM()" title="배경음악" aria-label="배경음악 토글">🎵</button>
+<button id="btnWalk" class="float-btn" onclick="toggleWalkthrough()" title="워크스루" aria-label="워크스루 모드">🚶</button>
+<button id="btnTheme" class="float-btn" onclick="toggleTheme()" title="다크/라이트 모드" aria-label="테마 전환">🌓</button>
 
 <!-- Weather Canvas -->
 <canvas id="weatherCanvas" style="display:none"></canvas>
@@ -348,9 +390,17 @@ body{font-family:-apple-system,BlinkMacSystemFont,&quot;Apple SD Gothic Neo&quot
   </div>
 </div>
 
+<div id="compareModal">
+  <div class="compare-card">
+    <h3 id="compareTitle">건축 비교</h3>
+    <div id="compareBody"></div>
+    <button class="close-btn" onclick="closeCompare()" style="margin-top:16px">닫기</button>
+  </div>
+</div>
+
 <!-- Keyboard hint -->
 <div class="kbd-hint" id="kbdHint">
-  <kbd>Space</kbd> 짓기 &nbsp; <kbd>←→</kbd> 회전 &nbsp; <kbd>R</kbd> 리셋 &nbsp; <kbd>M</kbd> 음소거 &nbsp; <kbd>N</kbd> 낮/밤 &nbsp; <kbd>B</kbd> BGM &nbsp; <kbd>P</kbd> 사진 &nbsp; <kbd>1-4</kbd> 계절
+  <kbd>Space</kbd> 짓기 &nbsp; <kbd>←→</kbd> 회전 &nbsp; <kbd>R</kbd> 리셋 &nbsp; <kbd>M</kbd> 음소거 &nbsp; <kbd>N</kbd> 낮/밤 &nbsp; <kbd>B</kbd> BGM &nbsp; <kbd>P</kbd> 사진 &nbsp; <kbd>1-4</kbd> 계절 &nbsp; <kbd>T</kbd> 테마 &nbsp; <kbd>C</kbd> 비교
 </div>
 
 <!-- Top Bar -->
@@ -645,6 +695,58 @@ const GIWAJIP_STEPS = [
   }
 ];
 
+// ===== Seowon (Confucian Academy) Steps =====
+const SEOWON_STEPS = [
+  {
+    name: '기단과 계단', part: 's_gidan',
+    desc: '서원의 기초를 다져요.',
+    detail: '서원은 경사진 땅에 지어 자연과 조화를 이뤘어요. 높은 기단과 돌계단으로 학문의 위엄을 드러냈죠.',
+    materials: [{name:'화강석 기단',color:0xb0b0b0},{name:'자연석 기단',color:0x9a8b7a}]
+  },
+  {
+    name: '담장과 외삼문', part: 's_gate',
+    desc: '서원의 경계와 정문을 세워요.',
+    detail: '외삼문은 세 칸 문으로, 가운데는 신문(神門)이에요. 들어가면 세속과 학문의 경계가 나뉘어요.',
+    materials: [{name:'토담장',color:0xc4a882},{name:'돌담장',color:0xa0a0a0}]
+  },
+  {
+    name: '동재와 서재', part: 's_jae',
+    desc: '유생들의 기숙사를 지어요.',
+    detail: '동재(東齋)에는 선배, 서재(西齋)에는 후배가 머물렀어요. 소박한 구조로 학문에 집중했죠.',
+    materials: [{name:'소나무 기둥',color:0xc4956a},{name:'참나무 기둥',color:0x8b7355}]
+  },
+  {
+    name: '강당 기둥', part: 's_pillar',
+    desc: '강학 공간의 기둥을 세워요.',
+    detail: '강당은 서원의 중심 건물이에요. 스승과 제자가 학문을 논하던 곳으로, 넓은 대청이 특징이에요.',
+    materials: [{name:'소나무 원주',color:0xdeb887},{name:'느티나무 원주',color:0xbc8f8f}]
+  },
+  {
+    name: '강당 지붕', part: 's_roof',
+    desc: '강당의 팔작지붕을 올려요.',
+    detail: '강당 지붕은 팔작지붕이 많았어요. 용마루와 내림마루가 조화를 이루며 학문의 권위를 보여줬어요.',
+    materials: [{name:'회색 기와',color:0x6b6b6b},{name:'청기와',color:0x4a6b7a}]
+  },
+  {
+    name: '사당', part: 's_sadang',
+    desc: '성현의 위패를 모실 사당을 지어요.',
+    detail: '사당은 서원의 가장 높은 곳에 위치해요. 공자나 퇴계 이황 같은 성현의 위패를 모셨어요.',
+    materials: [{name:'단청 사당',color:0xc0392b},{name:'소박한 사당',color:0xdeb887}]
+  },
+  {
+    name: '정원과 연못', part: 's_garden',
+    desc: '사색의 공간을 꾸며요.',
+    detail: '서원의 정원에는 연못, 소나무, 매화가 있었어요. 선비들이 시를 짓고 사색하던 풍류의 공간이에요.',
+    materials: [{name:'네모 연못',color:0x3498db},{name:'자연 연못',color:0x2e86c1}]
+  },
+  {
+    name: '현판과 마무리', part: 's_finish',
+    desc: '서원 이름을 걸고 완성해요.',
+    detail: '현판에는 서원의 이름을 새겼어요. 도산서원, 소수서원, 옥산서원 등 이름마다 깊은 뜻이 담겨 있어요.',
+    materials: [{name:'해서체 현판',color:0x2c1810},{name:'초서체 현판',color:0x1a0f0a}]
+  }
+];
+
 // ===== Achievements =====
 const ACHIEVEMENTS = {
   first_build: { icon:'🔨', name:'첫 망치질', desc:'첫 부품을 지었어요' },
@@ -662,7 +764,15 @@ const ACHIEVEMENTS = {
   all_materials: { icon:'💎', name:'재료 수집가', desc:'20가지 재료 사용' },
   night_master: { icon:'🌠', name:'밤의 대가', desc:'밤에 3종 이상 완성' },
   walkthrough: { icon:'🚶', name:'산책자', desc:'워크스루 모드 사용' },
-  bgm_lover: { icon:'🎶', name:'음악 감상가', desc:'BGM을 5분 이상 감상' }
+  bgm_lover: { icon:'🎶', name:'음악 감상가', desc:'BGM을 5분 이상 감상' },
+  complete_seowon: { icon:'📚', name:'서원 건축가', desc:'서원을 완성했어요' },
+  all_five: { icon:'🏅', name:'오관왕', desc:'다섯 종류 건축 모두 완성' },
+  quiz_perfect: { icon:'💯', name:'만점 학자', desc:'퀴즈 5회 연속 정답' },
+  material_master: { icon:'🎖️', name:'재료의 달인', desc:'30가지 재료 사용' },
+  speed_master: { icon:'🚀', name:'초고속 건축가', desc:'2분 안에 완성' },
+  photo_master: { icon:'📷', name:'사진 달인', desc:'사진을 10장 찍었어요' },
+  compare_scholar: { icon:'📊', name:'비교 학자', desc:'비교 기능 3회 사용' },
+  season_master: { icon:'🌍', name:'사계절 달인', desc:'4계절 모두에서 5종 완성' }
 };
 
 // ===== Quizzes =====
@@ -698,6 +808,14 @@ const QUIZZES = {
       exp:'합각(合閣)은 팔작지붕의 양쪽 삼각 부분이에요. 박공이라고도 불러요.' },
     { q:'양반가에서 남자 주인이 사용하는 별도 건물을 뭐라고 하나요?', opts:['안채','별채','사랑채','행랑채'], answer:2,
       exp:'사랑채는 남성 공간으로 손님 접대와 학문을 하던 곳이에요.' }
+  ],
+  seowon: [
+    { q:'서원에서 유생들이 공부하며 기숙하던 건물은?', opts:['강당','사당','동재/서재','외삼문'], answer:2,
+      exp:'동재와 서재는 유생들의 기숙사였어요. 동쪽이 상위, 서쪽이 하위 유생이 머물렀어요.' },
+    { q:'조선 최초의 서원은 무엇인가요?', opts:['도산서원','소수서원','옥산서원','병산서원'], answer:1,
+      exp:'소수서원(紹修書院)은 1543년 풍기군수 주세붕이 세운 최초의 서원이에요.' },
+    { q:'서원에서 성현의 위패를 모시는 건물은?', opts:['강당','동재','사당','누각'], answer:2,
+      exp:'사당(祠堂)은 서원의 가장 높은 곳에 위치하며, 배향된 성현의 위패를 모셨어요.' }
   ]
 };
 
@@ -735,11 +853,19 @@ const FACTS = {
   g_seokkarae: '겹처마의 부연은 빗물이 더 멀리 떨어지게 해서 벽을 보��해요.',
   g_roof: '팔작지붕의 용마루 끝에는 취두(鷲頭)라는 독수리 장식을 올렸어요.',
   g_changho: '꽃살문의 문양은 모란(부귀), 국화(절개), 매화(지조)를 뜻해요.',
-  g_interior: '양반가 대청마루에서는 제사를 지내고, 가족 행사를 열었어요.'
+  g_interior: '양반가 대청마루에서는 제사를 지내고, 가족 행사를 열었어요.',
+  s_gidan: '서원은 풍수지리를 고려해 산과 물이 어우러진 곳에 세웠어요.',
+  s_gate: '외삼문의 가운데 문은 제향 때만 열었어요. 평소에는 옆문으로 다녔죠.',
+  s_jae: '유생들은 새벽 4시에 일어나 독서했어요. 동재가 서재보다 격이 높았죠.',
+  s_pillar: '서원 강당에서는 강학(講學)과 강회(講會)가 열렸어요. 조선판 세미나!',
+  s_roof: '서원 건물은 검소함을 추구해 단청을 최소화했어요.',
+  s_sadang: '매년 봄가을에 석전제(釋奠祭)를 지내며 성현을 기렸어요.',
+  s_garden: '서원 연못의 물은 심신을 씻는다는 뜻의 관란(觀瀾)이에요.',
+  s_finish: '한국의 서원 9곳이 2019년 유네스코 세계유산에 등재되었어요!'
 };
 
 // ===== State =====
-let gameMode = null; // 'hanok' | 'modern' | 'choga'
+let gameMode = null; // 'hanok' | 'modern' | 'choga' | 'giwajip' | 'seowon'
 let currentStep = 0;
 let steps = [];
 let selectedMaterials = {};
@@ -1184,9 +1310,9 @@ function updateProgressBadge() {
   const el = document.getElementById('progressBadge');
   if (!el) return;
   if (count === 0) { el.textContent = ''; return; }
-  const icons = { hanok:'🏯', choga:'🌾', giwajip:'🏛️', modern:'🏠' };
+  const icons = { hanok:'🏯', choga:'🌾', giwajip:'🏛️', modern:'🏠', seowon:'📚' };
   const done = Object.keys(completed).map(k => icons[k]||'').join(' ');
-  el.textContent = `완성한 건축: ${done} (${count}/4)`;
+  el.textContent = `완성한 건축: ${done} (${count}/5)`;
 }
 
 // ===== Achievements =====
@@ -1210,6 +1336,7 @@ function checkMasterBuilder() {
   const data = loadProgress();
   const c = data.completed || {};
   if (c.hanok && c.modern && c.choga && c.giwajip) earnAchievement('master_builder');
+  if (c.hanok && c.modern && c.choga && c.giwajip && c.seowon) earnAchievement('all_five');
   if (Object.keys(data.materialsUsed || {}).length >= 20) earnAchievement('all_materials');
 }
 
@@ -1491,6 +1618,8 @@ function onResize() {
   camera.aspect = window.innerWidth / (window.innerHeight - 56);
   camera.updateProjectionMatrix();
   renderer.setSize(window.innerWidth, window.innerHeight - 56);
+  const wc = document.getElementById('weatherCanvas');
+  if (wc && wc.style.display !== 'none') { wc.width = window.innerWidth; wc.height = window.innerHeight; }
 }
 
 function animate() {
@@ -2319,13 +2448,124 @@ function buildGiwajipPart(partName, matColor) {
   return g;
 }
 
+// ===== Seowon (Confucian Academy) Builder =====
+function buildSeowonPart(partName, matColor) {
+  const g = new THREE.Group();
+  const M = (c, r) => new THREE.MeshStandardMaterial({color:c, roughness:r||0.7, metalness:0.1});
+  switch(partName) {
+    case 's_gidan': {
+      const base = new THREE.Mesh(new THREE.BoxGeometry(10, 0.6, 8), M(matColor));
+      base.position.y = 0.3; base.castShadow = true; g.add(base);
+      const step1 = new THREE.Mesh(new THREE.BoxGeometry(3, 0.2, 1), M(matColor + 0x101010));
+      step1.position.set(0, 0.1, 4.5); g.add(step1);
+      const step2 = new THREE.Mesh(new THREE.BoxGeometry(2.6, 0.2, 0.8), M(matColor + 0x101010));
+      step2.position.set(0, 0.3, 5.1); g.add(step2);
+      break;
+    }
+    case 's_gate': {
+      const gateH = 3.5;
+      [-2, 0, 2].forEach(x => {
+        const pillar = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.15, gateH, 8), M(0xc4956a));
+        pillar.position.set(x, gateH/2 + 0.6, 4); pillar.castShadow = true; g.add(pillar);
+      });
+      const gRoof = new THREE.Mesh(new THREE.BoxGeometry(8, 0.15, 2), M(0x4a4a4a));
+      gRoof.position.set(0, gateH + 0.6, 4); g.add(gRoof);
+      const gRidge = new THREE.Mesh(new THREE.BoxGeometry(8.2, 0.3, 0.3), M(0x3a3a3a));
+      gRidge.position.set(0, gateH + 0.85, 4); g.add(gRidge);
+      [-4, 4].forEach(x => {
+        const wall = new THREE.Mesh(new THREE.BoxGeometry(2.5, 2, 0.4), M(matColor, 0.9));
+        wall.position.set(x, 1.6, 4); wall.castShadow = true; g.add(wall);
+      });
+      break;
+    }
+    case 's_jae': {
+      [-3.5, 3.5].forEach(x => {
+        const floor = new THREE.Mesh(new THREE.BoxGeometry(3, 0.15, 3), M(0xdeb887));
+        floor.position.set(x, 0.68, 0); g.add(floor);
+        [[-1.2,0],[1.2,0],[-1.2,-1.2],[1.2,-1.2]].forEach(([px,pz]) => {
+          const p = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.08, 2, 8), M(matColor));
+          p.position.set(x+px, 1.7, pz); p.castShadow = true; g.add(p);
+        });
+        const roof = new THREE.Mesh(new THREE.BoxGeometry(3.6, 0.12, 3.6), M(0x5a5a5a));
+        roof.position.set(x, 2.8, 0); g.add(roof);
+        const ridge = new THREE.Mesh(new THREE.BoxGeometry(3.8, 0.2, 0.25), M(0x4a4a4a));
+        ridge.position.set(x, 2.95, 0); g.add(ridge);
+      });
+      break;
+    }
+    case 's_pillar': {
+      const cols = [[-2.5,0],[-2.5,-2],[2.5,0],[2.5,-2],[0,0],[0,-2]];
+      cols.forEach(([x,z]) => {
+        const p = new THREE.Mesh(new THREE.CylinderGeometry(0.12, 0.14, 3.2, 12), M(matColor));
+        p.position.set(x, 2.2, z - 2); p.castShadow = true; g.add(p);
+      });
+      const floor = new THREE.Mesh(new THREE.BoxGeometry(6, 0.15, 4), M(0xdeb887));
+      floor.position.set(0, 0.68, -2); g.add(floor);
+      break;
+    }
+    case 's_roof': {
+      const roofBase = new THREE.Mesh(new THREE.BoxGeometry(7, 0.12, 5), M(matColor));
+      roofBase.position.set(0, 3.9, -2); g.add(roofBase);
+      const ridge = new THREE.Mesh(new THREE.BoxGeometry(7.2, 0.25, 0.3), M(matColor - 0x101010));
+      ridge.position.set(0, 4.1, -2); g.add(ridge);
+      const eaveF = new THREE.Mesh(new THREE.BoxGeometry(7.5, 0.06, 0.6), M(matColor));
+      eaveF.position.set(0, 3.8, 0.6); eaveF.rotation.x = 0.15; g.add(eaveF);
+      const eaveB = new THREE.Mesh(new THREE.BoxGeometry(7.5, 0.06, 0.6), M(matColor));
+      eaveB.position.set(0, 3.8, -4.6); eaveB.rotation.x = -0.15; g.add(eaveB);
+      break;
+    }
+    case 's_sadang': {
+      const sFloor = new THREE.Mesh(new THREE.BoxGeometry(4, 0.15, 3), M(0xdeb887));
+      sFloor.position.set(0, 0.68, -6); g.add(sFloor);
+      [[-1.5,-5],[-1.5,-7],[1.5,-5],[1.5,-7]].forEach(([x,z]) => {
+        const p = new THREE.Mesh(new THREE.CylinderGeometry(0.1, 0.1, 2.8, 8), M(matColor));
+        p.position.set(x, 2, z); p.castShadow = true; g.add(p);
+      });
+      const sRoof = new THREE.Mesh(new THREE.BoxGeometry(4.8, 0.12, 3.8), M(0x5a5a5a));
+      sRoof.position.set(0, 3.5, -6); g.add(sRoof);
+      const sRidge = new THREE.Mesh(new THREE.BoxGeometry(5, 0.22, 0.25), M(0x4a4a4a));
+      sRidge.position.set(0, 3.7, -6); g.add(sRidge);
+      const sWall = new THREE.Mesh(new THREE.BoxGeometry(3.8, 2.5, 0.12), M(0xf5deb3, 0.9));
+      sWall.position.set(0, 1.85, -7.4); g.add(sWall);
+      break;
+    }
+    case 's_garden': {
+      const pond = new THREE.Mesh(new THREE.BoxGeometry(3, 0.3, 2.5), M(matColor, 0.3));
+      pond.position.set(-3, 0.15, -3); g.add(pond);
+      const rim = new THREE.Mesh(new THREE.BoxGeometry(3.4, 0.15, 2.9), M(0x888888));
+      rim.position.set(-3, 0.35, -3); g.add(rim);
+      [[-4.5,-5],[4.5,-4],[3, -7],[-4, -1]].forEach(([x,z]) => {
+        const trunk = new THREE.Mesh(new THREE.CylinderGeometry(0.08, 0.1, 1.5, 6), M(0x8b6914));
+        trunk.position.set(x, 1.35, z); g.add(trunk);
+        const crown = new THREE.Mesh(new THREE.SphereGeometry(0.6, 8, 6), M(0x2d5a27));
+        crown.position.set(x, 2.3, z); g.add(crown);
+      });
+      break;
+    }
+    case 's_finish': {
+      const board = new THREE.Mesh(new THREE.BoxGeometry(1.8, 0.6, 0.08), M(matColor));
+      board.position.set(0, 3.4, 0.1); g.add(board);
+      const border = new THREE.Mesh(new THREE.BoxGeometry(2, 0.72, 0.04), M(0xc4956a));
+      border.position.set(0, 3.4, 0.13); g.add(border);
+      [-1.5, 1.5].forEach(x => {
+        const lanternBase = new THREE.Mesh(new THREE.CylinderGeometry(0.15, 0.18, 0.8, 6), M(0x888888));
+        lanternBase.position.set(x, 1, 4.5); g.add(lanternBase);
+        const lanternTop = new THREE.Mesh(new THREE.SphereGeometry(0.2, 8, 6), M(0xf0e68c, 0.4));
+        lanternTop.position.set(x, 1.5, 4.5); g.add(lanternTop);
+      });
+      break;
+    }
+  }
+  return g;
+}
+
 // ===== Game Logic =====
 
 function startGame(mode) {
   SFX.click();
   ensureAudio();
   gameMode = mode;
-  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : mode === 'giwajip' ? GIWAJIP_STEPS : MODERN_STEPS;
+  steps = mode === 'hanok' ? HANOK_STEPS : mode === 'choga' ? CHOGA_STEPS : mode === 'giwajip' ? GIWAJIP_STEPS : mode === 'seowon' ? SEOWON_STEPS : MODERN_STEPS;
   currentStep = 0;
   selectedMaterials = {};
   builtParts = {};
@@ -2347,6 +2587,7 @@ function startGame(mode) {
   document.getElementById('btnPhoto').style.display = 'flex';
   document.getElementById('btnBGM').style.display = 'flex';
   document.getElementById('btnWalk').style.display = 'flex';
+  document.getElementById('btnTheme').style.display = 'flex';
   document.getElementById('seasonSelector').style.display = 'flex';
   document.getElementById('kbdHint').classList.add('show');
 
@@ -2359,6 +2600,9 @@ function startGame(mode) {
   } else if (mode === 'giwajip') {
     document.getElementById('gameTitle').textContent = '기와집 짓기';
     document.getElementById('modeLabel').textContent = '양반가 기와집 모드';
+  } else if (mode === 'seowon') {
+    document.getElementById('gameTitle').textContent = '서원 짓기';
+    document.getElementById('modeLabel').textContent = '유교 서원 모드';
   } else {
     document.getElementById('gameTitle').textContent = '주택 짓기';
     document.getElementById('modeLabel').textContent = '현대 주택 모드';
@@ -2473,6 +2717,7 @@ function buildStep() {
   if (gameMode === 'hanok') part = buildHanokPart(step.part, matColor);
   else if (gameMode === 'choga') part = buildChogaPart(step.part, matColor);
   else if (gameMode === 'giwajip') part = buildGiwajipPart(step.part, matColor);
+  else if (gameMode === 'seowon') part = buildSeowonPart(step.part, matColor);
   else part = buildModernPart(step.part, matColor);
 
   // Play construction sound
@@ -2526,7 +2771,7 @@ function afterBuild() {
     data.completed = data.completed || {};
     data.completed[gameMode] = Date.now();
     saveProgress(data);
-    const achMap = { hanok:'complete_hanok', choga:'complete_choga', giwajip:'complete_giwajip', modern:'complete_modern' };
+    const achMap = { hanok:'complete_hanok', choga:'complete_choga', giwajip:'complete_giwajip', modern:'complete_modern', seowon:'complete_seowon' };
     earnAchievement(achMap[gameMode] || 'complete_modern');
     setTimeout(checkMasterBuilder, 500);
     const elapsed = (Date.now() - gameStartTime) / 1000;
@@ -2541,12 +2786,13 @@ function afterBuild() {
 
     document.getElementById('statSteps').textContent = steps.length;
     document.getElementById('statParts').textContent = buildGroup.children.length;
-    const titles = { hanok:'한옥 완성!', choga:'초가집 완성!', giwajip:'기와집 완성!', modern:'주택 완성!' };
+    const titles = { hanok:'한옥 완성!', choga:'초가집 완성!', giwajip:'기와집 완성!', modern:'주택 완성!', seowon:'서원 완성!' };
     const msgs = {
       hanok:'멋진 한옥을 완성했어요! 전통 건축의 지혜를 체험했어요.',
       choga:'소박하고 따뜻한 초가집을 완성했어요! 서민의 지혜가 담긴 집이에요.',
       giwajip:'화려한 양반가 기와집을 완성했어요! 공포와 팔작지붕의 아름다움을 감상하세요.',
-      modern:'현대 주택을 완성했어요! 한옥과 비교해 보세요.'
+      modern:'현대 주택을 완성했어요! 한옥과 비교해 보세요.',
+      seowon:'유교 서원을 완성했어요! 조선 선비의 학문 공간을 체험했어요.'
     };
     const title = titles[gameMode] || '완성!';
     const msg = msgs[gameMode] || '멋진 건축을 완성했어요!';
@@ -2586,20 +2832,76 @@ function startViewing() {
 }
 
 function toggleCompare() {
-  // Show comparison info
-  const info = gameMode === 'hanok'
-    ? '한옥 vs 현대 주택:\n\n' +
-      '기단 vs 콘크리트 기초: 한옥은 자연석, 현대는 콘크리트\n' +
-      '나무 기둥 vs 철근: 한옥은 소나무, 현대는 철근콘크리트\n' +
-      '온돌 vs 바닥 난방: 온돌이 현대 바닥 난방의 원조!\n' +
-      '창호지 vs 유리: 한지는 숨쉬고, 유리는 단열이 좋아요\n' +
-      '기와 vs 슬레이트: 기와는 100년, 슬레이트는 30년 수명'
-    : '현대 주택 vs 한옥:\n\n' +
-      '콘크리트 vs 자연석: 현대는 강하지만 한옥은 자연친화적\n' +
-      '바닥 난방 vs 온돌: 현대 바닥난방은 온돌에서 발전했어요!\n' +
-      '유리창 vs 창호지: 유리는 투명, 창호지는 은은한 빛\n' +
-      '에어컨 vs 대청마루: 마루 아래로 바람이 지나가는 자연 냉방!';
-  alert(info);
+  const data = loadProgress();
+  data.compareCount = (data.compareCount || 0) + 1;
+  saveProgress(data);
+  if (data.compareCount >= 3) earnAchievement('compare_scholar');
+  const comparisons = {
+    hanok: [
+      ['기둥','소나무 원주','철근콘크리트 기둥'],
+      ['기초','자연석 기단','콘크리트 기초'],
+      ['난방','온돌 (아궁이)','바닥 난방 (보일러)'],
+      ['창문','한지 창호지','이중 유리창'],
+      ['지붕','기와 (100년)','슬레이트 (30년)'],
+      ['통풍','대청마루 자연순환','에어컨 기계순환']
+    ],
+    choga: [
+      ['지붕','볏짚 이엉','슬레이트/기와'],
+      ['벽','황토 흙벽','콘크리트/벽돌'],
+      ['기둥','자연 도랑주','규격 각재'],
+      ['난방','아궁이+온돌','보일러 난방'],
+      ['바닥','흙 봉당','타일/마루'],
+      ['수명','볏짚 매년 교체','반영구']
+    ],
+    giwajip: [
+      ['구조','공포+다포/주심포','철골 구조'],
+      ['지붕','팔작지붕 합각','평지붕/경사'],
+      ['공간','사랑채/안채 분리','원룸/거실중심'],
+      ['장식','꽃살문/단청','인테리어 벽지'],
+      ['기단','3단 장대석','콘크리트 기초'],
+      ['정원','사랑마당/안마당','주차장/정원']
+    ],
+    seowon: [
+      ['용도','학문+제향','학교+도서관'],
+      ['배치','전학후묘 (앞 학당 뒤 사당)','자유 배치'],
+      ['기숙','동재/서재','기숙사'],
+      ['정원','관란 연못+매화','운동장+화단'],
+      ['지붕','팔작/맞배 혼합','콘크리트/철골'],
+      ['문화재','유네스코 세계유산 9곳','해당없음']
+    ],
+    modern: [
+      ['기초','콘크리트 기초','자연석 기단'],
+      ['구조','철근콘크리트','나무 기둥+보'],
+      ['단열','이중유리+단열재','한지+흙벽'],
+      ['난방','보일러 바닥난방','온돌'],
+      ['수명','50~100년','관리시 수백년'],
+      ['시공','기계화 시공','수공 장인']
+    ]
+  };
+  const rows = comparisons[gameMode] || comparisons.hanok;
+  const title = gameMode === 'hanok' ? '한옥 vs 현대 주택' :
+                gameMode === 'choga' ? '초가집 vs 현대 건축' :
+                gameMode === 'giwajip' ? '기와집 vs 현대 건축' :
+                gameMode === 'seowon' ? '서원 vs 현대 학교' : '현대 주택 vs 전통 건축';
+  document.getElementById('compareTitle').textContent = title;
+  let html = '';
+  rows.forEach(([label, trad, mod]) => {
+    html += '<div class="compare-row"><span>' + label + '</span><span>' + trad + '</span><span>' + mod + '</span></div>';
+  });
+  document.getElementById('compareBody').innerHTML = '<div class="compare-row" style="font-weight:700;border-bottom:2px solid #c4956a"><span>항목</span><span>전통</span><span>현대</span></div>' + html;
+  document.getElementById('compareModal').classList.add('show');
+}
+function closeCompare() {
+  document.getElementById('compareModal').classList.remove('show');
+}
+
+function toggleTheme() {
+  document.body.classList.toggle('light-mode');
+  const isLight = document.body.classList.contains('light-mode');
+  document.getElementById('btnTheme').textContent = isLight ? '☀️' : '🌓';
+  const data = loadProgress();
+  data.theme = isLight ? 'light' : 'dark';
+  saveProgress(data);
 }
 
 function toggleSide() {
@@ -2621,6 +2923,7 @@ function resetGame() {
   document.getElementById('btnPhoto').style.display = 'none';
   document.getElementById('btnBGM').style.display = 'none';
   document.getElementById('btnWalk').style.display = 'none';
+  document.getElementById('btnTheme').style.display = 'none';
   document.getElementById('seasonSelector').style.display = 'none';
   document.getElementById('kbdHint').classList.remove('show');
   hideFact();
@@ -2672,6 +2975,8 @@ window.addEventListener('keydown', (e) => {
   else if (e.key === 'b' || e.key === 'B') toggleBGM();
   else if (e.key === 'p' || e.key === 'P') takeScreenshot();
   else if (e.key === 'w' || e.key === 'W') toggleWalkthrough();
+  else if (e.key === 't' || e.key === 'T') toggleTheme();
+  else if (e.key === 'c' || e.key === 'C') toggleCompare();
   else if (e.key === '1') setSeason('spring');
   else if (e.key === '2') setSeason('summer');
   else if (e.key === '3') setSeason('autumn');
@@ -2683,6 +2988,7 @@ window.addEventListener('keydown', (e) => {
   const data = loadProgress();
   muted = !!data.muted;
   document.getElementById('btnMute').textContent = muted ? '🔇' : '🔊';
+  if (data.theme === 'light') { document.body.classList.add('light-mode'); document.getElementById('btnTheme').textContent = '☀️'; }
   updateProgressBadge();
   setTimeout(() => {
     document.getElementById('loadingScreen').classList.add('hidden');

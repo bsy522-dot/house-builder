@@ -1,5 +1,5 @@
-// Service worker for House Builder PWA v3
-const CACHE_NAME = 'house-builder-v3';
+// Service worker for House Builder PWA v4
+const CACHE_NAME = 'house-builder-v4';
 const URLS = [
   './',
   './index.html',
@@ -27,6 +27,18 @@ self.addEventListener('fetch', (e) => {
   const req = e.request;
   if (req.method !== 'GET') return;
   const url = new URL(req.url);
+  if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/')) {
+    e.respondWith(
+      fetch(req).then((resp) => {
+        if (resp && resp.status === 200) {
+          const copy = resp.clone();
+          caches.open(CACHE_NAME).then((c) => c.put(req, copy)).catch(() => {});
+        }
+        return resp;
+      }).catch(() => caches.match(req))
+    );
+    return;
+  }
   if (url.origin !== location.origin && !url.hostname.endsWith('cloudflare.com')) return;
   e.respondWith(
     caches.match(req).then((cached) => {
