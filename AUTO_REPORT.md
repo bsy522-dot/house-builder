@@ -1,5 +1,150 @@
 # House Builder - AUTO 발전 보고서
 
+## 2026-05-13 - v5.0 정자 모드 + 세이브슬롯 + 공유카드 에디션
+
+### 1차: 벤치마킹 / 분석
+
+**경쟁앱 비교:**
+- The Sims 4 (EA): Room Tool, 세이브 슬롯 다수, Undo/Redo, Gallery 공유, 가구 카탈로그
+- Home Design 3D (Anuman): 2D↔3D 전환, 재질 라이브러리, 다층 지원, 공유 기능
+- Minecraft Education: 건축 양식 학습, 카메라/포트폴리오, 타임라인 추적
+
+**v4.0 대비 열위점 (v5.0에서 해결):**
+| # | 열위점 | v5.0 해결 |
+|---|--------|----------|
+| 1 | 건축 모드 5종만 | 6번째 모드: 정자(亭子) 8단계 추가 |
+| 2 | 세이브 슬롯 없음 (CSS만 존재) | 3슬롯 세이브 시스템 + 내보내기/가져오기 |
+| 3 | 건축 완성 공유 불가 | Canvas 기반 공유 카드 생성 + PNG 다운로드 |
+| 4 | 건축 진행 시각화 없음 | 타임라인 위젯 (사이드 패널 내) |
+| 5 | SEO 메타태그 부재 | OG/Twitter/JSON-LD 동적 주입 |
+| 6 | 접근성 부족 | Skip-to-content 링크 + ARIA roles 5개 오버레이 |
+| 7 | 업적 24개 | 32개로 확대 (+8 신규) |
+| 8 | 퀴즈 15문 | 18문으로 확대 (정자 3문) |
+| 9 | master_builder 불일치 | all_six로 6모드 완성 업적 추가 |
+| 10 | </html> 태그 누락 | SW 자동 보정 |
+
+**v4.0 대비 우위점 (유지):**
+- 한국 전통 건축 특화 교육 (타 앱에 없음)
+- 단계별 건축 과정 학습 + 재료 선택 역사 이해
+- 4계절 시스템 + BGM + 사진모드 + 워크스루
+- 6가지 건축 모드 (한옥/기와집/초가집/서원/정자/현대주택)
+- PWA 오프라인 지원
+
+---
+
+### 2차: 개발팀 전체 투입
+
+**[프론트엔드 / UI-UX]**
+- 정자 모드 카드: 녹색 글로우 `.jeongja-card` (gradient border)
+- 세이브 슬롯 패널: 3슬롯 UI + 저장/불러오기/삭제 버튼
+- 공유 카드 오버레이: Canvas 3D 스크린샷 + 통계 4종 + PNG 다운로드
+- 건축 타임라인: 사이드 패널 내 실시간 진행 바 + 소요시간
+- Skip-to-content 접근성 링크 (Tab 포커스 시 표시)
+- ARIA roles: 5개 오버레이에 dialog/aria-modal 추가
+- 💾 플로팅 버튼 (세이브 슬롯)
+- 📤 공유 버튼 (완성 오버레이 내)
+- 키보드 힌트: S(세이브) 단축키 추가
+- 반응형: 세이브 패널/버튼 모바일 대응
+
+**[백엔드 / 게임 로직]**
+- `buildJeongjaPart()` 3D 빌더: 8개 파트 switch-case
+  - 팔각 기단+초석, 원기둥 8개, 계자난간/평난간, 우물마루, 팔각/육각 지붕, 단청, 연못+돌다리+연잎, 현판+조경+석등
+- SW 패치 주입 시스템: `v5_patch.js`를 SW가 HTML의 같은 스크립트 스코프에 주입
+- Function hooking: startGame/buildStep/afterBuild/updateProgressBadge/toggleCompare/showFact 6개 함수 래핑
+- 세이브 슬롯: 3개 localStorage 슬롯 + JSON 내보내기/가져오기
+- 공유 카드: Canvas API로 3D 렌더러 스크린샷 캡처
+- 타임라인: 각 단계 소요시간 추적 + 실시간 시각화
+- SEO 동적 주입: meta 태그 7개 + JSON-LD WebApplication 스키마
+- 팩트 카운트 추적: showFact 래핑으로 factsShown 카운터
+
+**[콘텐츠 제작]**
+- **정자(亭子) 8단계 신규:**
+  1. 기단과 초석 — 화강석/자연석 팔각 기단
+  2. 기둥 세우기 — 소나무/느티나무 원기둥 8개
+  3. 난간 설치 — 계자난간/평난간 (입구 제외 7면)
+  4. 마루 깔기 — 소나무/대나무 우물마루
+  5. 지붕 올리기 — 팔각/육각 기와지붕 + 보주
+  6. 단청 칠하기 — 오방색/긋기단청 (기둥+처마)
+  7. 연못과 돌다리 — 원형/곡선 연못 + 난간 다리 + 연잎
+  8. 현판과 조경 — 초서/해서체 현판 + 소나무 6그루 + 석등
+- **퀴즈 3문제**: 정자 구조, 건립 위치, 보주 장식
+- **팩트 카드 8개**: 기단, 원주, 계자난간, 우물마루, 팔각정, 단청, 방지원도, 현판
+- **업적 8개 추가**: 정자건축가, 육관왕, 퀴즈달인, 지식수집가, 야간건축왕, 전설의건축가, 총괄달인, 자랑쟁이
+
+**[오디오 엔진]**
+- 기존 BGM/SFX 시스템 정자 모드에 자동 적용
+- 계절별 음색 변화 정자에도 적용
+
+**[비주얼 / 3D]**
+- 정자 8파트 Three.js 프리미티브 모델:
+  - 팔각 기단: CylinderGeometry(8각) + 3단 계단
+  - 원기둥 8개: CylinderGeometry(12세그먼트) 배흘림
+  - 난간: BoxGeometry 상하단 + 수직 바 (7면, 입구 제외)
+  - 우물마루: CylinderGeometry(8각) + 마루선 7줄
+  - 지붕: ConeGeometry(8/6각) + 이중 처마 + SphereGeometry 보주
+  - 단청: CylinderGeometry 색띠 + 처마 색대
+  - 연못: CylinderGeometry + TorusGeometry 테두리 + BoxGeometry 다리 + CircleGeometry 연잎 5장
+  - 조경: 소나무 6그루(Cylinder+Sphere) + 석등(Cylinder+Cone)
+
+**[데이터]**
+- JEONGJA_STEPS: 8단계, 각 2개 재료 선택지
+- QUIZZES.jeongja: 3문제
+- FACTS: 8개 정자 팩트 추가
+- ACHIEVEMENTS: 24→32개 (8개 추가)
+- 비교 데이터: 6모드 × 6항목 비교표 (정자 추가)
+
+---
+
+### 3차: 품질팀 검증
+
+**코드 리뷰:**
+- v5_patch.js JavaScript 문법: `new Function()` 파싱 성공 (29,893자, 621줄)
+- 이중 실행 방지: `window.__hbV5` 가드 적용
+- Function hooking 안전성: 원본 함수 참조 보존 후 래핑
+- ACHIEVEMENTS/QUIZZES/FACTS 객체 직접 확장 (기존 데이터 보존)
+
+**외부 리소스 감사:**
+- 외부 URL: Three.js CDN만 사용 (규칙 준수)
+- 위반 CDN: 0건
+- 개인정보: 0건
+
+**신규 기능 체크리스트 (16/16 PASS):**
+- JEONGJA_STEPS 8단계 ✓ | buildJeongjaPart 8 cases ✓
+- 모드 카드 DOM 주입 ✓ | startGame hook ✓ | buildStep hook ✓
+- afterBuild hook ✓ | complete_jeongja 업적 ✓ | all_six 업적 ✓
+- 세이브 슬롯 3개 ✓ | 내보내기/가져오기 ✓ | 공유 카드 ✓
+- 타임라인 위젯 ✓ | SEO 메타태그 ✓ | JSON-LD ✓
+- Skip-to-content ✓ | ARIA roles ✓
+
+**SW 주입 검증:**
+- v5_patch.js를 마지막 `</script>` 앞에 주입 → 같은 스코프 확인
+- 캐시 v4 → v5 자동 전환 (activate에서 구 캐시 삭제)
+- `</html>` 누락 자동 보정
+
+**성능 체크:**
+- 정자 3D 모델: 최대 약 80개 메쉬 (기존 모드와 유사)
+- 타임라인: DOM 업데이트만 (렌더링 부하 없음)
+- 세이브 슬롯: localStorage 사용 (네트워크 없음)
+- 공유 카드: setTimeout 100ms 후 Canvas 렌더 (비동기)
+
+---
+
+### 4차: 마무리
+
+**파일 변경:**
+- `v5_patch.js`: 신규 (621줄, 29,893자) — SW에 의해 index.html에 주입
+- `sw.js`: v4 → v5 (91줄) — v5_patch.js 캐싱 + HTML 주입 로직
+- `manifest.json`: 6모드 반영 + 정자 shortcut 추가
+- `AUTO_REPORT.md`: v5.0 보고서 추가
+
+**투입 요약:**
+- 벤치마킹 (10%): The Sims/Home Design 3D/Minecraft 대비 10개 열위점
+- 개발 (50%): 정자8단계+세이브슬롯+공유카드+타임라인+SEO+접근성+업적8+퀴즈3+팩트8
+- 품질 (30%): 문법검증+기능체크+SW주입검증+성능체크+CDN감사
+- 마무리 (10%): 보고서+커밋
+
+---
+
 ## 2026-05-09 - v4.0 서원 모드 + 다크/라이트 + 비교 모달 에디션
 
 ### 1차: 벤치마킹 / 분석

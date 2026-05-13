@@ -1,55 +1,91 @@
-// Service worker for House Builder PWA v4
-const CACHE_NAME = 'house-builder-v4';
-const URLS = [
+// Service Worker for House Builder PWA v5
+var CACHE_NAME = 'house-builder-v5';
+var URLS = [
   './',
   './index.html',
   './manifest.json',
+  './v5_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
-self.addEventListener('install', (e) => {
+self.addEventListener('install', function(e) {
   e.waitUntil(
-    caches.open(CACHE_NAME).then((cache) => cache.addAll(URLS)).catch(() => {})
+    caches.open(CACHE_NAME).then(function(cache) {
+      return cache.addAll(URLS);
+    }).catch(function() {})
   );
   self.skipWaiting();
 });
 
-self.addEventListener('activate', (e) => {
+self.addEventListener('activate', function(e) {
   e.waitUntil(
-    caches.keys().then((keys) =>
-      Promise.all(keys.filter((k) => k !== CACHE_NAME).map((k) => caches.delete(k)))
-    )
+    caches.keys().then(function(keys) {
+      return Promise.all(
+        keys.filter(function(k) { return k !== CACHE_NAME; })
+            .map(function(k) { return caches.delete(k); })
+      );
+    })
   );
   self.clients.claim();
 });
 
-self.addEventListener('fetch', (e) => {
-  const req = e.request;
+self.addEventListener('fetch', function(e) {
+  var req = e.request;
   if (req.method !== 'GET') return;
-  const url = new URL(req.url);
+  var url = new URL(req.url);
+
+  // HTML pages: Network-first + inject v5_patch.js into same script scope
   if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/')) {
     e.respondWith(
-      fetch(req).then((resp) => {
-        if (resp && resp.status === 200) {
-          const copy = resp.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy)).catch(() => {});
-        }
-        return resp;
-      }).catch(() => caches.match(req))
+      Promise.all([
+        fetch(req).then(function(resp) {
+          if (resp && resp.status === 200) {
+            var copy = resp.clone();
+            caches.open(CACHE_NAME).then(function(c) { c.put(req, copy); }).catch(function() {});
+          }
+          return resp;
+        }).catch(function() { return caches.match(req); }),
+        caches.match('./v5_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v5_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; })
+      ]).then(function(results) {
+        var resp = results[0];
+        var patch = results[1];
+        if (!resp) return caches.match(req);
+        if (!patch) return resp;
+        return resp.text().then(function(html) {
+          // Inject patch code before the last </script> tag (same scope as main script)
+          var lastIdx = html.lastIndexOf('</script>');
+          if (lastIdx >= 0) {
+            html = html.substring(0, lastIdx) + '\n' + patch + '\n' + html.substring(lastIdx);
+          }
+          // Add </html> if missing
+          if (html.indexOf('</html>') === -1) {
+            html += '\n</html>';
+          }
+          return new Response(html, {
+            status: 200,
+            statusText: 'OK',
+            headers: { 'Content-Type': 'text/html; charset=UTF-8' }
+          });
+        });
+      }).catch(function() { return caches.match(req); })
     );
     return;
   }
+
+  // Non-HTML assets: Cache-first for same origin and cloudflare CDN
   if (url.origin !== location.origin && !url.hostname.endsWith('cloudflare.com')) return;
   e.respondWith(
-    caches.match(req).then((cached) => {
+    caches.match(req).then(function(cached) {
       if (cached) return cached;
-      return fetch(req).then((resp) => {
+      return fetch(req).then(function(resp) {
         if (resp && resp.status === 200) {
-          const copy = resp.clone();
-          caches.open(CACHE_NAME).then((c) => c.put(req, copy)).catch(() => {});
+          var copy = resp.clone();
+          caches.open(CACHE_NAME).then(function(c) { c.put(req, copy); }).catch(function() {});
         }
         return resp;
-      }).catch(() => cached);
+      }).catch(function() { return cached; });
     })
   );
 });
