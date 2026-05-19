@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 - 한옥/기와집/초가집/서원/정자/현대주택 짓기",
+  "name": "한국 건축 체험 v6.0 - 6가지 3D 건축 시뮬레이터 + 건축도감 + 역사연표",
   "short_name": "건축체험",
-  "description": "한옥, 기와집(양반가), 초가집, 서원(書院), 정자(亭子), 현대주택을 직접 짓는 3D 건축 학습 게임. 6가지 모드, 4계절, BGM, 워크스루, 사진 모드, 세이브 슬롯, 공유 카드, 다크/라이트 테마 포함.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축도감30항목, 역사연표20, 일일도전14, 퀴즈30문, 업적50개, 마스터등급5단계, 건축팁10개, SFX, 다크/라이트 테마, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -22,6 +22,8 @@
     {"name": "초가집 짓기", "url": "./index.html?mode=choga"},
     {"name": "서원 짓기", "url": "./index.html?mode=seowon"},
     {"name": "정자 짓기", "url": "./index.html?mode=jeongja"},
-    {"name": "현대주택 짓기", "url": "./index.html?mode=modern"}
+    {"name": "현대주택 짓기", "url": "./index.html?mode=modern"},
+    {"name": "건축 도감", "url": "./index.html#encyclopedia"},
+    {"name": "역사 연표", "url": "./index.html#timeline"}
   ]
 }

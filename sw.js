@@ -1,10 +1,11 @@
-// Service Worker for House Builder PWA v5
-var CACHE_NAME = 'house-builder-v5';
+// Service Worker for House Builder PWA v6
+var CACHE_NAME = 'house-builder-v6';
 var URLS = [
   './',
   './index.html',
   './manifest.json',
   './v5_patch.js',
+  './v6_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -34,7 +35,7 @@ self.addEventListener('fetch', function(e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
 
-  // HTML pages: Network-first + inject v5_patch.js into same script scope
+  // HTML pages: Network-first + inject v5_patch.js and v6_patch.js
   if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/')) {
     e.respondWith(
       Promise.all([
@@ -47,19 +48,22 @@ self.addEventListener('fetch', function(e) {
         }).catch(function() { return caches.match(req); }),
         caches.match('./v5_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v5_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v6_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v6_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
-        var patch = results[1];
+        var patch5 = results[1];
+        var patch6 = results[2];
         if (!resp) return caches.match(req);
-        if (!patch) return resp;
+        var patches = (patch5 || '') + '\n' + (patch6 || '');
+        if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
-          // Inject patch code before the last </script> tag (same scope as main script)
           var lastIdx = html.lastIndexOf('</script>');
           if (lastIdx >= 0) {
-            html = html.substring(0, lastIdx) + '\n' + patch + '\n' + html.substring(lastIdx);
+            html = html.substring(0, lastIdx) + '\n' + patches + '\n' + html.substring(lastIdx);
           }
-          // Add </html> if missing
           if (html.indexOf('</html>') === -1) {
             html += '\n</html>';
           }
