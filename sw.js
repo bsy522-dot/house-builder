@@ -1,11 +1,12 @@
-// Service Worker for House Builder PWA v6
-var CACHE_NAME = 'house-builder-v6';
+// Service Worker for House Builder PWA v7
+var CACHE_NAME = 'house-builder-v7';
 var URLS = [
   './',
   './index.html',
   './manifest.json',
   './v5_patch.js',
   './v6_patch.js',
+  './v7_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -35,7 +36,7 @@ self.addEventListener('fetch', function(e) {
   if (req.method !== 'GET') return;
   var url = new URL(req.url);
 
-  // HTML pages: Network-first + inject v5_patch.js and v6_patch.js
+  // HTML pages: Network-first + inject v5_patch.js, v6_patch.js, v7_patch.js
   if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/')) {
     e.respondWith(
       Promise.all([
@@ -51,13 +52,17 @@ self.addEventListener('fetch', function(e) {
           .catch(function() { return ''; }),
         caches.match('./v6_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v6_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v7_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v7_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
         var patch5 = results[1];
         var patch6 = results[2];
+        var patch7 = results[3];
         if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '');
+        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '');
         if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
           var lastIdx = html.lastIndexOf('</script>');

@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v6.0 - 6가지 3D 건축 시뮬레이터 + 건축도감 + 역사연표",
+  "name": "한국 건축 체험 v7.0 - 6가지 3D 건축 시뮬레이터 + 가구배치 + 날씨효과 + 미션",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축도감30항목, 역사연표20, 일일도전14, 퀴즈30문, 업적50개, 마스터등급5단계, 건축팁10개, SFX, 다크/라이트 테마, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 가구배치20종, 날씨효과4종, 건축예산, 평면도뷰, 미션8종, 갤러리, 재료사전15종, 스피드빌드, 퀴즈45문, 업적62개, 마스터등급, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -23,7 +23,7 @@
     {"name": "서원 짓기", "url": "./index.html?mode=seowon"},
     {"name": "정자 짓기", "url": "./index.html?mode=jeongja"},
     {"name": "현대주택 짓기", "url": "./index.html?mode=modern"},
-    {"name": "건축 도감", "url": "./index.html#encyclopedia"},
-    {"name": "역사 연표", "url": "./index.html#timeline"}
+    {"name": "가구 배치", "url": "./index.html#furniture"},
+    {"name": "재료 사전", "url": "./index.html#materials"}
   ]
 }
