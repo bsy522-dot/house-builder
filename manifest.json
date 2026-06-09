@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v9.0 - 6가지 3D 건축 시뮬레이터 + 조경 + 블루프린트 + 자격증",
+  "name": "한국 건축 체험 v10.0 - 6가지 3D 건축 시뮬레이터 + 풍수지리 + 마스터클래스 + 역사지도",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 조경정원12종, 건축블루프린트6종, 퀘스트체인8단계, 건축자격증5단계, 건축용어사전40항목, 시간대조명, 난이도3단계, 비교갤러리, 인테리어22종, 퀴즈75문, 업적86개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 풍수지리분석기, 건축마스터클래스12강, AI건축대결, 한옥마을투어8곳, 건축역사지도, 에너지효율분석기, 구조안전시뮬레이터, 건축일기장, 퀴즈90문, 업적98개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -23,9 +23,11 @@
     {"name": "서원 짓기", "url": "./index.html?mode=seowon"},
     {"name": "정자 짓기", "url": "./index.html?mode=jeongja"},
     {"name": "현대주택 짓기", "url": "./index.html?mode=modern"},
-    {"name": "조경 정원", "url": "./index.html#garden"},
-    {"name": "건축 블루프린트", "url": "./index.html#blueprint"},
-    {"name": "건축 용어사전", "url": "./index.html#dictionary"},
-    {"name": "건축 자격증", "url": "./index.html#certificate"}
+    {"name": "풍수지리 분석기", "url": "./index.html#fengshui"},
+    {"name": "건축 마스터클래스", "url": "./index.html#masterclass"},
+    {"name": "건축 대결", "url": "./index.html#battle"},
+    {"name": "한옥마을 투어", "url": "./index.html#tour"},
+    {"name": "건축 역사지도", "url": "./index.html#map"},
+    {"name": "에너지 효율 분석", "url": "./index.html#energy"}
   ]
 }
