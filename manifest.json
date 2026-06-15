@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v10.0 - 6가지 3D 건축 시뮬레이터 + 풍수지리 + 마스터클래스 + 역사지도",
+  "name": "한국 건축 체험 v11.0 - 6가지 3D 건축 시뮬레이터 + 재료실험실 + 세계건축 + 시공시뮬 + 법규 + 마을 + 명장 + 통계 + BGM",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 풍수지리분석기, 건축마스터클래스12강, AI건축대결, 한옥마을투어8곳, 건축역사지도, 에너지효율분석기, 구조안전시뮬레이터, 건축일기장, 퀴즈90문, 업적98개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축재료실험실15종Canvas, 세계건축여행10국, 시공시뮬레이터6단계, 건축법규가이드12종, 나만의마을만들기, 건축명장열전12인, 통계대시보드Canvas, BGM주크박스8곡, 풍수지리분석기, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈105문, 업적110개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -28,6 +28,10 @@
     {"name": "건축 대결", "url": "./index.html#battle"},
     {"name": "한옥마을 투어", "url": "./index.html#tour"},
     {"name": "건축 역사지도", "url": "./index.html#map"},
-    {"name": "에너지 효율 분석", "url": "./index.html#energy"}
+    {"name": "에너지 효율 분석", "url": "./index.html#energy"},
+    {"name": "재료 실험실", "url": "./index.html#materiallab"},
+    {"name": "세계 건축 여행", "url": "./index.html#worldtour"},
+    {"name": "시공 시뮬레이터", "url": "./index.html#construction"},
+    {"name": "건축 법규 가이드", "url": "./index.html#buildcode"}
   ]
 }

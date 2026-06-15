@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v10
-var CACHE_NAME = 'house-builder-v10';
+var CACHE_NAME = 'house-builder-v11';
 var URLS = [
   './',
   './index.html',
@@ -10,6 +10,7 @@ var URLS = [
   './v8_patch.js',
   './v9_patch.js',
   './v10_patch.js',
+  './v11_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -67,6 +68,9 @@ self.addEventListener('fetch', function(e) {
           .catch(function() { return ''; }),
         caches.match('./v10_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v10_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v11_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v11_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
@@ -76,8 +80,9 @@ self.addEventListener('fetch', function(e) {
         var patch8 = results[4];
         var patch9 = results[5];
         var patch10 = results[6];
+        var patch11 = results[7];
         if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '');
+        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '');
         if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
           var lastIdx = html.lastIndexOf('</script>');
