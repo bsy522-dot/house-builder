@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v11.0 - 6가지 3D 건축 시뮬레이터 + 재료실험실 + 세계건축 + 시공시뮬 + 법규 + 마을 + 명장 + 통계 + BGM",
+  "name": "한국 건축 체험 v12.0 - 6가지 3D 건축 시뮬레이터 + 평면도에디터 + 가구배치 + 건축비용 + 한옥해부도 + 건축연표 + 인테리어 + 자격시험 + 조명시뮬",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축재료실험실15종Canvas, 세계건축여행10국, 시공시뮬레이터6단계, 건축법규가이드12종, 나만의마을만들기, 건축명장열전12인, 통계대시보드Canvas, BGM주크박스8곡, 풍수지리분석기, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈105문, 업적110개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 평면도에디터Canvas, 가구배치12종Canvas, 건축비용계산기BarCanvas, 한옥해부도Canvas, 건축연표Canvas, 인테리어스타일갤러리12종, 건축자격시험20문, 실내조명시뮬Canvas, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 퀴즈120문, 업적122개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -32,6 +32,14 @@
     {"name": "재료 실험실", "url": "./index.html#materiallab"},
     {"name": "세계 건축 여행", "url": "./index.html#worldtour"},
     {"name": "시공 시뮬레이터", "url": "./index.html#construction"},
-    {"name": "건축 법규 가이드", "url": "./index.html#buildcode"}
+    {"name": "건축 법규 가이드", "url": "./index.html#buildcode"},
+    {"name": "평면도 에디터", "url": "./index.html#floorplan"},
+    {"name": "가구 배치", "url": "./index.html#furniture"},
+    {"name": "건축 비용 계산기", "url": "./index.html#costcalc"},
+    {"name": "한옥 해부도", "url": "./index.html#anatomy"},
+    {"name": "건축 연표", "url": "./index.html#timeline"},
+    {"name": "인테리어 갤러리", "url": "./index.html#interior"},
+    {"name": "건축 자격시험", "url": "./index.html#license"},
+    {"name": "실내 조명 시뮬", "url": "./index.html#lighting"}
   ]
 }
