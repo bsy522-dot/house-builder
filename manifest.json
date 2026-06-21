@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v11.0 - 6가지 3D 건축 시뮬레이터 + 재료실험실 + 세계건축 + 시공시뮬 + 법규 + 마을 + 명장 + 통계 + BGM",
+  "name": "한국 건축 체험 v12.0 - 6가지 3D 건축 시뮬레이터 + 인테리어디자인 + 구조역학 + 건축견적 + 조경정원 + 한옥인테리어 + 도면학습 + 안전진단 + 타임캡슐",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축재료실험실15종Canvas, 세계건축여행10국, 시공시뮬레이터6단계, 건축법규가이드12종, 나만의마을만들기, 건축명장열전12인, 통계대시보드Canvas, BGM주크박스8곡, 풍수지리분석기, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈105문, 업적110개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 인테리어디자인스튜디오12종, 구조역학시각화기Canvas, 건축비용견적시스템, 조경정원플래너12종, 한옥인테리어갤러리12종, 건축도면학습6종Canvas, 건축안전진단10항목Canvas, 건축타임캡슐Timeline, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리분석기, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈120문, 업적122개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -29,9 +29,13 @@
     {"name": "한옥마을 투어", "url": "./index.html#tour"},
     {"name": "건축 역사지도", "url": "./index.html#map"},
     {"name": "에너지 효율 분석", "url": "./index.html#energy"},
-    {"name": "재료 실험실", "url": "./index.html#materiallab"},
-    {"name": "세계 건축 여행", "url": "./index.html#worldtour"},
-    {"name": "시공 시뮬레이터", "url": "./index.html#construction"},
-    {"name": "건축 법규 가이드", "url": "./index.html#buildcode"}
+    {"name": "인테리어 디자인", "url": "./index.html#interior"},
+    {"name": "구조역학 시각화", "url": "./index.html#struct"},
+    {"name": "건축 견적", "url": "./index.html#cost"},
+    {"name": "조경 정원 플래너", "url": "./index.html#garden"},
+    {"name": "한옥 인테리어 갤러리", "url": "./index.html#hanokint"},
+    {"name": "건축 도면 학습", "url": "./index.html#blueprint"},
+    {"name": "건축 안전 진단", "url": "./index.html#safety"},
+    {"name": "건축 타임캡슐", "url": "./index.html#timeline"}
   ]
 }
