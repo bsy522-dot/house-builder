@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v12.0 - 6가지 3D 건축 시뮬레이터 + 인테리어디자인 + 구조역학 + 건축견적 + 조경정원 + 한옥인테리어 + 도면학습 + 안전진단 + 타임캡슐",
+  "name": "한국 건축 체험 v13.0 - 6가지 3D 건축 시뮬레이터 + 가구커스터마이징 + 평면도에디터 + 건축어워드 + 소재백과 + 조명디자인 + 배색시뮬레이터 + 포트폴리오 + 한옥수리",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 인테리어디자인스튜디오12종, 구조역학시각화기Canvas, 건축비용견적시스템, 조경정원플래너12종, 한옥인테리어갤러리12종, 건축도면학습6종Canvas, 건축안전진단10항목Canvas, 건축타임캡슐Timeline, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리분석기, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈120문, 업적122개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 가구커스터마이징공방12종Canvas, 층별평면도에디터12x12Canvas, 건축어워드5축RadarCanvas, 건축소재백과12종, 조명디자인스튜디오8종Canvas, 방배색시뮬레이터12색Canvas, 건축포트폴리오CanvasPNG, 한옥수리시뮬레이터8종Canvas, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈135문, 업적134개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -36,6 +36,14 @@
     {"name": "한옥 인테리어 갤러리", "url": "./index.html#hanokint"},
     {"name": "건축 도면 학습", "url": "./index.html#blueprint"},
     {"name": "건축 안전 진단", "url": "./index.html#safety"},
-    {"name": "건축 타임캡슐", "url": "./index.html#timeline"}
+    {"name": "건축 타임캡슐", "url": "./index.html#timeline"},
+    {"name": "가구 커스터마이징", "url": "./index.html#customize"},
+    {"name": "층별 평면도", "url": "./index.html#floorplan"},
+    {"name": "건축 어워드", "url": "./index.html#award"},
+    {"name": "건축 소재 백과", "url": "./index.html#material-enc"},
+    {"name": "조명 디자인", "url": "./index.html#lighting"},
+    {"name": "방 배색 시뮬레이터", "url": "./index.html#colorscheme"},
+    {"name": "건축 포트폴리오", "url": "./index.html#portfolio"},
+    {"name": "한옥 수리", "url": "./index.html#repair"}
   ]
 }
