@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v13.0 - 6가지 3D 건축 시뮬레이터 + 가구커스터마이징 + 평면도에디터 + 건축어워드 + 소재백과 + 조명디자인 + 배색시뮬레이터 + 포트폴리오 + 한옥수리",
+  "name": "한국 건축 체험 v14.0 - 6가지 3D 건축 시뮬레이터 + 건축공법비교 + 부동산감정평가 + 스마트홈IoT + 건축시간여행 + 지붕양식 + 도전과제랠리 + 실내동선분석 + 건축명언",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 가구커스터마이징공방12종Canvas, 층별평면도에디터12x12Canvas, 건축어워드5축RadarCanvas, 건축소재백과12종, 조명디자인스튜디오8종Canvas, 방배색시뮬레이터12색Canvas, 건축포트폴리오CanvasPNG, 한옥수리시뮬레이터8종Canvas, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈135문, 업적134개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축공법비교분석기Canvas6종4축Radar, 부동산감정평가시뮬레이터Canvas8요소, 스마트홈IoT설계기Canvas12종, 건축시간여행뷰어Canvas6시대, 지붕양식디자인스튜디오Canvas10종단면, 건축도전과제랠리6종Timer, 실내동선분석기Canvas12x12히트맵, 건축명언갤러리20선, 가구커스터마이징공방12종Canvas, 층별평면도에디터12x12Canvas, 건축어워드5축RadarCanvas, 건축소재백과12종, 조명디자인스튜디오8종Canvas, 방배색시뮬레이터12색Canvas, 건축포트폴리오CanvasPNG, 한옥수리시뮬레이터8종Canvas, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈150문, 업적146개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -44,6 +44,14 @@
     {"name": "조명 디자인", "url": "./index.html#lighting"},
     {"name": "방 배색 시뮬레이터", "url": "./index.html#colorscheme"},
     {"name": "건축 포트폴리오", "url": "./index.html#portfolio"},
-    {"name": "한옥 수리", "url": "./index.html#repair"}
+    {"name": "한옥 수리", "url": "./index.html#repair"},
+    {"name": "건축공법 비교", "url": "./index.html#construct"},
+    {"name": "부동산 감정평가", "url": "./index.html#appraisal"},
+    {"name": "스마트홈 IoT", "url": "./index.html#smarthome"},
+    {"name": "건축 시간여행", "url": "./index.html#timetravel"},
+    {"name": "지붕 양식 디자인", "url": "./index.html#roof"},
+    {"name": "건축 도전과제", "url": "./index.html#challenge"},
+    {"name": "실내 동선 분석", "url": "./index.html#traffic"},
+    {"name": "건축 명언 갤러리", "url": "./index.html#quotes"}
   ]
 }
