@@ -1267,3 +1267,62 @@
 | index.html | SEO v14 갱신 + v14 script 태그 | 3018줄 |
 | manifest.json | v14 갱신 + 8 shortcuts 추가 | 57줄 |
 | AUTO_REPORT.md | v14 보고서 append | - |
+
+---
+
+## 2026-07-04 - v15.0 친환경건축인증+방음단열시뮬레이터+수납공간최적화+전통문양디자인+간트차트+VR워크스루+자재원가트래커+건축자격인증배지 에디션
+
+### 1차: 벤치마킹 / 분석
+
+| 항목 | The Sims 4 | Home Design 3D | House Builder v14 | v15 목표 |
+|------|-----------|----------------|-------------------|----------|
+| 친환경 건축 인증 | 에코 파워 DLC | 없음 | 미지원 | 12요소 Radar Canvas LEED 등급 |
+| 방음/단열 시뮬레이션 | 없음 | 벽 재질 선택만 | 미지원 | 6벽체 R-value+STC Bar Canvas |
+| 수납공간 설계 | 가구 배치 내 포함 | 수납 모듈 일부 | 미지원 | 12x12 Grid 5종 수납유형 Canvas |
+| 전통 문양 디자인 | 없음 | 없음 | 미지원 | 12종 단청/전통문양 Canvas |
+| 프로젝트 간트차트 | 없음 | 없음 | 미지원 | 6단계 16주 진행률 Canvas |
+| VR 워크스루 | 1인칭 뷰 있음 | 없음 | 미지원 | 8방 1인칭 시점 미니맵 Canvas |
+| 자재 원가 추적 | 없음 | 없음 | 미지원 | 8자재 12개월 Line Canvas |
+| 건축 자격 인증 | 커리어 보상 | 없음 | 미지원 | 6종 4등급(Bronze~Diamond) Canvas |
+
+### 2차: 개발 작업
+
+| 역할 | 작업 내용 | 산출물 |
+|------|----------|--------|
+| 프론트엔드 | v15_patch.js 1071줄 작성, CSS v15- 접두사 141개, 8개 패널 HTML 주입 | v15_patch.js (64KB) |
+| 백엔드 | localStorage hb_*_v15 키 6종, 상태관리 모듈 8개 IIFE | 친환경인증/방음단열/수납공간/전통문양/간트차트/VR워크스루/자재원가/자격인증 모듈 |
+| 콘텐츠 | 퀴즈 15문항(150→165), 업적 12개(146→158), 전통문양 12종 데이터 | 퀴즈 4지선다, 업적 체크로직 |
+| 오디오 | Web Audio SFX 12종 오실레이터 | green/insulate/storage/pattern/gantt/walk/material/cert/achieve 등 |
+| 비주얼 | Canvas 2D 렌더링 8종(Radar차트/막대그래프/Grid/문양패턴/간트바/미니맵/꺾은선/배지카드) | 실시간 Canvas 시각화 |
+| 3D/UI | 하단 네비바 8버튼, 키보드 Shift+O/P/Q/R/S/T/U/V 단축키 | 스크롤 네비게이션, 키보드 접근성 |
+| 인프라 | sw.js v15 캐시 업데이트, manifest.json 44 shortcuts, index.html SEO | PWA v15 완전 지원 |
+
+### 3차: 품질 검증
+
+| 검증 항목 | 결과 | 상세 |
+|----------|------|------|
+| JS 문법 검증 (node -c) | PASS | 구문 오류 없음 |
+| 괄호 균형 ({}) | PASS | 418/418 |
+| 괄호 균형 (()) | PASS | 998/998 |
+| 괄호 균형 ([]) | PASS | 130/130 |
+| 가드 패턴 | PASS | window.__hbV15 정상 |
+| v15- 접두사 | PASS | 141개 사용 |
+| hb_*_v15 localStorage | PASS | 6개 키 |
+| 외부 CDN 금지 | PASS | 외부 링크 0건 |
+| 개인정보 노출 금지 | PASS | 개인정보 0건 |
+| 기능 모듈 수 | PASS | 8개 IIFE 모듈 |
+| 퀴즈 문항 수 | PASS | +15문항 (총 165) |
+| 업적 수 | PASS | +12개 (총 158) |
+| 파일 크기 | PASS | 65,323 bytes (64KB) |
+| SW 문법 | PASS |
+| manifest.json | VALID JSON |
+
+### 4차: 파일 목록
+
+| 파일 | 변경 | 줄수 |
+|------|------|------|
+| v15_patch.js | **신규** | 1071줄 |
+| sw.js | 수정 (v14→v15) | 140줄 |
+| index.html | SEO v15 갱신 | 3018줄 |
+| manifest.json | v15 갱신 + 8 shortcuts 추가 | 65줄 |
+| AUTO_REPORT.md | v15 보고서 append | - |
