@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v16';
+var CACHE_NAME = 'house-builder-v17';
 var URLS = [
   './',
   './index.html',
@@ -16,6 +16,7 @@ var URLS = [
   './v14_patch.js',
   './v15_patch.js',
   './v16_patch.js',
+  './v17_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -91,6 +92,9 @@ self.addEventListener('fetch', function(e) {
           .catch(function() { return ''; }),
         caches.match('./v16_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v16_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v17_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v17_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
@@ -106,8 +110,9 @@ self.addEventListener('fetch', function(e) {
         var patch14 = results[10];
         var patch15 = results[11];
         var patch16 = results[12];
+        var patch17 = results[13];
         if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '');
+        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '');
         if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
           var lastIdx = html.lastIndexOf('</script>');

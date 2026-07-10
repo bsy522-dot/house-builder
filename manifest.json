@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v16.0 - 6가지 3D 건축 시뮬레이터 + 풍향분석기 + 열쾌적시뮬 + 레벨프로그레션 + 가구배치 + 비용대비 + 한옥해부도 + 에너지소비 + 마일스톤",
+  "name": "한국 건축 체험 v17.0 - 6가지 3D 건축 시뮬레이터 + 양식진화도 + 채광분석 + 내진설계 + 탄소발자국 + 스마트홈 + 음향분석 + 내구성트래커 + 퍼즐",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축풍향분석기Canvas8방위WindRose, 실내열쾌적시뮬레이터Canvas6존PMV, 건축레벨프로그레션Canvas10레벨SkillTree, 가구배치최적화Canvas12x12Grid, 건축비용대비분석기Canvas6종BarStack, 한옥구조해부도Canvas단면12부위, 계절에너지소비시뮬Canvas4계절LineTrend, 건축마일스톤타임라인Canvas20이벤트, 친환경건축인증분석기Canvas12요소RadarLEED, 방음단열시뮬레이터Canvas6벽체BarSTC, 수납공간최적화설계기Canvas12x12Grid, 전통문양디자인스튜디오Canvas12종패턴, 건축프로젝트간트차트Canvas6단계, VR워크스루시뮬레이터Canvas8방, 건축자재원가트래커Canvas8자재LineTrend, 건축자격인증배지Canvas6종4등급, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈180문, 업적170개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축양식진화도Canvas6시대Timeline, 실내채광분석기Canvas12시간SunPath, 지진내진설계테스트Canvas6등급Shake, 건축소재탄소발자국Canvas10소재Bar, 스마트홈자동화플래너Canvas12기기Flow, 건축음향분석기Canvas6실BarDB, 건축자재내구성트래커Canvas8자재LifespanLine, 건축미니퍼즐챌린지Canvas4x4Tile, 풍향분석기8방위, 열쾌적6존PMV, 레벨프로그레션10단계, 가구배치12x12, 비용대비6종, 한옥해부도12부위, 에너지4계절, 마일스톤20종, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈195문, 업적182개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -68,6 +68,14 @@
     {"name": "비용 대비 분석", "url": "./index.html#costcmp"},
     {"name": "한옥 구조 해부도", "url": "./index.html#anatomy"},
     {"name": "에너지 소비 분석", "url": "./index.html#energy"},
-    {"name": "마일스톤 타임라인", "url": "./index.html#milestone"}
+    {"name": "마일스톤 타임라인", "url": "./index.html#milestone"},
+    {"name": "건축 양식 진화도", "url": "./index.html#evolution"},
+    {"name": "실내 채광 분석기", "url": "./index.html#daylight"},
+    {"name": "내진 설계 테스트", "url": "./index.html#seismic"},
+    {"name": "탄소발자국 분석", "url": "./index.html#carbon"},
+    {"name": "스마트홈 자동화", "url": "./index.html#smarthome-v17"},
+    {"name": "건축 음향 분석", "url": "./index.html#acoustics"},
+    {"name": "자재 내구성 트래커", "url": "./index.html#durability"},
+    {"name": "건축 미니 퍼즐", "url": "./index.html#puzzle"}
   ]
 }
