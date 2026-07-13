@@ -1,5 +1,42 @@
 # House Builder - AUTO 발전 보고서
 
+## 2026-07-13 - v18.0 황금비분석기+공기질모니터+색채심리학+지붕구조+동선효율+ROI계산기+세계가옥+시공타임랩스 에디션
+
+### 1차: 벤치마킹 / 분석
+- **비교 대상**: The Sims 4 Build Mode, Home Design 3D, Planner 5D
+- **열위점 분석**:
+  1. 건축 비례 분석 기능 부재 → 6건물 황금비(φ=1.618) 비율 분석기 Canvas 620x400 추가
+  2. 실내 공기질 시뮬레이션 없음 → 8실 6종 오염원(PM2.5/CO2/VOC/습도/CO/라돈) Radar Canvas 600x380 추가
+  3. 색채 심리 기반 인테리어 가이드 부재 → 12색 감정/에너지/안정감/집중력 바차트 Canvas 580x360 추가
+  4. 지붕 구조 하중 분석 없음 → 8종 지붕 6축 Radar(하중/바람/배수/적설/미관/내구) Canvas 600x380 추가
+  5. 동선 효율 분석 부재 → 6레이아웃 실간 이동 네트워크 그래프 Canvas 620x380 추가
+  6. 투자 대비 수익 분석 없음 → 8프로젝트 비용/가치 비교 ROI 바차트 Canvas 580x360 추가
+  7. 세계 건축 비교 교육 부재 → 10국가 전통가옥 6축 Radar 비교 Canvas 600x400 추가
+  8. 건축 공정 시각화 없음 → 12단계 시공 타임랩스 애니메이션 Canvas 620x380 추가
+
+### 2차: 개발팀 전체 투입
+- **v18_patch.js** 신규 (940줄, 자기완결형 IIFE 패치 모듈)
+- **프론트엔드**: 좌측 사이드 메뉴 8버튼, 전체 패널 8종, 탭 인터페이스, 반응형 600px breakpoint
+- **백엔드/로직**: 황금비 비례 계산, 공기질 종합 판정, ROI 시뮬레이션, 타임랩스 애니메이션 엔진
+- **콘텐츠 제작**: 퀴즈 15문항(195→210), 업적 12종(182→194), 8종 건축 데이터
+- **오디오 엔진**: 12종 SFX (golden_measure/air_scan/color_pick/roof_load/traffic_step/roi_calc/world_explore/timelapse_step/timelapse_done/quiz_correct_v18/quiz_wrong_v18/achievement_v18)
+- **비주얼**: Canvas 라다 차트, 바차트, 네트워크 그래프, 건축 시공 단계별 시각화, 타임랩스 진행바
+
+### 3차: 품질팀 검증
+- **JS 구문 검사**: node -c PASS, new Function() PASS
+- **괄호 균형**: {} 302/302 BALANCED, [] 115/115 BALANCED (()는 문자열 내 포함으로 raw count 차이, 컴파일 통과)
+- **CDN 참조**: 0건 (규칙 준수)
+- **개인정보**: 0건 (규칙 준수)
+- **하단 고정 네비바**: 미생성 (UI불가침 규칙 준수, 좌측 사이드 메뉴 사용)
+- **manifest.json**: JSON PASS, shortcuts 8종 추가 (총68종)
+- **sw.js**: v17→v18 캐시, v18_patch.js PRECACHE+자동주입
+
+### 4차: 마무리
+- 커밋: [AUTO] 2026-07-13 house-builder v18.0
+- 파일 변경: v18_patch.js(신규), index.html, sw.js, manifest.json, AUTO_REPORT.md
+- 총 퀴즈: 210문항, 총 업적: 194개
+- manifest shortcuts: 68종
+
 ## 2026-07-10 - v17.0 건축양식진화도+채광분석기+내진설계+탄소발자국+스마트홈+음향분석+내구성트래커+퍼즐 에디션
 
 ### 1차: 벤치마킹 / 분석

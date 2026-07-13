@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v17.0 - 6가지 3D 건축 시뮬레이터 + 양식진화도 + 채광분석 + 내진설계 + 탄소발자국 + 스마트홈 + 음향분석 + 내구성트래커 + 퍼즐",
+  "name": "한국 건축 체험 v18.0 - 6가지 3D 건축 시뮬레이터 + 황금비분석기 + 공기질모니터 + 색채심리학 + 지붕구조분석 + 동선효율 + ROI계산기 + 세계전통가옥 + 시공타임랩스",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축양식진화도Canvas6시대Timeline, 실내채광분석기Canvas12시간SunPath, 지진내진설계테스트Canvas6등급Shake, 건축소재탄소발자국Canvas10소재Bar, 스마트홈자동화플래너Canvas12기기Flow, 건축음향분석기Canvas6실BarDB, 건축자재내구성트래커Canvas8자재LifespanLine, 건축미니퍼즐챌린지Canvas4x4Tile, 풍향분석기8방위, 열쾌적6존PMV, 레벨프로그레션10단계, 가구배치12x12, 비용대비6종, 한옥해부도12부위, 에너지4계절, 마일스톤20종, 인테리어디자인12종, 구조역학시각화기, 건축비용견적, 조경정원12종, 한옥인테리어갤러리12종, 건축도면학습6종, 건축안전진단10항목, 타임캡슐, 재료실험실15종, 세계건축10국, 시공시뮬6단계, 법규12종, 마을만들기, 명장12인, 통계대시보드, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 한옥투어8곳, 역사지도, 에너지효율, 퀴즈195문, 업적182개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축황금비분석기Canvas6건물비율, 실내공기질모니터Canvas8실6오염원Radar, 건축색채심리학Canvas12색감정맵, 전통지붕구조분석기Canvas8종하중분포, 건축동선효율분석기Canvas6레이아웃히트맵, 건축비용ROI계산기Canvas8프로젝트, 세계전통가옥비교Canvas10국가6축Radar, 건축시공타임랩스Canvas12단계애니메이션, 건축양식진화도6시대, 채광분석기12시간, 내진설계6등급, 탄소발자국10소재, 스마트홈12기기, 음향분석기6실, 내구성8자재, 풍향분석기8방위, 열쾌적6존PMV, 레벨프로그레션10단계, 인테리어12종, 구조역학, 조경정원12종, 한옥해부도12부위, 에너지4계절, 마일스톤20종, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 퀴즈210문, 업적194개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -76,6 +76,14 @@
     {"name": "스마트홈 자동화", "url": "./index.html#smarthome-v17"},
     {"name": "건축 음향 분석", "url": "./index.html#acoustics"},
     {"name": "자재 내구성 트래커", "url": "./index.html#durability"},
-    {"name": "건축 미니 퍼즐", "url": "./index.html#puzzle"}
+    {"name": "건축 미니 퍼즐", "url": "./index.html#puzzle"},
+    {"name": "건축 황금비 분석기", "url": "./index.html#golden-ratio"},
+    {"name": "실내 공기질 모니터", "url": "./index.html#air-quality"},
+    {"name": "건축 색채 심리학", "url": "./index.html#color-psych"},
+    {"name": "전통 지붕 구조 분석", "url": "./index.html#roof-struct"},
+    {"name": "건축 동선 효율 분석", "url": "./index.html#traffic-flow"},
+    {"name": "건축 비용 ROI", "url": "./index.html#cost-roi"},
+    {"name": "세계 전통가옥 비교", "url": "./index.html#world-house"},
+    {"name": "건축 시공 타임랩스", "url": "./index.html#timelapse"}
   ]
 }
