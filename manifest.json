@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v18.0 - 6가지 3D 건축 시뮬레이터 + 황금비분석기 + 공기질모니터 + 색채심리학 + 지붕구조분석 + 동선효율 + ROI계산기 + 세계전통가옥 + 시공타임랩스",
+  "name": "한국 건축 체험 v19.0 - 6가지 3D 건축 시뮬레이터 + 방수방습분석 + 조명배치시뮬 + 정원석조물 + 열교진단 + 공간활용최적화 + 유지보수캘린더 + 소음차단설계 + 장인도감",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축황금비분석기Canvas6건물비율, 실내공기질모니터Canvas8실6오염원Radar, 건축색채심리학Canvas12색감정맵, 전통지붕구조분석기Canvas8종하중분포, 건축동선효율분석기Canvas6레이아웃히트맵, 건축비용ROI계산기Canvas8프로젝트, 세계전통가옥비교Canvas10국가6축Radar, 건축시공타임랩스Canvas12단계애니메이션, 건축양식진화도6시대, 채광분석기12시간, 내진설계6등급, 탄소발자국10소재, 스마트홈12기기, 음향분석기6실, 내구성8자재, 풍향분석기8방위, 열쾌적6존PMV, 레벨프로그레션10단계, 인테리어12종, 구조역학, 조경정원12종, 한옥해부도12부위, 에너지4계절, 마일스톤20종, BGM8곡, 풍수지리, 마스터클래스12강, AI대결, 퀴즈210문, 업적194개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축방수방습분석기Canvas8공법비교Bar, 건축조명배치시뮬Canvas6실12종Lux, 전통정원석조물설계Canvas10종4축Radar, 건축열교진단Canvas8부위열손실Radar, 건축공간활용최적화Canvas6유형6지표Bar, 건축유지보수캘린더Canvas12종스케줄, 건축소음차단설계Canvas8소음원STC등급, 전통건축장인도감Canvas10장인6축Radar, 황금비분석기6건물, 공기질모니터8실, 색채심리학12색, 지붕구조8종, 동선효율6레이아웃, ROI계산기8프로젝트, 세계가옥10국가, 시공타임랩스12단계, 퀴즈225문, 업적206개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -84,6 +84,14 @@
     {"name": "건축 동선 효율 분석", "url": "./index.html#traffic-flow"},
     {"name": "건축 비용 ROI", "url": "./index.html#cost-roi"},
     {"name": "세계 전통가옥 비교", "url": "./index.html#world-house"},
-    {"name": "건축 시공 타임랩스", "url": "./index.html#timelapse"}
+    {"name": "건축 시공 타임랩스", "url": "./index.html#timelapse"},
+    {"name": "방수방습 분석기", "url": "./index.html#waterproof"},
+    {"name": "조명배치 시뮬", "url": "./index.html#lighting-sim"},
+    {"name": "정원 석조물 설계", "url": "./index.html#garden-stone"},
+    {"name": "열교 진단 시뮬", "url": "./index.html#thermal-bridge"},
+    {"name": "공간활용 최적화", "url": "./index.html#space-opt"},
+    {"name": "유지보수 캘린더", "url": "./index.html#maintenance"},
+    {"name": "소음차단 설계", "url": "./index.html#noise-block"},
+    {"name": "전통 장인 도감", "url": "./index.html#artisan"}
   ]
 }

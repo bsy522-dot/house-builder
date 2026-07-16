@@ -1,5 +1,41 @@
 # House Builder - AUTO 발전 보고서
 
+## 2026-07-16 - v19.0 방수방습분석기+조명배치시뮬+정원석조물+열교진단+공간활용+유지보수캘린더+소음차단+장인도감 에디션
+
+### 1차: 벤치마킹 / 분석
+- **The Sims 4 대비 열위점**: 방수/습기 시스템 부재, 조명배치 시뮬레이션 미비, 유지보수 시스템 미비, 소음차단 설계 부재
+- **Home Design 3D 대비 열위점**: 공간활용 지표 분석 부재, 열교 진단 시스템 미비, 전통 장인 콘텐츠 부재, 정원 석조물 배치 미비
+- **해결**: 8개 신규 Canvas 기능으로 전부 해결
+
+### 2차: 개발 (전체 팀원 투입)
+- **v19_patch.js 신규** (~660줄, 자기완결형 IIFE 패치 모듈)
+- 건축 방수방습 분석기: 8종 공법(아스팔트/PVC/TPO/EPDM/벤토나이트/시멘트/실리콘/우레탄) 7지표 바차트 Canvas 620x400
+- 건축 조명배치 시뮬레이터: 6실(거실/침실/주방/욕실/서재/다용도실) x 12종 조명 Lux/Watt 분석 Canvas 600x380
+- 전통 정원 석조물 설계: 10종(석탑/석등/석교/연못/담장/디딤돌/정자대/배수구/가산/징검다리) 4축 Radar Canvas 620x400
+- 건축 열교 진단 시뮬: 8부위(창틀/벽모서리/바닥접합/기둥/지붕/발코니/현관/파라펫) 8축 Radar Canvas 600x380
+- 건축 공간활용 최적화: 6유형(소형/중형/대형/복층/원룸/오픈플랜) x 6지표(수납/동선/채광/프라이버시/유연성/쾌적성) 바차트 Canvas 620x380
+- 건축 유지보수 캘린더: 12종(지붕/벽체/창호/배관/전기/도장/바닥/방수/난방/냉방/환기/외장) 프로그레스바 Canvas 600x380
+- 건축 소음차단 설계: 8소음원(도로/항공/이웃/설비/바닥충격/배관/바람/진동) STC/IIC 등급 바차트 Canvas 600x380
+- 전통 건축 장인 도감: 10장인(도편수/석수/기와장/번와장/소목장/대목장/단청장/미장이/초석장/조경장) 6축 Dual Radar Canvas 620x400
+- 퀴즈 v19 +15문항 (210->225): 방수/조명/열교/STC/IIC/장인/정원 관련 15문항
+- 업적 +12종 (194->206): waterproof_analyst/light_designer/garden_master/thermal_inspector/space_optimizer/maint_manager/noise_engineer/artisan_scholar/quiz_v19_master/quiz_s_rank/multi_explorer/v19_complete
+- SFX 12종 Web Audio API (waterproof/lighting/garden/thermal/space/maint/noise/artisan/quiz_correct/quiz_wrong/achieve/nav)
+- 키보드 Shift+Q/W/E/R/A/S/D/F (8섹션)
+- 우측 사이드 메뉴 8버튼 (하단 고정 네비바 미생성 - UI불가침 규칙 준수)
+
+### 3차: 품질검증
+- JS 구문 검증: node -c PASS (v19_patch.js, sw.js)
+- JSON 구문 검증: manifest.json VALID
+- 괄호 밸런스: ALL BALANCED (965/317/108)
+- CDN 사용: 0건 (Three.js CDN만 기존 허용)
+- 개인정보 노출: 0건
+- 하단 고정 네비바: 0건 (UI불가침 규칙 준수)
+
+### 4차: 배포
+- index.html: v19.0 SEO 전면 갱신 (title/desc/keywords/OG/Twitter) + v19 스크립트태그
+- sw.js: v18->v19 (house-builder-v19 캐시, v19_patch.js PRECACHE+자동주입)
+- manifest.json: v19.0 설명+shortcuts 8종 추가 (총76종)
+
 ## 2026-07-13 - v18.0 황금비분석기+공기질모니터+색채심리학+지붕구조+동선효율+ROI계산기+세계가옥+시공타임랩스 에디션
 
 ### 1차: 벤치마킹 / 분석
