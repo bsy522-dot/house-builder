@@ -1509,3 +1509,63 @@
 | index.html | SEO v15 갱신 | 3018줄 |
 | manifest.json | v15 갱신 + 8 shortcuts 추가 | 65줄 |
 | AUTO_REPORT.md | v15 보고서 append | - |
+
+---
+
+## 2026-07-19 - v20.0 구조하중분석+온돌시스템+재해복구+습도쾌적맵+미학비율+담장양식+에너지등급+자재호환성 에디션
+
+### 1차: 벤치마킹 / 분석
+
+| 비교 대상 | 우위 기능 | house-builder 대응 |
+|---|---|---|
+| The Sims 4 | 구조적 무결성 시뮬, 하중 시각화 | v20 구조하중분석기 Canvas 6요소 6하중 Stack 차트 |
+| Home Design 3D | 난방 시스템 모델링 | v20 온돌 시스템 설계 8종 6축 Radar |
+| Archicad | 재해 내성 분석 | v20 재해복구 플래너 8재해유형 Bar 차트 |
+| SketchUp | 환경 쾌적 분석 | v20 습도쾌적맵 8실 4계절 Heatmap |
+| Revit | 건축 미학 파라메트릭 | v20 미학비율 분석기 8건물 Bar |
+| AutoCAD | 외부 구조물 라이브러리 | v20 담장양식 가이드 10종 Bar |
+| EnergyPlus | 에너지 등급 평가 | v20 에너지등급 시뮬 6등급 Radar |
+| BIM 360 | 자재 상호 호환성 DB | v20 자재호환성 매트릭스 8x8 Heatmap |
+
+### 2차: 개발 (v20_patch.js - 827줄)
+
+| # | 기능 | 시각화 | 규격 |
+|---|---|---|---|
+| 1 | 건축 구조 하중 분석기 (v20Load) | Stack Bar 차트 | 620x400, 6구조요소 x 6하중유형 |
+| 2 | 전통 온돌 시스템 설계 (v20Ondol) | 6축 Radar 차트 | 600x380, 8온돌종류 |
+| 3 | 건축 재해 복구 플래너 (v20Disaster) | 수평 Bar 차트 | 620x380, 8재해유형 |
+| 4 | 실내 습도 쾌적 맵 (v20Humidity) | Heatmap 8x4 | 600x380, 8실 x 4계절 |
+| 5 | 건축 미학 비율 분석기 (v20Aesthetic) | 수평 Bar 차트 | 620x400, 8역사건물 |
+| 6 | 전통 담장 양식 가이드 (v20Fence) | 수평 Bar 차트 | 600x380, 10담장종류 |
+| 7 | 건축 에너지 등급 시뮬 (v20Energy) | 6축 Radar 차트 | 620x380, 6에너지등급 |
+| 8 | 건축 자재 호환성 매트릭스 (v20Compat) | Heatmap 8x8 | 620x400, 8자재 x 8자재 |
+
+부가 요소:
+- SFX: Web Audio API 오실레이터 14종
+- 퀴즈: 15문항 추가 (225 -> 240)
+- 업적: 12개 추가 (206 -> 218)
+- 단축키: Shift+G/H/J/K/L/Z/X/C (8개)
+- 메뉴: 왼쪽 사이드 (.v20-menu left:12px), v19 우측과 충돌 방지
+- z-index: 패널 5300, 메뉴 4070
+
+### 3차: 품질 검증
+
+| 항목 | 결과 |
+|---|---|
+| node -c v20_patch.js | PASS |
+| node -c sw.js | PASS |
+| manifest.json JSON.parse | PASS |
+| 외부 CDN 참조 | 없음 (PASS) |
+| 하단 고정 네비바 | 없음 (PASS) |
+| 개인정보 노출 | 없음 (PASS) |
+| 괄호 밸런스 (중괄호/대괄호) | 균형 (PASS) |
+
+### 4차: 파일 변경 요약
+
+| 파일 | 변경 내용 | 규모 |
+|---|---|---|
+| v20_patch.js | 신규 - 8 Canvas 기능 IIFE 모듈 | 827줄 |
+| sw.js | 캐시 v20, v20_patch.js 추가 | 167줄 |
+| index.html | v20 script 태그 + SEO v20 갱신 | 3023줄 |
+| manifest.json | v20 갱신 + 8 shortcuts 추가 | 105줄 |
+| AUTO_REPORT.md | v20 보고서 append | - |
