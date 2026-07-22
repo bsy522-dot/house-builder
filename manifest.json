@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v20.0 - 6가지 3D 건축 시뮬레이터 + 구조하중분석 + 온돌시스템 + 재해복구 + 습도쾌적맵 + 미학비율 + 담장양식 + 에너지등급 + 자재호환성",
+  "name": "한국 건축 체험 v21.0 - 6가지 3D 건축 시뮬레이터 + 구조하중분석 + 온돌시스템 + 재해복구 + 습도쾌적맵 + 미학비율 + 담장양식 + 에너지등급 + 자재호환성 + 풍하중시뮬 + 마루구조 + 채광일조 + 지하방수 + 음향잔향 + 창호문양 + 수명예측 + 환기시스템",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축구조하중분석기Canvas6요소6하중Stack, 전통온돌시스템설계Canvas8종6축Radar, 건축재해복구플래너Canvas8재해Bar, 실내습도쾌적맵Canvas8실4계절Heatmap, 건축미학비율분석기Canvas8건물Bar, 전통담장양식가이드Canvas10종Bar, 건축에너지등급시뮬Canvas6등급Radar, 건축자재호환성매트릭스Canvas8x8Matrix, 방수방습8공법, 조명배치6실12종, 정원석조10종, 열교진단8부위, 공간활용6유형, 유지보수12종, 소음차단8소음원, 장인도감10장인, 퀴즈240문, 업적218개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 건축구조하중분석기Canvas6요소6하중Stack, 전통온돌시스템설계Canvas8종6축Radar, 건축재해복구플래너Canvas8재해Bar, 실내습도쾌적맵Canvas8실4계절Heatmap, 건축미학비율분석기Canvas8건물Bar, 전통담장양식가이드Canvas10종Bar, 건축에너지등급시뮬Canvas6등급Radar, 건축자재호환성매트릭스Canvas8x8Matrix, 풍하중시뮬Canvas6건물Line, 마루구조분석Canvas8유형Bar, 채광일조시뮬Canvas6실Heatmap, 지하방수설계Canvas8공법Radar, 음향잔향분석Canvas6실Bar, 창호문양갤러리Canvas10종Gallery, 수명예측시뮬Canvas8자재Line, 환기시스템설계Canvas6실Bar, 방수방습8공법, 조명배치6실12종, 정원석조10종, 열교진단8부위, 공간활용6유형, 유지보수12종, 소음차단8소음원, 장인도감10장인, 퀴즈255문, 업적230개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -100,6 +100,14 @@
     {"name": "미학 비율 분석기", "url": "./index.html#aesthetic"},
     {"name": "담장 양식 가이드", "url": "./index.html#fence"},
     {"name": "에너지 등급 시뮬", "url": "./index.html#energy-grade"},
-    {"name": "자재 호환성 매트릭스", "url": "./index.html#material-compat"}
+    {"name": "자재 호환성 매트릭스", "url": "./index.html#material-compat"},
+    {"name": "풍하중 시뮬레이터", "url": "./index.html#wind-load"},
+    {"name": "마루 구조 분석", "url": "./index.html#maru-struct"},
+    {"name": "채광 일조 시뮬", "url": "./index.html#sunlight"},
+    {"name": "지하 방수 설계", "url": "./index.html#basement-wp"},
+    {"name": "음향 잔향 분석", "url": "./index.html#acoustics-rt"},
+    {"name": "창호 문양 갤러리", "url": "./index.html#window-pattern"},
+    {"name": "수명 예측 시뮬", "url": "./index.html#aging-predict"},
+    {"name": "환기 시스템 설계", "url": "./index.html#ventilation"}
   ]
 }
