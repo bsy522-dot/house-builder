@@ -1,5 +1,41 @@
 # House Builder - AUTO 발전 보고서
 
+## 2026-07-28 - v23.0 전통초석설계+우수배수시스템+창호유형분석+구조안전진단+마감재비교+리모델링ROI+공간온도분포+석축기단설계 에디션
+
+### 1차: 벤치마킹 / 분석
+- **The Sims 4 대비 열위점**: 기초/초석 설계 가이드 부재, 우수 배수 시스템 미비, 구조 안전 진단 캘린더 없음, 리모델링 ROI 분석 부재
+- **Home Design 3D 대비 열위점**: 전통 창호 유형 분석 부재, 마감재 비교 시스템 미비, 공간 온도 분포 시각화 없음, 석축/기단 설계 콘텐츠 부재
+- **해결**: 8개 신규 Canvas 기능으로 전부 해결
+
+### 2차: 개발 (전체 팀원 투입)
+- **v23_patch.js 신규** (~1212줄, 자기완결형 IIFE 패치 모듈)
+- 전통 초석 설계 가이드: 10종(막초석/덤벙초석/원형초석/방형초석/장대석초석/그랭이초석/주초석/고맥이초석/탱주초석/귀초석) 6축 Radar Canvas 620x400
+- 우수 배수 시스템 설계: 8종(처마홈통/낙수받이/암거배수/표면배수/지붕집수/중정배수/석구/와구) 6지표 Bar Canvas 600x380
+- 전통 창호 유형 분석기: 10종(쌍여닫이/외여닫이/미닫이/미서기/분합문/들어열개/궁판문/판장문/띠살문/교살문) 5축 Radar Canvas 620x400
+- 구조 안전 진단 캘린더: 12월×6항목(기초/벽체/지붕/창호/배관/전기) Heatmap Canvas 620x380
+- 전통 마감재 비교 분석기: 10종(황토미장/회반죽/석회/삼화토/기름먹/동유/갈분/백토/송진/옻칠) 5축 Bar Canvas 600x380
+- 리모델링 ROI 시뮬레이터: 8프로젝트(지붕교체/창호교체/단열보강/욕실리모델/주방리모델/외벽도장/마루교체/전기배선) 비용vs가치 DualBar Canvas 620x400
+- 공간 온도 분포도: 8실(거실/침실/주방/욕실/서재/다용도실/현관/다락)×4계절 Heatmap Canvas 620x380
+- 전통 석축/기단 설계: 8종(자연석축/잡석축/절석축/성돌축/기단석축/계단석축/축대석축/화강암축) 6축 Radar Canvas 600x380
+- 퀴즈 v23 +15문항 (270->285): 초석/배수/창호/안전/마감재/ROI/온도/석축 관련 15문항
+- 업적 +12종 (242->254): choseok_explorer/drain_engineer/changho_master/safety_inspector/finish_expert/remodel_investor/temp_analyst/stone_architect/quiz_v23_master/v23_explorer/v23_complete/quiz_285
+- SFX 16종 Web Audio API (nav/tab/hover/stone/drain/window/safety/finish/roi/temp/compare/inspect/quiz_correct/quiz_wrong/achieve/default)
+- 키보드 Shift+A(초석)/S(배수)/D(창호)/F(안전)/G(마감재)/H(ROI)/J(온도)/K(석축)/9(퀴즈)
+- 좌측 사이드 메뉴 8버튼 (left:12px, v22 우측 메뉴와 충돌 방지)
+- 하단 고정 네비바 미생성 - UI불가침 규칙 준수
+
+### 3차: 품질검증
+- JS 구문 검증: node -c PASS (v23_patch.js, sw.js)
+- JSON 구문 검증: manifest.json VALID
+- 외부 CDN 사용: 0건 (Three.js CDN만 기존 허용)
+- 개인정보 노출: 0건
+- 하단 고정 네비바: 0건 (UI불가침 규칙 준수)
+
+### 4차: 배포
+- index.html: v23.0 SEO 전면 갱신 (title/desc/keywords/OG/Twitter) + v23 스크립트태그
+- sw.js: v22->v23 (house-builder-v23 캐시, v23_patch.js PRECACHE+자동주입)
+- manifest.json: v23.0 설명+shortcuts 8종 추가 (총127종)
+
 ## 2026-07-16 - v19.0 방수방습분석기+조명배치시뮬+정원석조물+열교진단+공간활용+유지보수캘린더+소음차단+장인도감 에디션
 
 ### 1차: 벤치마킹 / 분석

@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v22.0 - 6가지 3D 건축 시뮬레이터 + 기와도감 + 토질분석 + 열관류율 + 처마설계 + 시공공정표 + 벽체단면 + 에너지소비패턴 + 대문설계 + 구조하중분석 + 온돌시스템 + 재해복구 + 습도쾌적맵 + 미학비율 + 담장양식 + 에너지등급 + 자재호환성 + 풍하중시뮬 + 마루구조 + 채광일조 + 지하방수 + 음향잔향 + 창호문양 + 수명예측 + 환기시스템",
+  "name": "한국 건축 체험 v23.0 - 6가지 3D 건축 시뮬레이터 + 기와도감 + 토질분석 + 열관류율 + 처마설계 + 시공공정표 + 벽체단면 + 에너지소비패턴 + 대문설계 + 구조하중분석 + 온돌시스템 + 재해복구 + 습도쾌적맵 + 미학비율 + 담장양식 + 에너지등급 + 자재호환성 + 풍하중시뮬 + 마루구조 + 채광일조 + 지하방수 + 음향잔향 + 창호문양 + 수명예측 + 환기시스템 + 초석설계 + 우수배수 + 창호유형 + 안전진단 + 마감재비교 + 리모델링ROI + 온도분포 + 석축기단",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 전통기와도감Canvas10종6축Radar, 지반토질분석Canvas8종6지표Bar, 열관류율계산Canvas8부위U값PassFail, 처마설계가이드Canvas8종6축Radar, 시공공정표Canvas12단계Gantt, 벽체단면분석Canvas8종3축StackBar, 에너지소비패턴Canvas12월5분류StackArea, 대문설계Canvas10종5축Bar, 건축구조하중분석기Canvas6요소6하중Stack, 전통온돌시스템설계Canvas8종6축Radar, 건축재해복구플래너Canvas8재해Bar, 실내습도쾌적맵Canvas8실4계절Heatmap, 건축미학비율분석기Canvas8건물Bar, 전통담장양식가이드Canvas10종Bar, 건축에너지등급시뮬Canvas6등급Radar, 건축자재호환성매트릭스Canvas8x8Matrix, 풍하중시뮬Canvas6건물Line, 마루구조분석Canvas8유형Bar, 채광일조시뮬Canvas6실Heatmap, 지하방수설계Canvas8공법Radar, 음향잔향분석Canvas6실Bar, 창호문양갤러리Canvas10종Gallery, 수명예측시뮬Canvas8자재Line, 환기시스템설계Canvas6실Bar, 방수방습8공법, 조명배치6실12종, 정원석조10종, 열교진단8부위, 공간활용6유형, 유지보수12종, 소음차단8소음원, 장인도감10장인, 퀴즈270문, 업적242개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 전통기와도감Canvas10종6축Radar, 지반토질분석Canvas8종6지표Bar, 열관류율계산Canvas8부위U값PassFail, 처마설계가이드Canvas8종6축Radar, 시공공정표Canvas12단계Gantt, 벽체단면분석Canvas8종3축StackBar, 에너지소비패턴Canvas12월5분류StackArea, 대문설계Canvas10종5축Bar, 건축구조하중분석기Canvas6요소6하중Stack, 전통온돌시스템설계Canvas8종6축Radar, 건축재해복구플래너Canvas8재해Bar, 실내습도쾌적맵Canvas8실4계절Heatmap, 건축미학비율분석기Canvas8건물Bar, 전통담장양식가이드Canvas10종Bar, 건축에너지등급시뮬Canvas6등급Radar, 건축자재호환성매트릭스Canvas8x8Matrix, 풍하중시뮬Canvas6건물Line, 마루구조분석Canvas8유형Bar, 채광일조시뮬Canvas6실Heatmap, 지하방수설계Canvas8공법Radar, 음향잔향분석Canvas6실Bar, 창호문양갤러리Canvas10종Gallery, 수명예측시뮬Canvas8자재Line, 환기시스템설계Canvas6실Bar, 전통초석설계가이드Canvas10종6축Radar, 우수배수시스템설계Canvas8종6지표Bar, 전통창호유형분석기Canvas10종5축Radar, 구조안전진단캘린더Canvas12월6항목Heatmap, 전통마감재비교분석기Canvas10종5축Bar, 리모델링ROI시뮬레이터Canvas8프로젝트DualBar, 공간온도분포도Canvas8실4계절Heatmap, 전통석축기단설계Canvas8종6축Radar, 방수방습8공법, 조명배치6실12종, 정원석조10종, 열교진단8부위, 공간활용6유형, 유지보수12종, 소음차단8소음원, 장인도감10장인, 퀴즈285문, 업적254개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -116,6 +116,14 @@
     {"name": "시공 공정표", "url": "./index.html#construction-gantt"},
     {"name": "벽체 단면 분석", "url": "./index.html#wall-section"},
     {"name": "에너지 소비 패턴", "url": "./index.html#energy-consumption"},
-    {"name": "전통 대문 설계", "url": "./index.html#gate-design"}
+    {"name": "전통 대문 설계", "url": "./index.html#gate-design"},
+    {"name": "전통 초석 설계", "url": "./index.html#choseok-design"},
+    {"name": "우수 배수 시스템", "url": "./index.html#drain-system"},
+    {"name": "전통 창호 유형", "url": "./index.html#changho-type"},
+    {"name": "구조 안전 진단", "url": "./index.html#safety-calendar"},
+    {"name": "전통 마감재 비교", "url": "./index.html#finish-compare"},
+    {"name": "리모델링 ROI", "url": "./index.html#remodel-roi"},
+    {"name": "공간 온도 분포", "url": "./index.html#temp-map"},
+    {"name": "전통 석축 기단", "url": "./index.html#stone-foundation"}
   ]
 }

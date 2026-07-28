@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v22';
+var CACHE_NAME = 'house-builder-v23';
 var URLS = [
   './',
   './index.html',
@@ -22,6 +22,7 @@ var URLS = [
   './v20_patch.js',
   './v21_patch.js',
   './v22_patch.js',
+  './v23_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -115,6 +116,9 @@ self.addEventListener('fetch', function(e) {
           .catch(function() { return ''; }),
         caches.match('./v22_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v22_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v23_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v23_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
@@ -136,8 +140,9 @@ self.addEventListener('fetch', function(e) {
         var patch20 = results[16];
         var patch21 = results[17];
         var patch22 = results[18];
+        var patch23 = results[19];
         if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '') + '\n' + (patch18 || '') + '\n' + (patch19 || '') + '\n' + (patch20 || '') + '\n' + (patch21 || '') + '\n' + (patch22 || '');
+        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '') + '\n' + (patch18 || '') + '\n' + (patch19 || '') + '\n' + (patch20 || '') + '\n' + (patch21 || '') + '\n' + (patch22 || '') + '\n' + (patch23 || '');
         if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
           var lastIdx = html.lastIndexOf('</script>');
