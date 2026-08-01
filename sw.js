@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v23';
+var CACHE_NAME = 'house-builder-v24';
 var URLS = [
   './',
   './index.html',
@@ -23,6 +23,7 @@ var URLS = [
   './v21_patch.js',
   './v22_patch.js',
   './v23_patch.js',
+  './v24_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
