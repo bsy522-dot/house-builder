@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v24.0 - 6가지 3D 건축 시뮬레이터 + 서까래구조분석 + 소음전파시뮬 + 한옥배치풍수 + 자재탄소배출 + 기둥양식도감 + 비용워터폴 + 공간프로그래밍 + 종합성적표 + 초석설계 + 우수배수 + 창호유형 + 안전진단 + 마감재비교 + 리모델링ROI + 온도분포 + 석축기단",
+  "name": "한국 건축 체험 v25.0 - 6가지 3D 건축 시뮬레이터 + 지붕기와배열 + 구조하중분배 + 온돌효율 + 음향잔향 + 정원조경 + 자재풍화 + 장석철물 + 지속가능성 + 서까래구조 + 소음전파 + 한옥배치풍수 + 자재탄소배출 + 기둥양식 + 비용워터폴 + 공간프로그래밍 + 종합성적표",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 전통서까래구조분석Canvas10종6축Radar, 건축소음전파시뮬Canvas8실6소음원dBHeatmap, 한옥배치풍수분석Canvas8채네트워크, 자재탄소배출비교Canvas10종5축Bar, 전통기둥양식도감Canvas10종6축Radar, 건축비용워터폴Canvas8항목누적Bar, 한옥공간프로그래밍Canvas8공간도넛Bar, 건축종합성적표Canvas8축Radar등급, 전통초석설계Canvas10종6축Radar, 우수배수시스템Canvas8종6지표Bar, 전통창호유형분석Canvas10종5축Radar, 구조안전진단Canvas12월6항목Heatmap, 전통마감재비교Canvas10종5축Bar, 리모델링ROI시뮬Canvas8프로젝트DualBar, 공간온도분포Canvas8실4계절Heatmap, 전통석축기단설계Canvas8종6축Radar, 퀴즈300문, 업적266개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 지붕기와배열설계Canvas10종6축Radar, 구조하중분배Canvas8부재네트워크, 온돌효율시뮬Canvas8구역히트맵, 음향잔향분석Canvas8실RT60, 정원조경플래너Canvas10요소네트워크, 자재풍화시뮬Canvas10종50년라인차트, 장석철물도감Canvas10종5축Radar, 지속가능성대시보드Canvas8KPI반원게이지, 서까래구조Canvas10종6축Radar, 소음전파Canvas8실dBHeatmap, 한옥배치풍수Canvas8채네트워크, 자재탄소배출Canvas10종5축Bar, 기둥양식Canvas10종6축Radar, 비용워터폴Canvas8항목Bar, 공간프로그래밍Canvas8공간도넛Bar, 종합성적표Canvas8축Radar등급, 퀴즈315문, 업적278개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -132,6 +132,14 @@
     {"name": "기둥 양식 도감", "url": "./index.html#pillar-catalog"},
     {"name": "비용 워터폴", "url": "./index.html#cost-waterfall"},
     {"name": "공간 프로그래밍", "url": "./index.html#space-program"},
-    {"name": "종합 성적표", "url": "./index.html#building-report"}
+    {"name": "종합 성적표", "url": "./index.html#building-report"},
+    {"name": "기와 배열 설계", "url": "./index.html#tile-arrangement"},
+    {"name": "하중 분배 분석", "url": "./index.html#load-distribution"},
+    {"name": "온돌 효율 시뮬", "url": "./index.html#ondol-efficiency"},
+    {"name": "음향 잔향 분석", "url": "./index.html#acoustics-rt60"},
+    {"name": "정원 조경 플래너", "url": "./index.html#garden-landscape"},
+    {"name": "자재 풍화 시뮬", "url": "./index.html#weathering-sim"},
+    {"name": "장석 철물 도감", "url": "./index.html#jangseok-catalog"},
+    {"name": "지속가능성 평가", "url": "./index.html#sustainability"}
   ]
 }
