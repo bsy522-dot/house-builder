@@ -1,7 +1,7 @@
 {
-  "name": "한국 건축 체험 v27.0 - 6가지 3D 건축 시뮬레이터 + 창호양식비교 + 열교브릿지분석 + 우물천장도감 + 일조량시뮬 + 담장양식비교 + 소방안전평가 + 계단양식도감 + 종합안전진단",
+  "name": "한국 건축 체험 v28.0 - 6가지 3D 건축 시뮬레이터 + 대문양식비교 + 습기결로진단 + 처마양식도감 + 생활소음분석 + 기둥배치설계 + 접근성평가 + 돌담공법도감 + 종합거주성능",
   "short_name": "건축체험",
-  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 창호양식비교기Canvas10종6축Radar, 열교브릿지분석기Canvas8위치바차트온도프로파일, 우물천장구조도감Canvas10종5축Radar, 일조량시뮬레이터Canvas12월x8시간히트맵, 담장양식비교기Canvas10종6축Radar, 소방안전평가기Canvas8구역6항목히트맵, 계단양식도감Canvas10종5축Radar, 종합안전진단대시보드Canvas8KPI반원게이지, 퀴즈345문, 업적302개, PWA 오프라인 지원.",
+  "description": "한옥, 기와집, 초가집, 서원, 정자, 현대주택을 직접 짓는 3D 건축 학습 게임. 대문양식비교기Canvas10종6축Radar, 습기결로진단기Canvas8구역듀얼바차트, 처마양식도감Canvas10종5축Radar, 생활소음분석기Canvas8실x6소음원히트맵, 기둥배치설계기Canvas10종6축Radar, 접근성유니버설디자인평가기Canvas8구역6항목히트맵, 돌담쌓기공법도감Canvas10종5축Radar, 종합거주성능대시보드Canvas8KPI반원게이지, 퀴즈360문, 업적314개, PWA 오프라인 지원.",
   "start_url": "./index.html",
   "display": "standalone",
   "background_color": "#2d1b0e",
@@ -156,6 +156,14 @@
     {"name": "담장 양식 비교", "url": "./index.html#fence-style"},
     {"name": "소방안전 평가", "url": "./index.html#fire-safety"},
     {"name": "계단 양식 도감", "url": "./index.html#stair-catalog"},
-    {"name": "종합 안전진단", "url": "./index.html#safety-dashboard"}
+    {"name": "종합 안전진단", "url": "./index.html#safety-dashboard"},
+    {"name": "대문 양식 비교", "url": "./index.html#gate-style"},
+    {"name": "습기 결로 진단", "url": "./index.html#moisture-diag"},
+    {"name": "처마 양식 도감", "url": "./index.html#eave-catalog"},
+    {"name": "생활소음 분석", "url": "./index.html#noise-analysis"},
+    {"name": "기둥배치 설계", "url": "./index.html#column-layout"},
+    {"name": "접근성 평가", "url": "./index.html#universal-design"},
+    {"name": "돌담 공법 도감", "url": "./index.html#stone-wall"},
+    {"name": "종합 거주성능", "url": "./index.html#living-dashboard"}
   ]
 }

@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v27';
+var CACHE_NAME = 'house-builder-v28';
 var URLS = [
   './',
   './index.html',
@@ -27,6 +27,7 @@ var URLS = [
   './v25_patch.js',
   './v26_patch.js',
   './v27_patch.js',
+  './v28_patch.js',
   'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
 ];
 
@@ -135,6 +136,9 @@ self.addEventListener('fetch', function(e) {
           .catch(function() { return ''; }),
         caches.match('./v27_patch.js')
           .then(function(r) { return r ? r.text() : fetch('./v27_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
+          .catch(function() { return ''; }),
+        caches.match('./v28_patch.js')
+          .then(function(r) { return r ? r.text() : fetch('./v28_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
           .catch(function() { return ''; })
       ]).then(function(results) {
         var resp = results[0];
@@ -161,8 +165,9 @@ self.addEventListener('fetch', function(e) {
         var patch25 = results[21];
         var patch26 = results[22];
         var patch27 = results[23];
+        var patch28 = results[24];
         if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '') + '\n' + (patch18 || '') + '\n' + (patch19 || '') + '\n' + (patch20 || '') + '\n' + (patch21 || '') + '\n' + (patch22 || '') + '\n' + (patch23 || '') + '\n' + (patch24 || '') + '\n' + (patch25 || '') + '\n' + (patch26 || '') + '\n' + (patch27 || '');
+        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '') + '\n' + (patch18 || '') + '\n' + (patch19 || '') + '\n' + (patch20 || '') + '\n' + (patch21 || '') + '\n' + (patch22 || '') + '\n' + (patch23 || '') + '\n' + (patch24 || '') + '\n' + (patch25 || '') + '\n' + (patch26 || '') + '\n' + (patch27 || '') + '\n' + (patch28 || '');
         if (!patches.trim()) return resp;
         return resp.text().then(function(html) {
           var lastIdx = html.lastIndexOf('</script>');
