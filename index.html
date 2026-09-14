@@ -475,6 +475,7 @@ body.light-mode .compare-card{background:linear-gradient(135deg,#f5f0e8,#e8dcc8)
   </div>
 </div>
 
+<script src="hub-back.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
 <script src="v6_patch.js"></script>
 <script src="v7_patch.js"></script>
@@ -3007,6 +3008,75 @@ window.addEventListener('keydown', (e) => {
     navigator.serviceWorker.register('sw.js').catch(() => {});
   }
 })();
+
+/* ===== 폰 뒤로가기(◁) 한 단계 되돌리기 — hub-back 배선 (2026-09-14) =====
+   화면(모드선택→게임)과 전체화면 오버레이(도움말·퀴즈·기록·비교·완성·vNN 패치 패널)를
+   열 때 히스토리에 한 칸 쌓고, ◁ 를 누르면 그 화면만 닫는다. 스택이 비면 앱이 평소대로 닫힌다.
+   패치 모듈(v5~v29)은 모두 body 바로 아래 전체화면 패널에 active/show 클래스를 켜고 끄므로
+   개별 수정 없이 관찰자 하나로 함께 배선된다(앞으로 추가될 vNN 패치도 자동 적용). */
+(function(){
+  if (!window.HubBack || !window.MutationObserver) return;
+  var HB = window.HubBack;
+  /* 오버레이가 아닌 상시 UI·토스트는 제외 */
+  var SKIP = {sidePanel:1, topBar:1, progressBar:1, kbdHint:1, factCard:1, achToast:1,
+              loadingScreen:1, modeSelect:1, canvas3d:1, weatherCanvas:1, togglePanel:1};
+  /* 앱 고유의 닫기 함수가 있는 오버레이는 그 함수를 그대로 쓴다(효과음·진행상황 저장 유지) */
+  var CLOSERS = {
+    tutorial:     function(){ if (typeof closeTutorial === 'function') closeTutorial(); },
+    quizOverlay:  function(){ if (typeof closeQuiz     === 'function') closeQuiz(); },
+    statsPanel:   function(){ if (typeof closeStats    === 'function') closeStats(); },
+    compareModal: function(){ if (typeof closeCompare  === 'function') closeCompare(); }
+  };
+
+  function isOpen(el){
+    var cl = el.classList;
+    if (!cl || (!cl.contains('active') && !cl.contains('show'))) return false;
+    var cs = window.getComputedStyle(el);
+    if (cs.display === 'none' || cs.visibility === 'hidden' || cs.position !== 'fixed') return false;
+    var r = el.getBoundingClientRect();
+    return r.width >= window.innerWidth * 0.6 && r.height >= window.innerHeight * 0.5;
+  }
+
+  function closerFor(el){
+    return CLOSERS[el.id] || function(){ el.classList.remove('active'); el.classList.remove('show'); };
+  }
+
+  function sync(el){
+    if (!el || el.nodeType !== 1 || el.parentNode !== document.body) return;
+    if (el.id && SKIP[el.id]) return;
+    if (isOpen(el)) {
+      if (!el.__hbTok) {
+        el.__hbTok = HB.push(el.id || el.className || 'panel', function(){
+          el.__hbTok = null;
+          try { closerFor(el)(); } catch(e) {}
+        });
+      }
+    } else if (el.__hbTok) {
+      var t = el.__hbTok; el.__hbTok = null; HB.pop(t);
+    }
+  }
+
+  new MutationObserver(function(muts){
+    for (var i = 0; i < muts.length; i++) sync(muts[i].target);
+  }).observe(document.body, {subtree:true, attributes:true, attributeFilter:['class']});
+
+  /* 게임 화면: 모드선택이 숨겨지면 한 칸 쌓고, ◁ 는 처음(모드선택)으로 되돌린다 */
+  var ms = document.getElementById('modeSelect');
+  if (ms) {
+    new MutationObserver(function(){
+      var inGame = ms.classList.contains('hidden');
+      if (inGame && !ms.__hbTok) {
+        ms.__hbTok = HB.push('game', function(){
+          ms.__hbTok = null;
+          try { resetGame(); } catch(e) {}
+        });
+      } else if (!inGame && ms.__hbTok) {
+        var t = ms.__hbTok; ms.__hbTok = null; HB.pop(t);
+      }
+    }).observe(ms, {attributes:true, attributeFilter:['class']});
+  }
+})();
+/* ===== hub-back 배선 끝 ===== */
 </script>
 <script src="v9_patch.js"></script>
 <script src="v10_patch.js"></script>
