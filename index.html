@@ -477,9 +477,6 @@ body.light-mode .compare-card{background:linear-gradient(135deg,#f5f0e8,#e8dcc8)
 
 <script src="hub-back.js"></script>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
-<script src="v6_patch.js"></script>
-<script src="v7_patch.js"></script>
-<script src="v8_patch.js"></script>
 <script>
 /* ========================================
    한옥 짓기 - 한국 전통 건축 체험 게임
@@ -3078,6 +3075,10 @@ window.addEventListener('keydown', (e) => {
 })();
 /* ===== hub-back 배선 끝 ===== */
 </script>
+<!-- Base globals (including ACHIEVEMENTS and QUIZZES) must exist before patches run. -->
+<script src="v6_patch.js"></script>
+<script src="v7_patch.js"></script>
+<script src="v8_patch.js"></script>
 <script src="v9_patch.js"></script>
 <script src="v10_patch.js"></script>
 <script src="v11_patch.js"></script>
