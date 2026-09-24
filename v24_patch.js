@@ -51,88 +51,88 @@ window.__hbV24 = true;
   wrap.innerHTML =
     // 1. 전통 서까래 구조 분석기
     '<div id="v24-rafters" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1FAB5; &#xC804;&#xD1B5; &#xC11C;&#xAE4C;&#xB798; &#xAD6C;&#xC870; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>10&#xC885; &#xC11C;&#xAE4C;&#xB798;&#xC758; &#xAD6C;&#xC870;&#xC801; &#xD2B9;&#xC131; &#xBE44;&#xAD50; (6&#xCD95; Radar)</p>' +
+      '<h2>🪵 전통 서까래 구조 분석기</h2>' +
+      '<p>10종 서까래의 구조적 특성 비교 (6축 Radar)</p>' +
       '<div class="v24-tabs" id="v24-rf-tabs"></div>' +
       '<canvas id="v24-rf-canvas" class="v24-canvas" width="620" height="400"></canvas>' +
       '<div id="v24-rf-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-rf-stat"></div>' +
-      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Rafters.compare()">&#xBE44;&#xAD50;</button> <button class="v24-btn-sm" onclick="v24Rafters.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v24-close" onclick="v24Rafters.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Rafters.compare()">비교</button> <button class="v24-btn-sm" onclick="v24Rafters.reset()">초기화</button></div>' +
+      '<button class="v24-close" onclick="v24Rafters.close()">닫기</button>' +
     '</div></div>' +
     // 2. 건축 소음 전파 시뮬레이터
     '<div id="v24-noise" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F50A; &#xAC74;&#xCD95; &#xC18C;&#xC74C; &#xC804;&#xD30C; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>8&#xC2E4; &#xC18C;&#xC74C;&#xC6D0; &#xC804;&#xD30C; &#xACBD;&#xB85C; &#xBC0F; dB &#xAC10;&#xC1E0; &#xBD84;&#xC11D;</p>' +
+      '<h2>🔊 건축 소음 전파 시뮬레이터</h2>' +
+      '<p>8실 소음원 전파 경로 및 dB 감쇠 분석</p>' +
       '<div class="v24-tabs" id="v24-ns-tabs"></div>' +
       '<canvas id="v24-ns-canvas" class="v24-canvas" width="600" height="380"></canvas>' +
       '<div id="v24-ns-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-ns-stat"></div>' +
-      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Noise.toggle()">&#xC18C;&#xC74C;&#xC6D0; &#xC804;&#xD658;</button></div>' +
-      '<button class="v24-close" onclick="v24Noise.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Noise.toggle()">소음원 전환</button></div>' +
+      '<button class="v24-close" onclick="v24Noise.close()">닫기</button>' +
     '</div></div>' +
     // 3. 전통 한옥 배치도 풍수 분석
     '<div id="v24-layout" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F3E1; &#xD55C;&#xC625; &#xBC30;&#xCE58;&#xB3C4; &#xD48D;&#xC218; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xCC44; &#xBC30;&#xCE58; &#xB124;&#xD2B8;&#xC6CC;&#xD06C;&#xC640; &#xD48D;&#xC218; &#xC801;&#xD569;&#xB3C4; &#xBD84;&#xC11D;</p>' +
+      '<h2>🏡 한옥 배치도 풍수 분석</h2>' +
+      '<p>8채 배치 네트워크와 풍수 적합도 분석</p>' +
       '<div class="v24-tabs" id="v24-ly-tabs"></div>' +
       '<canvas id="v24-ly-canvas" class="v24-canvas" width="640" height="400"></canvas>' +
       '<div id="v24-ly-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-ly-stat"></div>' +
-      '<button class="v24-close" onclick="v24Layout.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v24-close" onclick="v24Layout.close()">닫기</button>' +
     '</div></div>' +
     // 4. 건축 자재 탄소배출 비교
     '<div id="v24-carbon" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F33F; &#xAC74;&#xCD95; &#xC790;&#xC7AC; &#xD0C4;&#xC18C;&#xBC30;&#xCD9C; &#xBE44;&#xAD50;</h2>' +
-      '<p>10&#xC790;&#xC7AC; &#xD0C4;&#xC18C;&#xBC30;&#xCD9C;&#xB7C9; &#xBC0F; &#xD658;&#xACBD; &#xC601;&#xD5A5; 5&#xCD95; &#xBD84;&#xC11D;</p>' +
+      '<h2>🌿 건축 자재 탄소배출 비교</h2>' +
+      '<p>10자재 탄소배출량 및 환경 영향 5축 분석</p>' +
       '<div class="v24-tabs" id="v24-cb-tabs"></div>' +
       '<canvas id="v24-cb-canvas" class="v24-canvas" width="620" height="400"></canvas>' +
       '<div id="v24-cb-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-cb-stat"></div>' +
-      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Carbon.sortBy()">&#xC815;&#xB82C; &#xC804;&#xD658;</button></div>' +
-      '<button class="v24-close" onclick="v24Carbon.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Carbon.sortBy()">정렬 전환</button></div>' +
+      '<button class="v24-close" onclick="v24Carbon.close()">닫기</button>' +
     '</div></div>' +
     // 5. 전통 기둥 양식 도감
     '<div id="v24-pillar" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F3DB;&#xFE0F; &#xC804;&#xD1B5; &#xAE30;&#xB465; &#xC591;&#xC2DD; &#xB3C4;&#xAC10;</h2>' +
-      '<p>10&#xC885; &#xC804;&#xD1B5; &#xAE30;&#xB465;&#xC758; &#xAD6C;&#xC870;&#xC801; &#xD2B9;&#xC131; &#xBE44;&#xAD50; (6&#xCD95; Radar)</p>' +
+      '<h2>🏛️ 전통 기둥 양식 도감</h2>' +
+      '<p>10종 전통 기둥의 구조적 특성 비교 (6축 Radar)</p>' +
       '<div class="v24-tabs" id="v24-pl-tabs"></div>' +
       '<canvas id="v24-pl-canvas" class="v24-canvas" width="600" height="380"></canvas>' +
       '<div id="v24-pl-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-pl-stat"></div>' +
-      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Pillar.compare()">&#xBE44;&#xAD50;</button> <button class="v24-btn-sm" onclick="v24Pillar.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v24-close" onclick="v24Pillar.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Pillar.compare()">비교</button> <button class="v24-btn-sm" onclick="v24Pillar.reset()">초기화</button></div>' +
+      '<button class="v24-close" onclick="v24Pillar.close()">닫기</button>' +
     '</div></div>' +
     // 6. 건축 비용 워터폴 차트
     '<div id="v24-costflow" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F4B0; &#xAC74;&#xCD95; &#xBE44;&#xC6A9; &#xC6CC;&#xD130;&#xD3F4; &#xCC28;&#xD2B8;</h2>' +
-      '<p>8&#xD56D;&#xBAA9; &#xAC74;&#xCD95; &#xBE44;&#xC6A9; &#xB204;&#xC801; &#xBD84;&#xC11D;</p>' +
+      '<h2>💰 건축 비용 워터폴 차트</h2>' +
+      '<p>8항목 건축 비용 누적 분석</p>' +
       '<div class="v24-tabs" id="v24-cf-tabs"></div>' +
       '<canvas id="v24-cf-canvas" class="v24-canvas" width="620" height="400"></canvas>' +
       '<div id="v24-cf-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-cf-stat"></div>' +
-      '<button class="v24-close" onclick="v24CostFlow.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v24-close" onclick="v24CostFlow.close()">닫기</button>' +
     '</div></div>' +
     // 7. 한옥 공간 프로그래밍 분석
     '<div id="v24-space" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F4D0; &#xD55C;&#xC625; &#xACF5;&#xAC04; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xACF5;&#xAC04; &#xBA74;&#xC801; &#xBE44;&#xC728; &#xB3C4;&#xB137; + &#xAE30;&#xB2A5;&#xC131; &#xBC14; &#xCC28;&#xD2B8;</p>' +
+      '<h2>📐 한옥 공간 프로그래밍 분석</h2>' +
+      '<p>8공간 면적 비율 도넷 + 기능성 바 차트</p>' +
       '<div class="v24-tabs" id="v24-sp-tabs"></div>' +
       '<canvas id="v24-sp-canvas" class="v24-canvas" width="620" height="380"></canvas>' +
       '<div id="v24-sp-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-sp-stat"></div>' +
-      '<button class="v24-close" onclick="v24Space.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v24-close" onclick="v24Space.close()">닫기</button>' +
     '</div></div>' +
     // 8. 건축 종합 성적표
     '<div id="v24-report" class="v24-panel"><div class="v24-box">' +
-      '<h2>&#x1F4CA; &#xAC74;&#xCD95; &#xC885;&#xD569; &#xC131;&#xC801;&#xD45C;</h2>' +
-      '<p>8&#xCD95; &#xC885;&#xD569; &#xD3C9;&#xAC00; Radar + &#xB4F1;&#xAE09; &#xD310;&#xC815;</p>' +
+      '<h2>📊 건축 종합 성적표</h2>' +
+      '<p>8축 종합 평가 Radar + 등급 판정</p>' +
       '<div class="v24-tabs" id="v24-rp-tabs"></div>' +
       '<canvas id="v24-rp-canvas" class="v24-canvas" width="620" height="400"></canvas>' +
       '<div id="v24-rp-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v24-stat" id="v24-rp-stat"></div>' +
-      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Report.cycle()">&#xAC74;&#xBB3C; &#xC804;&#xD658;</button></div>' +
-      '<button class="v24-close" onclick="v24Report.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v24-btn-sm" onclick="v24Report.cycle()">건물 전환</button></div>' +
+      '<button class="v24-close" onclick="v24Report.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();
@@ -243,8 +243,8 @@ var v24Rafters = (function(){
     ctx.font='bold 28px sans-serif'; ctx.fillStyle=gc;
     ctx.fillText(grd,W-50,50);
     ctx.font='12px sans-serif'; ctx.fillStyle='#c4956a';
-    ctx.fillText('&#xD3C9;&#xADE0; '+avg+'&#xC810;',W-50,70);
-    document.getElementById('v24-rf-info').innerHTML='<b style="color:#f5deb3">'+it.name+'</b><br>'+it.desc+'<br><span style="color:#c4956a">&#xC6A9;&#xB3C4;: '+it.use+'</span>';
+    ctx.fillText('평균 '+avg+'점',W-50,70);
+    document.getElementById('v24-rf-info').innerHTML='<b style="color:#f5deb3">'+it.name+'</b><br>'+it.desc+'<br><span style="color:#c4956a">용도: '+it.use+'</span>';
     var st=document.getElementById('v24-rf-stat');
     st.innerHTML='';
     for(var i=0;i<axLabels.length;i++){
@@ -301,12 +301,12 @@ var v24Noise = (function(){
     {name:'화장실',x:0.45,y:0.72,w:0.12,h:0.1}
   ];
   var sources=[
-    {name:'대화 소리',db:65,icon:'&#x1F5E3;'},
-    {name:'음악 재생',db:75,icon:'&#x1F3B5;'},
-    {name:'요리 소음',db:70,icon:'&#x1F373;'},
-    {name:'문 여닫기',db:55,icon:'&#x1F6AA;'},
-    {name:'걸음 소리',db:50,icon:'&#x1F463;'},
-    {name:'빗소리',db:60,icon:'&#x1F327;'}
+    {name:'대화 소리',db:65,icon:'🗣'},
+    {name:'음악 재생',db:75,icon:'🎵'},
+    {name:'요리 소음',db:70,icon:'🍳'},
+    {name:'문 여닫기',db:55,icon:'🚪'},
+    {name:'걸음 소리',db:50,icon:'👣'},
+    {name:'빗소리',db:60,icon:'🌧'}
   ];
   var srcIdx=0, srcRoom=0;
   function draw(){
@@ -340,11 +340,11 @@ var v24Noise = (function(){
     ctx.beginPath();ctx.arc(sx,sy,8,0,Math.PI*2);ctx.fillStyle='#ff6633';ctx.fill();
     ctx.font='bold 14px sans-serif'; ctx.fillStyle='#ffd700'; ctx.textAlign='center';
     ctx.fillText(src.icon+' '+src.name+' ('+src.db+'dB)',W/2,H-20);
-    document.getElementById('v24-ns-info').innerHTML='&#xC18C;&#xC74C;&#xC6D0;: <b style="color:#f5deb3">'+src.name+'</b> ('+src.db+'dB) @ '+rooms[srcRoom].name+'<br>&#xBCBD;&#xCCB4; &#xD22C;&#xACFC; &#xC190;&#xC2E4; &#xBC0F; &#xAC70;&#xB9AC; &#xAC10;&#xC1E0; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;';
+    document.getElementById('v24-ns-info').innerHTML='소음원: <b style="color:#f5deb3">'+src.name+'</b> ('+src.db+'dB) @ '+rooms[srcRoom].name+'<br>벽체 투과 손실 및 거리 감쇠 시뮬레이션';
     var st=document.getElementById('v24-ns-stat');
-    st.innerHTML='<div class="s"><div class="sv">'+src.db+'</div><div class="sl">&#xC6D0;&#xC74C; dB</div></div>'+
-      '<div class="s"><div class="sv">'+rooms.length+'</div><div class="sl">&#xC2E4;</div></div>'+
-      '<div class="s"><div class="sv">'+sources.length+'</div><div class="sl">&#xC18C;&#xC74C;&#xC6D0;</div></div>';
+    st.innerHTML='<div class="s"><div class="sv">'+src.db+'</div><div class="sl">원음 dB</div></div>'+
+      '<div class="s"><div class="sv">'+rooms.length+'</div><div class="sl">실</div></div>'+
+      '<div class="s"><div class="sv">'+sources.length+'</div><div class="sl">소음원</div></div>';
   }
   function makeTabs(){
     var t=document.getElementById('v24-ns-tabs'); t.innerHTML='';
@@ -416,14 +416,14 @@ var v24Layout = (function(){
       ctx.fillText(v24Grade(bd.score),bx,by-r-6);
     });
     ctx.font='bold 14px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-    ctx.fillText('&#xD55C;&#xC625; &#xBC30;&#xCE58;&#xB3C4; &#xD48D;&#xC218; &#xBD84;&#xC11D;',W/2,25);
+    ctx.fillText('한옥 배치도 풍수 분석',W/2,25);
     var sb=buildings[selB];
-    document.getElementById('v24-ly-info').innerHTML='<b style="color:'+sb.color+'">'+sb.name+'</b> &#x2014; '+sb.role+'<br>&#xD48D;&#xC218; &#xC801;&#xD569;&#xB3C4;: <b style="color:'+v24GradeColor(v24Grade(sb.score))+'">'+sb.score+'&#xC810; ('+v24Grade(sb.score)+')</b>';
+    document.getElementById('v24-ly-info').innerHTML='<b style="color:'+sb.color+'">'+sb.name+'</b> — '+sb.role+'<br>풍수 적합도: <b style="color:'+v24GradeColor(v24Grade(sb.score))+'">'+sb.score+'점 ('+v24Grade(sb.score)+')</b>';
     var st=document.getElementById('v24-ly-stat');
     var avgScore=Math.round(buildings.reduce(function(a,b){return a+b.score;},0)/buildings.length);
-    st.innerHTML='<div class="s"><div class="sv">'+buildings.length+'</div><div class="sl">&#xAC74;&#xBB3C;</div></div>'+
-      '<div class="s"><div class="sv">'+connections.length+'</div><div class="sl">&#xC5F0;&#xACB0;</div></div>'+
-      '<div class="s"><div class="sv">'+avgScore+'</div><div class="sl">&#xD3C9;&#xADE0; &#xC801;&#xD569;&#xB3C4;</div></div>';
+    st.innerHTML='<div class="s"><div class="sv">'+buildings.length+'</div><div class="sl">건물</div></div>'+
+      '<div class="s"><div class="sv">'+connections.length+'</div><div class="sl">연결</div></div>'+
+      '<div class="s"><div class="sv">'+avgScore+'</div><div class="sl">평균 적합도</div></div>';
   }
   function makeTabs(){
     var t=document.getElementById('v24-ly-tabs'); t.innerHTML='';
@@ -466,7 +466,7 @@ var v24Carbon = (function(){
     var sorted=items.slice().sort(function(a,b){return a.vals[sortMode]-b.vals[sortMode];});
     var barH=28, gap=6, startY=40;
     ctx.font='bold 14px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-    ctx.fillText('&#xC815;&#xB82C;: '+axLabels[sortMode],W/2,25);
+    ctx.fillText('정렬: '+axLabels[sortMode],W/2,25);
     sorted.forEach(function(it,i){
       var y=startY+i*(barH+gap);
       var val=it.vals[sortMode];
@@ -542,7 +542,7 @@ var v24Pillar = (function(){
     ctx.font='bold 28px sans-serif'; ctx.fillStyle=gc;
     ctx.fillText(grd,W-45,45);
     ctx.font='11px sans-serif'; ctx.fillStyle='#c4956a';
-    ctx.fillText(avg+'&#xC810;',W-45,62);
+    ctx.fillText(avg+'점',W-45,62);
     document.getElementById('v24-pl-info').innerHTML='<b style="color:#f5deb3">'+it.name+'</b> ('+it.era+')<br>'+it.desc;
     var st=document.getElementById('v24-pl-stat');
     st.innerHTML='';
@@ -608,7 +608,7 @@ var v24CostFlow = (function(){
     var maxH=H-100, barW=50, gap=(W-80-barW*costs.length)/(costs.length-1||1);
     var startX=60;
     ctx.font='bold 14px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-    ctx.fillText(bt.name+' &#xAC74;&#xCD95;&#xBE44;&#xC6A9; &#xC6CC;&#xD130;&#xD3F4;',W/2,25);
+    ctx.fillText(bt.name+' 건축비용 워터폴',W/2,25);
     var cumul=0;
     costs.forEach(function(cost,i){
       var x=startX+i*(barW+gap);
@@ -642,15 +642,15 @@ var v24CostFlow = (function(){
       ctx.font='bold 12px sans-serif'; ctx.fillStyle='#ffd700'; ctx.textAlign='center';
       ctx.fillText(total.toLocaleString(),totalX+barW/2,50+totalBh/2);
       ctx.font='10px sans-serif'; ctx.fillStyle='#c4956a';
-      ctx.fillText('&#xCD1D;&#xACC4;',totalX+barW/2,H-8);
+      ctx.fillText('총계',totalX+barW/2,H-8);
     }
-    document.getElementById('v24-cf-info').innerHTML='<b style="color:#f5deb3">'+bt.name+'</b> &#xCD1D; &#xAC74;&#xCD95;&#xBE44;: <b style="color:#ffd700">'+total.toLocaleString()+bt.unit+'</b>';
+    document.getElementById('v24-cf-info').innerHTML='<b style="color:#f5deb3">'+bt.name+'</b> 총 건축비: <b style="color:#ffd700">'+total.toLocaleString()+bt.unit+'</b>';
     var st=document.getElementById('v24-cf-stat');
     var maxCat=categories[costs.indexOf(Math.max.apply(null,costs))];
     var minCat=categories[costs.indexOf(Math.min.apply(null,costs))];
-    st.innerHTML='<div class="s"><div class="sv">'+total.toLocaleString()+'</div><div class="sl">&#xCD1D;&#xBE44;&#xC6A9;('+bt.unit+')</div></div>'+
-      '<div class="s"><div class="sv">'+maxCat+'</div><div class="sl">&#xCD5C;&#xB300; &#xBE44;&#xC6A9;</div></div>'+
-      '<div class="s"><div class="sv">'+minCat+'</div><div class="sl">&#xCD5C;&#xC18C; &#xBE44;&#xC6A9;</div></div>';
+    st.innerHTML='<div class="s"><div class="sv">'+total.toLocaleString()+'</div><div class="sl">총비용('+bt.unit+')</div></div>'+
+      '<div class="s"><div class="sv">'+maxCat+'</div><div class="sl">최대 비용</div></div>'+
+      '<div class="s"><div class="sv">'+minCat+'</div><div class="sl">최소 비용</div></div>';
   }
   function makeTabs(){
     var t=document.getElementById('v24-cf-tabs'); t.innerHTML='';
@@ -720,14 +720,14 @@ var v24Space = (function(){
         startAng=endAng;
       });
       ctx.font='bold 14px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-      ctx.fillText(totalArea+'&#xD3C9;',cx,cy-4);
+      ctx.fillText(totalArea+'평',cx,cy-4);
       ctx.font='11px sans-serif'; ctx.fillStyle='#c4956a';
-      ctx.fillText('&#xCD1D;&#xBA74;&#xC801;',cx,cy+12);
+      ctx.fillText('총면적',cx,cy+12);
       var barX=W*0.58, barW=W*0.35, barH=18, barGap=6;
-      var metrics=['&#xAE30;&#xB2A5;&#xC131;','&#xD504;&#xB77C;&#xC774;&#xBC84;&#xC2DC;','&#xCC44;&#xAD11;','&#xD658;&#xAE30;'];
+      var metrics=['기능성','프라이버시','채광','환기'];
       var metricKeys=['func','priv','light','vent'];
       ctx.font='bold 12px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-      ctx.fillText(spaces[sel].name+' &#xC138;&#xBD80; &#xC9C0;&#xD45C;',barX+barW/2,40);
+      ctx.fillText(spaces[sel].name+' 세부 지표',barX+barW/2,40);
       metrics.forEach(function(m,mi){
         var y=60+mi*(barH+barGap+16);
         ctx.font='10px sans-serif'; ctx.fillStyle='#c4956a'; ctx.textAlign='left';
@@ -741,12 +741,12 @@ var v24Space = (function(){
         ctx.fillText(val,barX+barW*val/100-4,y+4+barH/2+4);
       });
     }
-    document.getElementById('v24-sp-info').innerHTML='<b style="color:'+spColors[sel]+'">'+spaces[sel].name+'</b> ('+spaces[sel].area+'&#xD3C9;, '+Math.round(spaces[sel].area/totalArea*100)+'%)<br>'+spaces[sel].desc;
+    document.getElementById('v24-sp-info').innerHTML='<b style="color:'+spColors[sel]+'">'+spaces[sel].name+'</b> ('+spaces[sel].area+'평, '+Math.round(spaces[sel].area/totalArea*100)+'%)<br>'+spaces[sel].desc;
     var st=document.getElementById('v24-sp-stat');
-    st.innerHTML='<div class="s"><div class="sv">'+spaces[sel].func+'</div><div class="sl">&#xAE30;&#xB2A5;&#xC131;</div></div>'+
-      '<div class="s"><div class="sv">'+spaces[sel].priv+'</div><div class="sl">&#xD504;&#xB77C;&#xC774;&#xBC84;&#xC2DC;</div></div>'+
-      '<div class="s"><div class="sv">'+spaces[sel].light+'</div><div class="sl">&#xCC44;&#xAD11;</div></div>'+
-      '<div class="s"><div class="sv">'+spaces[sel].vent+'</div><div class="sl">&#xD658;&#xAE30;</div></div>';
+    st.innerHTML='<div class="s"><div class="sv">'+spaces[sel].func+'</div><div class="sl">기능성</div></div>'+
+      '<div class="s"><div class="sv">'+spaces[sel].priv+'</div><div class="sl">프라이버시</div></div>'+
+      '<div class="s"><div class="sv">'+spaces[sel].light+'</div><div class="sl">채광</div></div>'+
+      '<div class="s"><div class="sv">'+spaces[sel].vent+'</div><div class="sl">환기</div></div>';
   }
   function makeTabs(){
     var t=document.getElementById('v24-sp-tabs'); t.innerHTML='';
@@ -786,7 +786,7 @@ var v24Report = (function(){
     var grd=v24Grade(avg), gc=v24GradeColor(grd);
     v24DrawRadar(ctx,W/2-60,H/2+10,140,axLabels,bd.vals,'rgba(196,149,106,1)',0.25);
     ctx.font='bold 16px sans-serif'; ctx.fillStyle='#f5deb3'; ctx.textAlign='center';
-    ctx.fillText(bd.name+' &#xC885;&#xD569; &#xC131;&#xC801;&#xD45C;',W/2,28);
+    ctx.fillText(bd.name+' 종합 성적표',W/2,28);
     var gaugeX=W-100, gaugeY=H/2;
     ctx.beginPath();ctx.arc(gaugeX,gaugeY,50,Math.PI,0);
     ctx.strokeStyle='rgba(196,149,106,0.2)';ctx.lineWidth=12;ctx.stroke();
@@ -796,20 +796,20 @@ var v24Report = (function(){
     ctx.font='bold 32px sans-serif'; ctx.fillStyle=gc; ctx.textAlign='center';
     ctx.fillText(grd,gaugeX,gaugeY-5);
     ctx.font='14px sans-serif'; ctx.fillStyle='#f5deb3';
-    ctx.fillText(avg+'&#xC810;',gaugeX,gaugeY+18);
+    ctx.fillText(avg+'점',gaugeX,gaugeY+18);
     var rankItems=bd.vals.map(function(v,i){return {name:axLabels[i],val:v};}).sort(function(a,b){return b.val-a.val;});
     ctx.font='11px sans-serif'; ctx.textAlign='left';
     ctx.fillStyle='#c4956a';
-    ctx.fillText('&#xAC15;&#xC810;',W-140,H/2+50);
+    ctx.fillText('강점',W-140,H/2+50);
     ctx.fillStyle='#7fff7f';
     ctx.fillText('1. '+rankItems[0].name+' ('+rankItems[0].val+')',W-140,H/2+68);
     ctx.fillText('2. '+rankItems[1].name+' ('+rankItems[1].val+')',W-140,H/2+84);
     ctx.fillStyle='#c4956a';
-    ctx.fillText('&#xC57D;&#xC810;',W-140,H/2+108);
+    ctx.fillText('약점',W-140,H/2+108);
     ctx.fillStyle='#ff8888';
     ctx.fillText('1. '+rankItems[rankItems.length-1].name+' ('+rankItems[rankItems.length-1].val+')',W-140,H/2+126);
     ctx.fillText('2. '+rankItems[rankItems.length-2].name+' ('+rankItems[rankItems.length-2].val+')',W-140,H/2+142);
-    document.getElementById('v24-rp-info').innerHTML='<b style="color:#f5deb3">'+bd.name+'</b> &#x2014; '+bd.desc+'<br>&#xC885;&#xD569; &#xB4F1;&#xAE09;: <b style="color:'+gc+'">'+grd+'&#xB4F1;&#xAE09; ('+avg+'&#xC810;)</b>';
+    document.getElementById('v24-rp-info').innerHTML='<b style="color:#f5deb3">'+bd.name+'</b> — '+bd.desc+'<br>종합 등급: <b style="color:'+gc+'">'+grd+'등급 ('+avg+'점)</b>';
     var st=document.getElementById('v24-rp-stat');
     st.innerHTML='';
     for(var i=0;i<axLabels.length;i++){
@@ -864,18 +864,18 @@ var v24Report = (function(){
   if(!window.hbAchievements) window.hbAchievements=[];
   var a=window.hbAchievements;
   a.push(
-    {id:'ach_v24_1',name:'서까래 장인',desc:'서까래 10종 전체 분석 완료',icon:'&#x1FAB5;'},
-    {id:'ach_v24_2',name:'소음 탐정',desc:'6가지 소음원 전체 시뮬레이션',icon:'&#x1F50A;'},
-    {id:'ach_v24_3',name:'풍수 마스터',desc:'8채 배치 풍수 분석 완료',icon:'&#x1F3E1;'},
-    {id:'ach_v24_4',name:'탄소 제로',desc:'친환경 자재 5종 학습',icon:'&#x1F33F;'},
-    {id:'ach_v24_5',name:'기둥 박사',desc:'기둥 양식 10종 비교 완료',icon:'&#x1F3DB;'},
-    {id:'ach_v24_6',name:'건축 회계사',desc:'4종 건물 비용 워터폴 분석',icon:'&#x1F4B0;'},
-    {id:'ach_v24_7',name:'공간 디자이너',desc:'8공간 프로그래밍 분석 완료',icon:'&#x1F4D0;'},
-    {id:'ach_v24_8',name:'종합 감정사',desc:'6종 건물 종합 성적표 확인',icon:'&#x1F4CA;'},
-    {id:'ach_v24_9',name:'A등급 달성',desc:'종합 성적표에서 A등급 이상 획득',icon:'&#x2B50;'},
-    {id:'ach_v24_10',name:'v24 탐험가',desc:'v24 기능 8종 중 5종 이상 사용',icon:'&#x1F9ED;'},
-    {id:'ach_v24_11',name:'전통 연구자',desc:'서까래+기둥 비교 모드 사용',icon:'&#x1F4DA;'},
-    {id:'ach_v24_12',name:'퀴즈 300',desc:'누적 퀴즈 300문 달성',icon:'&#x1F3AF;'}
+    {id:'ach_v24_1',name:'서까래 장인',desc:'서까래 10종 전체 분석 완료',icon:'🪵'},
+    {id:'ach_v24_2',name:'소음 탐정',desc:'6가지 소음원 전체 시뮬레이션',icon:'🔊'},
+    {id:'ach_v24_3',name:'풍수 마스터',desc:'8채 배치 풍수 분석 완료',icon:'🏡'},
+    {id:'ach_v24_4',name:'탄소 제로',desc:'친환경 자재 5종 학습',icon:'🌿'},
+    {id:'ach_v24_5',name:'기둥 박사',desc:'기둥 양식 10종 비교 완료',icon:'🏛'},
+    {id:'ach_v24_6',name:'건축 회계사',desc:'4종 건물 비용 워터폴 분석',icon:'💰'},
+    {id:'ach_v24_7',name:'공간 디자이너',desc:'8공간 프로그래밍 분석 완료',icon:'📐'},
+    {id:'ach_v24_8',name:'종합 감정사',desc:'6종 건물 종합 성적표 확인',icon:'📊'},
+    {id:'ach_v24_9',name:'A등급 달성',desc:'종합 성적표에서 A등급 이상 획득',icon:'⭐'},
+    {id:'ach_v24_10',name:'v24 탐험가',desc:'v24 기능 8종 중 5종 이상 사용',icon:'🧭'},
+    {id:'ach_v24_11',name:'전통 연구자',desc:'서까래+기둥 비교 모드 사용',icon:'📚'},
+    {id:'ach_v24_12',name:'퀴즈 300',desc:'누적 퀴즈 300문 달성',icon:'🎯'}
   );
 })();
 
@@ -886,15 +886,15 @@ var v24Report = (function(){
   var menu = document.createElement('div');
   menu.className = 'v24-menu';
   var btns = [
-    {icon:'&#x1FAB5;',label:'&#xC11C;&#xAE4C;&#xB798; &#xBD84;&#xC11D;',fn:'v24Rafters.open()',key:'Q'},
-    {icon:'&#x1F50A;',label:'&#xC18C;&#xC74C; &#xC2DC;&#xBBAC;',fn:'v24Noise.open()',key:'W'},
-    {icon:'&#x1F3E1;',label:'&#xD48D;&#xC218; &#xBC30;&#xCE58;',fn:'v24Layout.open()',key:'E'},
-    {icon:'&#x1F33F;',label:'&#xD0C4;&#xC18C; &#xBE44;&#xAD50;',fn:'v24Carbon.open()',key:'R'},
-    {icon:'&#x1F3DB;&#xFE0F;',label:'&#xAE30;&#xB465; &#xB3C4;&#xAC10;',fn:'v24Pillar.open()',key:'T'},
-    {icon:'&#x1F4B0;',label:'&#xBE44;&#xC6A9; &#xC6CC;&#xD130;&#xD3F4;',fn:'v24CostFlow.open()',key:'Y'},
-    {icon:'&#x1F4D0;',label:'&#xACF5;&#xAC04; &#xBD84;&#xC11D;',fn:'v24Space.open()',key:'U'},
-    {icon:'&#x1F4CA;',label:'&#xC885;&#xD569; &#xC131;&#xC801;&#xD45C;',fn:'v24Report.open()',key:'I'},
-    {icon:'&#x2699;',label:'v24 &#xC804;&#xCCB4;',fn:'v24ShowAll()',key:'9'}
+    {icon:'🪵',label:'서까래 분석',fn:'v24Rafters.open()',key:'Q'},
+    {icon:'🔊',label:'소음 시뮬',fn:'v24Noise.open()',key:'W'},
+    {icon:'🏡',label:'풍수 배치',fn:'v24Layout.open()',key:'E'},
+    {icon:'🌿',label:'탄소 비교',fn:'v24Carbon.open()',key:'R'},
+    {icon:'🏛️',label:'기둥 도감',fn:'v24Pillar.open()',key:'T'},
+    {icon:'💰',label:'비용 워터폴',fn:'v24CostFlow.open()',key:'Y'},
+    {icon:'📐',label:'공간 분석',fn:'v24Space.open()',key:'U'},
+    {icon:'📊',label:'종합 성적표',fn:'v24Report.open()',key:'I'},
+    {icon:'⚙',label:'v24 전체',fn:'v24ShowAll()',key:'9'}
   ];
   btns.forEach(function(b){
     var btn = document.createElement('button');
@@ -908,16 +908,16 @@ var v24Report = (function(){
 
 // v24 전체 보기
 function v24ShowAll(){
-  var msg='v24.0 &#xC804;&#xD1B5; &#xAC74;&#xCD95; &#xC2EC;&#xD654; &#xD328;&#xD0A4;&#xC9C0;\n\n'+
-    'Shift+Q: &#xC11C;&#xAE4C;&#xB798; &#xAD6C;&#xC870; &#xBD84;&#xC11D;&#xAE30;\n'+
-    'Shift+W: &#xC18C;&#xC74C; &#xC804;&#xD30C; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;\n'+
-    'Shift+E: &#xD55C;&#xC625; &#xBC30;&#xCE58; &#xD48D;&#xC218; &#xBD84;&#xC11D;\n'+
-    'Shift+R: &#xC790;&#xC7AC; &#xD0C4;&#xC18C;&#xBC30;&#xCD9C; &#xBE44;&#xAD50;\n'+
-    'Shift+T: &#xAE30;&#xB465; &#xC591;&#xC2DD; &#xB3C4;&#xAC10;\n'+
-    'Shift+Y: &#xAC74;&#xCD95; &#xBE44;&#xC6A9; &#xC6CC;&#xD130;&#xD3F4;\n'+
-    'Shift+U: &#xACF5;&#xAC04; &#xD504;&#xB85C;&#xADF8;&#xB798;&#xBC0D;\n'+
-    'Shift+I: &#xC885;&#xD569; &#xC131;&#xC801;&#xD45C;\n\n'+
-    '&#xD034;&#xC988; +15 (300), &#xC5C5;&#xC801; +12 (266)';
+  var msg='v24.0 전통 건축 심화 패키지\n\n'+
+    'Shift+Q: 서까래 구조 분석기\n'+
+    'Shift+W: 소음 전파 시뮬레이터\n'+
+    'Shift+E: 한옥 배치 풍수 분석\n'+
+    'Shift+R: 자재 탄소배출 비교\n'+
+    'Shift+T: 기둥 양식 도감\n'+
+    'Shift+Y: 건축 비용 워터폴\n'+
+    'Shift+U: 공간 프로그래밍\n'+
+    'Shift+I: 종합 성적표\n\n'+
+    '퀴즈 +15 (300), 업적 +12 (266)';
   alert(msg);
 }
 

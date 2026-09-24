@@ -104,7 +104,7 @@ var v27Window = {
   close:function(){v27Sfx.close();var p=document.getElementById('v27-win-panel');if(p)p.classList.remove('active');},
   render:function(){
     var p=document.getElementById('v27-win-panel');if(!p)return;
-    var h='<div class="v27-box"><h2>&#128199; &#51204;&#53685; &#52285;&#54840; &#50577;&#49885; &#48708;&#44368;&#44592;</h2><p>10&#51333; &#51204;&#53685; &#52285;&#54840;&#51032; 6&#52629; &#45733;&#47141; &#48708;&#44368; Radar</p>';
+    var h='<div class="v27-box"><h2>📇 전통 창호 양식 비교기</h2><p>10종 전통 창호의 6축 능력 비교 Radar</p>';
     h+='<div class="v27-tabs">';
     for(var i=0;i<V27_WINDOW_DATA.length;i++){
       h+='<button class="v27-tab'+(i===this.sel?' active':'')+'" onclick="v27Window.select('+i+')">'+V27_WINDOW_DATA[i].n+'</button>';
@@ -113,12 +113,12 @@ var v27Window = {
     h+='<canvas id="v27-win-cv" class="v27-canvas" width="620" height="400"></canvas>';
     var d=V27_WINDOW_DATA[this.sel];var avg=Math.round(d.a.reduce(function(s,v){return s+v;},0)/d.a.length);
     var gr=v27Grade(avg,100);
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">&#49440;&#53469; &#52285;&#54840;</div></div>';
-    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512; &#51216;&#49688;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#46321;&#44553;</div></div></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">선택 창호</div></div>';
+    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">평균 점수</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">등급</div></div></div>';
     h+='<p style="color:#e8d5c0;text-align:center;font-size:13px">'+d.d+'</p>';
-    h+='<div style="text-align:center;margin:12px 0"><button class="v27-btn-sm" onclick="v27Window.toggleCmp()">&#48708;&#44368; &#47784;&#46300; '+(this.cmp>=0?'OFF':'ON')+'</button></div>';
-    h+='<button class="v27-close" onclick="v27Window.close()">&#45803;&#44592;</button></div>';
+    h+='<div style="text-align:center;margin:12px 0"><button class="v27-btn-sm" onclick="v27Window.toggleCmp()">비교 모드 '+(this.cmp>=0?'OFF':'ON')+'</button></div>';
+    h+='<button class="v27-close" onclick="v27Window.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -150,9 +150,9 @@ var v27Window = {
       c.beginPath();
       for(var i=0;i<=n;i++){var a=-Math.PI/2+2*Math.PI/n*(i%n);var v=d2.a[i%n]/100*R;c.lineTo(cx+v*Math.cos(a),cy+v*Math.sin(a));}
       c.closePath();c.fillStyle='rgba(100,200,150,.15)';c.fill();c.strokeStyle='#4ade80';c.lineWidth=2;c.stroke();
-      c.fillStyle='#4ade80';c.font='12px sans-serif';c.fillText(d2.n+' (&#48708;&#44368;)',cx,H-12);
+      c.fillStyle='#4ade80';c.font='12px sans-serif';c.fillText(d2.n+' (비교)',cx,H-12);
     }
-    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' &#52285;&#54840; &#48516;&#49437;',cx,24);
+    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' 창호 분석',cx,24);
     v27Sfx.radar();
   }
 };
@@ -183,18 +183,18 @@ var v27Thermal = {
   close:function(){v27Sfx.close();var p=document.getElementById('v27-therm-panel');if(p)p.classList.remove('active');},
   render:function(){
     var p=document.getElementById('v27-therm-panel');if(!p)return;
-    var h='<div class="v27-box"><h2>&#127777;&#65039; &#44148;&#52629; &#50676;&#44368; &#48652;&#47551;&#51648; &#48516;&#49437;&#44592;</h2><p>8&#44060; &#50676;&#44368; &#50948;&#52824;&#48324; &#50676;&#49552;&#49892; &#48143; &#50728;&#46020; &#54532;&#47196;&#54028;&#51068;</p>';
+    var h='<div class="v27-box"><h2>🌡️ 건축 열교 브릿지 분석기</h2><p>8개 열교 위치별 열손실 및 온도 프로파일</p>';
     h+='<canvas id="v27-therm-cv" class="v27-canvas" width="640" height="400"></canvas>';
     var d=V27_THERMAL_DATA[this.sel];
     var gr=d.loss>=25?'D':d.loss>=20?'C':d.loss>=15?'B':'A';
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">&#49440;&#53469; &#50676;&#44368;</div></div>';
-    h+='<div class="s"><div class="sv">'+d.loss+'%</div><div class="sl">&#50676;&#49552;&#49892; &#48708;&#50984;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#50676;&#44368; &#46321;&#44553;</div></div></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">선택 열교</div></div>';
+    h+='<div class="s"><div class="sv">'+d.loss+'%</div><div class="sl">열손실 비율</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">열교 등급</div></div></div>';
     h+='<p style="color:#e8d5c0;text-align:center;font-size:13px">'+d.d+'</p>';
     h+='<div style="text-align:center;margin:12px 0">';
-    h+='<button class="v27-btn-sm" onclick="v27Thermal.prev()">&larr; &#51060;&#51204;</button>';
-    h+='<button class="v27-btn-sm" onclick="v27Thermal.next()">&#45796;&#51020; &rarr;</button></div>';
-    h+='<button class="v27-close" onclick="v27Thermal.close()">&#45803;&#44592;</button></div>';
+    h+='<button class="v27-btn-sm" onclick="v27Thermal.prev()">&larr; 이전</button>';
+    h+='<button class="v27-btn-sm" onclick="v27Thermal.next()">다음 &rarr;</button></div>';
+    h+='<button class="v27-close" onclick="v27Thermal.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -204,7 +204,7 @@ var v27Thermal = {
     var cv=document.getElementById('v27-therm-cv');if(!cv)return;
     var c=cv.getContext('2d'),W=640,H=400;
     c.fillStyle='#1a1a2e';c.fillRect(0,0,W,H);
-    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('&#50676;&#44368; &#50948;&#52824;&#48324; &#50676;&#49552;&#49892; &#48708;&#44368;',W/2,24);
+    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('열교 위치별 열손실 비교',W/2,24);
     var barW=55,gap=12,startX=50,bH=200,bY=60;
     for(var i=0;i<V27_THERMAL_DATA.length;i++){
       var d=V27_THERMAL_DATA[i];var x=startX+i*(barW+gap);var h=d.loss/30*bH;
@@ -220,7 +220,7 @@ var v27Thermal = {
     }
     var d=V27_THERMAL_DATA[this.sel];
     var tempY=310,tempH=60,pts=d.temp;
-    c.fillStyle='#c4956a';c.font='bold 13px sans-serif';c.textAlign='center';c.fillText(d.n+' &#50728;&#46020; &#54532;&#47196;&#54028;&#51068;',W/2,tempY-10);
+    c.fillStyle='#c4956a';c.font='bold 13px sans-serif';c.textAlign='center';c.fillText(d.n+' 온도 프로파일',W/2,tempY-10);
     c.beginPath();
     for(var i=0;i<pts.length;i++){
       var x=80+i*(W-160)/(pts.length-1);var y=tempY+tempH-(pts[i]/20)*tempH;
@@ -265,7 +265,7 @@ var v27Ceiling = {
   close:function(){v27Sfx.close();var p=document.getElementById('v27-ceil-panel');if(p)p.classList.remove('active');},
   render:function(){
     var p=document.getElementById('v27-ceil-panel');if(!p)return;
-    var h='<div class="v27-box"><h2>&#127968; &#51204;&#53685; &#50864;&#47932;&#52380;&#51109; &#44396;&#51312; &#46020;&#44048;</h2><p>10&#51333; &#51204;&#53685; &#52380;&#51109; &#44396;&#51312;&#51032; 5&#52629; &#45733;&#47141; &#48708;&#44368;</p>';
+    var h='<div class="v27-box"><h2>🏠 전통 우물천장 구조 도감</h2><p>10종 전통 천장 구조의 5축 능력 비교</p>';
     h+='<div class="v27-tabs">';
     for(var i=0;i<V27_CEILING_DATA.length;i++){
       h+='<button class="v27-tab'+(i===this.sel?' active':'')+'" onclick="v27Ceiling.select('+i+')">'+V27_CEILING_DATA[i].n+'</button>';
@@ -274,11 +274,11 @@ var v27Ceiling = {
     h+='<canvas id="v27-ceil-cv" class="v27-canvas" width="620" height="400"></canvas>';
     var d=V27_CEILING_DATA[this.sel];var avg=Math.round(d.a.reduce(function(s,v){return s+v;},0)/d.a.length);
     var gr=v27Grade(avg,100);
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">&#49440;&#53469; &#52380;&#51109;</div></div>';
-    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#46321;&#44553;</div></div></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">선택 천장</div></div>';
+    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">평균</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">등급</div></div></div>';
     h+='<p style="color:#e8d5c0;text-align:center;font-size:13px">'+d.d+'</p>';
-    h+='<button class="v27-close" onclick="v27Ceiling.close()">&#45803;&#44592;</button></div>';
+    h+='<button class="v27-close" onclick="v27Ceiling.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -304,7 +304,7 @@ var v27Ceiling = {
     for(var i=0;i<=n;i++){var a=-Math.PI/2+2*Math.PI/n*(i%n);var v=d.a[i%n]/100*R;c.lineTo(cx+v*Math.cos(a),cy+v*Math.sin(a));}
     c.closePath();c.fillStyle='rgba(196,149,106,.25)';c.fill();c.strokeStyle='#c4956a';c.lineWidth=2;c.stroke();
     for(var i=0;i<n;i++){var a=-Math.PI/2+2*Math.PI/n*i;var v=d.a[i]/100*R;c.beginPath();c.arc(cx+v*Math.cos(a),cy+v*Math.sin(a),4,0,Math.PI*2);c.fillStyle='#f5deb3';c.fill();}
-    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' &#44396;&#51312; &#48516;&#49437;',cx,24);
+    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' 구조 분석',cx,24);
     v27Sfx.radar();
   }
 };
@@ -317,8 +317,8 @@ var V27_SUN_DATA = [
   [6,7,9,10,10,10,9,7],[7,8,10,10,10,10,10,8],[6,7,9,10,10,10,9,7],[5,7,9,10,10,9,9,6],
   [4,6,8,9,9,9,8,5],[3,5,7,8,8,7,6,4],[2,4,5,6,7,6,5,3],[2,3,4,5,6,5,4,2]
 ];
-var V27_MONTHS = ['1&#50900;','2&#50900;','3&#50900;','4&#50900;','5&#50900;','6&#50900;','7&#50900;','8&#50900;','9&#50900;','10&#50900;','11&#50900;','12&#50900;'];
-var V27_HOURS = ['7&#49884;','9&#49884;','11&#49884;','12&#49884;','13&#49884;','14&#49884;','15&#49884;','17&#49884;'];
+var V27_MONTHS = ['1월','2월','3월','4월','5월','6월','7월','8월','9월','10월','11월','12월'];
+var V27_HOURS = ['7시','9시','11시','12시','13시','14시','15시','17시'];
 
 var v27Sun = {
   open:function(){
@@ -332,11 +332,11 @@ var v27Sun = {
     var p=document.getElementById('v27-sun-panel');if(!p)return;
     var total=0;V27_SUN_DATA.forEach(function(m){m.forEach(function(v){total+=v;});});
     var avg=(total/(12*8)).toFixed(1);
-    var h='<div class="v27-box"><h2>&#9728;&#65039; &#44148;&#52629; &#51068;&#51312;&#47049; &#49884;&#48044;&#47112;&#51060;&#53552;</h2><p>12&#44060;&#50900; x 8&#49884;&#44036;&#45824; &#51068;&#51312;&#47049; &#55176;&#53944;&#47605;</p>';
+    var h='<div class="v27-box"><h2>☀️ 건축 일조량 시뮬레이터</h2><p>12개월 x 8시간대 일조량 히트맵</p>';
     h+='<canvas id="v27-sun-cv" class="v27-canvas" width="640" height="400"></canvas>';
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512; &#51068;&#51312;(h)</div></div>';
-    h+='<div class="s"><div class="sv">'+total+'h</div><div class="sl">&#50672;&#44036; &#52509;&#44228;</div></div></div>';
-    h+='<button class="v27-close" onclick="v27Sun.close()">&#45803;&#44592;</button></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+avg+'</div><div class="sl">평균 일조(h)</div></div>';
+    h+='<div class="s"><div class="sv">'+total+'h</div><div class="sl">연간 총계</div></div></div>';
+    h+='<button class="v27-close" onclick="v27Sun.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -344,7 +344,7 @@ var v27Sun = {
     var cv=document.getElementById('v27-sun-cv');if(!cv)return;
     var c=cv.getContext('2d'),W=640,H=400;
     c.fillStyle='#1a1a2e';c.fillRect(0,0,W,H);
-    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('&#50900;&#48324; &#49884;&#44036;&#45824; &#51068;&#51312;&#47049; &#55176;&#53944;&#47605;',W/2,24);
+    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('월별 시간대 일조량 히트맵',W/2,24);
     var mx=70,my=50,cw=(W-mx-30)/8,ch=(H-my-50)/12;
     for(var m=0;m<12;m++){
       c.fillStyle='#c4956a';c.font='11px sans-serif';c.textAlign='right';c.fillText(V27_MONTHS[m],mx-8,my+m*ch+ch/2+4);
@@ -363,7 +363,7 @@ var v27Sun = {
       c.fillStyle='#c4956a';c.font='11px sans-serif';c.textAlign='center';c.fillText(V27_HOURS[h],mx+h*cw+cw/2,my-8);
     }
     c.fillStyle='rgba(196,149,106,.15)';c.font='10px sans-serif';c.textAlign='left';
-    var leg=[{c:'rgba(250,200,50,.8)',l:'8h+ (&#52572;&#44256;)'},{c:'rgba(150,200,60,.7)',l:'6-7h'},{c:'rgba(100,140,80,.6)',l:'4-5h'},{c:'rgba(70,70,100,.6)',l:'2-3h (&#52572;&#51200;)'}];
+    var leg=[{c:'rgba(250,200,50,.8)',l:'8h+ (최고)'},{c:'rgba(150,200,60,.7)',l:'6-7h'},{c:'rgba(100,140,80,.6)',l:'4-5h'},{c:'rgba(70,70,100,.6)',l:'2-3h (최저)'}];
     for(var i=0;i<leg.length;i++){
       c.fillStyle=leg[i].c;c.fillRect(W-150,H-80+i*18,12,12);
       c.fillStyle='#e8d5c0';c.fillText(leg[i].l,W-134,H-70+i*18);
@@ -400,7 +400,7 @@ var v27Fence = {
   close:function(){v27Sfx.close();var p=document.getElementById('v27-fence-panel');if(p)p.classList.remove('active');},
   render:function(){
     var p=document.getElementById('v27-fence-panel');if(!p)return;
-    var h='<div class="v27-box"><h2>&#127809; &#51204;&#53685; &#45812;&#51109; &#50577;&#49885; &#48708;&#44368;&#44592;</h2><p>10&#51333; &#51204;&#53685; &#45812;&#51109;&#51032; 6&#52629; &#45733;&#47141; &#48708;&#44368;</p>';
+    var h='<div class="v27-box"><h2>🍁 전통 담장 양식 비교기</h2><p>10종 전통 담장의 6축 능력 비교</p>';
     h+='<div class="v27-tabs">';
     for(var i=0;i<V27_FENCE_DATA.length;i++){
       h+='<button class="v27-tab'+(i===this.sel?' active':'')+'" onclick="v27Fence.select('+i+')">'+V27_FENCE_DATA[i].n+'</button>';
@@ -409,11 +409,11 @@ var v27Fence = {
     h+='<canvas id="v27-fence-cv" class="v27-canvas" width="620" height="400"></canvas>';
     var d=V27_FENCE_DATA[this.sel];var avg=Math.round(d.a.reduce(function(s,v){return s+v;},0)/d.a.length);
     var gr=v27Grade(avg,100);
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">&#49440;&#53469; &#45812;&#51109;</div></div>';
-    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#46321;&#44553;</div></div></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">선택 담장</div></div>';
+    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">평균</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">등급</div></div></div>';
     h+='<p style="color:#e8d5c0;text-align:center;font-size:13px">'+d.d+'</p>';
-    h+='<button class="v27-close" onclick="v27Fence.close()">&#45803;&#44592;</button></div>';
+    h+='<button class="v27-close" onclick="v27Fence.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -439,7 +439,7 @@ var v27Fence = {
     for(var i=0;i<=n;i++){var a=-Math.PI/2+2*Math.PI/n*(i%n);var v=d.a[i%n]/100*R;c.lineTo(cx+v*Math.cos(a),cy+v*Math.sin(a));}
     c.closePath();c.fillStyle='rgba(196,149,106,.25)';c.fill();c.strokeStyle='#c4956a';c.lineWidth=2;c.stroke();
     for(var i=0;i<n;i++){var a=-Math.PI/2+2*Math.PI/n*i;var v=d.a[i]/100*R;c.beginPath();c.arc(cx+v*Math.cos(a),cy+v*Math.sin(a),4,0,Math.PI*2);c.fillStyle='#f5deb3';c.fill();}
-    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' &#45812;&#51109; &#48516;&#49437;',cx,24);
+    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' 담장 분석',cx,24);
     v27Sfx.radar();
   }
 };
@@ -447,8 +447,8 @@ var v27Fence = {
 // ============================================================
 // 6. 건축 소방안전 평가기 Canvas 640x400
 // ============================================================
-var V27_FIRE_ZONES = ['&#49436;&#51116;&#49892;','&#52840;&#49892;','&#48512;&#50636;','&#44144;&#49892;','&#45796;&#46973;','&#47560;&#45817;','&#44148;&#47560;&#47560;&#51116;','&#52285;&#44256;'];
-var V27_FIRE_ITEMS = ['&#54868;&#51116;&#44048;&#51648;','&#49548;&#54868;&#44592;','&#53748;&#54588;&#47196;','&#48169;&#54868;&#48317;','&#54872;&#44592;','&#45236;&#54868;&#46321;&#44553;'];
+var V27_FIRE_ZONES = ['서재실','침실','부엌','거실','다락','마당','건마마재','창고'];
+var V27_FIRE_ITEMS = ['화재감지','소화기','퇴피로','방화벽','환기','내화등급'];
 var V27_FIRE_DATA = [
   [82,75,90,60,85,70],[78,70,85,55,80,65],[65,80,75,70,90,50],
   [85,72,88,58,78,72],[55,45,60,40,70,55],[90,65,95,80,92,85],
@@ -468,11 +468,11 @@ var v27Fire = {
     var total=0,cnt=0;
     V27_FIRE_DATA.forEach(function(z){z.forEach(function(v){total+=v;cnt++;});});
     var avg=Math.round(total/cnt);var gr=v27Grade(avg,100);
-    var h='<div class="v27-box"><h2>&#128293; &#44148;&#52629; &#49548;&#48169;&#50504;&#51204; &#54217;&#44032;&#44592;</h2><p>8&#44396;&#50669; x 6&#54637;&#47785; &#49548;&#48169;&#50504;&#51204; &#55176;&#53944;&#47605;</p>';
+    var h='<div class="v27-box"><h2>🔥 건축 소방안전 평가기</h2><p>8구역 x 6항목 소방안전 히트맵</p>';
     h+='<canvas id="v27-fire-cv" class="v27-canvas" width="640" height="400"></canvas>';
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512; &#50504;&#51204;&#51216;&#49688;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#51333;&#54633; &#46321;&#44553;</div></div></div>';
-    h+='<button class="v27-close" onclick="v27Fire.close()">&#45803;&#44592;</button></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+avg+'</div><div class="sl">평균 안전점수</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">종합 등급</div></div></div>';
+    h+='<button class="v27-close" onclick="v27Fire.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -480,7 +480,7 @@ var v27Fire = {
     var cv=document.getElementById('v27-fire-cv');if(!cv)return;
     var c=cv.getContext('2d'),W=640,H=400;
     c.fillStyle='#1a1a2e';c.fillRect(0,0,W,H);
-    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('&#44396;&#50669;&#48324; &#49548;&#48169;&#50504;&#51204; &#55176;&#53944;&#47605;',W/2,24);
+    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('구역별 소방안전 히트맵',W/2,24);
     var mx=90,my=55,cw=(W-mx-30)/6,ch=(H-my-50)/8;
     for(var h=0;h<6;h++){
       c.save();c.translate(mx+h*cw+cw/2,my-8);
@@ -531,7 +531,7 @@ var v27Stair = {
   close:function(){v27Sfx.close();var p=document.getElementById('v27-stair-panel');if(p)p.classList.remove('active');},
   render:function(){
     var p=document.getElementById('v27-stair-panel');if(!p)return;
-    var h='<div class="v27-box"><h2>&#128732; &#51204;&#53685; &#44228;&#45800; &#50577;&#49885; &#46020;&#44048;</h2><p>10&#51333; &#51204;&#53685; &#44228;&#45800;&#51032; 5&#52629; &#45733;&#47141; &#48708;&#44368;</p>';
+    var h='<div class="v27-box"><h2>🛜 전통 계단 양식 도감</h2><p>10종 전통 계단의 5축 능력 비교</p>';
     h+='<div class="v27-tabs">';
     for(var i=0;i<V27_STAIR_DATA.length;i++){
       h+='<button class="v27-tab'+(i===this.sel?' active':'')+'" onclick="v27Stair.select('+i+')">'+V27_STAIR_DATA[i].n+'</button>';
@@ -540,11 +540,11 @@ var v27Stair = {
     h+='<canvas id="v27-stair-cv" class="v27-canvas" width="620" height="400"></canvas>';
     var d=V27_STAIR_DATA[this.sel];var avg=Math.round(d.a.reduce(function(s,v){return s+v;},0)/d.a.length);
     var gr=v27Grade(avg,100);
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">&#49440;&#53469; &#44228;&#45800;</div></div>';
-    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">&#54217;&#44512;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#46321;&#44553;</div></div></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+d.n+'</div><div class="sl">선택 계단</div></div>';
+    h+='<div class="s"><div class="sv">'+avg+'</div><div class="sl">평균</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">등급</div></div></div>';
     h+='<p style="color:#e8d5c0;text-align:center;font-size:13px">'+d.d+'</p>';
-    h+='<button class="v27-close" onclick="v27Stair.close()">&#45803;&#44592;</button></div>';
+    h+='<button class="v27-close" onclick="v27Stair.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -570,7 +570,7 @@ var v27Stair = {
     for(var i=0;i<=n;i++){var a=-Math.PI/2+2*Math.PI/n*(i%n);var v=d.a[i%n]/100*R;c.lineTo(cx+v*Math.cos(a),cy+v*Math.sin(a));}
     c.closePath();c.fillStyle='rgba(196,149,106,.25)';c.fill();c.strokeStyle='#c4956a';c.lineWidth=2;c.stroke();
     for(var i=0;i<n;i++){var a=-Math.PI/2+2*Math.PI/n*i;var v=d.a[i]/100*R;c.beginPath();c.arc(cx+v*Math.cos(a),cy+v*Math.sin(a),4,0,Math.PI*2);c.fillStyle='#f5deb3';c.fill();}
-    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' &#44228;&#45800; &#48516;&#49437;',cx,24);
+    c.fillStyle='#f5deb3';c.font='bold 16px sans-serif';c.textAlign='center';c.fillText(d.n+' 계단 분석',cx,24);
     v27Sfx.radar();
   }
 };
@@ -579,14 +579,14 @@ var v27Stair = {
 // 8. 건축 종합 안전진단 대시보드 Canvas 620x400
 // ============================================================
 var V27_SAFETY_KPI = [
-  {n:'&#44396;&#51312;&#50504;&#51204;',v:78,max:100},
-  {n:'&#54868;&#51116;&#50504;&#51204;',v:72,max:100},
-  {n:'&#45236;&#51652;&#49457;&#45733;',v:68,max:100},
-  {n:'&#48169;&#49688;&#49457;&#45733;',v:82,max:100},
-  {n:'&#51204;&#44592;&#50504;&#51204;',v:85,max:100},
-  {n:'&#50676;&#54872;&#44221;',v:75,max:100},
-  {n:'&#51217;&#44540;&#49457;',v:80,max:100},
-  {n:'&#51333;&#54633;&#46321;&#44553;',v:77,max:100}
+  {n:'구조안전',v:78,max:100},
+  {n:'화재안전',v:72,max:100},
+  {n:'내진성능',v:68,max:100},
+  {n:'방수성능',v:82,max:100},
+  {n:'전기안전',v:85,max:100},
+  {n:'열환경',v:75,max:100},
+  {n:'접근성',v:80,max:100},
+  {n:'종합등급',v:77,max:100}
 ];
 
 var v27Safety = {
@@ -603,11 +603,11 @@ var v27Safety = {
     var ws=0,wv=0;
     V27_SAFETY_KPI.forEach(function(k,i){wv+=k.v*wt[i];ws+=wt[i];});
     var overall=Math.round(wv/ws);var gr=v27Grade(overall,100);
-    var h='<div class="v27-box"><h2>&#128737;&#65039; &#44148;&#52629; &#51333;&#54633; &#50504;&#51204;&#51652;&#45800; &#45824;&#49884;&#48372;&#46300;</h2><p>8&#44060; KPI &#48152;&#50896;&#44172;&#51060;&#51648; + &#44032;&#51473; &#51333;&#54633; &#46321;&#44553;</p>';
+    var h='<div class="v27-box"><h2>🛡️ 건축 종합 안전진단 대시보드</h2><p>8개 KPI 반원게이지 + 가중 종합 등급</p>';
     h+='<canvas id="v27-safety-cv" class="v27-canvas" width="620" height="400"></canvas>';
-    h+='<div class="v27-stat"><div class="s"><div class="sv">'+overall+'</div><div class="sl">&#44032;&#51473; &#51333;&#54633;</div></div>';
-    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#51333;&#54633; &#46321;&#44553;</div></div></div>';
-    h+='<button class="v27-close" onclick="v27Safety.close()">&#45803;&#44592;</button></div>';
+    h+='<div class="v27-stat"><div class="s"><div class="sv">'+overall+'</div><div class="sl">가중 종합</div></div>';
+    h+='<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">종합 등급</div></div></div>';
+    h+='<button class="v27-close" onclick="v27Safety.close()">닫기</button></div>';
     p.innerHTML=h;
     this.draw();
   },
@@ -615,7 +615,7 @@ var v27Safety = {
     var cv=document.getElementById('v27-safety-cv');if(!cv)return;
     var c=cv.getContext('2d'),W=620,H=400;
     c.fillStyle='#1a1a2e';c.fillRect(0,0,W,H);
-    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('&#44148;&#52629; &#50504;&#51204;&#51652;&#45800; 8KPI &#48152;&#50896;&#44172;&#51060;&#51648;',W/2,22);
+    c.fillStyle='#f5deb3';c.font='bold 15px sans-serif';c.textAlign='center';c.fillText('건축 안전진단 8KPI 반원게이지',W/2,22);
     var cols=4,rows=2,gw=130,gh=150,gapX=20,gapY=20;
     var sx=(W-cols*gw-(cols-1)*gapX)/2;var sy=45;
     V27_SAFETY_KPI.forEach(function(kpi,idx){
@@ -638,21 +638,21 @@ var v27Safety = {
 // Quiz v27 (+15 questions, 330->345)
 // ============================================================
 var v27QuizData = [
-  {q:'&#48516;&#54633;&#47928;&#51008; &#47924;&#50631;&#51064;&#44032;?',o:['&#50577;&#51901;&#51004;&#47196; &#50676;&#47532;&#45716; &#52285;&#54840;','&#54620;&#51901;&#51004;&#47196; &#48120;&#45716; &#47928;','&#50948;&#47196; &#50732;&#47532;&#45716; &#47928;','&#51217;&#51060;&#49885; &#47928;'],c:0},
-  {q:'&#50864;&#47932;&#52380;&#51109;&#51032; &#53945;&#51669;&#51008;?',o:['&#44201;&#51088;&#54805; &#53952;&#50640; &#54032;&#51116;','&#49436;&#44620;&#47000; &#45432;&#52636;','&#48708;&#49828;&#46316;&#54620; &#44221;&#49324;','&#51333;&#51060; &#48148;&#47492;'],c:0},
-  {q:'&#50676;&#44368; &#48652;&#47551;&#51648;&#50640;&#49436; &#50676;&#49552;&#49892;&#51060; &#44032;&#51109; &#53360; &#48512;&#50948;&#45716;?',o:['&#52285;&#47928; &#54532;&#47112;&#51076;','&#48317;&#52404; &#47784;&#49436;&#47532;','&#49444;&#48708; &#44288;&#53685;&#48512;','&#54028;&#46972;&#54175; &#48512;&#50948;'],c:0},
-  {q:'&#54620;&#50725;&#50640;&#49436; &#51068;&#51312;&#47049;&#51060; &#44032;&#51109; &#51339;&#51008; &#44228;&#51208;&#51008;?',o:['&#50668;&#47492;','&#44200;&#50872;','&#48388;','&#44032;&#51012;'],c:0},
-  {q:'&#46028;&#45812;&#51032; &#44032;&#51109; &#53360; &#51109;&#51216;&#51008;?',o:['&#45236;&#44396;&#49457;','&#52292;&#44305;&#49457;','&#49884;&#44277;&#49549;&#46020;','&#48708;&#50857; &#51208;&#44048;'],c:0},
-  {q:'&#54868;&#48169;&#48317;&#51032; &#51452;&#50836; &#44592;&#45733;&#51008;?',o:['&#54868;&#51116; &#48169;&#51648;','&#48169;&#48276;','&#48169;&#49688;','&#48169;&#51020;'],c:0},
-  {q:'&#50900;&#45824;&#44228;&#45800;&#51060; &#49444;&#52824;&#46104;&#45716; &#44275;&#51008;?',o:['&#44417;&#44624; &#51221;&#51204; &#50526;','&#48124;&#44032; &#50526;&#47560;&#45817;','&#49324;&#52272; &#45824;&#50885;&#51204;','&#49436;&#50896; &#44053;&#54617;&#49892;'],c:0},
-  {q:'&#52285;&#54840;&#50640;&#49436; &#44867;&#49332;&#47928;&#51032; &#53945;&#51669;&#51008;?',o:['&#44867; &#47924;&#45740; &#51109;&#49885;','&#49464;&#47196; &#52285;&#49332;','&#50977;&#44033; &#44201;&#51088;','&#49324;&#49440; &#44201;&#51088;'],c:0},
-  {q:'&#50672;&#46321;&#52380;&#51109;&#51032; &#53945;&#51669;&#51008;?',o:['&#49436;&#44620;&#47000; &#45432;&#52636; &#44060;&#48169;&#54805;','&#44201;&#51088;&#54805; &#53952;','&#54217;&#52380;&#51109; &#47560;&#44048;','&#55180;&#51648; &#48148;&#47492;'],c:0},
-  {q:'&#49548;&#48169;&#50504;&#51204;&#50640;&#49436; &#53748;&#54588;&#47196;&#51032; &#50669;&#54624;&#51008;?',o:['&#54868;&#51116; &#49884; &#45824;&#54588; &#44221;&#47196;','&#49548;&#54868;&#44592; &#48708;&#52824;','&#54872;&#44592; &#49884;&#49828;&#53596;','&#48169;&#54868;&#48317; &#49444;&#52824;'],c:0},
-  {q:'&#49452;&#46028;&#51032; &#50857;&#46020;&#45716;?',o:['&#47560;&#45817;&#50640;&#49436; &#47560;&#47336;&#47196; &#50724;&#47476;&#45716; &#46356;&#46372;&#46028;','&#44417;&#44624; &#51221;&#51204; &#50526;','&#45812;&#51109; &#50500;&#47000;','&#45796;&#46973; &#51077;&#44396;'],c:0},
-  {q:'&#45236;&#51652;&#49457;&#45733;&#50640;&#49436; &#44032;&#51109; &#51473;&#50836;&#54620; &#50836;&#49548;&#45716;?',o:['&#44396;&#51312;&#52404;&#51032; &#44053;&#44053;&#49457;','&#48317;&#52404; &#48120;&#44288;','&#52380;&#51109; &#45458;&#51060;','&#51109;&#49885; &#50836;&#49548;'],c:0},
-  {q:'&#54889;&#44552;&#48708;(&#54588;&#48372;&#45208;&#52824;)&#50640; &#44032;&#51109; &#44032;&#44620;&#50868; &#44148;&#52629;&#47932;&#51008;?',o:['&#53457;','&#54620;&#50725;','&#44417;&#44624;','&#49457;&#44285;'],c:0},
-  {q:'&#45800;&#52397;&#47928;&#50577;&#51032; &#51452;&#50836; &#47785;&#51201;&#51008;?',o:['&#51109;&#49885;&#44284; &#48317;&#49324;','&#48169;&#49688;','&#48169;&#52649;','&#45800;&#50676;'],c:0},
-  {q:'ACH(&#49884;&#44036;&#45817; &#54872;&#44592;&#54943;&#49688;)&#44032; &#45458;&#51012;&#49688;&#47197;?',o:['&#44277;&#44592; &#49692;&#54872;&#51060; &#51096; &#46120;','&#50728;&#46020;&#44032; &#45458;&#51020;','&#49845;&#46020;&#44032; &#45230;&#51020;','&#49548;&#51020;&#51060; &#44048;&#49548;'],c:0}
+  {q:'분합문은 무엇인가?',o:['양쪽으로 열리는 창호','한쪽으로 미는 문','위로 올리는 문','접이식 문'],c:0},
+  {q:'우물천장의 특징은?',o:['격자형 틀에 판재','서까래 노출','비스듬한 경사','종이 바름'],c:0},
+  {q:'열교 브릿지에서 열손실이 가장 큰 부위는?',o:['창문 프레임','벽체 모서리','설비 관통부','파라펟 부위'],c:0},
+  {q:'한옥에서 일조량이 가장 좋은 계절은?',o:['여름','겨울','봄','가을'],c:0},
+  {q:'돌담의 가장 큰 장점은?',o:['내구성','채광성','시공속도','비용 절감'],c:0},
+  {q:'화방벽의 주요 기능은?',o:['화재 방지','방범','방수','방음'],c:0},
+  {q:'월대계단이 설치되는 곳은?',o:['궁깐 정전 앞','민가 앞마당','사찰 대웅전','서원 강학실'],c:0},
+  {q:'창호에서 꽃살문의 특징은?',o:['꽃 무늬 장식','세로 창살','육각 격자','사선 격자'],c:0},
+  {q:'연등천장의 특징은?',o:['서까래 노출 개방형','격자형 틀','평천장 마감','힌지 바름'],c:0},
+  {q:'소방안전에서 퇴피로의 역할은?',o:['화재 시 대피 경로','소화기 비치','환기 시스템','방화벽 설치'],c:0},
+  {q:'섬돌의 용도는?',o:['마당에서 마루로 오르는 디딤돌','궁깐 정전 앞','담장 아래','다락 입구'],c:0},
+  {q:'내진성능에서 가장 중요한 요소는?',o:['구조체의 강강성','벽체 미관','천장 높이','장식 요소'],c:0},
+  {q:'황금비(피보나치)에 가장 가까운 건축물은?',o:['탑','한옥','궁깐','성곽'],c:0},
+  {q:'단청문양의 주요 목적은?',o:['장식과 벽사','방수','방충','단열'],c:0},
+  {q:'ACH(시간당 환기횟수)가 높을수록?',o:['공기 순환이 잘 됨','온도가 높음','습도가 낮음','소음이 감소'],c:0}
 ];
 
 var v27QuizState = {idx:0,correct:0,done:false};
@@ -669,22 +669,22 @@ function v27RenderQuiz(){
   if(v27QuizState.idx>=v27QuizData.length){
     var pct=Math.round(v27QuizState.correct/v27QuizData.length*100);
     var gr=pct>=90?'S':pct>=75?'A':pct>=60?'B':pct>=40?'C':'D';
-    p.innerHTML='<div class="v27-box"><h2>&#127942; v27 &#53748;&#51592; &#50756;&#47308;!</h2>'+
-      '<div class="v27-stat"><div class="s"><div class="sv">'+v27QuizState.correct+'/'+v27QuizData.length+'</div><div class="sl">&#51221;&#45813;</div></div>'+
-      '<div class="s"><div class="sv">'+pct+'%</div><div class="sl">&#51221;&#45813;&#47456;</div></div>'+
-      '<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">&#46321;&#44553;</div></div></div>'+
-      '<button class="v27-btn-sm" onclick="v27OpenQuiz()">&#45796;&#49884; &#54400;&#44592;</button>'+
-      '<button class="v27-close" onclick="v27CloseQuiz()">&#45803;&#44592;</button></div>';
+    p.innerHTML='<div class="v27-box"><h2>🏆 v27 퇴즈 완료!</h2>'+
+      '<div class="v27-stat"><div class="s"><div class="sv">'+v27QuizState.correct+'/'+v27QuizData.length+'</div><div class="sl">정답</div></div>'+
+      '<div class="s"><div class="sv">'+pct+'%</div><div class="sl">정답률</div></div>'+
+      '<div class="s"><div class="sv" style="color:'+v27GradeColor(gr)+'">'+gr+'</div><div class="sl">등급</div></div></div>'+
+      '<button class="v27-btn-sm" onclick="v27OpenQuiz()">다시 풀기</button>'+
+      '<button class="v27-close" onclick="v27CloseQuiz()">닫기</button></div>';
     v27Sfx.complete();return;
   }
   var q=v27QuizData[v27QuizState.idx];
-  var h='<div class="v27-box"><h2>&#128218; v27 &#53748;&#51592; ('+( v27QuizState.idx+1)+'/'+v27QuizData.length+')</h2>';
+  var h='<div class="v27-box"><h2>📚 v27 퇴즈 ('+( v27QuizState.idx+1)+'/'+v27QuizData.length+')</h2>';
   h+='<p style="color:#f5deb3;font-size:16px;text-align:center;margin:20px 0">'+q.q+'</p>';
   h+='<div style="display:flex;flex-direction:column;gap:8px;max-width:500px;margin:0 auto">';
   for(var i=0;i<q.o.length;i++){
     h+='<button class="v27-btn-sm" style="padding:12px;font-size:14px;text-align:left" onclick="v27Answer('+i+')">'+q.o[i]+'</button>';
   }
-  h+='</div><button class="v27-close" onclick="v27CloseQuiz()">&#45803;&#44592;</button></div>';
+  h+='</div><button class="v27-close" onclick="v27CloseQuiz()">닫기</button></div>';
   p.innerHTML=h;
 }
 function v27Answer(i){
@@ -700,18 +700,18 @@ function v27Answer(i){
   var existing = [];
   try { existing = JSON.parse(localStorage.getItem(achKey) || '[]'); } catch(e){}
   var newAch = [
-    {id:'v27_window_expert',n:'&#52285;&#54840; &#51204;&#47928;&#44032;',d:'&#52285;&#54840; &#50577;&#49885; &#48708;&#44368;&#44592; &#50756;&#47308;'},
-    {id:'v27_thermal_analyst',n:'&#50676;&#44368; &#48516;&#49437;&#44032;',d:'&#50676;&#44368; &#48652;&#47551;&#51648; &#48516;&#49437; &#50756;&#47308;'},
-    {id:'v27_ceiling_scholar',n:'&#52380;&#51109; &#54617;&#51088;',d:'&#50864;&#47932;&#52380;&#51109; &#46020;&#44048; &#53456;&#49353; &#50756;&#47308;'},
-    {id:'v27_sun_planner',n:'&#51068;&#51312;&#47049; &#49444;&#44228;&#49324;',d:'&#51068;&#51312;&#47049; &#49884;&#48044;&#47112;&#51060;&#53552; &#50756;&#47308;'},
-    {id:'v27_fence_master',n:'&#45812;&#51109; &#47560;&#49828;&#53552;',d:'&#45812;&#51109; &#50577;&#49885; 10&#51333; &#47784;&#46160; &#54869;&#51064;'},
-    {id:'v27_fire_inspector',n:'&#49548;&#48169; &#44160;&#49324;&#44288;',d:'&#49548;&#48169;&#50504;&#51204; &#54217;&#44032; &#50756;&#47308;'},
-    {id:'v27_stair_designer',n:'&#44228;&#45800; &#49444;&#44228;&#49324;',d:'&#44228;&#45800; &#50577;&#49885; 10&#51333; &#47784;&#46160; &#54869;&#51064;'},
-    {id:'v27_safety_auditor',n:'&#50504;&#51204;&#51652;&#45800; &#44048;&#46021;&#44288;',d:'&#51333;&#54633; &#50504;&#51204;&#51652;&#45800; &#50756;&#47308;'},
-    {id:'v27_quiz_perfect',n:'v27 &#47564;&#51216;&#50773;',d:'v27 &#53748;&#51592; &#47564;&#51216; &#45804;&#49457;'},
-    {id:'v27_all_features',n:'v27 &#50756;&#51204;&#51221;&#48373;',d:'v27 &#47784;&#46304; &#44592;&#45733; &#52404;&#54744;'},
-    {id:'v27_benchmark_clear',n:'&#48292;&#52824;&#47560;&#53356; &#46028;&#54028;',d:'The Sims/Home Design &#45824;&#48708; &#50864;&#50948; &#54869;&#51064;'},
-    {id:'v27_complete',n:'v27 &#47560;&#49828;&#53552;',d:'v27 &#51204;&#52404; &#50756;&#47308;'}
+    {id:'v27_window_expert',n:'창호 전문가',d:'창호 양식 비교기 완료'},
+    {id:'v27_thermal_analyst',n:'열교 분석가',d:'열교 브릿지 분석 완료'},
+    {id:'v27_ceiling_scholar',n:'천장 학자',d:'우물천장 도감 탐색 완료'},
+    {id:'v27_sun_planner',n:'일조량 설계사',d:'일조량 시뮬레이터 완료'},
+    {id:'v27_fence_master',n:'담장 마스터',d:'담장 양식 10종 모두 확인'},
+    {id:'v27_fire_inspector',n:'소방 검사관',d:'소방안전 평가 완료'},
+    {id:'v27_stair_designer',n:'계단 설계사',d:'계단 양식 10종 모두 확인'},
+    {id:'v27_safety_auditor',n:'안전진단 감독관',d:'종합 안전진단 완료'},
+    {id:'v27_quiz_perfect',n:'v27 만점왕',d:'v27 퇴즈 만점 달성'},
+    {id:'v27_all_features',n:'v27 완전정복',d:'v27 모든 기능 체험'},
+    {id:'v27_benchmark_clear',n:'벤치마크 돌파',d:'The Sims/Home Design 대비 우위 확인'},
+    {id:'v27_complete',n:'v27 마스터',d:'v27 전체 완료'}
   ];
   newAch.forEach(function(a){
     if(!existing.find(function(e){return e.id===a.id;})){existing.push(a);}

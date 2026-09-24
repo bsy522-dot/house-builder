@@ -49,81 +49,81 @@ window.__hbV22 = true;
   wrap.id = 'v22-panels';
   wrap.innerHTML =
     '<div id="v22-giwa" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1FABE; &#xC804;&#xD1B5; &#xAE30;&#xC640; &#xC885;&#xB958; &#xB3C4;&#xAC10;</h2>' +
-      '<p>10&#xC885; &#xC804;&#xD1B5; &#xAE30;&#xC640;&#xC758; &#xD2B9;&#xC131; &#xBE44;&#xAD50;</p>' +
+      '<h2>🪾 전통 기와 종류 도감</h2>' +
+      '<p>10종 전통 기와의 특성 비교</p>' +
       '<div class="v22-tabs" id="v22-gw-tabs"></div>' +
       '<canvas id="v22-gw-canvas" class="v22-canvas" width="620" height="400"></canvas>' +
       '<div id="v22-gw-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-gw-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Giwa.compare()">&#xBE44;&#xAD50;</button> <button class="v22-btn-sm" onclick="v22Giwa.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Giwa.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Giwa.compare()">비교</button> <button class="v22-btn-sm" onclick="v22Giwa.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Giwa.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-soil" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1FAA8; &#xC9C0;&#xBC18; &#xD1A0;&#xC9C8; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>8&#xC885; &#xD1A0;&#xC9C8;&#xC758; &#xAC74;&#xCD95; &#xC801;&#xD569;&#xC131; &#xBD84;&#xC11D;</p>' +
+      '<h2>🪨 지반 토질 분석기</h2>' +
+      '<p>8종 토질의 건축 적합성 분석</p>' +
       '<div class="v22-tabs" id="v22-sl-tabs"></div>' +
       '<canvas id="v22-sl-canvas" class="v22-canvas" width="600" height="380"></canvas>' +
       '<div id="v22-sl-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-sl-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Soil.test()">&#xD1A0;&#xC9C8;&#xD14C;&#xC2A4;&#xD2B8;</button> <button class="v22-btn-sm" onclick="v22Soil.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Soil.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Soil.test()">토질테스트</button> <button class="v22-btn-sm" onclick="v22Soil.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Soil.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-uval" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1F321;&#xFE0F; &#xAC74;&#xCD95; &#xC5F4;&#xAD00;&#xB958;&#xC728; &#xACC4;&#xC0B0;&#xAE30;</h2>' +
-      '<p>8&#xBD80;&#xC704; U&#xAC12; &#xBD84;&#xC11D; &#xBC0F; &#xC5D0;&#xB108;&#xC9C0; &#xB4F1;&#xAE09;</p>' +
+      '<h2>🌡️ 건축 열관류율 계산기</h2>' +
+      '<p>8부위 U값 분석 및 에너지 등급</p>' +
       '<canvas id="v22-uv-canvas" class="v22-canvas" width="620" height="380"></canvas>' +
       '<div id="v22-uv-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-uv-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Uval.calculate()">&#xACC4;&#xC0B0;</button> <button class="v22-btn-sm" onclick="v22Uval.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Uval.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Uval.calculate()">계산</button> <button class="v22-btn-sm" onclick="v22Uval.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Uval.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-eave" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1F3DB;&#xFE0F; &#xC804;&#xD1B5; &#xCC98;&#xB9C8; &#xC124;&#xACC4; &#xAC00;&#xC774;&#xB4DC;</h2>' +
-      '<p>8&#xC885; &#xCC98;&#xB9C8;&#xC758; &#xAD6C;&#xC870;&#xC801; &#xD2B9;&#xC131; &#xBD84;&#xC11D;</p>' +
+      '<h2>🏛️ 전통 처마 설계 가이드</h2>' +
+      '<p>8종 처마의 구조적 특성 분석</p>' +
       '<div class="v22-tabs" id="v22-ev-tabs"></div>' +
       '<canvas id="v22-ev-canvas" class="v22-canvas" width="600" height="380"></canvas>' +
       '<div id="v22-ev-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-ev-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Eave.analyze()">&#xBD84;&#xC11D;</button> <button class="v22-btn-sm" onclick="v22Eave.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Eave.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Eave.analyze()">분석</button> <button class="v22-btn-sm" onclick="v22Eave.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Eave.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-gantt" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1F4CA; &#xAC74;&#xCD95; &#xC2DC;&#xACF5; &#xACF5;&#xC815;&#xD45C;</h2>' +
-      '<p>12&#xB2E8;&#xACC4; &#xC2DC;&#xACF5; &#xACF5;&#xC815; &#xAC04;&#xD2B8;&#xCC28;&#xD2B8;</p>' +
+      '<h2>📊 건축 시공 공정표</h2>' +
+      '<p>12단계 시공 공정 간트차트</p>' +
       '<canvas id="v22-gt-canvas" class="v22-canvas" width="640" height="400"></canvas>' +
       '<div id="v22-gt-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-gt-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Gantt.advance()">&#xC9C4;&#xD589;</button> <button class="v22-btn-sm" onclick="v22Gantt.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Gantt.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Gantt.advance()">진행</button> <button class="v22-btn-sm" onclick="v22Gantt.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Gantt.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-wall" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1F9F1; &#xBCBD;&#xCCB4; &#xB2E8;&#xBA74; &#xAD6C;&#xC870; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>8&#xC885; &#xBCBD;&#xCCB4;&#xC758; &#xC5F4;/&#xAD6C;&#xC870;/&#xBC29;&#xC74C; &#xC131;&#xB2A5;</p>' +
+      '<h2>🧱 벽체 단면 구조 분석기</h2>' +
+      '<p>8종 벽체의 열/구조/방음 성능</p>' +
       '<div class="v22-tabs" id="v22-wl-tabs"></div>' +
       '<canvas id="v22-wl-canvas" class="v22-canvas" width="620" height="380"></canvas>' +
       '<div id="v22-wl-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-wl-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Wall.compare()">&#xBE44;&#xAD50;</button> <button class="v22-btn-sm" onclick="v22Wall.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Wall.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Wall.compare()">비교</button> <button class="v22-btn-sm" onclick="v22Wall.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Wall.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-energy" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x26A1; &#xC5D0;&#xB108;&#xC9C0; &#xC18C;&#xBE44; &#xD328;&#xD134; &#xBD84;&#xC11D;</h2>' +
-      '<p>12&#xC6D4; 5&#xBD84;&#xB958; &#xC5D0;&#xB108;&#xC9C0; &#xC18C;&#xBE44; &#xC2DC;&#xAC01;&#xD654;</p>' +
+      '<h2>⚡ 에너지 소비 패턴 분석</h2>' +
+      '<p>12월 5분류 에너지 소비 시각화</p>' +
       '<canvas id="v22-en-canvas" class="v22-canvas" width="620" height="400"></canvas>' +
       '<div id="v22-en-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-en-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Energy.simulate()">&#xC2DC;&#xBBAC;</button> <button class="v22-btn-sm" onclick="v22Energy.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Energy.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Energy.simulate()">시뮬</button> <button class="v22-btn-sm" onclick="v22Energy.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Energy.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v22-gate" class="v22-panel"><div class="v22-box">' +
-      '<h2>&#x1F3EF; &#xC804;&#xD1B5; &#xB300;&#xBB38;/&#xBB38;&#xB8E8; &#xC124;&#xACC4;</h2>' +
-      '<p>10&#xC885; &#xC804;&#xD1B5; &#xB300;&#xBB38;&#xC758; &#xD2B9;&#xC131; &#xBE44;&#xAD50;</p>' +
+      '<h2>🏯 전통 대문/문루 설계</h2>' +
+      '<p>10종 전통 대문의 특성 비교</p>' +
       '<div class="v22-tabs" id="v22-ga-tabs"></div>' +
       '<canvas id="v22-ga-canvas" class="v22-canvas" width="600" height="380"></canvas>' +
       '<div id="v22-ga-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v22-stat" id="v22-ga-stat"></div>' +
-      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Gate.evaluate()">&#xD3C9;&#xAC00;</button> <button class="v22-btn-sm" onclick="v22Gate.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v22-close" onclick="v22Gate.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v22-btn-sm" onclick="v22Gate.evaluate()">평가</button> <button class="v22-btn-sm" onclick="v22Gate.reset()">초기화</button></div>' +
+      '<button class="v22-close" onclick="v22Gate.close()">닫기</button>' +
     '</div></div>';
   if(document.readyState==='complete')document.body.appendChild(wrap);
   else window.addEventListener('load',function(){document.body.appendChild(wrap);});

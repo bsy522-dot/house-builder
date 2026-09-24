@@ -76,14 +76,14 @@ window.__hbV11 = true;
 (function(){
   var wrap = document.createElement('div');
   wrap.id = 'v11-panels';
-  wrap.innerHTML = '<div id="v11-matlab" class="v11-panel"><div class="v11-box"><h2>&#x1F9EA; &#xAC74;&#xCD95; &#xC7AC;&#xB8CC; &#xC2E4;&#xD5D8;&#xC2E4;</h2><p>15&#xC885; &#xC7AC;&#xB8CC;&#xC758; &#xBB3C;&#xC131;&#xC744; 5&#xCD95; &#xB808;&#xC774;&#xB354;&#xB85C; &#xBE44;&#xAD50;&#xD574;&#xBCF4;&#xC138;&#xC694;</p><div class="v11-tabs" id="v11-mat-tabs"></div><canvas id="v11-mat-canvas" class="v11-canvas" width="440" height="380"></canvas><div id="v11-mat-detail" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div id="v11-mat-compare" style="text-align:center;margin:10px 0"></div><button class="v11-close" onclick="v11Close(\'matlab\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-world" class="v11-panel"><div class="v11-box"><h2>&#x1F30D; &#xC138;&#xACC4; &#xAC74;&#xCD95; &#xC5EC;&#xD589;</h2><p>10&#xAC1C;&#xAD6D; &#xC720;&#xBA85; &#xAC74;&#xCD95;&#xBB3C;&#xACFC; &#xD55C;&#xAD6D; &#xAC74;&#xCD95;&#xC744; &#xBE44;&#xAD50;&#xD574;&#xBCF4;&#xC138;&#xC694;</p><div id="v11-world-list"></div><button class="v11-close" onclick="v11Close(\'world\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-construct" class="v11-panel"><div class="v11-box"><h2>&#x1F6A7; &#xAC74;&#xCD95; &#xC2DC;&#xACF5; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2><p>6&#xB2E8;&#xACC4; &#xC2DC;&#xACF5; &#xACFC;&#xC815;&#xC744; &#xCCB4;&#xD5D8;&#xD558;&#xC138;&#xC694;</p><div id="v11-construct-steps"></div><div style="text-align:center;margin:16px 0"><button class="v11-btn-sm" id="v11-construct-start">&#xC2DC;&#xACF5; &#xC2DC;&#xC791;</button> <button class="v11-btn-outline" id="v11-construct-reset">&#xCD08;&#xAE30;&#xD654;</button></div><canvas id="v11-construct-canvas" class="v11-canvas" width="500" height="200"></canvas><button class="v11-close" onclick="v11Close(\'construct\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-code" class="v11-panel"><div class="v11-box"><h2>&#x1F4DC; &#xAC74;&#xCD95;&#xBC95;&#xADDC; &#xAC00;&#xC774;&#xB4DC;</h2><p>12&#xC885; &#xAC74;&#xCD95; &#xBC95;&#xADDC;&#xB97C; &#xD559;&#xC2B5;&#xD558;&#xC138;&#xC694;</p><div class="v11-tabs" id="v11-code-tabs"></div><div id="v11-code-list"></div><button class="v11-close" onclick="v11Close(\'code\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-village" class="v11-panel"><div class="v11-box"><h2>&#x1F3D8;&#xFE0F; &#xB098;&#xB9CC;&#xC758; &#xB9C8;&#xC744; &#xB9CC;&#xB4E4;&#xAE30;</h2><p>8x8 &#xADF8;&#xB9AC;&#xB4DC;&#xC5D0; &#xAC74;&#xBB3C;&#xC744; &#xBC30;&#xCE58;&#xD574; &#xB9C8;&#xC744;&#xC744; &#xB9CC;&#xB4DC;&#xC138;&#xC694;</p><div class="v11-tabs" id="v11-village-tools"></div><div id="v11-village-grid" style="display:inline-grid;grid-template-columns:repeat(8,40px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v11-village-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v11-btn-sm" id="v11-village-save">&#xC800;&#xC7A5;</button> <button class="v11-btn-outline" id="v11-village-clear">&#xCD08;&#xAE30;&#xD654;</button></div><button class="v11-close" onclick="v11Close(\'village\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-masters" class="v11-panel"><div class="v11-box"><h2>&#x1F477; &#xAC74;&#xCD95; &#xBA85;&#xC7A5; &#xC5F4;&#xC804;</h2><p>&#xD55C;&#xAD6D; &#xAC74;&#xCD95;&#xC0AC;&#xC758; 12&#xC778; &#xBA85;&#xC7A5;&#xACFC; &#xAC74;&#xCD95;&#xAC00;</p><div id="v11-masters-list"></div><button class="v11-close" onclick="v11Close(\'masters\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-stats" class="v11-panel"><div class="v11-box"><h2>&#x1F4CA; &#xAC74;&#xCD95; &#xD1B5;&#xACC4; &#xB300;&#xC2DC;&#xBCF4;&#xB4DC;</h2><p>&#xC804;&#xCCB4; &#xD65C;&#xB3D9; &#xD1B5;&#xACC4;&#xC640; 6&#xCD95; &#xB808;&#xC774;&#xB354; &#xBD84;&#xC11D;</p><canvas id="v11-stats-canvas" class="v11-canvas" width="400" height="400"></canvas><div id="v11-stats-detail"></div><button class="v11-close" onclick="v11Close(\'stats\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v11-jukebox" class="v11-panel"><div class="v11-box"><h2>&#x1F3B5; &#xAC74;&#xCD95; BGM &#xC8FC;&#xD06C;&#xBC15;&#xC2A4;</h2><p>8&#xACE1;&#xC758; Web Audio &#xD569;&#xC131; &#xC74C;&#xC545;</p><div id="v11-jukebox-list"></div><div style="text-align:center;margin:12px 0"><button class="v11-btn-sm" id="v11-jukebox-stop">&#x23F9; &#xC815;&#xC9C0;</button></div><button class="v11-close" onclick="v11Close(\'jukebox\')">&#xB2EB;&#xAE30;</button></div></div>';
+  wrap.innerHTML = '<div id="v11-matlab" class="v11-panel"><div class="v11-box"><h2>🧪 건축 재료 실험실</h2><p>15종 재료의 물성을 5축 레이더로 비교해보세요</p><div class="v11-tabs" id="v11-mat-tabs"></div><canvas id="v11-mat-canvas" class="v11-canvas" width="440" height="380"></canvas><div id="v11-mat-detail" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div id="v11-mat-compare" style="text-align:center;margin:10px 0"></div><button class="v11-close" onclick="v11Close(\'matlab\')">닫기</button></div></div>' +
+    '<div id="v11-world" class="v11-panel"><div class="v11-box"><h2>🌍 세계 건축 여행</h2><p>10개국 유명 건축물과 한국 건축을 비교해보세요</p><div id="v11-world-list"></div><button class="v11-close" onclick="v11Close(\'world\')">닫기</button></div></div>' +
+    '<div id="v11-construct" class="v11-panel"><div class="v11-box"><h2>🚧 건축 시공 시뮬레이터</h2><p>6단계 시공 과정을 체험하세요</p><div id="v11-construct-steps"></div><div style="text-align:center;margin:16px 0"><button class="v11-btn-sm" id="v11-construct-start">시공 시작</button> <button class="v11-btn-outline" id="v11-construct-reset">초기화</button></div><canvas id="v11-construct-canvas" class="v11-canvas" width="500" height="200"></canvas><button class="v11-close" onclick="v11Close(\'construct\')">닫기</button></div></div>' +
+    '<div id="v11-code" class="v11-panel"><div class="v11-box"><h2>📜 건축법규 가이드</h2><p>12종 건축 법규를 학습하세요</p><div class="v11-tabs" id="v11-code-tabs"></div><div id="v11-code-list"></div><button class="v11-close" onclick="v11Close(\'code\')">닫기</button></div></div>' +
+    '<div id="v11-village" class="v11-panel"><div class="v11-box"><h2>🏘️ 나만의 마을 만들기</h2><p>8x8 그리드에 건물을 배치해 마을을 만드세요</p><div class="v11-tabs" id="v11-village-tools"></div><div id="v11-village-grid" style="display:inline-grid;grid-template-columns:repeat(8,40px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v11-village-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v11-btn-sm" id="v11-village-save">저장</button> <button class="v11-btn-outline" id="v11-village-clear">초기화</button></div><button class="v11-close" onclick="v11Close(\'village\')">닫기</button></div></div>' +
+    '<div id="v11-masters" class="v11-panel"><div class="v11-box"><h2>👷 건축 명장 열전</h2><p>한국 건축사의 12인 명장과 건축가</p><div id="v11-masters-list"></div><button class="v11-close" onclick="v11Close(\'masters\')">닫기</button></div></div>' +
+    '<div id="v11-stats" class="v11-panel"><div class="v11-box"><h2>📊 건축 통계 대시보드</h2><p>전체 활동 통계와 6축 레이더 분석</p><canvas id="v11-stats-canvas" class="v11-canvas" width="400" height="400"></canvas><div id="v11-stats-detail"></div><button class="v11-close" onclick="v11Close(\'stats\')">닫기</button></div></div>' +
+    '<div id="v11-jukebox" class="v11-panel"><div class="v11-box"><h2>🎵 건축 BGM 주크박스</h2><p>8곡의 Web Audio 합성 음악</p><div id="v11-jukebox-list"></div><div style="text-align:center;margin:12px 0"><button class="v11-btn-sm" id="v11-jukebox-stop">⏹ 정지</button></div><button class="v11-close" onclick="v11Close(\'jukebox\')">닫기</button></div></div>';
   document.body.appendChild(wrap);
 })();
 
@@ -161,7 +161,7 @@ var v11MatLab = (function(){
     selected.forEach(function(nm,si){ var mat=materials.find(function(m){return m.name===nm;}); if(!mat) return; c.beginPath(); for(var i=0;i<n;i++){ var a=-Math.PI/2+(2*Math.PI/n)*i, val=mat[props[i]]/100, px=cx+R*val*Math.cos(a), py=cy+R*val*Math.sin(a); if(i===0)c.moveTo(px,py);else c.lineTo(px,py); } c.closePath(); c.fillStyle=colors[si].replace('.7','.15'); c.fill(); c.strokeStyle=colors[si]; c.lineWidth=2; c.stroke(); });
     if(selected.length>0){ c.font='11px sans-serif'; c.textAlign='center'; selected.forEach(function(nm,i){ c.fillStyle=colors[i]; c.fillRect(cx-80+i*60,H-30,12,12); c.fillStyle='#f5deb3'; c.fillText(nm,cx-80+i*60+30,H-24); }); }
     var detail=document.getElementById('v11-mat-detail');
-    if(detail&&selected.length===1){ var m=materials.find(function(mm){return mm.name===selected[0];}); if(m) detail.innerHTML='<strong style="color:#f5deb3">'+m.name+'</strong> - '+m.desc+'<br><span style="font-size:11px">&#x1F4A1; '+m.tip+'</span>'; }
+    if(detail&&selected.length===1){ var m=materials.find(function(mm){return mm.name===selected[0];}); if(m) detail.innerHTML='<strong style="color:#f5deb3">'+m.name+'</strong> - '+m.desc+'<br><span style="font-size:11px">💡 '+m.tip+'</span>'; }
     else if(detail) detail.innerHTML=selected.length===0?'재료를 클릭하면 비교할 수 있습니다 (최대 3개)':'선택된 '+selected.length+'개 재료 비교 중';
   }
   function open(){ document.getElementById('v11-matlab').classList.add('active'); v11SFX.play('mat_compare'); renderTabs(); renderMaterials('전체'); drawRadar(); }
@@ -188,7 +188,7 @@ var v11World = (function(){
   function save(){localStorage.setItem(KEY,JSON.stringify(visited));}
   function render(){
     var el=document.getElementById('v11-world-list'); if(!el) return;
-    el.innerHTML=places.map(function(p,i){ var v=visited.indexOf(i)>=0; return '<div class="v11-item'+(v?' read':'')+'" data-idx="'+i+'"><h4>'+p.name+' <span class="tag">'+p.country+' '+p.year+'</span></h4><p>'+p.style+' | 한국 비교: '+p.compare+'</p><div class="detail"><p>'+p.desc+'</p><p style="margin-top:8px;color:#c4956a">&#x1F4A1; '+p.tip+'</p></div></div>'; }).join('');
+    el.innerHTML=places.map(function(p,i){ var v=visited.indexOf(i)>=0; return '<div class="v11-item'+(v?' read':'')+'" data-idx="'+i+'"><h4>'+p.name+' <span class="tag">'+p.country+' '+p.year+'</span></h4><p>'+p.style+' | 한국 비교: '+p.compare+'</p><div class="detail"><p>'+p.desc+'</p><p style="margin-top:8px;color:#c4956a">💡 '+p.tip+'</p></div></div>'; }).join('');
     el.querySelectorAll('.v11-item').forEach(function(item){ item.onclick=function(){ var idx=parseInt(item.dataset.idx); item.classList.toggle('expanded'); if(visited.indexOf(idx)<0){visited.push(idx);save();item.classList.add('read');} v11SFX.play('world_open'); }; });
   }
   function open(){document.getElementById('v11-world').classList.add('active');render();}
@@ -200,19 +200,19 @@ var v11World = (function(){
 var v11Construct = (function(){
   var KEY='hb_v11_construct';
   var steps=[
-    {name:'기초 공사',desc:'지반 다지기, 기초석 설치',time:15,icon:'&#x26CF;&#xFE0F;'},
-    {name:'골조 공사',desc:'기둥, 보, 도리 구조물 설치',time:20,icon:'&#x1F3D7;&#xFE0F;'},
-    {name:'지붕 공사',desc:'서까래, 기와/초가 지붕 올리기',time:15,icon:'&#x1F3E0;'},
-    {name:'벽체 공사',desc:'황토/벽돌 벽 쌓기, 창호 설치',time:18,icon:'&#x1F9F1;'},
-    {name:'마감 공사',desc:'바닥재, 벽지, 단청 칠하기',time:12,icon:'&#x1F3A8;'},
-    {name:'검수 완료',desc:'안전 검사, 누수/균열 확인',time:10,icon:'&#x2705;'}
+    {name:'기초 공사',desc:'지반 다지기, 기초석 설치',time:15,icon:'⛏️'},
+    {name:'골조 공사',desc:'기둥, 보, 도리 구조물 설치',time:20,icon:'🏗️'},
+    {name:'지붕 공사',desc:'서까래, 기와/초가 지붕 올리기',time:15,icon:'🏠'},
+    {name:'벽체 공사',desc:'황토/벽돌 벽 쌓기, 창호 설치',time:18,icon:'🧱'},
+    {name:'마감 공사',desc:'바닥재, 벽지, 단청 칠하기',time:12,icon:'🎨'},
+    {name:'검수 완료',desc:'안전 검사, 누수/균열 확인',time:10,icon:'✅'}
   ];
   var state=JSON.parse(localStorage.getItem(KEY)||'{"current":0,"done":false}');
   var timer=null, remaining=0;
   function save(){localStorage.setItem(KEY,JSON.stringify(state));}
   function render(){
     var el=document.getElementById('v11-construct-steps'); if(!el) return;
-    el.innerHTML=steps.map(function(s,i){ var cls=i<state.current?'done':(i===state.current&&timer?'active':''); return '<div class="v11-process-step '+cls+'"><div class="step-num">'+(i<state.current?'&#x2713;':(i+1))+'</div><div class="step-info"><h4>'+s.icon+' '+s.name+'</h4><p>'+s.desc+'</p></div><div class="step-timer">'+(i===state.current&&timer?remaining+'&#xCD08;':(i<state.current?'&#x2713;':s.time+'&#xCD08;'))+'</div></div>'; }).join('');
+    el.innerHTML=steps.map(function(s,i){ var cls=i<state.current?'done':(i===state.current&&timer?'active':''); return '<div class="v11-process-step '+cls+'"><div class="step-num">'+(i<state.current?'✓':(i+1))+'</div><div class="step-info"><h4>'+s.icon+' '+s.name+'</h4><p>'+s.desc+'</p></div><div class="step-timer">'+(i===state.current&&timer?remaining+'초':(i<state.current?'✓':s.time+'초'))+'</div></div>'; }).join('');
     drawProgress();
   }
   function drawProgress(){
@@ -283,7 +283,7 @@ var v11Code = (function(){
 // ── 8. My Village Builder (나만의 마을 8x8) ──
 var v11Village = (function(){
   var KEY='hb_v11_village', SIZE=8;
-  var buildings=[{name:'지우기',icon:'&#x274C;',id:'erase'},{name:'한옥',icon:'&#x1F3E0;',id:'hanok'},{name:'기와집',icon:'&#x1F3E1;',id:'giwa'},{name:'초가집',icon:'&#x1F6D6;',id:'choga'},{name:'서원',icon:'&#x1F3EB;',id:'seowon'},{name:'정자',icon:'&#x26E9;&#xFE0F;',id:'jeongja'},{name:'시장',icon:'&#x1F3EA;',id:'market'},{name:'논밭',icon:'&#x1F33E;',id:'farm'},{name:'연못',icon:'&#x1F4A7;',id:'pond'},{name:'나무',icon:'&#x1F333;',id:'tree'},{name:'돌담',icon:'&#x1F9F1;',id:'wall'},{name:'길',icon:'&#x1F6B6;',id:'road'}];
+  var buildings=[{name:'지우기',icon:'❌',id:'erase'},{name:'한옥',icon:'🏠',id:'hanok'},{name:'기와집',icon:'🏡',id:'giwa'},{name:'초가집',icon:'🛖',id:'choga'},{name:'서원',icon:'🏫',id:'seowon'},{name:'정자',icon:'⛩️',id:'jeongja'},{name:'시장',icon:'🏪',id:'market'},{name:'논밭',icon:'🌾',id:'farm'},{name:'연못',icon:'💧',id:'pond'},{name:'나무',icon:'🌳',id:'tree'},{name:'돌담',icon:'🧱',id:'wall'},{name:'길',icon:'🚶',id:'road'}];
   var selectedTool='hanok';
   var grid=JSON.parse(localStorage.getItem(KEY)||'null');
   if(!grid){grid=[];for(var i=0;i<SIZE*SIZE;i++)grid.push('');}
@@ -324,18 +324,18 @@ var v11Village = (function(){
 var v11Masters = (function(){
   var KEY='hb_v11_masters';
   var masters=[
-    {name:'정약용',era:'조선',icon:'&#x1F477;',title:'수원화성 설계자',desc:'수원화성을 설계한 실학자. 거중기를 발명하여 과학적 건축을 실현.',work:'수원화성, 거중기'},
-    {name:'김덕량',era:'신라',icon:'&#x1F477;',title:'불국사 건축가',desc:'불국사와 석굴암을 창건한 신라의 천재 건축가. 목조와 석조의 조화.',work:'불국사, 석굴암'},
-    {name:'강봉진',era:'조선',icon:'&#x1F477;',title:'건축 대목장',desc:'경복궁 근정전 중건에 참여한 조선 최고의 대목장.',work:'경복궁 근정전'},
-    {name:'아비지',era:'백제',icon:'&#x1F477;',title:'백제 건축 명장',desc:'일본에 사찰 건축을 전한 백제의 건축 명장. 호류지의 원형 설계.',work:'호류지 원형 설계'},
-    {name:'박길룡',era:'근대',icon:'&#x1F477;',title:'근대 건축 선구자',desc:'한국 근대 건축의 선구자. 전통과 근대의 조화를 추구한 건축가.',work:'화신백화점 등'},
-    {name:'김수근',era:'현대',icon:'&#x1F477;',title:'공간 건축가',desc:'한국 현대 건축의 거장. 빈자의 미학으로 세계적 명성 획득.',work:'경동교회, 올림픽체조경기장'},
-    {name:'김중업',era:'현대',icon:'&#x1F477;',title:'한국의 르코르뷔지에',desc:'르코르뷔지에에게 사사한 건국 1세대 건축가. 유려한 곡선 설계.',work:'프랑스대사관, 서산부인과'},
-    {name:'승효상',era:'현대',icon:'&#x1F477;',title:'빈자의 건축가',desc:'빈자의 미학을 추구한 건축가. 절제된 디자인의 정수.',work:'수졸당, 노무현기념관'},
-    {name:'신영훈',era:'현대',icon:'&#x1F477;',title:'대목장',desc:'한옥 보존과 재현의 대가. 중요무형문화재 대목장.',work:'숭례문 복원'},
-    {name:'전봉희',era:'조선',icon:'&#x1F477;',title:'궁궐 도편수',desc:'조선 후기 궁궐 건축의 총 책임자.',work:'창경궁 등 궁궐 건축'},
-    {name:'이광로',era:'현대',icon:'&#x1F477;',title:'한옥 전문가',desc:'전통 한옥의 현대적 재해석 전문가.',work:'한옥마을 설계'},
-    {name:'조정구',era:'현대',icon:'&#x1F477;',title:'한옥 연구가',desc:'한옥의 과학적 우수성을 연구한 건축학자.',work:'한옥 과학 연구'}
+    {name:'정약용',era:'조선',icon:'👷',title:'수원화성 설계자',desc:'수원화성을 설계한 실학자. 거중기를 발명하여 과학적 건축을 실현.',work:'수원화성, 거중기'},
+    {name:'김덕량',era:'신라',icon:'👷',title:'불국사 건축가',desc:'불국사와 석굴암을 창건한 신라의 천재 건축가. 목조와 석조의 조화.',work:'불국사, 석굴암'},
+    {name:'강봉진',era:'조선',icon:'👷',title:'건축 대목장',desc:'경복궁 근정전 중건에 참여한 조선 최고의 대목장.',work:'경복궁 근정전'},
+    {name:'아비지',era:'백제',icon:'👷',title:'백제 건축 명장',desc:'일본에 사찰 건축을 전한 백제의 건축 명장. 호류지의 원형 설계.',work:'호류지 원형 설계'},
+    {name:'박길룡',era:'근대',icon:'👷',title:'근대 건축 선구자',desc:'한국 근대 건축의 선구자. 전통과 근대의 조화를 추구한 건축가.',work:'화신백화점 등'},
+    {name:'김수근',era:'현대',icon:'👷',title:'공간 건축가',desc:'한국 현대 건축의 거장. 빈자의 미학으로 세계적 명성 획득.',work:'경동교회, 올림픽체조경기장'},
+    {name:'김중업',era:'현대',icon:'👷',title:'한국의 르코르뷔지에',desc:'르코르뷔지에에게 사사한 건국 1세대 건축가. 유려한 곡선 설계.',work:'프랑스대사관, 서산부인과'},
+    {name:'승효상',era:'현대',icon:'👷',title:'빈자의 건축가',desc:'빈자의 미학을 추구한 건축가. 절제된 디자인의 정수.',work:'수졸당, 노무현기념관'},
+    {name:'신영훈',era:'현대',icon:'👷',title:'대목장',desc:'한옥 보존과 재현의 대가. 중요무형문화재 대목장.',work:'숭례문 복원'},
+    {name:'전봉희',era:'조선',icon:'👷',title:'궁궐 도편수',desc:'조선 후기 궁궐 건축의 총 책임자.',work:'창경궁 등 궁궐 건축'},
+    {name:'이광로',era:'현대',icon:'👷',title:'한옥 전문가',desc:'전통 한옥의 현대적 재해석 전문가.',work:'한옥마을 설계'},
+    {name:'조정구',era:'현대',icon:'👷',title:'한옥 연구가',desc:'한옥의 과학적 우수성을 연구한 건축학자.',work:'한옥 과학 연구'}
   ];
   var readList=JSON.parse(localStorage.getItem(KEY)||'[]');
   function save(){localStorage.setItem(KEY,JSON.stringify(readList));}
@@ -414,7 +414,7 @@ var v11Jukebox = (function(){
   function stopAll(){currentSong=-1;nodes.forEach(function(n){clearTimeout(n);});nodes=[];render();}
   function render(){
     var el=document.getElementById('v11-jukebox-list'); if(!el) return;
-    el.innerHTML=songs.map(function(s,i){ return '<div class="v11-jukebox-item'+(currentSong===i?' playing':'')+'" data-idx="'+i+'"><div class="song-icon">'+(currentSong===i?'&#x1F3B5;':'&#x1F3B6;')+'</div><div class="song-info"><h4>'+s.name+'</h4><p>'+s.genre+' | '+s.bpm+' BPM | '+s.desc+'</p></div><button class="song-btn">'+(currentSong===i?'&#x23F8; 일시정지':'&#x25B6; 재생')+'</button></div>'; }).join('');
+    el.innerHTML=songs.map(function(s,i){ return '<div class="v11-jukebox-item'+(currentSong===i?' playing':'')+'" data-idx="'+i+'"><div class="song-icon">'+(currentSong===i?'🎵':'🎶')+'</div><div class="song-info"><h4>'+s.name+'</h4><p>'+s.genre+' | '+s.bpm+' BPM | '+s.desc+'</p></div><button class="song-btn">'+(currentSong===i?'⏸ 일시정지':'▶ 재생')+'</button></div>'; }).join('');
     el.querySelectorAll('.v11-jukebox-item').forEach(function(item){ item.onclick=function(){ var idx=parseInt(item.dataset.idx); if(currentSong===idx) stopAll(); else playSong(idx); }; });
     var sb=document.getElementById('v11-jukebox-stop'); if(sb) sb.onclick=stopAll;
   }
@@ -450,18 +450,18 @@ var v11Quiz = (function(){
 var v11Achieve = (function(){
   var KEY='hb_achievements';
   var defs=[
-    {id:'mat_explorer',name:'재료 탐험가',desc:'재료 실험실에서 5개 재료 확인',icon:'&#x1F9EA;',check:function(){return v11MatLab.read.length>=5;}},
-    {id:'mat_master',name:'재료 마스터',desc:'15개 재료 전부 확인',icon:'&#x1F3C5;',check:function(){return v11MatLab.read.length>=15;}},
-    {id:'world_traveler',name:'세계 건축 여행가',desc:'5개국 방문',icon:'&#x1F30D;',check:function(){return v11World.visited.length>=5;}},
-    {id:'world_master',name:'세계 건축 마스터',desc:'10개국 전부 방문',icon:'&#x2708;&#xFE0F;',check:function(){return v11World.visited.length>=10;}},
-    {id:'constructor',name:'시공 완료',desc:'시공 시뮬레이터 완료',icon:'&#x1F6A7;',check:function(){return v11Construct.state.done;}},
-    {id:'code_student',name:'법규 학습자',desc:'법규 6개 이상 학습',icon:'&#x1F4DC;',check:function(){return v11Code.readList.length>=6;}},
-    {id:'code_master',name:'법규 마스터',desc:'법규 12개 전부 학습',icon:'&#x1F393;',check:function(){return v11Code.readList.length>=12;}},
-    {id:'village_builder',name:'마을 건설가',desc:'마을에 20개 이상 배치',icon:'&#x1F3D8;&#xFE0F;',check:function(){return v11Village.grid.filter(function(g){return g;}).length>=20;}},
-    {id:'master_reader',name:'명장 탐구자',desc:'명장 6인 이상 읽기',icon:'&#x1F477;',check:function(){return v11Masters.readList.length>=6;}},
-    {id:'master_all',name:'명장 열전 완독',desc:'명장 12인 전부 읽기',icon:'&#x1F451;',check:function(){return v11Masters.readList.length>=12;}},
-    {id:'stats_checker',name:'통계 분석가',desc:'통계 대시보드 확인',icon:'&#x1F4CA;',check:function(){return true;}},
-    {id:'v11_explorer',name:'v11 탐험가',desc:'v11의 모든 기능 탐험',icon:'&#x1F31F;',check:function(){return v11MatLab.read.length>0&&v11World.visited.length>0&&v11Code.readList.length>0&&v11Masters.readList.length>0;}}
+    {id:'mat_explorer',name:'재료 탐험가',desc:'재료 실험실에서 5개 재료 확인',icon:'🧪',check:function(){return v11MatLab.read.length>=5;}},
+    {id:'mat_master',name:'재료 마스터',desc:'15개 재료 전부 확인',icon:'🏅',check:function(){return v11MatLab.read.length>=15;}},
+    {id:'world_traveler',name:'세계 건축 여행가',desc:'5개국 방문',icon:'🌍',check:function(){return v11World.visited.length>=5;}},
+    {id:'world_master',name:'세계 건축 마스터',desc:'10개국 전부 방문',icon:'✈️',check:function(){return v11World.visited.length>=10;}},
+    {id:'constructor',name:'시공 완료',desc:'시공 시뮬레이터 완료',icon:'🚧',check:function(){return v11Construct.state.done;}},
+    {id:'code_student',name:'법규 학습자',desc:'법규 6개 이상 학습',icon:'📜',check:function(){return v11Code.readList.length>=6;}},
+    {id:'code_master',name:'법규 마스터',desc:'법규 12개 전부 학습',icon:'🎓',check:function(){return v11Code.readList.length>=12;}},
+    {id:'village_builder',name:'마을 건설가',desc:'마을에 20개 이상 배치',icon:'🏘️',check:function(){return v11Village.grid.filter(function(g){return g;}).length>=20;}},
+    {id:'master_reader',name:'명장 탐구자',desc:'명장 6인 이상 읽기',icon:'👷',check:function(){return v11Masters.readList.length>=6;}},
+    {id:'master_all',name:'명장 열전 완독',desc:'명장 12인 전부 읽기',icon:'👑',check:function(){return v11Masters.readList.length>=12;}},
+    {id:'stats_checker',name:'통계 분석가',desc:'통계 대시보드 확인',icon:'📊',check:function(){return true;}},
+    {id:'v11_explorer',name:'v11 탐험가',desc:'v11의 모든 기능 탐험',icon:'🌟',check:function(){return v11MatLab.read.length>0&&v11World.visited.length>0&&v11Code.readList.length>0&&v11Masters.readList.length>0;}}
   ];
   var earned=JSON.parse(localStorage.getItem(KEY)||'[]');
   function check(){ var nw=false; defs.forEach(function(d){ if(earned.indexOf(d.id)<0&&d.check()){earned.push(d.id);nw=true;showToast(d);} }); if(nw)localStorage.setItem(KEY,JSON.stringify(earned)); }
@@ -472,14 +472,14 @@ var v11Achieve = (function(){
 // ── 14. Quick Action Buttons (좌측 FAB 8종) ──
 (function(){
   var actions=[
-    {icon:'&#x1F9EA;',label:'재료실험실',fn:function(){v11MatLab.open();}},
-    {icon:'&#x1F30D;',label:'세계건축',fn:function(){v11World.open();}},
-    {icon:'&#x1F6A7;',label:'시공시뮬',fn:function(){v11Construct.open();}},
-    {icon:'&#x1F4DC;',label:'법규가이드',fn:function(){v11Code.open();}},
-    {icon:'&#x1F3D8;&#xFE0F;',label:'마을만들기',fn:function(){v11Village.open();}},
-    {icon:'&#x1F477;',label:'명장열전',fn:function(){v11Masters.open();}},
-    {icon:'&#x1F4CA;',label:'통계',fn:function(){v11Stats.open();}},
-    {icon:'&#x1F3B5;',label:'BGM',fn:function(){v11Jukebox.open();}}
+    {icon:'🧪',label:'재료실험실',fn:function(){v11MatLab.open();}},
+    {icon:'🌍',label:'세계건축',fn:function(){v11World.open();}},
+    {icon:'🚧',label:'시공시뮬',fn:function(){v11Construct.open();}},
+    {icon:'📜',label:'법규가이드',fn:function(){v11Code.open();}},
+    {icon:'🏘️',label:'마을만들기',fn:function(){v11Village.open();}},
+    {icon:'👷',label:'명장열전',fn:function(){v11Masters.open();}},
+    {icon:'📊',label:'통계',fn:function(){v11Stats.open();}},
+    {icon:'🎵',label:'BGM',fn:function(){v11Jukebox.open();}}
   ];
   function inject(){
     var wrap=document.createElement('div'); wrap.id='v11-fab';

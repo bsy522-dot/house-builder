@@ -68,69 +68,69 @@ window.__hbV15 = true;
   wrap.id = 'v15-panels';
   wrap.innerHTML =
     '<div id="v15-green" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F33F; &#xCE5C;&#xD658;&#xACBD; &#xAC74;&#xCD95; &#xC778;&#xC99D; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>12&#xAC00;&#xC9C0; &#xCE5C;&#xD658;&#xACBD; &#xC694;&#xC18C;&#xB85C; &#xAC74;&#xCD95;&#xBB3C; &#xB179;&#xC0C9;&#xB4F1;&#xAE09; &#xD3C9;&#xAC00;</p>' +
+      '<h2>🌿 친환경 건축 인증 분석기</h2>' +
+      '<p>12가지 친환경 요소로 건축물 녹색등급 평가</p>' +
       '<div class="v15-tabs" id="v15-green-tabs"></div>' +
       '<canvas id="v15-green-canvas" class="v15-canvas" width="540" height="440"></canvas>' +
       '<div id="v15-green-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v15-stat" id="v15-green-stat"></div>' +
-      '<button class="v15-close" onclick="v15Green.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Green.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-insulate" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F3E0; &#xBC29;&#xC74C;/&#xB2E8;&#xC5F4; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>6&#xAC00;&#xC9C0; &#xBCBD;&#xCCB4; &#xAD6C;&#xC870;&#xC758; R&#xAC12;/STC &#xBC29;&#xC74C;&#xB4F1;&#xAE09; &#xBE44;&#xAD50;</p>' +
+      '<h2>🏠 방음/단열 시뮬레이터</h2>' +
+      '<p>6가지 벽체 구조의 R값/STC 방음등급 비교</p>' +
       '<div class="v15-tabs" id="v15-ins-tabs"></div>' +
       '<canvas id="v15-ins-canvas" class="v15-canvas" width="560" height="380"></canvas>' +
       '<div id="v15-ins-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v15-close" onclick="v15Insulate.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Insulate.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-storage" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F4E6; &#xC218;&#xB0A9;&#xACF5;&#xAC04; &#xCD5C;&#xC801;&#xD654; &#xC124;&#xACC4;&#xAE30;</h2>' +
-      '<p>12x12 &#xADF8;&#xB9AC;&#xB4DC;&#xC5D0; &#xC218;&#xB0A9;&#xACF5;&#xAC04;&#xC744; &#xBC30;&#xCE58;&#xD558;&#xACE0; &#xD65C;&#xC6A9;&#xB960;&#xC744; &#xBD84;&#xC11D;&#xD569;&#xB2C8;&#xB2E4;</p>' +
+      '<h2>📦 수납공간 최적화 설계기</h2>' +
+      '<p>12x12 그리드에 수납공간을 배치하고 활용률을 분석합니다</p>' +
       '<canvas id="v15-storage-canvas" class="v15-canvas" width="520" height="520"></canvas>' +
       '<div class="v15-tabs" id="v15-storage-tools"></div>' +
       '<div class="v15-stat" id="v15-storage-stat"></div>' +
-      '<button class="v15-close" onclick="v15Storage.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Storage.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-pattern" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F3A8; &#xC804;&#xD1B5; &#xBB38;&#xC591; &#xB514;&#xC790;&#xC778; &#xC2A4;&#xD29C;&#xB514;&#xC624;</h2>' +
-      '<p>12&#xC885; &#xB2E8;&#xCCAD;/&#xC804;&#xD1B5; &#xBB38;&#xC591; &#xD328;&#xD134; &#xC0DD;&#xC131;&#xAE30;</p>' +
+      '<h2>🎨 전통 문양 디자인 스튜디오</h2>' +
+      '<p>12종 단청/전통 문양 패턴 생성기</p>' +
       '<div class="v15-tabs" id="v15-pat-tabs"></div>' +
       '<canvas id="v15-pat-canvas" class="v15-canvas" width="480" height="480"></canvas>' +
       '<div id="v15-pat-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:40px"></div>' +
-      '<button class="v15-close" onclick="v15Pattern.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Pattern.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-gantt" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F4C5; &#xAC74;&#xCD95; &#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xAC04;&#xD2B8;&#xCC28;&#xD2B8;</h2>' +
-      '<p>6&#xB2E8;&#xACC4; &#xC2DC;&#xACF5;&#xC77C;&#xC815; &#xAD00;&#xB9AC; &#xBC0F; &#xC9C4;&#xD589;&#xB960; &#xCD94;&#xC801;</p>' +
+      '<h2>📅 건축 프로젝트 간트차트</h2>' +
+      '<p>6단계 시공일정 관리 및 진행률 추적</p>' +
       '<canvas id="v15-gantt-canvas" class="v15-canvas" width="620" height="360"></canvas>' +
       '<div class="v15-stat" id="v15-gantt-stat"></div>' +
       '<div id="v15-gantt-ctrl" style="text-align:center;margin-top:12px"></div>' +
-      '<button class="v15-close" onclick="v15Gantt.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Gantt.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-walkthru" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F6B6; VR &#xC6CC;&#xD06C;&#xC2A4;&#xB8E8; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>1&#xC778;&#xCE6D; &#xC2DC;&#xC810;&#xC73C;&#xB85C; &#xAC74;&#xCD95;&#xBB3C; &#xB0B4;&#xBD80;&#xB97C; &#xD0D0;&#xD5D8;&#xD569;&#xB2C8;&#xB2E4;</p>' +
+      '<h2>🚶 VR 워크스루 시뮬레이터</h2>' +
+      '<p>1인칭 시점으로 건축물 내부를 탐험합니다</p>' +
       '<canvas id="v15-walk-canvas" class="v15-canvas" width="560" height="400"></canvas>' +
       '<div id="v15-walk-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:40px"></div>' +
       '<div id="v15-walk-ctrl" style="text-align:center;margin-top:8px"></div>' +
-      '<button class="v15-close" onclick="v15Walk.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Walk.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-material" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F4B0; &#xAC74;&#xCD95; &#xC790;&#xC7AC; &#xC6D0;&#xAC00; &#xD2B8;&#xB798;&#xCEE4;</h2>' +
-      '<p>8&#xAC00;&#xC9C0; &#xC8FC;&#xC694; &#xC790;&#xC7AC;&#xC758; &#xC6D4;&#xBCC4; &#xAC00;&#xACA9; &#xCD94;&#xC774; &#xBD84;&#xC11D;</p>' +
+      '<h2>💰 건축 자재 원가 트래커</h2>' +
+      '<p>8가지 주요 자재의 월별 가격 추이 분석</p>' +
       '<div class="v15-tabs" id="v15-mat-tabs"></div>' +
       '<canvas id="v15-mat-canvas" class="v15-canvas" width="600" height="360"></canvas>' +
       '<div id="v15-mat-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:50px"></div>' +
-      '<button class="v15-close" onclick="v15Material.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Material.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v15-cert" class="v15-panel"><div class="v15-box">' +
-      '<h2>&#x1F3C5; &#xAC74;&#xCD95; &#xC790;&#xACA9; &#xC778;&#xC99D; &#xBC30;&#xC9C0;</h2>' +
-      '<p>6&#xC885; &#xAC74;&#xCD95; &#xC790;&#xACA9;&#xC99D; 4&#xB4F1;&#xAE09; &#xBC30;&#xC9C0; &#xC2DC;&#xC2A4;&#xD15C;</p>' +
+      '<h2>🏅 건축 자격 인증 배지</h2>' +
+      '<p>6종 건축 자격증 4등급 배지 시스템</p>' +
       '<div id="v15-cert-list"></div>' +
       '<canvas id="v15-cert-canvas" class="v15-canvas" width="560" height="360"></canvas>' +
       '<div class="v15-stat" id="v15-cert-stat"></div>' +
-      '<button class="v15-close" onclick="v15Cert.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v15-close" onclick="v15Cert.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();
@@ -166,18 +166,18 @@ var v15SFX = (function(){
 var v15Green = (function(){
   var KEY = 'hb_green_v15';
   var categories = [
-    {id:'solar',name:'태양광 패널',icon:'☀️',desc:'태양광 발전 설;&#xBE44;. 에너지; 자급;&#xB960; &#xD5A5;&#xC0C1;',max:10},
-    {id:'insulation',name:'고;&#xB2E8;열; &#xBC2;&#xCCB4;',icon:'🧥',desc:'열;손;실; &#xCD5C;&#xC18C;&#xD654;. R값 3.5 &#xC774;&#xC0C1;',max:10},
-    {id:'water',name:'빗;&#xBB3C; &#xC7AC;&#xD65C;&#xC6A9;',icon:'💧',desc:'빗;&#xBB3C; &#xC218;&#xC9D1; &#xBC0F; &#xC815;&#xD654; &#xC2DC;&#xC2A4;&#xD15C;',max:10},
-    {id:'ventil',name:'자;&#xC5F0; &#xD658;&#xAE30;',icon:'🌬️',desc:'크;&#xB85C;스; &#xBCA4;틸;레;&#xC774;&#xC158; &#xC124;&#xACC4;',max:10},
-    {id:'material',name:'친;&#xD658;&#xACBD; &#xC790;&#xC7AC;',icon:'🌿',desc:'재;&#xD65C;&#xC6A9; &#xBAA9;&#xC7AC;, &#xC800;VOC &#xD398;&#xC778;&#xD2B8;',max:10},
-    {id:'led',name:'LED &#xC870;&#xBA85;',icon:'💡',desc:'고;&#xD6A8;&#xC728; LED + &#xC870;&#xB3C4; &#xC13C;&#xC11C;',max:10},
-    {id:'garden',name:'옥;&#xC0C1; &#xC815;&#xC6D0;',icon:'🌻',desc:'옥;&#xC0C1; &#xB179;&#xD654; &#xBC0F; &#xC0DD;&#xD0DC; &#xC870;&#xACBD;',max:10},
-    {id:'geotherm',name:'지;&#xC5F4; &#xB0C9;&#xB09C;&#xBC29;',icon:'🌋',desc:'지;&#xC5F4; &#xD788;&#xD2B8;&#xD38C;&#xD504; &#xC2DC;&#xC2A4;&#xD15C;',max:10},
-    {id:'smart',name:'스;&#xB9C8;&#xD2B8; &#xAC74;&#xBB3C;',icon:'📱',desc:'IoT &#xAE30;&#xBC18; &#xC5D0;&#xB108;&#xC9C0; &#xAD00;&#xB9AC;',max:10},
-    {id:'waste',name:'폐;&#xAE30;&#xBB3C; &#xCD5C;&#xC18C;&#xD654;',icon:'♻️',desc:'건;&#xCD95; &#xD3D0;&#xAE30;&#xBB3C; 90% &#xC7AC;&#xD65C;&#xC6A9;',max:10},
-    {id:'noise',name:'소;&#xC74C; &#xC800;&#xAC10;',icon:'🔇',desc:'외;&#xBD80; &#xC18C;&#xC74C; 40dB &#xC774;&#xD558; &#xCC28;&#xB2E8;',max:10},
-    {id:'access',name:'무;&#xC7A5;&#xC560; &#xC124;&#xACC4;',icon:'♿',desc:'유;&#xB2C8;&#xBC84;&#xC15C; &#xB514;&#xC790;&#xC778; &#xC811;&#xADFC;&#xC131;',max:10}
+    {id:'solar',name:'태양광 패널',icon:'☀️',desc:'태양광 발전 설;비. 에너지; 자급;률 향상',max:10},
+    {id:'insulation',name:'고;단열; ூ체',icon:'🧥',desc:'열;손;실; 최소화. R값 3.5 이상',max:10},
+    {id:'water',name:'빗;물 재활용',icon:'💧',desc:'빗;물 수집 및 정화 시스템',max:10},
+    {id:'ventil',name:'자;연 환기',icon:'🌬️',desc:'크;로스; 벤틸;레;이션 설계',max:10},
+    {id:'material',name:'친;환경 자재',icon:'🌿',desc:'재;활용 목재, 저VOC 페인트',max:10},
+    {id:'led',name:'LED 조명',icon:'💡',desc:'고;효율 LED + 조도 센서',max:10},
+    {id:'garden',name:'옥;상 정원',icon:'🌻',desc:'옥;상 녹화 및 생태 조경',max:10},
+    {id:'geotherm',name:'지;열 냉난방',icon:'🌋',desc:'지;열 히트펌프 시스템',max:10},
+    {id:'smart',name:'스;마트 건물',icon:'📱',desc:'IoT 기반 에너지 관리',max:10},
+    {id:'waste',name:'폐;기물 최소화',icon:'♻️',desc:'건;축 폐기물 90% 재활용',max:10},
+    {id:'noise',name:'소;음 저감',icon:'🔇',desc:'외;부 소음 40dB 이하 차단',max:10},
+    {id:'access',name:'무;장애 설계',icon:'♿',desc:'유;니버셜 디자인 접근성',max:10}
   ];
   var scores = {};
   function load(){ try{ scores = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ scores = {}; } }
@@ -292,12 +292,12 @@ var v15Green = (function(){
 // ── 5. Soundproofing & Insulation Simulator ──
 var v15Insulate = (function(){
   var walls = [
-    {id:'wood_trad',name:'목;조; &#xD55C;옥;&#xBCBD;',rval:1.2,stc:28,desc:'전;&#xD1B5; &#xD669;&#xD1A0;+&#xBAA9;&#xC7AC; &#xBCBD;&#xCCB4;. &#xC790;&#xC5F0;&#xC18C;&#xC7AC; &#xC0AC;&#xC6A9;, &#xBC29;&#xC74C; &#xCDE8;&#xC57D;',color:'#8B7355'},
-    {id:'brick',name:'조;적;&#xC870; &#xBCBD;&#xB3CC;',rval:2.8,stc:45,desc:'&#xBCBD;&#xB3CC; &#xC870;&#xC801;&#xC870;. &#xB0B4;&#xAD6C;&#xC131; &#xC6B0;&#xC218;, &#xBC29;&#xC74C; &#xC591;&#xD638;',color:'#CD5C5C'},
-    {id:'concrete',name:'&#xCCA0;&#xADFC;&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;(RC)',rval:0.8,stc:55,desc:'RC&#xAD6C;&#xC870;. &#xBC29;&#xC74C; &#xC6B0;&#xC218;, &#xB2E8;&#xC5F4; &#xBCF4;&#xAC15; &#xD544;&#xC694;',color:'#808080'},
-    {id:'sip',name:'SIP &#xD328;&#xB110;',rval:5.5,stc:50,desc:'구;&#xC870;&#xB2E8;&#xC5F4; &#xC77C;&#xCCB4;&#xD328;&#xB110;. &#xB2E8;&#xC5F4; &#xCD5C;&#xACE0;, &#xBC29;&#xC74C; &#xC591;&#xD638;',color:'#DEB887'},
-    {id:'double',name:'이;중; &#xBC2;&#xCCB4; &#xACF5;&#xBC95;',rval:4.2,stc:58,desc:'&#xC774;&#xC911; &#xC11D;&#xACE0;&#xBCF4;&#xB4DC; &#xC0AC;&#xC774; &#xB2E8;&#xC5F4;&#xC7AC;+&#xACF5;&#xAE30;&#xCE35;',color:'#B8860B'},
-    {id:'icf',name:'ICF &#xAE30;&#xCD08;',rval:6.0,stc:52,desc:'&#xB2E8;&#xC5F4; &#xCF58;&#xD06C;&#xB9AC;&#xD2B8; &#xD3FC;. &#xB2E8;&#xC5F4;+&#xB0B4;&#xAD6C;&#xC131; &#xCD5C;&#xACE0;',color:'#A0522D'}
+    {id:'wood_trad',name:'목;조; 한옥;벽',rval:1.2,stc:28,desc:'전;통 황토+목재 벽체. 자연소재 사용, 방음 취약',color:'#8B7355'},
+    {id:'brick',name:'조;적;조 벽돌',rval:2.8,stc:45,desc:'벽돌 조적조. 내구성 우수, 방음 양호',color:'#CD5C5C'},
+    {id:'concrete',name:'철근콘크리트(RC)',rval:0.8,stc:55,desc:'RC구조. 방음 우수, 단열 보강 필요',color:'#808080'},
+    {id:'sip',name:'SIP 패널',rval:5.5,stc:50,desc:'구;조단열 일체패널. 단열 최고, 방음 양호',color:'#DEB887'},
+    {id:'double',name:'이;중; ூ체 공법',rval:4.2,stc:58,desc:'이중 석고보드 사이 단열재+공기층',color:'#B8860B'},
+    {id:'icf',name:'ICF 기초',rval:6.0,stc:52,desc:'단열 콘크리트 폼. 단열+내구성 최고',color:'#A0522D'}
   ];
   var selected = 0;
   function draw(){
@@ -462,18 +462,18 @@ var v15Storage = (function(){
 // ── 7. Traditional Pattern Design Studio ──
 var v15Pattern = (function(){
   var patterns = [
-    {id:'dancheong_flower',name:'단;청; 연;화;문;',desc:'연;화; &#xBB38;양;. &#xC0AC;&#xCC30;/&#xAD81;&#xC804; &#xCC9C;&#xC815;&#xC7A5;&#xC2DD;',colors:['#C62828','#1565C0','#2E7D32','#F9A825','#F5F5F5']},
-    {id:'dancheong_cloud',name:'단;청; 운;문;',desc:'구;름; &#xBB38;양;. &#xD558;&#xB298; &#xC138;계;&#xB97C; &#xC0C1;&#xC9D5;',colors:['#1565C0','#F5F5F5','#C62828','#FFB300','#4CAF50']},
-    {id:'dancheong_dragon',name:'단;청; 용;문;',desc:'용; &#xBB38;양;. &#xC655;권;&#xACFC; &#xC704;엄;&#xC758; &#xC0C1;&#xC9D5;',colors:['#FFB300','#C62828','#1565C0','#2E7D32','#4A148C']},
-    {id:'giwa_wave',name:'기;와; 파;도;문;',desc:'지;붕; &#xC554;&#xB9C9;&#xC0C8; &#xD30C;&#xB3C4; &#xBB38;양;',colors:['#37474F','#546E7A','#78909C','#90A4AE','#B0BEC5']},
-    {id:'window_lattice',name:'창;틀; 격;자;문;',desc:'한;옥; &#xCC3D;틀; &#xACA9;자; &#xD328;턴;',colors:['#5D4037','#795548','#8D6E63','#BCAAA4','#D7CCC8']},
-    {id:'bojagi',name:'보;자;기; 조;각;문;',desc:'보;자;기; &#xC870;각;&#xBCF4; &#xD328;치;워;크;',colors:['#E91E63','#2196F3','#4CAF50','#FFC107','#9C27B0']},
-    {id:'dancheong_phoenix',name:'단;청; 봉;황;문;',desc:'봉;황; &#xBB38;양;. &#xD3C9;화;&#xC640; &#xC870;화;',colors:['#C62828','#FFB300','#F5F5F5','#4CAF50','#1565C0']},
-    {id:'turtle',name:'귀;갑;문;',desc:'거;북; &#xB4F1;딩; &#xD328;턴;. &#xC7A5;수;&#xC758; &#xC0C1;징;',colors:['#2E7D32','#4CAF50','#8BC34A','#C8E6C9','#1B5E20']},
-    {id:'swastika',name:'만;자;문; (卐)',desc:'불;교; &#xC0AC;찰; &#xC7A5;식; &#xBB38;양;',colors:['#FFB300','#C62828','#F5F5F5','#795548','#FF8F00']},
-    {id:'taegeuk',name:'태;극;문;',desc:'음;양; &#xC870;화;. &#xD55C;국; &#xC804;통; &#xC0C1;징;',colors:['#C62828','#1565C0','#F5F5F5','#212121','#FFC107']},
-    {id:'plum',name:'매;화;문;',desc:'매;화; &#xB098;무; &#xBB38;양;. &#xC808;개;&#xC758; &#xC0C1;징;',colors:['#E91E63','#F48FB1','#2E7D32','#795548','#F5F5F5']},
-    {id:'thunder',name:'뇌;문;',desc:'번;개; &#xBB38;양;. &#xC561;막;이;&#xC640; &#xBCF4;호;',colors:['#FFB300','#FF8F00','#1565C0','#F5F5F5','#C62828']}
+    {id:'dancheong_flower',name:'단;청; 연;화;문;',desc:'연;화; 문양;. 사찰/궁전 천정장식',colors:['#C62828','#1565C0','#2E7D32','#F9A825','#F5F5F5']},
+    {id:'dancheong_cloud',name:'단;청; 운;문;',desc:'구;름; 문양;. 하늘 세계;를 상징',colors:['#1565C0','#F5F5F5','#C62828','#FFB300','#4CAF50']},
+    {id:'dancheong_dragon',name:'단;청; 용;문;',desc:'용; 문양;. 왕권;과 위엄;의 상징',colors:['#FFB300','#C62828','#1565C0','#2E7D32','#4A148C']},
+    {id:'giwa_wave',name:'기;와; 파;도;문;',desc:'지;붕; 암막새 파도 문양;',colors:['#37474F','#546E7A','#78909C','#90A4AE','#B0BEC5']},
+    {id:'window_lattice',name:'창;틀; 격;자;문;',desc:'한;옥; 창틀; 격자; 패턴;',colors:['#5D4037','#795548','#8D6E63','#BCAAA4','#D7CCC8']},
+    {id:'bojagi',name:'보;자;기; 조;각;문;',desc:'보;자;기; 조각;보 패치;워;크;',colors:['#E91E63','#2196F3','#4CAF50','#FFC107','#9C27B0']},
+    {id:'dancheong_phoenix',name:'단;청; 봉;황;문;',desc:'봉;황; 문양;. 평화;와 조화;',colors:['#C62828','#FFB300','#F5F5F5','#4CAF50','#1565C0']},
+    {id:'turtle',name:'귀;갑;문;',desc:'거;북; 등딩; 패턴;. 장수;의 상징;',colors:['#2E7D32','#4CAF50','#8BC34A','#C8E6C9','#1B5E20']},
+    {id:'swastika',name:'만;자;문; (卐)',desc:'불;교; 사찰; 장식; 문양;',colors:['#FFB300','#C62828','#F5F5F5','#795548','#FF8F00']},
+    {id:'taegeuk',name:'태;극;문;',desc:'음;양; 조화;. 한국; 전통; 상징;',colors:['#C62828','#1565C0','#F5F5F5','#212121','#FFC107']},
+    {id:'plum',name:'매;화;문;',desc:'매;화; 나무; 문양;. 절개;의 상징;',colors:['#E91E63','#F48FB1','#2E7D32','#795548','#F5F5F5']},
+    {id:'thunder',name:'뇌;문;',desc:'번;개; 문양;. 액막;이;와 보호;',colors:['#FFB300','#FF8F00','#1565C0','#F5F5F5','#C62828']}
   ];
   var selected = 0;
   function draw(){
@@ -689,14 +689,14 @@ var v15Walk = (function(){
     var info = document.getElementById('v15-walk-info'); if(!info) return;
     var cr = rooms.find(function(r){ return r.id===curRoom; });
     var descs = {
-      entrance:'전;통; 한;옥;의; 대;문;. 높;은; 문;지;방;&#xC744; &#xC9C0;&#xB098; &#xC548;으;로;.',
-      living:'넓;은; 대;청;마;루;. 마;루; &#xBC14;닥;&#xC758; &#xB098;무;결;&#xC774; &#xC544;름;답;습;니;다;.',
-      kitchen:'부;엌;. 아;궁;이;&#xC640; &#xAC00;마;솔;&#xC774; &#xB193;여; &#xC788;습;니;다;.',
-      bedroom:'안;방;. 온;돌;이; &#xB530;뜻;하;고; &#xC774;불;&#xC774; &#xD3B4;어;져; &#xC788;습;니;다;.',
-      bath:'화;장;실;. 전;통; &#xC9D1;의; &#xCE21;간;&#xC744; &#xD604;대;화;&#xD588;습;니;다;.',
-      study:'서;재;. 책;장;&#xACFC; &#xBC40;루;, &#xBD93;&#xACFC; &#xBC84;루;&#xAC00; &#xB193;여; &#xC788;습;니;다;.',
-      garden:'마;당;. 장;독;대;&#xC640; &#xAC10;나;무;&#xAC00; &#xC788;습;니;다;.',
-      storage_room:'창;고;. &#xB18D;기;구;&#xC640; &#xC7A5;작;물;&#xC774; &#xBCF4;관;&#xB418;어; &#xC788;습;니;다;.'
+      entrance:'전;통; 한;옥;의; 대;문;. 높;은; 문;지;방;을 지나 안으;로;.',
+      living:'넓;은; 대;청;마;루;. 마;루; 바닥;의 나무;결;이 아름;답;습;니;다;.',
+      kitchen:'부;엌;. 아;궁;이;와 가마;솔;이 놓여; 있습;니;다;.',
+      bedroom:'안;방;. 온;돌;이; 따뜻;하;고; 이불;이 펴어;져; 있습;니;다;.',
+      bath:'화;장;실;. 전;통; 집의; 측간;을 현대;화;했습;니;다;.',
+      study:'서;재;. 책;장;과 뱀루;, 붓과 버루;가 놓여; 있습;니;다;.',
+      garden:'마;당;. 장;독;대;와 감나;무;가 있습;니;다;.',
+      storage_room:'창;고;. 농기;구;와 장작;물;이 보관;되어; 있습;니;다;.'
     };
     info.innerHTML = '<strong style="color:#f5deb3">'+cr.name+'</strong><br>'+(descs[cr.id]||'');
   }
@@ -803,12 +803,12 @@ var v15Material = (function(){
 var v15Cert = (function(){
   var KEY = 'hb_cert_v15';
   var certs = [
-    {id:'basic',name:'건;축;기;사;',icon:'📋',req:'기;본; 건;축; 이;론; &#xBC0F; &#xC2E4;무;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
-    {id:'green',name:'친;환;경;건;축;사;',icon:'🌿',req:'녹;색;건;축; &#xC778;증; &#xBC0F; &#xC5D0;너;지; &#xD6A8;율;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
-    {id:'interior',name:'인;테;리;어;디;자;이;너;',icon:'🎨',req:'실;내; &#xACF5;간; &#xACC4;획; &#xBC0F; &#xB514;자;인;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
-    {id:'hanok',name:'한;옥;전;문;가;',icon:'🏯',req:'전;통; &#xD55C;옥; &#xAC74;축; &#xC804;문; &#xC9C0;식;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
-    {id:'safety',name:'건;축;안;전;관;리;사;',icon:'⛑️',req:'건;축;물; &#xC548;전; &#xC9C4;단; &#xBC0F; &#xAD00;리;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
-    {id:'3d',name:'3D모;델;링;전;문;가;',icon:'🖥️',req:'3D &#xAC74;축; &#xBAA8;델;링; &#xBC0F; &#xC2DC;각;화;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]}
+    {id:'basic',name:'건;축;기;사;',icon:'📋',req:'기;본; 건;축; 이;론; 및 실무;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
+    {id:'green',name:'친;환;경;건;축;사;',icon:'🌿',req:'녹;색;건;축; 인증; 및 에너;지; 효율;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
+    {id:'interior',name:'인;테;리;어;디;자;이;너;',icon:'🎨',req:'실;내; 공간; 계획; 및 디자;인;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
+    {id:'hanok',name:'한;옥;전;문;가;',icon:'🏯',req:'전;통; 한옥; 건축; 전문; 지식;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
+    {id:'safety',name:'건;축;안;전;관;리;사;',icon:'⛑️',req:'건;축;물; 안전; 진단; 및 관리;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]},
+    {id:'3d',name:'3D모;델;링;전;문;가;',icon:'🖥️',req:'3D 건축; 모델;링; 및 시각;화;',tiers:[{t:'Bronze',min:1},{t:'Silver',min:3},{t:'Gold',min:5},{t:'Diamond',min:8}]}
   ];
   var xp = {};
   function load(){ try{ xp = JSON.parse(localStorage.getItem(KEY)) || {}; }catch(e){ xp = {}; } }

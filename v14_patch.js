@@ -68,68 +68,68 @@ window.__hbV14 = true;
   wrap.id = 'v14-panels';
   wrap.innerHTML =
     '<div id="v14-construct" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F3D7;&#xFE0F; &#xAC74;&#xCD95;&#xACF5;&#xBC95; &#xBE44;&#xAD50; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>&#xC804;&#xD1B5;/&#xD604;&#xB300; 6&#xAC00;&#xC9C0; &#xACF5;&#xBC95;&#xC758; &#xAC15;&#xB3C4;/&#xBE44;&#xC6A9;/&#xD658;&#xACBD;/&#xC2DC;&#xAC04; 4&#xCD95; &#xBE44;&#xAD50;</p>' +
+      '<h2>🏗️ 건축공법 비교 분석기</h2>' +
+      '<p>전통/현대 6가지 공법의 강도/비용/환경/시간 4축 비교</p>' +
       '<div class="v14-tabs" id="v14-const-tabs"></div>' +
       '<canvas id="v14-const-canvas" class="v14-canvas" width="560" height="420"></canvas>' +
       '<div id="v14-const-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v14-close" onclick="v14Construct.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Construct.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-appraisal" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F3E0; &#xBD80;&#xB3D9;&#xC0B0; &#xAC10;&#xC815;&#xD3C9;&#xAC00; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>8&#xAC00;&#xC9C0; &#xC694;&#xC18C;&#xB85C; &#xAC74;&#xCD95;&#xBB3C; &#xC2DC;&#xC138;&#xB97C; &#xC0B0;&#xC815;&#xD569;&#xB2C8;&#xB2E4;</p>' +
+      '<h2>🏠 부동산 감정평가 시뮬레이터</h2>' +
+      '<p>8가지 요소로 건축물 시세를 산정합니다</p>' +
       '<div id="v14-appr-sliders"></div>' +
       '<canvas id="v14-appr-canvas" class="v14-canvas" width="600" height="380"></canvas>' +
       '<div class="v14-stat" id="v14-appr-result"></div>' +
-      '<button class="v14-close" onclick="v14Appraisal.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Appraisal.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-smarthome" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F4F1; &#xC2A4;&#xB9C8;&#xD2B8;&#xD648; IoT &#xC124;&#xACC4;&#xAE30;</h2>' +
-      '<p>12&#xC885; IoT &#xAE30;&#xAE30;&#xB97C; &#xBC30;&#xCE58;&#xD558;&#xACE0; &#xC5F0;&#xB3D9; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;</p>' +
+      '<h2>📱 스마트홈 IoT 설계기</h2>' +
+      '<p>12종 IoT 기기를 배치하고 연동 시뮬레이션</p>' +
       '<div class="v14-tabs" id="v14-iot-tabs"></div>' +
       '<canvas id="v14-iot-canvas" class="v14-canvas" width="560" height="400"></canvas>' +
       '<div id="v14-iot-status" style="color:#e8d5c0;font-size:12px;text-align:center;margin-top:8px"></div>' +
-      '<button class="v14-close" onclick="v14SmartHome.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14SmartHome.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-timetravel" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x23F3; &#xAC74;&#xCD95; &#xC2DC;&#xAC04;&#xC5EC;&#xD589; &#xBDF0;&#xC5B4;</h2>' +
-      '<p>&#xC120;&#xC0AC;&#xC2DC;&#xB300;&#xBD80;&#xD130; &#xD604;&#xB300;&#xAE4C;&#xC9C0; 6&#xC2DC;&#xB300; &#xAC74;&#xCD95; &#xBCC0;&#xCC9C;&#xC0AC;</p>' +
+      '<h2>⏳ 건축 시간여행 뷰어</h2>' +
+      '<p>선사시대부터 현대까지 6시대 건축 변천사</p>' +
       '<div class="v14-tabs" id="v14-tt-tabs"></div>' +
       '<canvas id="v14-tt-canvas" class="v14-canvas" width="640" height="380"></canvas>' +
       '<div id="v14-tt-desc" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v14-close" onclick="v14TimeTravel.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14TimeTravel.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-roof" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F3E0; &#xC9C0;&#xBD95; &#xC591;&#xC2DD; &#xB514;&#xC790;&#xC778; &#xC2A4;&#xD29C;&#xB514;&#xC624;</h2>' +
-      '<p>10&#xC885; &#xD55C;&#xAD6D;/&#xC138;&#xACC4; &#xC9C0;&#xBD95; &#xC591;&#xC2DD; Canvas &#xB2E8;&#xBA74;&#xB3C4;</p>' +
+      '<h2>🏠 지붕 양식 디자인 스튜디오</h2>' +
+      '<p>10종 한국/세계 지붕 양식 Canvas 단면도</p>' +
       '<div class="v14-tabs" id="v14-roof-tabs"></div>' +
       '<canvas id="v14-roof-canvas" class="v14-canvas" width="560" height="360"></canvas>' +
       '<div id="v14-roof-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v14-close" onclick="v14Roof.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Roof.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-challenge" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F3C6; &#xAC74;&#xCD95; &#xB3C4;&#xC804;&#xACFC;&#xC81C; &#xB7A0;&#xB9AC;</h2>' +
-      '<p>6&#xC885; &#xC2DC;&#xACF5; &#xBBF8;&#xB2C8;&#xD034;&#xC2A4;&#xD2B8; &#xD0C0;&#xC774;&#xBA38;+&#xC810;&#xC218;</p>' +
+      '<h2>🏆 건축 도전과제 랠리</h2>' +
+      '<p>6종 시공 미니퀴스트 타이머+점수</p>' +
       '<div id="v14-challenge-list"></div>' +
       '<canvas id="v14-challenge-canvas" class="v14-canvas" width="560" height="320"></canvas>' +
       '<div class="v14-timer" id="v14-ch-timer">00:00</div>' +
       '<div class="v14-progress"><div class="v14-progress-fill" id="v14-ch-progress"></div></div>' +
       '<div id="v14-ch-status" style="color:#e8d5c0;font-size:12px;text-align:center;margin-top:8px"></div>' +
-      '<button class="v14-close" onclick="v14Challenge.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Challenge.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-traffic" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F6B6; &#xC2E4;&#xB0B4; &#xB3D9;&#xC120; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>12x12 &#xD3C9;&#xBA74;&#xB3C4; &#xC704;&#xC5D0; &#xB3D9;&#xC120; &#xD788;&#xD2B8;&#xB9F5; Canvas</p>' +
+      '<h2>🚶 실내 동선 분석기</h2>' +
+      '<p>12x12 평면도 위에 동선 히트맵 Canvas</p>' +
       '<div class="v14-tabs" id="v14-traffic-tabs"></div>' +
       '<canvas id="v14-traffic-canvas" class="v14-canvas" width="520" height="520"></canvas>' +
       '<div class="v14-stat" id="v14-traffic-stat"></div>' +
-      '<button class="v14-close" onclick="v14Traffic.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Traffic.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v14-quotes" class="v14-panel"><div class="v14-box">' +
-      '<h2>&#x1F4DC; &#xAC74;&#xCD95; &#xBA85;&#xC5B8; &#xAC24;&#xB7EC;&#xB9AC;</h2>' +
-      '<p>&#xC138;&#xACC4;&#xC801; &#xAC74;&#xCD95;&#xAC00;&#xB4E4;&#xC758; &#xBA85;&#xC5B8; 20&#xC120;</p>' +
+      '<h2>📜 건축 명언 갤러리</h2>' +
+      '<p>세계적 건축가들의 명언 20선</p>' +
       '<div id="v14-quotes-list"></div>' +
-      '<button class="v14-close" onclick="v14Quotes.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v14-close" onclick="v14Quotes.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();
@@ -167,12 +167,12 @@ var v14SFX = (function(){
 // ── 4. Construction Method Comparator (건축공법 비교 분석기) ──
 var v14Construct = (function(){
   var methods = [
-    {name:'&#xBAA9;&#xAD6C;&#xC870; (&#xC804;&#xD1B5;)',key:'wood',strength:55,cost:65,eco:90,time:40,desc:'&#xB098;&#xBB34; &#xAE30;&#xB465;&#xACFC; &#xBCF4;&#xB85C; &#xC9D3;&#xB294; &#xC804;&#xD1B5; &#xACF5;&#xBC95;. &#xD55C;&#xC625;&#xC758; &#xAE30;&#xBCF8; &#xAD6C;&#xC870;&#xB85C; &#xD1B5;&#xAE30;&#xC131;&#xACFC; &#xC2B5;&#xB3C4; &#xC870;&#xC808;&#xC774; &#xB6F0;&#xC5B4;&#xB098;&#xBA70; &#xC790;&#xC5F0;&#xCE5C;&#xD654;&#xC801;. &#xB0B4;&#xC9C4; &#xC131;&#xB2A5;&#xC740; &#xBCF4;&#xD1B5;.'},
-    {name:'&#xC870;&#xC801;&#xC870; (&#xB3CC;/&#xBCBD;&#xB3CC;)',key:'masonry',strength:75,cost:50,eco:60,time:55,desc:'&#xB3CC;&#xC774;&#xB098; &#xBCBD;&#xB3CC;&#xC744; &#xC313;&#xC544; &#xBCBD;&#xCCB4;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xACF5;&#xBC95;. &#xC555;&#xCD95; &#xAC15;&#xB3C4;&#xAC00; &#xB6F0;&#xC5B4;&#xB098;&#xACE0; &#xBC29;&#xD654; &#xC131;&#xB2A5;&#xC774; &#xC88B;&#xC73C;&#xBA70; &#xC720;&#xC9C0;&#xBCF4;&#xC218;&#xAC00; &#xC6A9;&#xC774;.'},
-    {name:'&#xD55C;&#xC625;&#xC2DD; (&#xAE30;&#xC640;)',key:'hanok',strength:65,cost:80,eco:85,time:30,desc:'&#xB300;&#xB4E4;&#xBCF4;+&#xACF5;&#xD3EC;+&#xAE30;&#xC640; &#xC870;&#xD569;&#xC758; &#xD55C;&#xAD6D; &#xC804;&#xD1B5; &#xACF5;&#xBC95;. &#xBC30;&#xC0B0;&#xC784;&#xC218; &#xD48D;&#xC218; &#xC6D0;&#xB9AC;&#xB97C; &#xBC18;&#xC601;&#xD558;&#xBA70; &#xC790;&#xC5F0;&#xC18C;&#xC7AC;&#xB97C; &#xC0AC;&#xC6A9;.'},
-    {name:'&#xCCA0;&#xADFC;&#xCF58;&#xD06C;&#xB9AC;&#xD2B8; (RC)',key:'rc',strength:95,cost:40,eco:30,time:70,desc:'&#xCCA0;&#xADFC;&#xACFC; &#xCF58;&#xD06C;&#xB9AC;&#xD2B8;&#xB97C; &#xACB0;&#xD569;&#xD55C; &#xD604;&#xB300; &#xACF5;&#xBC95;. &#xB0B4;&#xC9C4;/&#xB0B4;&#xD654; &#xC131;&#xB2A5;&#xC774; &#xC6B0;&#xC218;&#xD558;&#xACE0; &#xB300;&#xADDC;&#xBAA8; &#xAC74;&#xCD95;&#xBB3C;&#xC5D0; &#xC801;&#xD569;.'},
-    {name:'&#xCCA0;&#xACE8;&#xAD6C;&#xC870;',key:'steel',strength:90,cost:35,eco:25,time:85,desc:'H&#xBE54;, I&#xBE54; &#xB4F1; &#xAC15;&#xCCA0; &#xBD80;&#xC7AC;&#xB97C; &#xC0AC;&#xC6A9;&#xD55C; &#xACF5;&#xBC95;. &#xB300;&#xACF5;&#xAC04;/&#xACE0;&#xCE35; &#xAC74;&#xCD95;&#xC5D0; &#xC720;&#xB9AC;&#xD558;&#xBA70; &#xC2DC;&#xACF5; &#xC18D;&#xB3C4;&#xAC00; &#xBE60;&#xB984;.'},
-    {name:'&#xD639;&#xD569;&#xAD6C;&#xC870; (&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;+&#xBAA9;)',key:'hybrid',strength:80,cost:55,eco:65,time:60,desc:'&#xCF58;&#xD06C;&#xB9AC;&#xD2B8; &#xACE8;&#xC870;&#xC5D0; &#xBAA9;&#xC7AC; &#xB9C8;&#xAC10;&#xC744; &#xACB0;&#xD569;. &#xD604;&#xB300;&#xC801; &#xAD6C;&#xC870; &#xC548;&#xC815;&#xC131;&#xACFC; &#xC804;&#xD1B5;&#xC801; &#xBBF8;&#xAD00;&#xC744; &#xBAA8;&#xB450; &#xCD94;&#xAD6C;.'}
+    {name:'목구조 (전통)',key:'wood',strength:55,cost:65,eco:90,time:40,desc:'나무 기둥과 보로 짓는 전통 공법. 한옥의 기본 구조로 통기성과 습도 조절이 뛰어나며 자연친화적. 내진 성능은 보통.'},
+    {name:'조적조 (돌/벽돌)',key:'masonry',strength:75,cost:50,eco:60,time:55,desc:'돌이나 벽돌을 쌓아 벽체를 만드는 공법. 압축 강도가 뛰어나고 방화 성능이 좋으며 유지보수가 용이.'},
+    {name:'한옥식 (기와)',key:'hanok',strength:65,cost:80,eco:85,time:30,desc:'대들보+공포+기와 조합의 한국 전통 공법. 배산임수 풍수 원리를 반영하며 자연소재를 사용.'},
+    {name:'철근콘크리트 (RC)',key:'rc',strength:95,cost:40,eco:30,time:70,desc:'철근과 콘크리트를 결합한 현대 공법. 내진/내화 성능이 우수하고 대규모 건축물에 적합.'},
+    {name:'철골구조',key:'steel',strength:90,cost:35,eco:25,time:85,desc:'H빔, I빔 등 강철 부재를 사용한 공법. 대공간/고층 건축에 유리하며 시공 속도가 빠름.'},
+    {name:'혹합구조 (콘크리트+목)',key:'hybrid',strength:80,cost:55,eco:65,time:60,desc:'콘크리트 골조에 목재 마감을 결합. 현대적 구조 안정성과 전통적 미관을 모두 추구.'}
   ];
   var sel = [0,1];
   var KEY = 'hb_v14_construct';
@@ -184,7 +184,7 @@ var v14Construct = (function(){
     var W=cv.width, H=cv.height, cx=W/2, cy=H/2+10, R=140;
     c.clearRect(0,0,W,H);
     c.fillStyle='rgba(30,20,10,.95)'; c.fillRect(0,0,W,H);
-    var axes = ['&#xAC15;&#xB3C4;','&#xBE44;&#xC6A9;&#xD6A8;&#xC728;','&#xD658;&#xACBD;&#xCE5C;&#xD654;','&#xC2DC;&#xACF5;&#xC18D;&#xB3C4;'];
+    var axes = ['강도','비용효율','환경친화','시공속도'];
     var angles = axes.map(function(_,i){ return -Math.PI/2 + (2*Math.PI*i/4); });
     for(var lv=1;lv<=4;lv++){
       c.beginPath();
@@ -267,14 +267,14 @@ var v14Construct = (function(){
 // ── 5. Real Estate Appraisal Simulator (부동산 감정평가) ──
 var v14Appraisal = (function(){
   var factors = [
-    {name:'&#xC704;&#xCE58; &#xB4F1;&#xAE09;',key:'location',min:1,max:10,val:5,unit:'&#xB4F1;&#xAE09;',desc:'&#xC885;&#xB85C;/&#xBD81;&#xCD0C; &#xC911;&#xC2EC;~&#xC678;&#xACFD;'},
-    {name:'&#xB300;&#xC9C0; &#xBA74;&#xC801;',key:'area',min:10,max:200,val:60,unit:'&#xD3C9;',desc:'&#xAC74;&#xCD95; &#xAC00;&#xB2A5; &#xD1A0;&#xC9C0; &#xBA74;&#xC801;'},
-    {name:'&#xAC74;&#xCD95; &#xC591;&#xC2DD;',key:'style',min:1,max:6,val:3,unit:'&#xC885;',desc:'1&#xD55C;&#xC625;~6&#xD604;&#xB300;'},
-    {name:'&#xAC74;&#xCD95; &#xC5F0;&#xC218;',key:'age',min:0,max:100,val:10,unit:'&#xB144;',desc:'&#xC2E0;&#xCD95;~100&#xB144;'},
-    {name:'&#xCEE8;&#xB514;&#xC158;',key:'cond',min:1,max:10,val:7,unit:'&#xC810;',desc:'&#xAC74;&#xBB3C; &#xC0C1;&#xD0DC; (1&#xC704;&#xD5D8;~10&#xC644;&#xBCBD;)'},
-    {name:'&#xC8FC;&#xBCC0; &#xD3B8;&#xC758;&#xC2DC;&#xC124;',key:'infra',min:1,max:10,val:5,unit:'&#xC810;',desc:'&#xAD50;&#xD1B5;/&#xD559;&#xAD50;/&#xBCD1;&#xC6D0;/&#xC0C1;&#xAC00;'},
-    {name:'&#xC870;&#xB9DD;/&#xC870;&#xACBD;',key:'view',min:1,max:10,val:5,unit:'&#xC810;',desc:'&#xC0B0;/&#xAC15;/&#xB3C4;&#xC2EC; &#xC870;&#xB9DD;&#xAD8C;'},
-    {name:'&#xC5D0;&#xB108;&#xC9C0; &#xD6A8;&#xC728;',key:'energy',min:1,max:7,val:4,unit:'&#xB4F1;&#xAE09;',desc:'1&#xB4F1;&#xAE09;(&#xCD5C;&#xC800;)~7&#xB4F1;&#xAE09;(&#xCD5C;&#xACE0;)'}
+    {name:'위치 등급',key:'location',min:1,max:10,val:5,unit:'등급',desc:'종로/북촌 중심~외곽'},
+    {name:'대지 면적',key:'area',min:10,max:200,val:60,unit:'평',desc:'건축 가능 토지 면적'},
+    {name:'건축 양식',key:'style',min:1,max:6,val:3,unit:'종',desc:'1한옥~6현대'},
+    {name:'건축 연수',key:'age',min:0,max:100,val:10,unit:'년',desc:'신축~100년'},
+    {name:'컨디션',key:'cond',min:1,max:10,val:7,unit:'점',desc:'건물 상태 (1위험~10완벽)'},
+    {name:'주변 편의시설',key:'infra',min:1,max:10,val:5,unit:'점',desc:'교통/학교/병원/상가'},
+    {name:'조망/조경',key:'view',min:1,max:10,val:5,unit:'점',desc:'산/강/도심 조망권'},
+    {name:'에너지 효율',key:'energy',min:1,max:7,val:4,unit:'등급',desc:'1등급(최저)~7등급(최고)'}
   ];
   var KEY = 'hb_v14_appraisal';
   function save(){ try{ var d={}; factors.forEach(function(f){ d[f.key]=f.val; }); localStorage.setItem(KEY,JSON.stringify(d)); }catch(e){} }
@@ -327,11 +327,11 @@ var v14Appraisal = (function(){
     var price = calcPrice();
     var gr = grade(price);
     c.fillStyle='#f5deb3'; c.font='bold 16px sans-serif'; c.textAlign='center';
-    c.fillText('&#xAC10;&#xC815;&#xD3C9;&#xAC00; &#xACB0;&#xACFC;', W/2, 30);
+    c.fillText('감정평가 결과', W/2, 30);
     c.font='bold 48px sans-serif'; c.fillStyle=gr.c;
-    c.fillText(price.toLocaleString()+'&#xB9CC;&#xC6D0;', W/2, 100);
+    c.fillText(price.toLocaleString()+'만원', W/2, 100);
     c.font='bold 28px sans-serif';
-    c.fillText('&#xB4F1;&#xAE09;: '+gr.g, W/2, 145);
+    c.fillText('등급: '+gr.g, W/2, 145);
     var barY=180, barH=22, maxW=W-100;
     factors.forEach(function(f,i){
       var pct = (f.val-f.min)/(f.max-f.min);
@@ -348,11 +348,11 @@ var v14Appraisal = (function(){
     });
     var res = document.getElementById('v14-appr-result');
     if(res){
-      var styleNames=['&#xD55C;&#xC625;','&#xAE30;&#xC640;&#xC9D1;','&#xCD08;&#xAC00;&#xC9D1;','&#xC11C;&#xC6D0;','&#xC815;&#xC790;','&#xD604;&#xB300;&#xC8FC;&#xD0DD;'];
-      res.innerHTML = '<div class="s"><div class="sv">'+price.toLocaleString()+'</div><div class="sl">&#xB9CC;&#xC6D0;</div></div>' +
-        '<div class="s"><div class="sv" style="color:'+gr.c+'">'+gr.g+'</div><div class="sl">&#xB4F1;&#xAE09;</div></div>' +
-        '<div class="s"><div class="sv">'+factors[1].val+'</div><div class="sl">&#xD3C9;</div></div>' +
-        '<div class="s"><div class="sv">'+(styleNames[factors[2].val-1]||'')+'</div><div class="sl">&#xC591;&#xC2DD;</div></div>';
+      var styleNames=['한옥','기와집','초가집','서원','정자','현대주택'];
+      res.innerHTML = '<div class="s"><div class="sv">'+price.toLocaleString()+'</div><div class="sl">만원</div></div>' +
+        '<div class="s"><div class="sv" style="color:'+gr.c+'">'+gr.g+'</div><div class="sl">등급</div></div>' +
+        '<div class="s"><div class="sv">'+factors[1].val+'</div><div class="sl">평</div></div>' +
+        '<div class="s"><div class="sv">'+(styleNames[factors[2].val-1]||'')+'</div><div class="sl">양식</div></div>';
     }
   }
   return {
@@ -365,18 +365,18 @@ var v14Appraisal = (function(){
 // ── 6. Smart Home IoT Designer (스마트홈 IoT 설계기) ──
 var v14SmartHome = (function(){
   var devices = [
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xC870;&#xBA85;',icon:'&#x1F4A1;',cat:'&#xC870;&#xBA85;',desc:'&#xC74C;&#xC131;/&#xC790;&#xB3D9; &#xBC1D;&#xAE30;&#xC870;&#xC808;, &#xC0C9;&#xC628;&#xB3C4; &#xBCC0;&#xACBD;',color:'#FFD700'},
-    {name:'AI &#xC2A4;&#xD53C;&#xCEE4;',icon:'&#x1F50A;',cat:'&#xC74C;&#xD5A5;',desc:'&#xC74C;&#xC131; &#xC778;&#xC2DD;, &#xC74C;&#xC545; &#xC7AC;&#xC0DD;, &#xAE30;&#xAE30; &#xC81C;&#xC5B4;',color:'#6495ED'},
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xC7A0;&#xAE08;&#xC7A5;&#xCE58;',icon:'&#x1F512;',cat:'&#xBCF4;&#xC548;',desc:'&#xC9C0;&#xBB38;/&#xBE44;&#xBC00;&#xBC88;&#xD638;/NFC &#xC7A0;&#xAE08;&#xD574;&#xC81C;',color:'#DC143C'},
-    {name:'&#xC628;&#xB3C4;&#xC870;&#xC808;&#xAE30;',icon:'&#x1F321;',cat:'&#xD658;&#xACBD;',desc:'&#xC6D0;&#xACA9; &#xC628;&#xB3C4;/&#xC2B5;&#xB3C4; &#xC124;&#xC815;, &#xC608;&#xC57D;',color:'#FF6347'},
-    {name:'&#xBB34;&#xC120; CCTV',icon:'&#x1F4F7;',cat:'&#xBCF4;&#xC548;',desc:'&#xC2E4;&#xC2DC;&#xAC04; &#xBAA8;&#xB2C8;&#xD130;&#xB9C1;, &#xC6C0;&#xC9C1;&#xC784; &#xAC10;&#xC9C0;',color:'#708090'},
-    {name:'&#xB85C;&#xBD07; &#xCCAD;&#xC18C;&#xAE30;',icon:'&#x1F9F9;',cat:'&#xD3B8;&#xC758;',desc:'&#xC790;&#xB3D9; &#xCCAD;&#xC18C;, &#xC608;&#xC57D;, &#xC601;&#xC5ED; &#xC124;&#xC815;',color:'#32CD32'},
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xBE14;&#xB77C;&#xC778;&#xB4DC;',icon:'&#x1FA9F;',cat:'&#xD658;&#xACBD;',desc:'&#xC790;&#xB3D9;/&#xC74C;&#xC131; &#xAC1C;&#xD3D0;, &#xD0C0;&#xC774;&#xBA38;',color:'#DDA0DD'},
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xD50C;&#xB7EC;&#xADF8;',icon:'&#x1F50C;',cat:'&#xC5D0;&#xB108;&#xC9C0;',desc:'&#xC6D0;&#xACA9; &#xC804;&#xC6D0; ON/OFF, &#xC804;&#xB825;&#xB7C9; &#xBAA8;&#xB2C8;&#xD130;&#xB9C1;',color:'#FFA500'},
-    {name:'&#xACF5;&#xAE30;&#xCCAD;&#xC815;&#xAE30;',icon:'&#x1F32C;',cat:'&#xD658;&#xACBD;',desc:'&#xBBF8;&#xC138;&#xBA3C;&#xC9C0;/CO2 &#xAC10;&#xC9C0;, &#xC790;&#xB3D9; &#xAC00;&#xB3D9;',color:'#87CEEB'},
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xB0C9;&#xC7A5;&#xACE0;',icon:'&#x1F9CA;',cat:'&#xD3B8;&#xC758;',desc:'&#xC2DD;&#xD488; &#xAD00;&#xB9AC;, &#xC720;&#xD1B5;&#xAE30;&#xD55C; &#xC54C;&#xB9BC;',color:'#ADD8E6'},
-    {name:'&#xC6CC;&#xD130; &#xC13C;&#xC11C;',icon:'&#x1F4A7;',cat:'&#xC548;&#xC804;',desc:'&#xB204;&#xC218; &#xAC10;&#xC9C0;, &#xC2A4;&#xB9C8;&#xD2B8; &#xBC38;&#xBE0C; &#xC790;&#xB3D9; &#xCC28;&#xB2E8;',color:'#4169E1'},
-    {name:'&#xC2A4;&#xB9C8;&#xD2B8; &#xBBF8;&#xB7EC;',icon:'&#x1FA9E;',cat:'&#xD3B8;&#xC758;',desc:'&#xB0A0;&#xC528;/&#xC77C;&#xC815;/&#xAC74;&#xAC15;&#xC815;&#xBCF4; &#xD45C;&#xC2DC;',color:'#C0C0C0'}
+    {name:'스마트 조명',icon:'💡',cat:'조명',desc:'음성/자동 밝기조절, 색온도 변경',color:'#FFD700'},
+    {name:'AI 스피커',icon:'🔊',cat:'음향',desc:'음성 인식, 음악 재생, 기기 제어',color:'#6495ED'},
+    {name:'스마트 잠금장치',icon:'🔒',cat:'보안',desc:'지문/비밀번호/NFC 잠금해제',color:'#DC143C'},
+    {name:'온도조절기',icon:'🌡',cat:'환경',desc:'원격 온도/습도 설정, 예약',color:'#FF6347'},
+    {name:'무선 CCTV',icon:'📷',cat:'보안',desc:'실시간 모니터링, 움직임 감지',color:'#708090'},
+    {name:'로봇 청소기',icon:'🧹',cat:'편의',desc:'자동 청소, 예약, 영역 설정',color:'#32CD32'},
+    {name:'스마트 블라인드',icon:'🪟',cat:'환경',desc:'자동/음성 개폐, 타이머',color:'#DDA0DD'},
+    {name:'스마트 플러그',icon:'🔌',cat:'에너지',desc:'원격 전원 ON/OFF, 전력량 모니터링',color:'#FFA500'},
+    {name:'공기청정기',icon:'🌬',cat:'환경',desc:'미세먼지/CO2 감지, 자동 가동',color:'#87CEEB'},
+    {name:'스마트 냉장고',icon:'🧊',cat:'편의',desc:'식품 관리, 유통기한 알림',color:'#ADD8E6'},
+    {name:'워터 센서',icon:'💧',cat:'안전',desc:'누수 감지, 스마트 밸브 자동 차단',color:'#4169E1'},
+    {name:'스마트 미러',icon:'🪞',cat:'편의',desc:'날씨/일정/건강정보 표시',color:'#C0C0C0'}
   ];
   var placed = [];
   var KEY = 'hb_v14_smarthome';
@@ -409,18 +409,18 @@ var v14SmartHome = (function(){
     c.fillStyle='rgba(196,149,106,.05)';
     c.fillRect(80,60,W-160,H-120);
     c.fillStyle='#c4956a'; c.font='11px sans-serif'; c.textAlign='center';
-    c.fillText('&#xAC70;&#xC2E4;',W/2-60,H/2-40);
-    c.fillText('&#xBC29;',W/2+80,H/2-60);
-    c.fillText('&#xC8FC;&#xBC29;',W/2-80,H/2+50);
-    c.fillText('&#xD654;&#xC7A5;&#xC2E4;',W/2+70,H/2+60);
+    c.fillText('거실',W/2-60,H/2-40);
+    c.fillText('방',W/2+80,H/2-60);
+    c.fillText('주방',W/2-80,H/2+50);
+    c.fillText('화장실',W/2+70,H/2+60);
     c.strokeStyle='rgba(196,149,106,.15)'; c.lineWidth=1;
     c.beginPath(); c.moveTo(W/2,60); c.lineTo(W/2,H-60); c.stroke();
     c.beginPath(); c.moveTo(80,H/2); c.lineTo(W-80,H/2); c.stroke();
     c.fillStyle='#f5deb3'; c.font='bold 14px sans-serif';
-    c.fillText('&#xC2A4;&#xB9C8;&#xD2B8;&#xD648; IoT &#xBC30;&#xCE58;&#xB3C4;', W/2, 30);
+    c.fillText('스마트홈 IoT 배치도', W/2, 30);
     if(placed.length===0){
       c.fillStyle='rgba(196,149,106,.4)'; c.font='13px sans-serif';
-      c.fillText('&#xC704; &#xBC84;&#xD2BC;&#xC744; &#xB20C;&#xB7EC; &#xAE30;&#xAE30;&#xB97C; &#xBC30;&#xCE58;&#xD558;&#xC138;&#xC694;', W/2, H/2);
+      c.fillText('위 버튼을 눌러 기기를 배치하세요', W/2, H/2);
     }
     var positions = [
       {x:140,y:120},{x:W-140,y:120},{x:140,y:H-120},{x:W-140,y:H-120},
@@ -447,7 +447,7 @@ var v14SmartHome = (function(){
     }
     var cats={}; placed.forEach(function(di){ var d=devices[di]; cats[d.cat]=(cats[d.cat]||0)+1; });
     var status = document.getElementById('v14-iot-status');
-    if(status) status.innerHTML = '&#xBC30;&#xCE58;: '+placed.length+'/12&#xAE30;&#xAE30; | &#xCE74;&#xD14C;&#xACE0;&#xB9AC;: '+Object.keys(cats).join(', ');
+    if(status) status.innerHTML = '배치: '+placed.length+'/12기기 | 카테고리: '+Object.keys(cats).join(', ');
   }
   return {
     open: function(){ document.getElementById('v14-smarthome').classList.add('active'); load(); updateTabs(); draw(); v14SFX.feature(); },
@@ -459,12 +459,12 @@ var v14SmartHome = (function(){
 // ── 7. Architecture Time Travel Viewer (건축 시간여행 뷰어) ──
 var v14TimeTravel = (function(){
   var eras = [
-    {name:'&#xC120;&#xC0AC;&#xC2DC;&#xB300;',period:'~BC 2333',buildings:['&#xBC18;&#xC9C0;&#xD558;&#xC2DD; &#xC6C0;&#xC9D1;','&#xBE57;&#xC0B4;&#xBB34;&#xB2C8;&#xD1A0;&#xAE30; &#xC8FC;&#xAC70;'],desc:'&#xB545;&#xC744; &#xD30C;&#xACE0; &#xAE30;&#xB465;&#xC744; &#xC138;&#xC6CC; &#xC9C0;&#xBD95;&#xC744; &#xC5B9;&#xC740; &#xC6C0;&#xC9D1;. &#xBD88;&#xC744; &#xC911;&#xC559;&#xC5D0; &#xD53C;&#xC6B0;&#xACE0; &#xC9DA;&#xC73C;&#xB85C; &#xBC14;&#xB2E5;&#xC744; &#xAE54;&#xC558;&#xB2E4;.',color:'#8B7355'},
-    {name:'&#xC0BC;&#xAD6D;&#xC2DC;&#xB300;',period:'BC 57~668',buildings:['&#xACE0;&#xAD6C;&#xB824; &#xC548;&#xD559;&#xAD81;','&#xBC31;&#xC81C; &#xBBF8;&#xB959;&#xC0AC;','&#xC2E0;&#xB77C; &#xCCA8;&#xC131;&#xB300;'],desc:'&#xAD81;&#xC804;/&#xC0AC;&#xCC30;/&#xC131;&#xACE0; &#xAC74;&#xCD95;&#xC774; &#xBC1C;&#xB2EC;. &#xBAA9;&#xAD6C;&#xC870;+&#xAE30;&#xC640; &#xC9C0;&#xBD95;&#xC758; &#xC6D0;&#xD615;&#xC774; &#xD655;&#xB9BD;&#xB418;&#xACE0; &#xBD88;&#xAD50; &#xAC74;&#xCD95;&#xC774; &#xBC88;&#xC131;.',color:'#CD853F'},
-    {name:'&#xD1B5;&#xC77C;&#xC2E0;&#xB77C;/&#xBC1C;&#xD574;',period:'668~935',buildings:['&#xBD88;&#xAD6D;&#xC0AC;','&#xC11D;&#xAD74;&#xC554;','&#xBC1C;&#xD574; &#xC0C1;&#xACBD;&#xC131;'],desc:'&#xBD88;&#xAD50; &#xAC74;&#xCD95;&#xC758; &#xC808;&#xC815;&#xAE30;. &#xC11D;&#xAD74;&#xC554;&#xC758; &#xC778;&#xACF5; &#xC11D;&#xAD74;&#xACFC; &#xBD88;&#xAD6D;&#xC0AC;&#xC758; &#xBAA9;&#xC870; &#xAC74;&#xCD95;&#xC740; &#xC138;&#xACC4;&#xC801; &#xAC78;&#xC791;.',color:'#DAA520'},
-    {name:'&#xACE0;&#xB824;&#xC2DC;&#xB300;',period:'918~1392',buildings:['&#xAC1C;&#xC131; &#xB9CC;&#xC6D4;&#xB300;','&#xBD80;&#xC11D;&#xC0AC; &#xBB34;&#xB7C9;&#xC218;&#xC804;','&#xD574;&#xC778;&#xC0AC; &#xC7A5;&#xACBD;&#xD310;&#xC804;'],desc:'&#xACE0;&#xB824;&#xCCAD;&#xC790;&#xCC98;&#xB7FC; &#xC138;&#xB828;&#xB41C; &#xBBF8;&#xAC10;&#xC758; &#xAC74;&#xCD95;. &#xD314;&#xB9CC;&#xB300;&#xC7A5;&#xACBD;&#xC744; &#xBCF4;&#xAD00;&#xD558;&#xB294; &#xD574;&#xC778;&#xC0AC;&#xB294; &#xACE0;&#xB824; &#xAC74;&#xCD95;&#xC758; &#xBC31;&#xBBF8;.',color:'#B8860B'},
-    {name:'&#xC870;&#xC120;&#xC2DC;&#xB300;',period:'1392~1897',buildings:['&#xACBD;&#xBCF5;&#xAD81;','&#xC218;&#xC6D0;&#xD654;&#xC131;','&#xC885;&#xBB18;','&#xC548;&#xB3D9; &#xD558;&#xD68C;&#xB9C8;&#xC744;'],desc:'&#xC720;&#xAD50; &#xC774;&#xB150;&#xC758; &#xAC74;&#xCD95;. &#xACBD;&#xBCF5;&#xAD81;&#xC758; &#xC7A5;&#xC5C4;&#xD55C; &#xAD81;&#xC804;, &#xC218;&#xC6D0;&#xD654;&#xC131;&#xC758; &#xACFC;&#xD559;&#xC801; &#xC124;&#xACC4;, &#xC591;&#xBC18; &#xD55C;&#xC625;&#xC758; &#xC815;&#xC81C;&#xBBF8;.',color:'#A0522D'},
-    {name:'&#xADFC;&#xD604;&#xB300;',period:'1897~&#xD604;&#xC7AC;',buildings:['&#xB355;&#xC218;&#xAD81;','&#xC11C;&#xC6B8;&#xC5ED;(&#xAD6C;)','N&#xC11C;&#xC6B8;&#xD0C0;&#xC6CC;','&#xB3D9;&#xB300;&#xBB38;&#xB514;&#xC790;&#xC778;&#xD50C;&#xB77C;&#xC790;'],desc:'&#xC11C;&#xC591; &#xAC74;&#xCD95; &#xB3C4;&#xC785;&#xBD80;&#xD130; &#xD604;&#xB300; &#xCCA0;&#xADFC;&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;/&#xCCA0;&#xACE8; &#xAC74;&#xCD95;&#xAE4C;&#xC9C0;. &#xD55C;&#xC625;&#xC758; &#xD604;&#xB300;&#xC801; &#xC7AC;&#xD574;&#xC11D;&#xB3C4; &#xD65C;&#xBC1C;.',color:'#8B4513'}
+    {name:'선사시대',period:'~BC 2333',buildings:['반지하식 움집','빗살무니토기 주거'],desc:'땅을 파고 기둥을 세워 지붕을 얹은 움집. 불을 중앙에 피우고 짚으로 바닥을 깔았다.',color:'#8B7355'},
+    {name:'삼국시대',period:'BC 57~668',buildings:['고구려 안학궁','백제 미륙사','신라 첨성대'],desc:'궁전/사찰/성고 건축이 발달. 목구조+기와 지붕의 원형이 확립되고 불교 건축이 번성.',color:'#CD853F'},
+    {name:'통일신라/발해',period:'668~935',buildings:['불국사','석굴암','발해 상경성'],desc:'불교 건축의 절정기. 석굴암의 인공 석굴과 불국사의 목조 건축은 세계적 걸작.',color:'#DAA520'},
+    {name:'고려시대',period:'918~1392',buildings:['개성 만월대','부석사 무량수전','해인사 장경판전'],desc:'고려청자처럼 세련된 미감의 건축. 팔만대장경을 보관하는 해인사는 고려 건축의 백미.',color:'#B8860B'},
+    {name:'조선시대',period:'1392~1897',buildings:['경복궁','수원화성','종묘','안동 하회마을'],desc:'유교 이념의 건축. 경복궁의 장엄한 궁전, 수원화성의 과학적 설계, 양반 한옥의 정제미.',color:'#A0522D'},
+    {name:'근현대',period:'1897~현재',buildings:['덕수궁','서울역(구)','N서울타워','동대문디자인플라자'],desc:'서양 건축 도입부터 현대 철근콘크리트/철골 건축까지. 한옥의 현대적 재해석도 활발.',color:'#8B4513'}
   ];
   var cur = 0;
   var KEY = 'hb_v14_timetravel';
@@ -513,7 +513,7 @@ var v14TimeTravel = (function(){
       c.lineTo(W/2,groundY-80); c.lineTo(W/2+80,groundY-10);
       c.strokeStyle=era.color; c.stroke();
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xBC18;&#xC9C0;&#xD558;&#xC2DD; &#xC6C0;&#xC9D1;',W/2,groundY-90);
+      c.fillText('반지하식 움집',W/2,groundY-90);
     } else if(cur===1){
       c.fillStyle='rgba(205,133,63,.2)';
       c.fillRect(W/2-70,groundY-120,140,120);
@@ -522,14 +522,14 @@ var v14TimeTravel = (function(){
       c.lineTo(W/2,groundY-180); c.lineTo(W/2+90,groundY-120);
       c.fillStyle='rgba(205,133,63,.4)'; c.fill(); c.stroke();
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xC0BC;&#xAD6D; &#xAD81;&#xC804;',W/2,groundY-190);
+      c.fillText('삼국 궁전',W/2,groundY-190);
     } else if(cur===2){
       c.fillStyle='rgba(218,165,32,.15)';
       c.beginPath(); c.arc(W/2,groundY-60,70,0,Math.PI*2); c.fill();
       c.strokeStyle=era.color; c.beginPath(); c.arc(W/2,groundY-60,70,0,Math.PI*2); c.stroke();
       c.beginPath(); c.arc(W/2,groundY-60,50,0,Math.PI*2); c.stroke();
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xC11D;&#xAD74;&#xC554;',W/2,groundY-140);
+      c.fillText('석굴암',W/2,groundY-140);
     } else if(cur===3){
       for(var i=0;i<3;i++){
         c.fillStyle='rgba(184,134,11,'+(0.15+i*0.05)+')';
@@ -537,7 +537,7 @@ var v14TimeTravel = (function(){
         c.strokeStyle=era.color; c.strokeRect(W/2-90+i*50,groundY-100+i*15,60,100-i*15);
       }
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xACE0;&#xB824; &#xC0AC;&#xCC30;',W/2,groundY-110);
+      c.fillText('고려 사찰',W/2,groundY-110);
     } else if(cur===4){
       c.fillStyle='rgba(160,82,45,.2)';
       c.fillRect(W/2-100,groundY-130,200,130);
@@ -552,7 +552,7 @@ var v14TimeTravel = (function(){
         c.strokeRect(W/2-80+j*45,groundY-100,30,40);
       }
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xACBD;&#xBCF5;&#xAD81;',W/2,groundY-190);
+      c.fillText('경복궁',W/2,groundY-190);
     } else {
       c.fillStyle='rgba(139,69,19,.15)';
       c.fillRect(W/2-60,groundY-160,120,160);
@@ -563,11 +563,11 @@ var v14TimeTravel = (function(){
         c.strokeRect(W/2+10,groundY-150+k*18,40,14);
       }
       c.fillStyle=era.color; c.font='12px sans-serif';
-      c.fillText('&#xD604;&#xB300; &#xAC74;&#xCD95;',W/2,groundY-170);
+      c.fillText('현대 건축',W/2,groundY-170);
     }
     era.buildings.forEach(function(b,i){
       c.fillStyle='rgba(196,149,106,.6)'; c.font='11px sans-serif'; c.textAlign='left';
-      c.fillText('&#x2022; '+b, 40, H-50+i*16);
+      c.fillText('• '+b, 40, H-50+i*16);
     });
     var desc=document.getElementById('v14-tt-desc');
     if(desc) desc.innerHTML = era.desc;
@@ -582,47 +582,47 @@ var v14TimeTravel = (function(){
 // ── 8. Roof Style Design Studio (지붕 양식 디자인 스튜디오) ──
 var v14Roof = (function(){
   var roofs = [
-    {name:'&#xB9DE;&#xBC30;&#xC9C0;&#xBD95;',desc:'&#xD55C;&#xC625;&#xC758; &#xAE30;&#xBCF8;. &#xB450; &#xBA74;&#xC774; &#xB9CC;&#xB098;&#xB294; &#xBC15;&#xACF5;&#xC9C0;&#xBD95;. &#xBE44;&#xB97C; &#xC591;&#xCABD;&#xC73C;&#xB85C; &#xD758;&#xB824;&#xBCF4;&#xB0B4;&#xB294; &#xB2E8;&#xC21C;&#xD558;&#xACE0; &#xC544;&#xB984;&#xB2E4;&#xC6B4; &#xD615;&#xD0DC;.',draw:function(c,cx,y,w){
+    {name:'맞배지붕',desc:'한옥의 기본. 두 면이 만나는 박공지붕. 비를 양쪽으로 흘려보내는 단순하고 아름다운 형태.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx,y-w*0.6); c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xD314;&#xC791;&#xC9C0;&#xBD95;',desc:'&#xC870;&#xC120; &#xAD81;&#xC804;&#xC758; &#xB300;&#xD45C;&#xC801; &#xC9C0;&#xBD95;. 8&#xAC1C;&#xC758; &#xBA74;&#xACFC; &#xCD94;&#xB140; &#xACE1;&#xC120;&#xC774; &#xC7A5;&#xC5C4;&#xD558;&#xACE0; &#xC6B0;&#xC544;&#xD55C; &#xBBF8;&#xAC10;&#xC744; &#xC790;&#xC544;&#xB0B8;&#xB2E4;.',draw:function(c,cx,y,w){
+    {name:'팔작지붕',desc:'조선 궁전의 대표적 지붕. 8개의 면과 추녀 곡선이 장엄하고 우아한 미감을 자아낸다.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w*0.7,y-w*0.3);
       c.lineTo(cx-w*0.3,y-w*0.55); c.lineTo(cx,y-w*0.7);
       c.lineTo(cx+w*0.3,y-w*0.55); c.lineTo(cx+w*0.7,y-w*0.3);
       c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xCD08;&#xAC00;&#xC9C0;&#xBD95;',desc:'&#xBF98;&#xB85C; &#xB36E;&#xC740; &#xD3C9;&#xBBFC; &#xC8FC;&#xAC70;. &#xB2E8;&#xC5F4;&#xC131;&#xC774; &#xB6F0;&#xC5B4;&#xB098;&#xACE0; &#xC790;&#xC5F0; &#xC18C;&#xC7AC;&#xB85C; &#xBCC4;&#xB3C4; &#xBE44;&#xC6A9; &#xC5C6;&#xC774; &#xC720;&#xC9C0;&#xBCF4;&#xC218; &#xAC00;&#xB2A5;.',draw:function(c,cx,y,w){
+    {name:'초가지붕',desc:'뾘로 덮은 평민 주거. 단열성이 뛰어나고 자연 소재로 별도 비용 없이 유지보수 가능.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y);
       c.quadraticCurveTo(cx-w*0.5,y-w*0.7,cx,y-w*0.5);
       c.quadraticCurveTo(cx+w*0.5,y-w*0.7,cx+w,y); c.closePath();
     }},
-    {name:'&#xBAA8;&#xC784;&#xC9C0;&#xBD95;',desc:'&#xC0AC;&#xBC29;&#xC73C;&#xB85C; &#xBE44;&#xB97C; &#xD758;&#xB824;&#xBCF4;&#xB0B4;&#xB294; &#xC9C0;&#xBD95;. &#xBC14;&#xB78C; &#xC800;&#xD56D;&#xC774; &#xC801;&#xACE0; &#xC678;&#xAD00;&#xC774; &#xC548;&#xC815;&#xC801;.',draw:function(c,cx,y,w){
+    {name:'모임지붕',desc:'사방으로 비를 흘려보내는 지붕. 바람 저항이 적고 외관이 안정적.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w*0.4,y-w*0.6);
       c.lineTo(cx+w*0.4,y-w*0.6); c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xC6B0;&#xC9C4;&#xAC01;&#xC9C0;&#xBD95;',desc:'&#xC11C;&#xC6D0;/&#xC0AC;&#xCC30;&#xC5D0;&#xC11C; &#xBCFC; &#xC218; &#xC788;&#xB294; &#xC720;&#xB824;&#xD55C; &#xACE1;&#xC120;&#xBBF8;. &#xCD94;&#xB155;&#xAC00; &#xC704;&#xB85C; &#xC0B4;&#xC9DD; &#xD718;&#xC5B4;&#xC9C0;&#xB294; &#xD2B9;&#xC9D5;.',draw:function(c,cx,y,w){
+    {name:'우진각지붕',desc:'서원/사찰에서 볼 수 있는 유려한 곡선미. 추녕가 위로 살짝 휘어지는 특징.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w*1.1,y);
       c.quadraticCurveTo(cx-w*0.3,y-w*0.3,cx,y-w*0.65);
       c.quadraticCurveTo(cx+w*0.3,y-w*0.3,cx+w*1.1,y); c.closePath();
     }},
-    {name:'&#xD3C9;&#xC9C0;&#xBD95;',desc:'&#xD604;&#xB300; &#xAC74;&#xCD95;&#xC758; &#xB300;&#xD45C;. &#xC625;&#xC0C1; &#xC815;&#xC6D0;&#xC774;&#xB098; &#xD0DC;&#xC591;&#xAD11; &#xD328;&#xB110; &#xC124;&#xCE58;&#xC5D0; &#xC720;&#xB9AC;&#xD558;&#xBA70; &#xBBF8;&#xB2C8;&#xBA40;&#xD55C; &#xB514;&#xC790;&#xC778;.',draw:function(c,cx,y,w){
+    {name:'평지붕',desc:'현대 건축의 대표. 옥상 정원이나 태양광 패널 설치에 유리하며 미니멀한 디자인.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w,y-w*0.1);
       c.lineTo(cx+w,y-w*0.1); c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xBC18;&#xD314;&#xC791;&#xC9C0;&#xBD95;',desc:'&#xC815;&#xC790;/&#xB204;&#xAC01;&#xC5D0; &#xC0AC;&#xC6A9;. &#xD314;&#xC791;&#xC758; &#xBC18;&#xB9CC; &#xC788;&#xB294; &#xAC00;&#xBCBC;&#xC6B4; &#xD615;&#xD0DC;&#xB85C; &#xAC1C;&#xBC29;&#xAC10;&#xC774; &#xC788;&#xB2E4;.',draw:function(c,cx,y,w){
+    {name:'반팔작지붕',desc:'정자/누각에 사용. 팔작의 반만 있는 가벼운 형태로 개방감이 있다.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w*0.5,y-w*0.5);
       c.lineTo(cx+w*0.5,y-w*0.5); c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xB9E8;&#xC0AC;&#xB4DC;&#xC9C0;&#xBD95;',desc:'&#xD504;&#xB791;&#xC2A4;&#xC2DD;. &#xACBD;&#xC0AC;&#xAC00; &#xAE09;&#xD55C; &#xBCC0;&#xC73C;&#xB85C; &#xB2E4;&#xB77D;&#xBC29;&#xC744; &#xB9CC;&#xB4E4;&#xAE30; &#xC88B;&#xACE0; &#xB514;&#xC790;&#xC778;&#xC774; &#xB3C5;&#xD2B9;&#xD558;&#xB2E4;.',draw:function(c,cx,y,w){
+    {name:'맨사드지붕',desc:'프랑스식. 경사가 급한 변으로 다락방을 만들기 좋고 디자인이 독특하다.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w,y-w*0.3);
       c.lineTo(cx-w*0.3,y-w*0.7); c.lineTo(cx+w*0.3,y-w*0.7);
       c.lineTo(cx+w,y-w*0.3); c.lineTo(cx+w,y); c.closePath();
     }},
-    {name:'&#xBC84;&#xD130;&#xD50C;&#xB77C;&#xC774;&#xC9C0;&#xBD95;',desc:'&#xB098;&#xBE44; &#xB0A0;&#xAC1C; &#xBAA8;&#xC591;. &#xD604;&#xB300; &#xD55C;&#xC625;&#xC5D0;&#xC11C; &#xC885;&#xC885; &#xC0AC;&#xC6A9;&#xB418;&#xBA70; &#xBE44;&#xB97C; &#xC591;&#xCABD;&#xC73C;&#xB85C; &#xD758;&#xB9AC;&#xBA74;&#xC11C; &#xACE1;&#xC120;&#xBBF8;.',draw:function(c,cx,y,w){
+    {name:'버터플라이지붕',desc:'나비 날개 모양. 현대 한옥에서 종종 사용되며 비를 양쪽으로 흘리면서 곡선미.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w*1.2,y);
       c.quadraticCurveTo(cx,y-w*0.9,cx+w*1.2,y); c.closePath();
     }},
-    {name:'&#xBCF5;&#xD569;&#xC9C0;&#xBD95;',desc:'&#xC5EC;&#xB7EC; &#xC591;&#xC2DD;&#xC744; &#xACB0;&#xD569;&#xD55C; &#xD604;&#xB300;&#xC801; &#xC9C0;&#xBD95;. &#xAC74;&#xBB3C;&#xC758; &#xAC1C;&#xC131;&#xC744; &#xC0B4;&#xB9AC;&#xBA70; &#xB2E4;&#xC591;&#xD55C; &#xACF5;&#xAC04;&#xC744; &#xB9CC;&#xB4E4; &#xC218; &#xC788;&#xB2E4;.',draw:function(c,cx,y,w){
+    {name:'복합지붕',desc:'여러 양식을 결합한 현대적 지붕. 건물의 개성을 살리며 다양한 공간을 만들 수 있다.',draw:function(c,cx,y,w){
       c.beginPath(); c.moveTo(cx-w,y); c.lineTo(cx-w*0.5,y-w*0.5);
       c.lineTo(cx,y-w*0.3); c.lineTo(cx+w*0.3,y-w*0.65);
       c.lineTo(cx+w,y); c.closePath();
@@ -695,12 +695,12 @@ var v14Roof = (function(){
 // ── 9. Architecture Challenge Rally (건축 도전과제 랠리) ──
 var v14Challenge = (function(){
   var challenges = [
-    {name:'&#xBCBD; &#xC313;&#xAE30; &#xC2A4;&#xD504;&#xB9B0;&#xD2B8;',desc:'30&#xCD08; &#xC548;&#xC5D0; 20&#xAC1C; &#xBCBD;&#xB3CC; &#xC313;&#xAE30;',time:30,target:20,unit:'&#xAC1C;'},
-    {name:'&#xAE30;&#xC640; &#xC62C;&#xB9AC;&#xAE30;',desc:'45&#xCD08; &#xC548;&#xC5D0; 15&#xC7A5; &#xAE30;&#xC640; &#xBC30;&#xCE58;',time:45,target:15,unit:'&#xC7A5;'},
-    {name:'&#xC624;&#xB1CC; &#xC624;&#xB974;&#xAE30;',desc:'60&#xCD08; &#xC548;&#xC5D0; 3&#xCE35; &#xACE8;&#xC870; &#xC644;&#xC131;',time:60,target:3,unit:'&#xCE35;'},
-    {name:'&#xCC3D;&#xBB38; &#xB2EC;&#xAE30;',desc:'40&#xCD08; &#xC548;&#xC5D0; 12&#xAC1C; &#xCC3D;&#xBB38; &#xC124;&#xCE58;',time:40,target:12,unit:'&#xAC1C;'},
-    {name:'&#xC815;&#xC6D0; &#xAFB8;&#xBBF8;&#xAE30;',desc:'50&#xCD08; &#xC548;&#xC5D0; 10&#xAC1C; &#xC870;&#xACBD;&#xC694;&#xC18C; &#xBC30;&#xCE58;',time:50,target:10,unit:'&#xAC1C;'},
-    {name:'&#xC804;&#xCCB4; &#xC644;&#xACF5;',desc:'90&#xCD08; &#xC548;&#xC5D0; &#xBC29;+&#xC9C0;&#xBD95;+&#xAC00;&#xAD6C; &#xC804;&#xCCB4; &#xC644;&#xC131;',time:90,target:1,unit:'&#xCC44;'}
+    {name:'벽 쌓기 스프린트',desc:'30초 안에 20개 벽돌 쌓기',time:30,target:20,unit:'개'},
+    {name:'기와 올리기',desc:'45초 안에 15장 기와 배치',time:45,target:15,unit:'장'},
+    {name:'오뇌 오르기',desc:'60초 안에 3층 골조 완성',time:60,target:3,unit:'층'},
+    {name:'창문 달기',desc:'40초 안에 12개 창문 설치',time:40,target:12,unit:'개'},
+    {name:'정원 꾸미기',desc:'50초 안에 10개 조경요소 배치',time:50,target:10,unit:'개'},
+    {name:'전체 완공',desc:'90초 안에 방+지붕+가구 전체 완성',time:90,target:1,unit:'채'}
   ];
   var scores = {};
   var timer = null, curCh = -1, remaining = 0, progress = 0;
@@ -714,8 +714,8 @@ var v14Challenge = (function(){
       var best = scores[i] || 0;
       var div=document.createElement('div');
       div.className='v14-item'+(best>=ch.target?' done':'');
-      div.innerHTML='<h4>'+ch.name+' <span class="tag">'+(best>=ch.target?'&#xC644;&#xB8CC;':'&#xBBF8;&#xC644;&#xB8CC;')+'</span></h4>' +
-        '<p>'+ch.desc+' | &#xBCA0;&#xC2A4;&#xD2B8;: '+best+'/'+ch.target+ch.unit+'</p>';
+      div.innerHTML='<h4>'+ch.name+' <span class="tag">'+(best>=ch.target?'완료':'미완료')+'</span></h4>' +
+        '<p>'+ch.desc+' | 베스트: '+best+'/'+ch.target+ch.unit+'</p>';
       div.onclick=function(){ startChallenge(i); };
       cont.appendChild(div);
     });
@@ -738,7 +738,7 @@ var v14Challenge = (function(){
     var el=document.getElementById('v14-ch-timer');
     if(el) el.textContent = Math.floor(remaining/60)+':'+(remaining%60<10?'0':'')+remaining%60;
     var st=document.getElementById('v14-ch-status');
-    if(st) st.innerHTML = '&#xD074;&#xB9AD;/&#xD0ED;&#xC73C;&#xB85C; &#xC9C4;&#xD589;! &#xBAA9;&#xD45C;: '+challenges[idx].target+challenges[idx].unit;
+    if(st) st.innerHTML = '클릭/탭으로 진행! 목표: '+challenges[idx].target+challenges[idx].unit;
     updateProgress();
   }
   function updateProgress(){
@@ -753,7 +753,7 @@ var v14Challenge = (function(){
     c.fillStyle='rgba(30,20,10,.95)'; c.fillRect(0,0,W,H);
     if(curCh<0){
       c.fillStyle='rgba(196,149,106,.4)'; c.font='14px sans-serif'; c.textAlign='center';
-      c.fillText('&#xC704;&#xC5D0;&#xC11C; &#xB3C4;&#xC804;&#xACFC;&#xC81C;&#xB97C; &#xC120;&#xD0DD;&#xD558;&#xC138;&#xC694;',W/2,H/2);
+      c.fillText('위에서 도전과제를 선택하세요',W/2,H/2);
       return;
     }
     var ch=challenges[curCh];
@@ -772,7 +772,7 @@ var v14Challenge = (function(){
       c.lineWidth=1; c.strokeRect(bx,groundY-40,bw,40);
       if(done){
         c.fillStyle='#4a7c59'; c.font='14px sans-serif'; c.textAlign='center';
-        c.fillText('&#x2713;',bx+bw/2,groundY-15);
+        c.fillText('✓',bx+bw/2,groundY-15);
       }
     }
     c.fillStyle='#c4956a'; c.font='12px sans-serif'; c.textAlign='center';
@@ -795,7 +795,7 @@ var v14Challenge = (function(){
     if(won) v14SFX.challengeWin();
     if(!scores[curCh]||progress>scores[curCh]){ scores[curCh]=progress; save(); }
     var st=document.getElementById('v14-ch-status');
-    if(st) st.innerHTML = won ? '&#x1F389; &#xC644;&#xB8CC;! '+progress+'/'+ch.target+ch.unit : '&#xC2DC;&#xAC04; &#xCD08;&#xACFC;! '+progress+'/'+ch.target+ch.unit;
+    if(st) st.innerHTML = won ? '🎉 완료! '+progress+'/'+ch.target+ch.unit : '시간 초과! '+progress+'/'+ch.target+ch.unit;
     drawChCanvas(); renderList();
   }
   return {
@@ -810,12 +810,12 @@ var v14Traffic = (function(){
   var GRID = 12;
   var cells = [];
   var rooms = [
-    {name:'&#xAC70;&#xC2E4;',icon:'&#x1F6CB;',color:'rgba(196,149,106,.25)'},
-    {name:'&#xC8FC;&#xBC29;',icon:'&#x1F6CF;',color:'rgba(74,124,89,.25)'},
-    {name:'&#xBD80;&#xC5B5;',icon:'&#x1F373;',color:'rgba(255,99,71,.2)'},
-    {name:'&#xD654;&#xC7A5;&#xC2E4;',icon:'&#x1F6BF;',color:'rgba(100,149,237,.2)'},
-    {name:'&#xD604;&#xAD00;',icon:'&#x1F6AA;',color:'rgba(218,165,32,.2)'},
-    {name:'&#xBCF5;&#xB3C4;',icon:'&#x27A1;',color:'rgba(255,255,255,.1)'}
+    {name:'거실',icon:'🛋',color:'rgba(196,149,106,.25)'},
+    {name:'주방',icon:'🛏',color:'rgba(74,124,89,.25)'},
+    {name:'부억',icon:'🍳',color:'rgba(255,99,71,.2)'},
+    {name:'화장실',icon:'🚿',color:'rgba(100,149,237,.2)'},
+    {name:'현관',icon:'🚪',color:'rgba(218,165,32,.2)'},
+    {name:'복도',icon:'➡',color:'rgba(255,255,255,.1)'}
   ];
   var curRoom = 0;
   var heatmap = [];
@@ -842,13 +842,13 @@ var v14Traffic = (function(){
     });
     var simBtn=document.createElement('button');
     simBtn.className='v14-btn-sm';
-    simBtn.textContent='&#x25B6; &#xB3D9;&#xC120; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;';
+    simBtn.textContent='▶ 동선 시뮬레이션';
     simBtn.style.marginLeft='10px';
     simBtn.onclick=simulate;
     ct.appendChild(simBtn);
     var clrBtn=document.createElement('button');
     clrBtn.className='v14-btn-outline';
-    clrBtn.textContent='&#xCD08;&#xAE30;&#xD654;';
+    clrBtn.textContent='초기화';
     clrBtn.style.marginLeft='6px';
     clrBtn.onclick=function(){
       cells=[]; heatmap=[];
@@ -883,9 +883,9 @@ var v14Traffic = (function(){
     var stat=document.getElementById('v14-traffic-stat');
     var maxH=Math.max.apply(null,heatmap);
     var hotspots=heatmap.filter(function(h){return h>maxH*0.7;}).length;
-    if(stat) stat.innerHTML='<div class="s"><div class="sv">'+hotspots+'</div><div class="sl">&#xD56B;&#xC2A4;&#xD31F;</div></div>' +
-      '<div class="s"><div class="sv">'+maxH+'</div><div class="sl">&#xCD5C;&#xB300;&#xD1B5;&#xD589;&#xB7C9;</div></div>' +
-      '<div class="s"><div class="sv">50</div><div class="sl">&#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;&#xD69F;&#xC218;</div></div>';
+    if(stat) stat.innerHTML='<div class="s"><div class="sv">'+hotspots+'</div><div class="sl">핫스팟</div></div>' +
+      '<div class="s"><div class="sv">'+maxH+'</div><div class="sl">최대통행량</div></div>' +
+      '<div class="s"><div class="sv">50</div><div class="sl">시뮬레이션횟수</div></div>';
   }
   function draw(){
     var cv=document.getElementById('v14-traffic-canvas'); if(!cv) return;
@@ -893,7 +893,7 @@ var v14Traffic = (function(){
     c.clearRect(0,0,W,H);
     c.fillStyle='rgba(30,20,10,.95)'; c.fillRect(0,0,W,H);
     c.fillStyle='#f5deb3'; c.font='bold 14px sans-serif'; c.textAlign='center';
-    c.fillText('&#xC2E4;&#xB0B4; &#xB3D9;&#xC120; &#xD788;&#xD2B8;&#xB9F5;', W/2, 22);
+    c.fillText('실내 동선 히트맵', W/2, 22);
     var pad=40, cellW=(W-pad*2)/GRID, cellH=(H-pad*2-20)/GRID;
     var maxH = Math.max.apply(null,heatmap)||1;
     for(var r=0;r<GRID;r++){
@@ -946,26 +946,26 @@ var v14Traffic = (function(){
 // ── 11. Architecture Quotes Gallery (건축 명언 갤러리 20선) ──
 var v14Quotes = (function(){
   var quotes = [
-    {text:'&#xAC74;&#xCD95;&#xC740; &#xC5BC;&#xC5B4;&#xBD99;&#xC740; &#xC74C;&#xC545;&#xC774;&#xB2E4;.',author:'&#xD504;&#xB9AC;&#xB4DC;&#xB9AC;&#xD788; &#xC250;&#xB9C1; (&#xB3C5;&#xC77C; &#xCCA0;&#xD559;&#xC790;)'},
-    {text:'&#xC801;&#xC744;&#xC218;&#xB85D; &#xB354; &#xB9CE;&#xC740; &#xAC83;&#xC774;&#xB2E4;. (Less is more)',author:'&#xBBF8;&#xC2A4; &#xBC18; &#xB370;&#xC5B4; &#xB85C;&#xC5D0; (&#xBAA8;&#xB354;&#xB2C8;&#xC998; &#xAC70;&#xC7A5;)'},
-    {text:'&#xD615;&#xD0DC;&#xB294; &#xAE30;&#xB2A5;&#xC744; &#xB530;&#xB978;&#xB2E4;. (Form follows function)',author:'&#xB8E8;&#xC774;&#xC2A4; &#xC124;&#xB9AC;&#xBC88; (&#xBBF8;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xC2E0;&#xC740; &#xB514;&#xD14C;&#xC77C;&#xC5D0; &#xC788;&#xB2E4;. (God is in the details)',author:'&#xBBF8;&#xC2A4; &#xBC18; &#xB370;&#xC5B4; &#xB85C;&#xC5D0;'},
-    {text:'&#xAC74;&#xCD95;&#xC740; &#xC0AC;&#xD68C;&#xC758; &#xAC70;&#xC6B8;&#xC774;&#xB2E4;.',author:'&#xB178;&#xB9CC; &#xD3EC;&#xC2A4;&#xD130; (&#xC601;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xC9D1;&#xC740; &#xC0B4;&#xAE30; &#xC704;&#xD55C; &#xAE30;&#xACC4;&#xB2E4;. (A house is a machine for living in)',author:'&#xB974; &#xCF54;&#xB974;&#xBDD4;&#xC9C0;&#xC5D0; (&#xD504;&#xB791;&#xC2A4; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xACF5;&#xAC04;&#xC774; &#xC5C6;&#xC73C;&#xBA74; &#xAC74;&#xCD95;&#xC740; &#xC5C6;&#xB2E4;.',author:'&#xD504;&#xB7AD;&#xD06C; &#xB85C;&#xC774;&#xB4DC; &#xB77C;&#xC774;&#xD2B8; (&#xBBF8;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xAC74;&#xCD95;&#xC740; &#xC778;&#xAC04; &#xC758;&#xC9C0;&#xC758; &#xD45C;&#xD604;&#xC774;&#xB2E4;.',author:'&#xB8E8;&#xC774;&#xC2A4; &#xCE78; (&#xBBF8;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xC88B;&#xC740; &#xAC74;&#xCD95;&#xC740; &#xC88B;&#xC740; &#xC774;&#xC6C3;&#xC744; &#xB9CC;&#xB4E0;&#xB2E4;.',author:'&#xC815;&#xAE30;&#xC6A9; (&#xD55C;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xC790;&#xC5F0;&#xC744; &#xB2F4;&#xB294; &#xAC74;&#xCD95;&#xC774; &#xAC00;&#xC7A5; &#xC544;&#xB984;&#xB2E4;&#xC6B4; &#xAC74;&#xCD95;&#xC774;&#xB2E4;.',author:'&#xC548;&#xB3C4; &#xD0C0;&#xB2E4;&#xC624; (&#xC77C;&#xBCF8; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xD55C;&#xC625;&#xC740; &#xC790;&#xC5F0;&#xACFC; &#xC778;&#xAC04;&#xC774; &#xD568;&#xAED8; &#xC228; &#xC26C;&#xB294; &#xACF5;&#xAC04;&#xC774;&#xB2E4;.',author:'&#xC2E0;&#xC601;&#xD6C8; (&#xD55C;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xAC74;&#xCD95;&#xC744; &#xD558;&#xB294; &#xAC83;&#xC740; &#xC138;&#xACC4;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xAC83;&#xC774;&#xB2E4;.',author:'&#xB80C;&#xCD08; &#xD53C;&#xC544;&#xB178; (&#xC774;&#xD0C8;&#xB9AC;&#xC544; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xBE5B;&#xC740; &#xAC74;&#xCD95;&#xC758; &#xC601;&#xD63C;&#xC774;&#xB2E4;.',author:'&#xB974; &#xCF54;&#xB974;&#xBDD4;&#xC9C0;&#xC5D0;'},
-    {text:'&#xC88B;&#xC740; &#xAC74;&#xCD95;&#xBB3C;&#xC740; &#xC2DC;&#xAC04;&#xC774; &#xC9C0;&#xB098;&#xB3C4; &#xB354; &#xC544;&#xB984;&#xB2E4;&#xC6CC;&#xC9C4;&#xB2E4;.',author:'&#xD504;&#xB7AD;&#xD06C; &#xAC8C;&#xB9AC; (&#xCE90;&#xB098;&#xB2E4; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xAC74;&#xCD95;&#xC740; &#xBB38;&#xD654;&#xC758; &#xAF43;&#xC774;&#xB2E4;.',author:'&#xC870;&#xC131;&#xB8E1; (&#xD55C;&#xAD6D; &#xAC74;&#xCD95; &#xD559;&#xC790;)'},
-    {text:'&#xBAA8;&#xB4E0; &#xC704;&#xB300;&#xD55C; &#xAC74;&#xCD95;&#xC740; &#xAF3F;&#xAF3F;&#xD55C; &#xAE30;&#xCD08; &#xC704;&#xC5D0; &#xC138;&#xC6CC;&#xC9C4;&#xB2E4;.',author:'&#xD1A0;&#xB9C8;&#xC2A4; &#xCE74;&#xB77C;&#xC77C; (&#xC601;&#xAD6D; &#xC791;&#xAC00;)'},
-    {text:'&#xC9D1;&#xC744; &#xC9D3;&#xB294; &#xAC83;&#xC740; &#xAFC8;&#xC744; &#xC9D3;&#xB294; &#xAC83;&#xC774;&#xB2E4;.',author:'&#xBC15;&#xC2B9;&#xD64D; (&#xD55C;&#xAD6D; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xACF5;&#xAC04;&#xC740; &#xBE44;&#xC5B4; &#xC788;&#xC744; &#xB54C; &#xAC00;&#xC7A5; &#xD480;&#xC694;&#xB86D;&#xB2E4;.',author:'&#xC548;&#xB3C4; &#xD0C0;&#xB2E4;&#xC624;'},
-    {text:'&#xAC74;&#xCD95;&#xC740; &#xB545;&#xC5D0; &#xBC1C;&#xC744; &#xB51B;&#xACE0; &#xD558;&#xB298;&#xC744; &#xD5A5;&#xD558;&#xB294; &#xC608;&#xC220;&#xC774;&#xB2E4;.',author:'&#xBC14;&#xC2E4;&#xB9AC;&#xC624; &#xBAA8;&#xB808;&#xD2F0; (&#xC774;&#xD0C8;&#xB9AC;&#xC544; &#xAC74;&#xCD95;&#xAC00;)'},
-    {text:'&#xC9D1;&#xC740; &#xADF8;&#xACF3;&#xC5D0; &#xC0AC;&#xB294; &#xC0AC;&#xB78C;&#xC758; &#xC601;&#xD63C;&#xC744; &#xB2F4;&#xB294;&#xB2E4;.',author:'&#xC2A4;&#xD2F0;&#xBE0C; &#xC7A1;&#xC2A4; (&#xC560;&#xD50C; &#xCC3D;&#xC5C5;&#xC790;)'}
+    {text:'건축은 얼어붙은 음악이다.',author:'프리드리히 쉐링 (독일 철학자)'},
+    {text:'적을수록 더 많은 것이다. (Less is more)',author:'미스 반 데어 로에 (모더니즘 거장)'},
+    {text:'형태는 기능을 따른다. (Form follows function)',author:'루이스 설리번 (미국 건축가)'},
+    {text:'신은 디테일에 있다. (God is in the details)',author:'미스 반 데어 로에'},
+    {text:'건축은 사회의 거울이다.',author:'노만 포스터 (영국 건축가)'},
+    {text:'집은 살기 위한 기계다. (A house is a machine for living in)',author:'르 코르뷔지에 (프랑스 건축가)'},
+    {text:'공간이 없으면 건축은 없다.',author:'프랭크 로이드 라이트 (미국 건축가)'},
+    {text:'건축은 인간 의지의 표현이다.',author:'루이스 칸 (미국 건축가)'},
+    {text:'좋은 건축은 좋은 이웃을 만든다.',author:'정기용 (한국 건축가)'},
+    {text:'자연을 담는 건축이 가장 아름다운 건축이다.',author:'안도 타다오 (일본 건축가)'},
+    {text:'한옥은 자연과 인간이 함께 숨 쉬는 공간이다.',author:'신영훈 (한국 건축가)'},
+    {text:'건축을 하는 것은 세계를 만드는 것이다.',author:'렌초 피아노 (이탈리아 건축가)'},
+    {text:'빛은 건축의 영혼이다.',author:'르 코르뷔지에'},
+    {text:'좋은 건축물은 시간이 지나도 더 아름다워진다.',author:'프랭크 게리 (캐나다 건축가)'},
+    {text:'건축은 문화의 꽃이다.',author:'조성룡 (한국 건축 학자)'},
+    {text:'모든 위대한 건축은 꼿꼿한 기초 위에 세워진다.',author:'토마스 카라일 (영국 작가)'},
+    {text:'집을 짓는 것은 꿈을 짓는 것이다.',author:'박승홍 (한국 건축가)'},
+    {text:'공간은 비어 있을 때 가장 풀요롭다.',author:'안도 타다오'},
+    {text:'건축은 땅에 발을 딛고 하늘을 향하는 예술이다.',author:'바실리오 모레티 (이탈리아 건축가)'},
+    {text:'집은 그곳에 사는 사람의 영혼을 담는다.',author:'스티브 잡스 (애플 창업자)'}
   ];
   var read = {};
   var KEY = 'hb_v14_quotes';
@@ -996,21 +996,21 @@ var v14Quotes = (function(){
 // ── 12. Quiz v14 (+15 questions, 135→150) ──
 var v14Quiz = (function(){
   var questions = [
-    {q:'&#xBCBD;&#xB3CC;&#xC744; &#xC313;&#xC544; &#xBCBD;&#xCCB4;&#xB97C; &#xB9CC;&#xB4DC;&#xB294; &#xC804;&#xD1B5; &#xACF5;&#xBC95;&#xC740;?',a:['&#xC870;&#xC801;&#xC870;','&#xBAA9;&#xAD6C;&#xC870;','&#xCCA0;&#xACE8;&#xAD6C;&#xC870;','RC'],c:0},
-    {q:'&#xD55C;&#xC625;&#xC758; &#xB300;&#xD45C;&#xC801; &#xC9C0;&#xBD95; &#xC591;&#xC2DD;&#xC740;?',a:['&#xD3C9;&#xC9C0;&#xBD95;','&#xB9DE;&#xBC30;&#xC9C0;&#xBD95;','&#xBAA8;&#xC784;&#xC9C0;&#xBD95;','&#xB9E8;&#xC0AC;&#xB4DC;'],c:1},
-    {q:'&#xBD80;&#xB3D9;&#xC0B0; &#xAC10;&#xC815;&#xD3C9;&#xAC00;&#xC5D0;&#xC11C; &#xAC00;&#xC7A5; &#xD06C;&#xAC8C; &#xC601;&#xD5A5;&#xC744; &#xBBF8;&#xCE58;&#xB294; &#xC694;&#xC18C;&#xB294;?',a:['&#xC704;&#xCE58;','&#xC870;&#xB9DD;','&#xC5F0;&#xC218;','&#xC5D0;&#xB108;&#xC9C0;'],c:0},
-    {q:'IoT&#xC758; &#xC57D;&#xC790;&#xB294;?',a:['Internet of Things','Indoor of Tech','Info on Track','Input of Tools'],c:0},
-    {q:'&#xC11D;&#xAD74;&#xC554;&#xC774; &#xC9C0;&#xC5B4;&#xC9C4; &#xC2DC;&#xB300;&#xB294;?',a:['&#xC0BC;&#xAD6D;','&#xD1B5;&#xC77C;&#xC2E0;&#xB77C;','&#xACE0;&#xB824;','&#xC870;&#xC120;'],c:1},
-    {q:'&#xCD08;&#xAC00;&#xC9C0;&#xBD95;&#xC758; &#xC7AC;&#xB8CC;&#xB294;?',a:['&#xAE30;&#xC640;','&#xBF48;','&#xCCA0;&#xD310;','&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;'],c:1},
-    {q:'&ldquo;Less is more&rdquo;&#xB97C; &#xB9D0;&#xD55C; &#xAC74;&#xCD95;&#xAC00;&#xB294;?',a:['&#xB974; &#xCF54;&#xB974;&#xBDD4;&#xC9C0;&#xC5D0;','&#xBBF8;&#xC2A4; &#xBC18; &#xB370;&#xC5B4; &#xB85C;&#xC5D0;','&#xD504;&#xB7AD;&#xD06C; &#xB85C;&#xC774;&#xB4DC; &#xB77C;&#xC774;&#xD2B8;','&#xC548;&#xB3C4; &#xD0C0;&#xB2E4;&#xC624;'],c:1},
-    {q:'&#xAC74;&#xCD95;&#xBB3C;&#xC758; &#xB3D9;&#xC120; &#xBD84;&#xC11D;&#xC5D0;&#xC11C; &#xD56B;&#xC2A4;&#xD31F;&#xC774;&#xB780;?',a:['&#xD1B5;&#xD589;&#xB7C9;&#xC774; &#xB9CE;&#xC740; &#xC9C0;&#xC810;','&#xC628;&#xB3C4;&#xAC00; &#xB192;&#xC740; &#xC9C0;&#xC810;','&#xC870;&#xBA85;&#xC774; &#xBC1D;&#xC740; &#xC9C0;&#xC810;','&#xC18C;&#xC74C;&#xC774; &#xD070; &#xC9C0;&#xC810;'],c:0},
-    {q:'&#xD314;&#xC791;&#xC9C0;&#xBD95;&#xC740; &#xBA87; &#xAC1C;&#xC758; &#xBA74;&#xC73C;&#xB85C; &#xAD6C;&#xC131;&#xB418;&#xB098;?',a:['4&#xBA74;','6&#xBA74;','8&#xBA74;','10&#xBA74;'],c:2},
-    {q:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648;&#xC5D0;&#xC11C; &#xC2E4;&#xB0B4; &#xACF5;&#xAE30; &#xD488;&#xC9C8;&#xC744; &#xAD00;&#xB9AC;&#xD558;&#xB294; &#xAE30;&#xAE30;&#xB294;?',a:['&#xACF5;&#xAE30;&#xCCAD;&#xC815;&#xAE30;','CCTV','&#xC2A4;&#xB9C8;&#xD2B8; &#xBBF8;&#xB7EC;','&#xC628;&#xB3C4;&#xC870;&#xC808;&#xAE30;'],c:0},
-    {q:'RC &#xAD6C;&#xC870;&#xC5D0;&#xC11C; RC&#xB294; &#xBB34;&#xC5C7;&#xC758; &#xC57D;&#xC790;&#xC778;&#xAC00;?',a:['Reinforced Concrete','Red Cement','Royal Construction','Rigid Column'],c:0},
-    {q:'&#xACBD;&#xBCF5;&#xAD81;&#xC774; &#xC9C0;&#xC5B4;&#xC9C4; &#xC2DC;&#xB300;&#xB294;?',a:['&#xACE0;&#xB824;','&#xC870;&#xC120;','&#xD1B5;&#xC77C;&#xC2E0;&#xB77C;','&#xC0BC;&#xAD6D;'],c:1},
-    {q:'&#xAC74;&#xCD95; &#xB3C4;&#xC804;&#xACFC;&#xC81C;&#xC5D0;&#xC11C; &#xBCBD; &#xC313;&#xAE30; &#xBAA9;&#xD45C;&#xB294;?',a:['10&#xAC1C;','15&#xAC1C;','20&#xAC1C;','30&#xAC1C;'],c:2},
-    {q:'&ldquo;&#xD615;&#xD0DC;&#xB294; &#xAE30;&#xB2A5;&#xC744; &#xB530;&#xB978;&#xB2E4;&rdquo;&#xB97C; &#xB9D0;&#xD55C; &#xAC74;&#xCD95;&#xAC00;&#xB294;?',a:['&#xB85C;&#xC774;&#xB4DC; &#xB77C;&#xC774;&#xD2B8;','&#xB8E8;&#xC774;&#xC2A4; &#xC124;&#xB9AC;&#xBC88;','&#xD53C;&#xC544;&#xB178;','&#xAC8C;&#xB9AC;'],c:1},
-    {q:'v14&#xC5D0;&#xC11C; &#xCD94;&#xAC00;&#xB41C; &#xC9C0;&#xBD95; &#xC591;&#xC2DD;&#xC758; &#xC218;&#xB294;?',a:['6&#xC885;','8&#xC885;','10&#xC885;','12&#xC885;'],c:2}
+    {q:'벽돌을 쌓아 벽체를 만드는 전통 공법은?',a:['조적조','목구조','철골구조','RC'],c:0},
+    {q:'한옥의 대표적 지붕 양식은?',a:['평지붕','맞배지붕','모임지붕','맨사드'],c:1},
+    {q:'부동산 감정평가에서 가장 크게 영향을 미치는 요소는?',a:['위치','조망','연수','에너지'],c:0},
+    {q:'IoT의 약자는?',a:['Internet of Things','Indoor of Tech','Info on Track','Input of Tools'],c:0},
+    {q:'석굴암이 지어진 시대는?',a:['삼국','통일신라','고려','조선'],c:1},
+    {q:'초가지붕의 재료는?',a:['기와','뽈','철판','콘크리트'],c:1},
+    {q:'&ldquo;Less is more&rdquo;를 말한 건축가는?',a:['르 코르뷔지에','미스 반 데어 로에','프랭크 로이드 라이트','안도 타다오'],c:1},
+    {q:'건축물의 동선 분석에서 핫스팟이란?',a:['통행량이 많은 지점','온도가 높은 지점','조명이 밝은 지점','소음이 큰 지점'],c:0},
+    {q:'팔작지붕은 몇 개의 면으로 구성되나?',a:['4면','6면','8면','10면'],c:2},
+    {q:'스마트홈에서 실내 공기 품질을 관리하는 기기는?',a:['공기청정기','CCTV','스마트 미러','온도조절기'],c:0},
+    {q:'RC 구조에서 RC는 무엇의 약자인가?',a:['Reinforced Concrete','Red Cement','Royal Construction','Rigid Column'],c:0},
+    {q:'경복궁이 지어진 시대는?',a:['고려','조선','통일신라','삼국'],c:1},
+    {q:'건축 도전과제에서 벽 쌓기 목표는?',a:['10개','15개','20개','30개'],c:2},
+    {q:'&ldquo;형태는 기능을 따른다&rdquo;를 말한 건축가는?',a:['로이드 라이트','루이스 설리번','피아노','게리'],c:1},
+    {q:'v14에서 추가된 지붕 양식의 수는?',a:['6종','8종','10종','12종'],c:2}
   ];
   function shuffle(arr){
     for(var i=arr.length-1;i>0;i--){
@@ -1038,18 +1038,18 @@ var v14Quiz = (function(){
 // ── 13. Achievements v14 (+12, 134→146) ──
 var v14Achieve = (function(){
   var defs = [
-    {id:'construct_first',name:'&#xACF5;&#xBC95; &#xBD84;&#xC11D;&#xAC00;',desc:'&#xAC74;&#xCD95;&#xACF5;&#xBC95; &#xBE44;&#xAD50; &#xCC98;&#xC74C; &#xC5F4;&#xAE30;',check:function(){ return !!localStorage.getItem('hb_v14_construct'); }},
-    {id:'appraisal_first',name:'&#xAC10;&#xC815;&#xD3C9;&#xAC00;&#xC0AC;',desc:'&#xBD80;&#xB3D9;&#xC0B0; &#xAC10;&#xC815;&#xD3C9;&#xAC00; &#xCC98;&#xC74C; &#xC2E4;&#xD589;',check:function(){ return !!localStorage.getItem('hb_v14_appraisal'); }},
-    {id:'smarthome_3',name:'IoT &#xC785;&#xBB38;&#xC790;',desc:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648; &#xAE30;&#xAE30; 3&#xAC1C; &#xBC30;&#xCE58;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_smarthome'));return d&&d.placed&&d.placed.length>=3;}catch(e){return false;} }},
-    {id:'smarthome_all',name:'IoT &#xB9C8;&#xC2A4;&#xD130;',desc:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648; 12&#xAE30;&#xAE30; &#xC804;&#xBD80; &#xBC30;&#xCE58;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_smarthome'));return d&&d.placed&&d.placed.length>=12;}catch(e){return false;} }},
-    {id:'timetravel_all',name:'&#xC2DC;&#xAC04;&#xC5EC;&#xD589;&#xC790;',desc:'6&#xC2DC;&#xB300; &#xAC74;&#xCD95; &#xC804;&#xBD80; &#xD0D0;&#xBC29;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_timetravel'));return d&&d.cur>=5;}catch(e){return false;} }},
-    {id:'roof_5',name:'&#xC9C0;&#xBD95; &#xC5F0;&#xAD6C;&#xC790;',desc:'&#xC9C0;&#xBD95; &#xC591;&#xC2DD; 5&#xC885; &#xC774;&#xC0C1; &#xD0D0;&#xC0C9;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_roof'));return d&&d.cur>=4;}catch(e){return false;} }},
-    {id:'challenge_first',name:'&#xB3C4;&#xC804;&#xC790;',desc:'&#xAC74;&#xCD95; &#xB3C4;&#xC804;&#xACFC;&#xC81C; &#xCC98;&#xC74C; &#xC644;&#xB8CC;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_challenge'));if(!d||!d.scores)return false;for(var k in d.scores){if(d.scores[k]>0)return true;}return false;}catch(e){return false;} }},
-    {id:'challenge_all',name:'&#xB9C8;&#xC2A4;&#xD130; &#xBE4C;&#xB354;',desc:'&#xAC74;&#xCD95; &#xB3C4;&#xC804;&#xACFC;&#xC81C; &#xC804;&#xBD80; &#xC644;&#xB8CC;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_challenge'));if(!d||!d.scores)return false;for(var i=0;i<6;i++){if(!d.scores[i]||d.scores[i]<1)return false;}return true;}catch(e){return false;} }},
-    {id:'traffic_sim',name:'&#xB3D9;&#xC120; &#xBD84;&#xC11D;&#xAC00;',desc:'&#xC2E4;&#xB0B4; &#xB3D9;&#xC120; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158; &#xCC98;&#xC74C; &#xC2E4;&#xD589;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_traffic'));return d&&d.heatmap&&d.heatmap.some(function(h){return h>0;});}catch(e){return false;} }},
-    {id:'quotes_10',name:'&#xBA85;&#xC5B8; &#xC218;&#xC9D1;&#xAC00;',desc:'&#xAC74;&#xCD95; &#xBA85;&#xC5B8; 10&#xAC1C; &#xC774;&#xC0C1; &#xC77D;&#xAE30;',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_quotes'));return d&&d.read&&Object.keys(d.read).length>=10;}catch(e){return false;} }},
-    {id:'quiz_v14_try',name:'&#xD37C;&#xC990; v14',desc:'v14 &#xD37C;&#xC990; &#xCC98;&#xC74C; &#xC2DC;&#xB3C4;',check:function(){ return !!localStorage.getItem('hb_quiz_v14_tried'); }},
-    {id:'v14_explorer',name:'v14 &#xD0D0;&#xD5D8;&#xAC00;',desc:'v14 &#xAE30;&#xB2A5; 4&#xAC1C; &#xC774;&#xC0C1; &#xC0AC;&#xC6A9;',check:function(){
+    {id:'construct_first',name:'공법 분석가',desc:'건축공법 비교 처음 열기',check:function(){ return !!localStorage.getItem('hb_v14_construct'); }},
+    {id:'appraisal_first',name:'감정평가사',desc:'부동산 감정평가 처음 실행',check:function(){ return !!localStorage.getItem('hb_v14_appraisal'); }},
+    {id:'smarthome_3',name:'IoT 입문자',desc:'스마트홈 기기 3개 배치',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_smarthome'));return d&&d.placed&&d.placed.length>=3;}catch(e){return false;} }},
+    {id:'smarthome_all',name:'IoT 마스터',desc:'스마트홈 12기기 전부 배치',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_smarthome'));return d&&d.placed&&d.placed.length>=12;}catch(e){return false;} }},
+    {id:'timetravel_all',name:'시간여행자',desc:'6시대 건축 전부 탐방',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_timetravel'));return d&&d.cur>=5;}catch(e){return false;} }},
+    {id:'roof_5',name:'지붕 연구자',desc:'지붕 양식 5종 이상 탐색',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_roof'));return d&&d.cur>=4;}catch(e){return false;} }},
+    {id:'challenge_first',name:'도전자',desc:'건축 도전과제 처음 완료',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_challenge'));if(!d||!d.scores)return false;for(var k in d.scores){if(d.scores[k]>0)return true;}return false;}catch(e){return false;} }},
+    {id:'challenge_all',name:'마스터 빌더',desc:'건축 도전과제 전부 완료',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_challenge'));if(!d||!d.scores)return false;for(var i=0;i<6;i++){if(!d.scores[i]||d.scores[i]<1)return false;}return true;}catch(e){return false;} }},
+    {id:'traffic_sim',name:'동선 분석가',desc:'실내 동선 시뮬레이션 처음 실행',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_traffic'));return d&&d.heatmap&&d.heatmap.some(function(h){return h>0;});}catch(e){return false;} }},
+    {id:'quotes_10',name:'명언 수집가',desc:'건축 명언 10개 이상 읽기',check:function(){ try{var d=JSON.parse(localStorage.getItem('hb_v14_quotes'));return d&&d.read&&Object.keys(d.read).length>=10;}catch(e){return false;} }},
+    {id:'quiz_v14_try',name:'퍼즐 v14',desc:'v14 퍼즐 처음 시도',check:function(){ return !!localStorage.getItem('hb_quiz_v14_tried'); }},
+    {id:'v14_explorer',name:'v14 탐험가',desc:'v14 기능 4개 이상 사용',check:function(){
       var cnt=0;
       if(localStorage.getItem('hb_v14_construct')) cnt++;
       if(localStorage.getItem('hb_v14_appraisal')) cnt++;
@@ -1097,14 +1097,14 @@ var v14Achieve = (function(){
     bar.id = 'v14-nav';
     bar.style.cssText = 'position:fixed;bottom:0;left:0;right:0;height:48px;background:linear-gradient(180deg,rgba(45,27,14,.95),rgba(30,18,8,.98));border-top:1px solid rgba(196,149,106,.3);display:flex;align-items:center;justify-content:space-around;z-index:3600;padding:0 4px';
     var actions = [
-      {icon:'&#x1F3D7;',label:'&#xACF5;&#xBC95;',fn:function(){v14Construct.open();}},
-      {icon:'&#x1F3E0;',label:'&#xD3C9;&#xAC00;',fn:function(){v14Appraisal.open();}},
-      {icon:'&#x1F4F1;',label:'IoT',fn:function(){v14SmartHome.open();}},
-      {icon:'&#x23F3;',label:'&#xC2DC;&#xAC04;&#xC5EC;&#xD589;',fn:function(){v14TimeTravel.open();}},
-      {icon:'&#x1F3E0;',label:'&#xC9C0;&#xBD95;',fn:function(){v14Roof.open();}},
-      {icon:'&#x1F3C6;',label:'&#xB3C4;&#xC804;',fn:function(){v14Challenge.open();}},
-      {icon:'&#x1F6B6;',label:'&#xB3D9;&#xC120;',fn:function(){v14Traffic.open();}},
-      {icon:'&#x1F4DC;',label:'&#xBA85;&#xC5B8;',fn:function(){v14Quotes.open();}}
+      {icon:'🏗',label:'공법',fn:function(){v14Construct.open();}},
+      {icon:'🏠',label:'평가',fn:function(){v14Appraisal.open();}},
+      {icon:'📱',label:'IoT',fn:function(){v14SmartHome.open();}},
+      {icon:'⏳',label:'시간여행',fn:function(){v14TimeTravel.open();}},
+      {icon:'🏠',label:'지붕',fn:function(){v14Roof.open();}},
+      {icon:'🏆',label:'도전',fn:function(){v14Challenge.open();}},
+      {icon:'🚶',label:'동선',fn:function(){v14Traffic.open();}},
+      {icon:'📜',label:'명언',fn:function(){v14Quotes.open();}}
     ];
     actions.forEach(function(a){
       var btn = document.createElement('button');

@@ -272,6 +272,65 @@ body.light-mode .compare-card{background:linear-gradient(135deg,#f5f0e8,#e8dcc8)
 #btnTheme{top:356px;right:16px}
 @media(max-width:768px){#btnTheme{top:340px;width:40px;height:40px;font-size:16px}}
 </style>
+<style id="hbMobile0924">
+/* ===== 폰 화면 수선 (2026-09-24) — 760px 이하에서만 바뀐다. PC 화면은 그대로 ===== */
+#hbMoreBtn,#hbMoreSheet{display:none}
+@media (max-width:760px){
+  body{word-break:keep-all;overflow-wrap:anywhere}
+  /* 1) 양옆·바닥에 떠 있던 아이콘 줄/기능 막대·동그란 버튼 → 오른쪽 위 '⋯' 하나(누르면 이름 붙은 격자 서랍) */
+  #v7QuickBtns,#v11-fab,#v12-nav,#v13-nav,#v14-nav,#v16-nav,#v17-side-menu,#v18-side-menu,
+  .v19-menu,.v20-menu,.v21-menu,.v22-menu,.v23-menu,.v24-menu,
+  .v25-float-menu,.v26-float-menu,.v27-float-menu,.v28-float-menu,.v29-float-menu,
+  .float-btn,#topBar .top-btns{display:none !important}
+  #hbMoreBtn{display:flex;position:fixed;top:6px;right:8px;z-index:310;width:44px;height:44px;padding:0;border-radius:50%;background:rgba(45,27,14,.92);border:1px solid #c4956a;color:#f5deb3;font-size:22px;line-height:1;align-items:center;justify-content:center;box-shadow:0 3px 12px rgba(0,0,0,.45);cursor:pointer;font-family:inherit}
+  #hbMoreSheet.show{display:flex;position:fixed;inset:0;z-index:6500;background:rgba(0,0,0,.6);align-items:flex-end;justify-content:center}
+  #hbMoreSheet .hbm-card{width:100%;max-height:88vh;display:flex;flex-direction:column;background:linear-gradient(180deg,#2d1b0e 0%,#1e140a 100%);border-top:2px solid #c4956a;border-radius:16px 16px 0 0;box-shadow:0 -6px 24px rgba(0,0,0,.5)}
+  #hbMoreSheet .hbm-head{display:flex;align-items:center;gap:8px;padding:8px 10px 8px 16px;border-bottom:1px solid rgba(196,149,106,.25)}
+  #hbMoreSheet .hbm-title{flex:1;min-width:0;font-size:16px;font-weight:700;color:#f5deb3}
+  #hbMoreSheet .hbm-close{flex:0 0 auto;width:44px;height:44px;padding:0;border-radius:50%;border:1px solid rgba(196,149,106,.5);background:rgba(255,255,255,.08);color:#f5deb3;font-size:20px;cursor:pointer;font-family:inherit}
+  #hbMoreSheet .hbm-find{flex:0 0 auto;margin:8px 12px 2px;padding:9px 12px;min-width:0;border-radius:10px;border:1px solid rgba(196,149,106,.4);background:rgba(0,0,0,.25);color:#f5deb3;font-size:15px;font-family:inherit}
+  #hbMoreSheet .hbm-body{flex:1;min-height:0;overflow-y:auto;-webkit-overflow-scrolling:touch;overscroll-behavior:contain;padding:2px 12px calc(16px + env(safe-area-inset-bottom))}
+  #hbMoreSheet .hbm-sec{margin:12px 2px 6px;font-size:12px;font-weight:700;color:#c4956a;letter-spacing:.5px}
+  #hbMoreSheet .hbm-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(min(100%,7.5em),1fr));gap:6px;font-size:13px}
+  #hbMoreSheet .hbm-item{display:flex;align-items:center;gap:8px;min-width:0;min-height:44px;padding:8px 10px;border-radius:10px;border:1px solid rgba(196,149,106,.25);background:rgba(196,149,106,.08);color:#f5deb3;font-size:13px;font-family:inherit;text-align:left;cursor:pointer}
+  #hbMoreSheet .hbm-item.on{background:rgba(196,149,106,.35);border-color:#c4956a}
+  #hbMoreSheet .hbm-ic{flex:0 0 auto;font-size:1.25em;line-height:1}
+  #hbMoreSheet .hbm-tx{flex:1;min-width:0;line-height:1.25}
+  #hbMoreSheet .hbm-empty{padding:24px 4px;color:#c4956a;font-size:13px;text-align:center}
+  /* 2) 첫 화면(건축 종류 고르기): 가운데 정렬로 위가 잘리던 것 → 위에서부터 시작·스크롤, 카드는 화면 폭에 맞게 */
+  #modeSelect{justify-content:flex-start;overflow-y:auto;-webkit-overflow-scrolling:touch;padding:60px 0 28px}
+  #modeSelect h1{margin:0 16px 6px;text-align:center}
+  #modeSelect .subtitle{margin:0 16px 20px;text-align:center}
+  .mode-cards{width:100%;padding:0 16px;gap:12px}
+  .mode-card{width:100%;max-width:420px;padding:18px 16px}
+  .mode-card .mode-icon{font-size:44px;margin-bottom:6px}
+  #progressBadge{padding:0 16px;text-align:center}
+  /* 3) 업적 알림: 화면 위 가로 한 줄 띠(아이콘 + '업적 달성! 이름') */
+  #achToast{top:8px;left:8px;max-width:calc(100vw - 68px);width:max-content;padding:8px 14px;gap:10px;transform:translateY(-20px)}
+  #achToast.show{transform:translateY(0)}
+  #achToast .ach-icon{flex:0 0 auto;font-size:22px}
+  #achToast .ach-text{min-width:0;display:flex;flex-wrap:wrap;align-items:baseline;column-gap:6px}
+  /* 4) 게임 화면 머리글: 제목만(모드 이름은 제목과 같은 말) — 오른쪽은 '⋯' 자리 */
+  #topBar{padding:0 60px 0 12px}
+  #topBar h1{white-space:nowrap}
+  #topBar .mode-label{display:none}
+  /* 5) 등급 배지: 아래 작업판(건축 단계)을 덮던 것 → 머리글 밑 왼쪽 */
+  #v6RankBadge{top:64px !important;bottom:auto !important;left:8px !important;padding:4px 10px !important}
+  /* 6) 건축 통계 창: 큰 글자에서 '0/4'·'0분'이 세로로 쪼개지던 것 → 칸 수를 글자 크기에 맞춰 줄임 */
+  .stats-card{padding:20px 16px;max-height:88vh}
+  .stats-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,8em),1fr));gap:8px;font-size:11px}
+  .stat-box{padding:12px 8px;min-width:0}
+  .stat-box .s-val{white-space:nowrap}
+  .ach-grid{grid-template-columns:repeat(auto-fill,minmax(min(100%,11em),1fr));font-size:12px}
+  .ach-item{min-width:0}
+  /* 7) 한옥 vs 현대 비교 창: 항목 이름(기둥·난방…)이 세로 한 글자씩 → 한 줄 고정, 닫기 버튼 누르기 쉽게 */
+  .compare-card{width:calc(100vw - 24px);padding:20px 16px;max-height:88vh}
+  .compare-row{gap:10px}
+  .compare-row span{min-width:0}
+  .compare-row span:first-child{flex:0 0 auto;white-space:nowrap}
+  .compare-card .close-btn{display:block;margin:16px auto 0;min-height:44px;padding:10px 28px;border:none;border-radius:20px;background:#c4956a;color:#2d1b0e;font-weight:600;font-size:14px;font-family:inherit}
+}
+</style>
 </head>
 <body>
 
@@ -3074,6 +3133,125 @@ window.addEventListener('keydown', (e) => {
   }
 })();
 /* ===== hub-back 배선 끝 ===== */
+</script>
+<script>
+/* ===== 폰 화면 수선 (2026-09-24): 떠 있는 아이콘 줄·기능 막대 → '⋯' 서랍 하나 =====
+   '⋯' 버튼과 서랍은 760px 이하에서만 보인다(CSS #hbMobile0924). PC 는 원래 아이콘 줄 그대로.
+   서랍은 열 때마다 원래 버튼들을 모아 이름 붙은 격자로 보여 주고, 누르면 서랍을 닫고 '원래 버튼'을 그대로 누른다
+   → 기능·효과음·저장은 원래 코드 그대로. 서랍은 body 바로 아래 전체화면 + show 클래스라 위 hub-back 배선이 ◁ 로 닫는다.
+   주의: 이 script 는 패치 script(src) 들보다 앞에 둔다 — sw.js 가 HTML 의 '마지막 script 닫는 태그' 앞에 패치 본문을 끼워 넣기 때문(src 있는 script 안이라 무시됨). */
+(function(){
+  var GROUPS = [
+    {name:'빠른 메뉴', sel:'#v7QuickBtns'},
+    {name:'건축 메뉴', sel:'#v12-nav,#v13-nav,#v14-nav,#v16-nav'},
+    {name:'분석 도구', sel:'#v11-fab,#v17-side-menu,#v18-side-menu,.v19-menu,.v20-menu,.v21-menu,.v22-menu,.v23-menu,.v24-menu,.v25-float-menu,.v26-float-menu,.v27-float-menu,.v28-float-menu,.v29-float-menu'}
+  ];
+  var TOP_ICON = {'통계':'📊', '처음으로':'🏠', '패널':'📋', '비교':'🔍'};
+  var SPLIT = null;
+  try { SPLIT = new RegExp('^([^\\p{L}\\p{N}]*)([\\s\\S]*)$', 'u'); } catch (e) { SPLIT = /^([^A-Za-z0-9ㄱ-힣]*)([\s\S]*)$/; }
+  var each = function(list, fn){ Array.prototype.forEach.call(list, fn); };
+  var btn, sheet, body, find;
+
+  function parts(b){
+    var raw = (b.textContent || '').replace(/\[[^\]]*\]/g, '').replace(/\s+/g, ' ').trim();
+    var m = raw.match(SPLIT);
+    var icon = m ? m[1].trim() : '', label = m ? m[2].trim() : raw;
+    var t = (b.getAttribute('title') || b.getAttribute('aria-label') || '').replace(/\[[^\]]*\]/g, '').trim();
+    if (!label) label = t;
+    if (!label) return null;
+    return {icon: icon || TOP_ICON[label] || '•', label: label};
+  }
+  function inlineHidden(el, stop){
+    for (var e = el; e && e !== stop; e = e.parentElement) { if (e.style && e.style.display === 'none') return true; }
+    return false;
+  }
+  function collect(){
+    var ms = document.getElementById('modeSelect');
+    var inGame = !!(ms && ms.classList.contains('hidden'));
+    var out = [];
+    if (inGame) {
+      var base = [], tb = document.querySelector('#topBar .top-btns');
+      if (tb) each(tb.querySelectorAll('button'), function(b){ if (!inlineHidden(b, tb)) base.push(b); });
+      each(document.querySelectorAll('.float-btn'), function(b){ if (b.style.display && b.style.display !== 'none') base.push(b); });
+      out.push({name:'기본', items:base});
+    }
+    GROUPS.forEach(function(g){
+      var items = [];
+      each(document.querySelectorAll(g.sel), function(c){
+        if (c.style.display === 'none') return;
+        /* 첫 화면에서는 원래도 첫 화면 뒤에 가려져 있던 줄(z-index 300 이하)은 빼기 — 원래와 같은 범위만 */
+        if (!inGame && !(parseInt(getComputedStyle(c).zIndex, 10) > 300)) return;
+        each(c.querySelectorAll('button'), function(b){ if (!inlineHidden(b, c)) items.push(b); });
+      });
+      out.push({name:g.name, items:items});
+    });
+    return out;
+  }
+  function filter(){
+    var q = (find.value || '').replace(/\s+/g, '').toLowerCase(), shown = 0;
+    each(body.querySelectorAll('.hbm-group'), function(g){
+      var n = 0;
+      each(g.querySelectorAll('.hbm-item'), function(it){
+        var hit = !q || it.getAttribute('data-k').indexOf(q) >= 0;
+        it.style.display = hit ? '' : 'none'; if (hit) n++;
+      });
+      g.style.display = n ? '' : 'none'; shown += n;
+      var sec = g.querySelector('.hbm-sec'); if (sec) sec.textContent = sec.getAttribute('data-name') + ' · ' + n;
+    });
+    var empty = body.querySelector('.hbm-empty');
+    if (empty) empty.style.display = shown ? 'none' : '';
+  }
+  function render(){
+    body.innerHTML = '';
+    collect().forEach(function(g){
+      var grp = document.createElement('div'); grp.className = 'hbm-group';
+      var sec = document.createElement('div'); sec.className = 'hbm-sec';
+      var grid = document.createElement('div'); grid.className = 'hbm-grid';
+      var n = 0;
+      g.items.forEach(function(orig){
+        var p = parts(orig); if (!p) return;
+        var it = document.createElement('button');
+        it.type = 'button';
+        it.className = 'hbm-item' + (orig.classList.contains('active') ? ' on' : '');
+        it.setAttribute('data-k', (p.icon + p.label).replace(/\s+/g, '').toLowerCase());
+        var ic = document.createElement('span'); ic.className = 'hbm-ic'; ic.textContent = p.icon;
+        var tx = document.createElement('span'); tx.className = 'hbm-tx'; tx.textContent = p.label;
+        it.appendChild(ic); it.appendChild(tx);
+        /* 서랍을 닫고 같은 틱에 원래 버튼을 누른다(hub-back 이 닫힌 칸을 새 창 칸으로 재활용) */
+        it.addEventListener('click', function(){ close(); try { orig.click(); } catch (e) {} });
+        grid.appendChild(it); n++;
+      });
+      if (!n) return;
+      sec.setAttribute('data-name', g.name); sec.textContent = g.name + ' · ' + n;
+      grp.appendChild(sec); grp.appendChild(grid); body.appendChild(grp);
+    });
+    var empty = document.createElement('div'); empty.className = 'hbm-empty'; empty.textContent = '찾는 도구가 없어요'; empty.style.display = 'none';
+    body.appendChild(empty);
+  }
+  function open(){
+    render(); find.value = ''; filter();
+    sheet.classList.add('show'); body.scrollTop = 0;
+  }
+  function close(){ if (sheet) sheet.classList.remove('show'); }
+
+  btn = document.createElement('button');
+  btn.id = 'hbMoreBtn'; btn.type = 'button'; btn.textContent = '⋯';
+  btn.title = '도구 모음'; btn.setAttribute('aria-label', '도구 모음 열기');
+  btn.addEventListener('click', open);
+  sheet = document.createElement('div');
+  sheet.id = 'hbMoreSheet'; sheet.setAttribute('role', 'dialog'); sheet.setAttribute('aria-label', '도구 모음');
+  sheet.innerHTML = '<div class="hbm-card"><div class="hbm-head"><div class="hbm-title">도구 모음</div>' +
+    '<button type="button" class="hbm-close" aria-label="닫기">✕</button></div>' +
+    '<input class="hbm-find" type="search" placeholder="도구 이름으로 찾기" aria-label="도구 이름으로 찾기">' +
+    '<div class="hbm-body"></div></div>';
+  body = sheet.querySelector('.hbm-body'); find = sheet.querySelector('.hbm-find');
+  sheet.querySelector('.hbm-close').addEventListener('click', close);
+  sheet.addEventListener('click', function(e){ if (e.target === sheet) close(); });
+  find.addEventListener('input', filter);
+  /* 찾기 칸에서 치는 글자가 게임 단축키(R=처음으로, M=소리 …)로 새지 않게 */
+  ['keydown', 'keyup', 'keypress'].forEach(function(t){ find.addEventListener(t, function(e){ e.stopPropagation(); if (t === 'keydown' && e.key === 'Escape') close(); }); });
+  document.body.appendChild(btn); document.body.appendChild(sheet);
+})();
 </script>
 <!-- Base globals (including ACHIEVEMENTS and QUIZZES) must exist before patches run. -->
 <script src="v6_patch.js"></script>

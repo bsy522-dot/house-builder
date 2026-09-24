@@ -74,14 +74,14 @@ window.__hbV12 = true;
   var wrap = document.createElement('div');
   wrap.id = 'v12-panels';
   wrap.innerHTML =
-    '<div id="v12-interior" class="v12-panel"><div class="v12-box"><h2>&#x1F6CB;&#xFE0F; &#xC778;&#xD14C;&#xB9AC;&#xC5B4; &#xB514;&#xC790;&#xC778; &#xC2A4;&#xD29C;&#xB514;&#xC624;</h2><p>12&#xC885; &#xAC00;&#xAD6C;&#xB97C; &#xBC30;&#xCE58;&#xD558;&#xC5EC; &#xC2E4;&#xB0B4; &#xACF5;&#xAC04;&#xC744; &#xAFB8;&#xBA70;&#xBCF4;&#xC138;&#xC694;</p><div class="v12-tabs" id="v12-int-tools"></div><div id="v12-int-grid" style="display:inline-grid;grid-template-columns:repeat(8,44px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v12-int-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-int-save">&#xC800;&#xC7A5;</button> <button class="v12-btn-outline" id="v12-int-clear">&#xCD08;&#xAE30;&#xD654;</button> <button class="v12-btn-outline" id="v12-int-random">&#xB79C;&#xB364; &#xBC30;&#xCE58;</button></div><button class="v12-close" onclick="v12Close(\'interior\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-struct" class="v12-panel"><div class="v12-box"><h2>&#x1F3D7;&#xFE0F; &#xAD6C;&#xC870;&#xC5ED;&#xD559; &#xC2DC;&#xAC01;&#xD654;&#xAE30;</h2><p>&#xAC74;&#xBB3C;&#xC5D0; &#xC791;&#xC6A9;&#xD558;&#xB294; &#xD558;&#xC911;&#xACFC; &#xC751;&#xB825;&#xC744; &#xBD84;&#xC11D;&#xD569;&#xB2C8;&#xB2E4;</p><div class="v12-tabs" id="v12-struct-tabs"></div><canvas id="v12-struct-canvas" class="v12-canvas" width="560" height="380"></canvas><div id="v12-struct-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div class="v12-slider-row"><label>&#xD558;&#xC911; (kN)</label><input type="range" id="v12-struct-load" min="10" max="200" value="50"><div class="val" id="v12-struct-load-val">50</div></div><div class="v12-slider-row"><label>&#xD48D;&#xC555; (kN)</label><input type="range" id="v12-struct-wind" min="0" max="100" value="20"><div class="val" id="v12-struct-wind-val">20</div></div><button class="v12-close" onclick="v12Close(\'struct\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-cost" class="v12-panel"><div class="v12-box"><h2>&#x1F4B0; &#xAC74;&#xCD95;&#xBE44;&#xC6A9; &#xACAC;&#xC801; &#xC2DC;&#xC2A4;&#xD15C;</h2><p>&#xC7AC;&#xB8CC;&#xBE44;+&#xC778;&#xAC74;&#xBE44;+&#xC124;&#xBE44;&#xBE44;&#xB97C; &#xC790;&#xB3D9; &#xACC4;&#xC0B0;&#xD569;&#xB2C8;&#xB2E4;</p><div class="v12-slider-row"><label>&#xBA74;&#xC801; (&#xD3C9;)</label><input type="range" id="v12-cost-area" min="5" max="100" value="30"><div class="val" id="v12-cost-area-val">30</div></div><div class="v12-slider-row"><label>&#xCE35;&#xC218;</label><input type="range" id="v12-cost-floor" min="1" max="5" value="1"><div class="val" id="v12-cost-floor-val">1</div></div><div class="v12-tabs" id="v12-cost-type"></div><canvas id="v12-cost-pie" class="v12-canvas" width="480" height="300"></canvas><canvas id="v12-cost-bar" class="v12-canvas" width="560" height="260"></canvas><div id="v12-cost-summary" style="text-align:center;color:#f5deb3;font-size:15px;font-weight:700;margin:10px 0"></div><button class="v12-close" onclick="v12Close(\'cost\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-garden" class="v12-panel"><div class="v12-box"><h2>&#x1F33F; &#xC870;&#xACBD; &#xC815;&#xC6D0; &#xD50C;&#xB798;&#xB108;</h2><p>10x10 &#xADF8;&#xB9AC;&#xB4DC;&#xC5D0; 12&#xC885; &#xC870;&#xACBD; &#xC694;&#xC18C;&#xB97C; &#xBC30;&#xCE58;&#xD558;&#xC138;&#xC694;</p><div class="v12-tabs" id="v12-garden-tools"></div><div id="v12-garden-grid" style="display:inline-grid;grid-template-columns:repeat(10,36px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v12-garden-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-garden-save">&#xC800;&#xC7A5;</button> <button class="v12-btn-outline" id="v12-garden-clear">&#xCD08;&#xAE30;&#xD654;</button></div><button class="v12-close" onclick="v12Close(\'garden\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-hanok-int" class="v12-panel"><div class="v12-box"><h2>&#x1F3EF; &#xD55C;&#xC625; &#xC778;&#xD14C;&#xB9AC;&#xC5B4; &#xAC24;&#xB7EC;&#xB9AC;</h2><p>12&#xC885; &#xC804;&#xD1B5; &#xACF5;&#xAC04;&#xC758; &#xC778;&#xD14C;&#xB9AC;&#xC5B4;&#xB97C; &#xD0D0;&#xD5D8;&#xD558;&#xC138;&#xC694;</p><div class="v12-grid" id="v12-hanok-gallery"></div><button class="v12-close" onclick="v12Close(\'hanok-int\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-blueprint" class="v12-panel"><div class="v12-box"><h2>&#x1F4D0; &#xAC74;&#xCD95; &#xB3C4;&#xBA74; &#xD559;&#xC2B5;</h2><p>6&#xC885; &#xB3C4;&#xBA74;&#xC744; &#xC77D;&#xB294; &#xBC29;&#xBC95;&#xC744; &#xBC30;&#xC6CC;&#xBCF4;&#xC138;&#xC694;</p><div class="v12-tabs" id="v12-bp-tabs"></div><canvas id="v12-bp-canvas" class="v12-canvas" width="560" height="400"></canvas><div id="v12-bp-info" style="color:#c4956a;font-size:13px;margin:10px 0;line-height:1.7;text-align:center"></div><button class="v12-close" onclick="v12Close(\'blueprint\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-safety" class="v12-panel"><div class="v12-box"><h2>&#x1F6E1;&#xFE0F; &#xAC74;&#xCD95; &#xC548;&#xC804; &#xC9C4;&#xB2E8;</h2><p>10&#xD56D;&#xBAA9; &#xC548;&#xC804; &#xCCB4;&#xD06C;&#xB9AC;&#xC2A4;&#xD2B8;&#xC640; &#xC885;&#xD569; &#xC548;&#xC804;&#xC810;&#xC218;</p><div id="v12-safety-list"></div><canvas id="v12-safety-canvas" class="v12-canvas" width="400" height="400"></canvas><div id="v12-safety-grade" style="text-align:center;font-size:28px;font-weight:700;margin:10px 0"></div><button class="v12-close" onclick="v12Close(\'safety\')">&#xB2EB;&#xAE30;</button></div></div>' +
-    '<div id="v12-timeline" class="v12-panel"><div class="v12-box"><h2>&#x23F3; &#xAC74;&#xCD95; &#xD0C0;&#xC784;&#xCEA1;&#xC290;</h2><p>&#xAC74;&#xCD95; &#xACFC;&#xC815;&#xC744; &#xD0C0;&#xC784;&#xB77C;&#xC778;&#xC73C;&#xB85C; &#xB3CC;&#xC544;&#xBCF4;&#xC138;&#xC694;</p><div class="v12-tabs" id="v12-tl-tabs"></div><canvas id="v12-tl-canvas" class="v12-canvas" width="600" height="340"></canvas><div id="v12-tl-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-tl-play">&#x25B6; &#xC7AC;&#xC0DD;</button> <button class="v12-btn-outline" id="v12-tl-reset">&#xCD08;&#xAE30;&#xD654;</button></div><button class="v12-close" onclick="v12Close(\'timeline\')">&#xB2EB;&#xAE30;</button></div></div>';
+    '<div id="v12-interior" class="v12-panel"><div class="v12-box"><h2>🛋️ 인테리어 디자인 스튜디오</h2><p>12종 가구를 배치하여 실내 공간을 꾸며보세요</p><div class="v12-tabs" id="v12-int-tools"></div><div id="v12-int-grid" style="display:inline-grid;grid-template-columns:repeat(8,44px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v12-int-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-int-save">저장</button> <button class="v12-btn-outline" id="v12-int-clear">초기화</button> <button class="v12-btn-outline" id="v12-int-random">랜덤 배치</button></div><button class="v12-close" onclick="v12Close(\'interior\')">닫기</button></div></div>' +
+    '<div id="v12-struct" class="v12-panel"><div class="v12-box"><h2>🏗️ 구조역학 시각화기</h2><p>건물에 작용하는 하중과 응력을 분석합니다</p><div class="v12-tabs" id="v12-struct-tabs"></div><canvas id="v12-struct-canvas" class="v12-canvas" width="560" height="380"></canvas><div id="v12-struct-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div class="v12-slider-row"><label>하중 (kN)</label><input type="range" id="v12-struct-load" min="10" max="200" value="50"><div class="val" id="v12-struct-load-val">50</div></div><div class="v12-slider-row"><label>풍압 (kN)</label><input type="range" id="v12-struct-wind" min="0" max="100" value="20"><div class="val" id="v12-struct-wind-val">20</div></div><button class="v12-close" onclick="v12Close(\'struct\')">닫기</button></div></div>' +
+    '<div id="v12-cost" class="v12-panel"><div class="v12-box"><h2>💰 건축비용 견적 시스템</h2><p>재료비+인건비+설비비를 자동 계산합니다</p><div class="v12-slider-row"><label>면적 (평)</label><input type="range" id="v12-cost-area" min="5" max="100" value="30"><div class="val" id="v12-cost-area-val">30</div></div><div class="v12-slider-row"><label>층수</label><input type="range" id="v12-cost-floor" min="1" max="5" value="1"><div class="val" id="v12-cost-floor-val">1</div></div><div class="v12-tabs" id="v12-cost-type"></div><canvas id="v12-cost-pie" class="v12-canvas" width="480" height="300"></canvas><canvas id="v12-cost-bar" class="v12-canvas" width="560" height="260"></canvas><div id="v12-cost-summary" style="text-align:center;color:#f5deb3;font-size:15px;font-weight:700;margin:10px 0"></div><button class="v12-close" onclick="v12Close(\'cost\')">닫기</button></div></div>' +
+    '<div id="v12-garden" class="v12-panel"><div class="v12-box"><h2>🌿 조경 정원 플래너</h2><p>10x10 그리드에 12종 조경 요소를 배치하세요</p><div class="v12-tabs" id="v12-garden-tools"></div><div id="v12-garden-grid" style="display:inline-grid;grid-template-columns:repeat(10,36px);gap:1px;margin:10px auto;justify-content:center"></div><div id="v12-garden-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-garden-save">저장</button> <button class="v12-btn-outline" id="v12-garden-clear">초기화</button></div><button class="v12-close" onclick="v12Close(\'garden\')">닫기</button></div></div>' +
+    '<div id="v12-hanok-int" class="v12-panel"><div class="v12-box"><h2>🏯 한옥 인테리어 갤러리</h2><p>12종 전통 공간의 인테리어를 탐험하세요</p><div class="v12-grid" id="v12-hanok-gallery"></div><button class="v12-close" onclick="v12Close(\'hanok-int\')">닫기</button></div></div>' +
+    '<div id="v12-blueprint" class="v12-panel"><div class="v12-box"><h2>📐 건축 도면 학습</h2><p>6종 도면을 읽는 방법을 배워보세요</p><div class="v12-tabs" id="v12-bp-tabs"></div><canvas id="v12-bp-canvas" class="v12-canvas" width="560" height="400"></canvas><div id="v12-bp-info" style="color:#c4956a;font-size:13px;margin:10px 0;line-height:1.7;text-align:center"></div><button class="v12-close" onclick="v12Close(\'blueprint\')">닫기</button></div></div>' +
+    '<div id="v12-safety" class="v12-panel"><div class="v12-box"><h2>🛡️ 건축 안전 진단</h2><p>10항목 안전 체크리스트와 종합 안전점수</p><div id="v12-safety-list"></div><canvas id="v12-safety-canvas" class="v12-canvas" width="400" height="400"></canvas><div id="v12-safety-grade" style="text-align:center;font-size:28px;font-weight:700;margin:10px 0"></div><button class="v12-close" onclick="v12Close(\'safety\')">닫기</button></div></div>' +
+    '<div id="v12-timeline" class="v12-panel"><div class="v12-box"><h2>⏳ 건축 타임캡슐</h2><p>건축 과정을 타임라인으로 돌아보세요</p><div class="v12-tabs" id="v12-tl-tabs"></div><canvas id="v12-tl-canvas" class="v12-canvas" width="600" height="340"></canvas><div id="v12-tl-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div><div style="text-align:center;margin:10px 0"><button class="v12-btn-sm" id="v12-tl-play">▶ 재생</button> <button class="v12-btn-outline" id="v12-tl-reset">초기화</button></div><button class="v12-close" onclick="v12Close(\'timeline\')">닫기</button></div></div>';
   document.body.appendChild(wrap);
 })();
 
@@ -135,7 +135,7 @@ var v12Interior = (function(){
   function save(){ localStorage.setItem(KEY, JSON.stringify(grid)); }
   function renderTools(){
     var el = document.getElementById('v12-int-tools'); if(!el) return;
-    el.innerHTML = tools.map(function(t,i){ return '<button class="v12-tab'+(i===currentTool?' active':'')+'" data-idx="'+i+'">'+t.icon+' '+t.name+'</button>'; }).join('') + '<button class="v12-tab" data-idx="-1">❌ &#xC9C0;&#xC6B0;&#xAE30;</button>';
+    el.innerHTML = tools.map(function(t,i){ return '<button class="v12-tab'+(i===currentTool?' active':'')+'" data-idx="'+i+'">'+t.icon+' '+t.name+'</button>'; }).join('') + '<button class="v12-tab" data-idx="-1">❌ 지우기</button>';
     el.querySelectorAll('.v12-tab').forEach(function(btn){ btn.onclick = function(){ currentTool = parseInt(btn.dataset.idx); renderTools(); }; });
   }
   function renderGrid(){
@@ -190,12 +190,12 @@ var v12Interior = (function(){
 var v12Struct = (function(){
   var KEY = 'hb_v12_struct';
   var types = [
-    {name:'&#xBAA9;&#xAD6C;&#xC870; (&#xD55C;&#xC625;)',modE:12,modS:8,weight:0.5,desc:'소나무/참나무 기둥-보 구조. 전통 맞배지붕의 하중 분배가 특징'},
-    {name:'&#xC870;&#xC801;&#xC870; (&#xAE30;&#xC640;&#xC9D1;)',modE:20,modS:12,weight:2.0,desc:'돌/벽돌 적층 구조. 압축에 강하나 인장에 약함'},
-    {name:'&#xCCA0;&#xADFC;&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;',modE:30,modS:25,weight:2.5,desc:'현대 건축의 기본. 인장(철근)+압축(콘크리트) 복합체'},
-    {name:'&#xCCA0;&#xACE8;&#xAD6C;&#xC870;',modE:200,modS:80,weight:7.8,desc:'H빔 프레임. 고층 건물에 적합. 변형에 강함'},
-    {name:'&#xD63C;&#xD569;&#xAD6C;&#xC870;',modE:50,modS:30,weight:3.0,desc:'RC+철골 혼합. 하부 RC, 상부 철골의 효율적 조합'},
-    {name:'&#xC804;&#xD1B5; &#xCD08;&#xAC00;&#xC9D1;',modE:8,modS:5,weight:0.3,desc:'목재 골격+볏짚 지붕. 경량이나 횡하중에 취약'}
+    {name:'목구조 (한옥)',modE:12,modS:8,weight:0.5,desc:'소나무/참나무 기둥-보 구조. 전통 맞배지붕의 하중 분배가 특징'},
+    {name:'조적조 (기와집)',modE:20,modS:12,weight:2.0,desc:'돌/벽돌 적층 구조. 압축에 강하나 인장에 약함'},
+    {name:'철근콘크리트',modE:30,modS:25,weight:2.5,desc:'현대 건축의 기본. 인장(철근)+압축(콘크리트) 복합체'},
+    {name:'철골구조',modE:200,modS:80,weight:7.8,desc:'H빔 프레임. 고층 건물에 적합. 변형에 강함'},
+    {name:'혼합구조',modE:50,modS:30,weight:3.0,desc:'RC+철골 혼합. 하부 RC, 상부 철골의 효율적 조합'},
+    {name:'전통 초가집',modE:8,modS:5,weight:0.3,desc:'목재 골격+볏짚 지붕. 경량이나 횡하중에 취약'}
   ];
   var currentType = 0;
   var visited = JSON.parse(localStorage.getItem(KEY) || '[]');
@@ -289,7 +289,7 @@ var v12Struct = (function(){
     c.fillStyle = gradeColor; c.font = 'bold 36px sans-serif'; c.textAlign = 'right';
     c.fillText(grade, W-20, 40);
     c.fillStyle = '#f5deb3'; c.font = '11px sans-serif';
-    c.fillText('안;&#xC804;&#xB4F1;&#xAE09;', W-20, 55);
+    c.fillText('안;전등급', W-20, 55);
 
     c.fillStyle = 'rgba(0,0,0,.5)'; c.fillRect(W-180,65,170,65); c.strokeStyle='rgba(196,149,106,.3)'; c.strokeRect(W-180,65,170,65);
     c.fillStyle = '#f5deb3'; c.font = '11px sans-serif'; c.textAlign = 'left';
@@ -326,12 +326,12 @@ var v12Struct = (function(){
 var v12Cost = (function(){
   var KEY = 'hb_v12_cost';
   var buildTypes = [
-    {name:'&#xD55C;&#xC625;',base:800,matR:0.45,labR:0.35,equipR:0.12,otherR:0.08},
-    {name:'&#xAE30;&#xC640;&#xC9D1;',base:650,matR:0.40,labR:0.35,equipR:0.15,otherR:0.10},
-    {name:'&#xCD08;&#xAC00;&#xC9D1;',base:350,matR:0.35,labR:0.40,equipR:0.10,otherR:0.15},
-    {name:'&#xC11C;&#xC6D0;',base:900,matR:0.42,labR:0.33,equipR:0.15,otherR:0.10},
-    {name:'&#xC815;&#xC790;',base:500,matR:0.38,labR:0.37,equipR:0.13,otherR:0.12},
-    {name:'&#xD604;&#xB300;&#xC8FC;&#xD0DD;',base:550,matR:0.42,labR:0.30,equipR:0.18,otherR:0.10}
+    {name:'한옥',base:800,matR:0.45,labR:0.35,equipR:0.12,otherR:0.08},
+    {name:'기와집',base:650,matR:0.40,labR:0.35,equipR:0.15,otherR:0.10},
+    {name:'초가집',base:350,matR:0.35,labR:0.40,equipR:0.10,otherR:0.15},
+    {name:'서원',base:900,matR:0.42,labR:0.33,equipR:0.15,otherR:0.10},
+    {name:'정자',base:500,matR:0.38,labR:0.37,equipR:0.13,otherR:0.12},
+    {name:'현대주택',base:550,matR:0.42,labR:0.30,equipR:0.18,otherR:0.10}
   ];
   var currentType = 0;
   var used = JSON.parse(localStorage.getItem(KEY)||'false');
@@ -832,7 +832,7 @@ var v12Safety = (function(){
 var v12Timeline = (function(){
   var KEY = 'hb_v12_timeline';
   var timelines = [
-    {name:'한옥 건;&#xCD95;',stages:[
+    {name:'한옥 건;축',stages:[
       {name:'터;다지기;',dur:'1주',desc:'풍수지리 분석 후 터 정지 작업'},
       {name:'기;초공;사',dur:'2주',desc:'주초돌 놓고 기;단 쌓기'},
       {name:'기;둥; 세우;기',dur:'3주',desc:'원목 기둥을 기초 위에 세움'},

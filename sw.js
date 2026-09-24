@@ -1,5 +1,5 @@
 // Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v29-hb1';
+var CACHE_NAME = 'house-builder-v29-hb1-m0924';
 var URLS = [
   './',
   './index.html',

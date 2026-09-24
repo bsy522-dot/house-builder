@@ -45,83 +45,83 @@ window.__hbV21 = true;
   wrap.id = 'v21-panels';
   wrap.innerHTML =
     '<div id="v21-wind" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1F32C;&#xFE0F; &#xAC74;&#xCD95; &#xD48D;&#xD558;&#xC911; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>8&#xC885; &#xAC74;&#xBB3C;&#xC758; &#xD48D;&#xC555; &#xBD84;&#xD3EC; &#xBD84;&#xC11D;</p>' +
+      '<h2>🌬️ 건축 풍하중 시뮬레이터</h2>' +
+      '<p>8종 건물의 풍압 분포 분석</p>' +
       '<div class="v21-tabs" id="v21-wi-tabs"></div>' +
       '<canvas id="v21-wi-canvas" class="v21-canvas" width="620" height="400"></canvas>' +
       '<div id="v21-wi-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-wi-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Wind.simulate()">&#xD48D;&#xC18D; &#xC2DC;&#xBBAC;</button> <button class="v21-btn-sm" onclick="v21Wind.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Wind.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Wind.simulate()">풍속 시뮬</button> <button class="v21-btn-sm" onclick="v21Wind.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Wind.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-maru" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1FA79; &#xC804;&#xD1B5; &#xB9C8;&#xB8E8; &#xAD6C;&#xC870; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xC885; &#xC804;&#xD1B5; &#xB9C8;&#xB8E8;&#xC758; &#xAD6C;&#xC870;&#xC801; &#xD2B9;&#xC131;</p>' +
+      '<h2>🩹 전통 마루 구조 분석</h2>' +
+      '<p>8종 전통 마루의 구조적 특성</p>' +
       '<div class="v21-tabs" id="v21-mr-tabs"></div>' +
       '<canvas id="v21-mr-canvas" class="v21-canvas" width="600" height="380"></canvas>' +
       '<div id="v21-mr-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-mr-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Maru.compare()">&#xBE44;&#xAD50;</button> <button class="v21-btn-sm" onclick="v21Maru.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Maru.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Maru.compare()">비교</button> <button class="v21-btn-sm" onclick="v21Maru.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Maru.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-sun" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x2600;&#xFE0F; &#xAC74;&#xCD95; &#xCC44;&#xAD11; &#xC77C;&#xC870; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>8&#xC2E4; 12&#xC6D4; &#xC77C;&#xC870;&#xB7C9; &#xD788;&#xD2B8;&#xB9F5;</p>' +
+      '<h2>☀️ 건축 채광 일조 분석기</h2>' +
+      '<p>8실 12월 일조량 히트맵</p>' +
       '<canvas id="v21-sn-canvas" class="v21-canvas" width="620" height="380"></canvas>' +
       '<div id="v21-sn-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-sn-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Sun.analyze()">&#xBD84;&#xC11D;</button> <button class="v21-btn-sm" onclick="v21Sun.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Sun.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Sun.analyze()">분석</button> <button class="v21-btn-sm" onclick="v21Sun.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Sun.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-base" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1F9F1; &#xC9C0;&#xD558; &#xAD6C;&#xC870; &#xBC29;&#xC218; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xC885; &#xC9C0;&#xD558;&#xBC29;&#xC218; &#xACF5;&#xBC95; &#xBE44;&#xAD50;</p>' +
+      '<h2>🧱 지하 구조 방수 분석</h2>' +
+      '<p>8종 지하방수 공법 비교</p>' +
       '<div class="v21-tabs" id="v21-bs-tabs"></div>' +
       '<canvas id="v21-bs-canvas" class="v21-canvas" width="600" height="380"></canvas>' +
       '<div id="v21-bs-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-bs-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Base.evaluate()">&#xD3C9;&#xAC00;</button> <button class="v21-btn-sm" onclick="v21Base.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Base.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Base.evaluate()">평가</button> <button class="v21-btn-sm" onclick="v21Base.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Base.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-acoust" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1F50A; &#xAC74;&#xCD95; &#xC74C;&#xD5A5; &#xC794;&#xD5A5; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xC2E4; &#xC794;&#xD5A5;&#xC2DC;&#xAC04; RT60 &#xBD84;&#xC11D;</p>' +
+      '<h2>🔊 건축 음향 잔향 분석</h2>' +
+      '<p>8실 잔향시간 RT60 분석</p>' +
       '<div class="v21-tabs" id="v21-ac-tabs"></div>' +
       '<canvas id="v21-ac-canvas" class="v21-canvas" width="620" height="400"></canvas>' +
       '<div id="v21-ac-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-ac-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Acoust.measure()">&#xCE21;&#xC815;</button> <button class="v21-btn-sm" onclick="v21Acoust.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Acoust.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Acoust.measure()">측정</button> <button class="v21-btn-sm" onclick="v21Acoust.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Acoust.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-window" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1FA9F; &#xC804;&#xD1B5; &#xCC3D;&#xD638; &#xBB38;&#xC591; &#xC124;&#xACC4;</h2>' +
-      '<p>12&#xC885; &#xC804;&#xD1B5; &#xCC3D;&#xD638; &#xBB38;&#xC591; &#xBE44;&#xAD50;</p>' +
+      '<h2>🪟 전통 창호 문양 설계</h2>' +
+      '<p>12종 전통 창호 문양 비교</p>' +
       '<div class="v21-tabs" id="v21-wn-tabs"></div>' +
       '<canvas id="v21-wn-canvas" class="v21-canvas" width="600" height="380"></canvas>' +
       '<div id="v21-wn-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-wn-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Window.design()">&#xC124;&#xACC4;</button> <button class="v21-btn-sm" onclick="v21Window.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Window.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Window.design()">설계</button> <button class="v21-btn-sm" onclick="v21Window.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Window.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-aging" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x23F3; &#xAC74;&#xCD95; &#xC218;&#xBA85; &#xC608;&#xCE21; &#xC2DC;&#xBBAC;</h2>' +
-      '<p>8&#xAC74;&#xBB3C; 50&#xB144; &#xC5F4;&#xD654; &#xC608;&#xCE21; &#xB77C;&#xC778;</p>' +
+      '<h2>⏳ 건축 수명 예측 시뮬</h2>' +
+      '<p>8건물 50년 열화 예측 라인</p>' +
       '<div class="v21-tabs" id="v21-ag-tabs"></div>' +
       '<canvas id="v21-ag-canvas" class="v21-canvas" width="620" height="380"></canvas>' +
       '<div id="v21-ag-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-ag-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Aging.predict()">&#xC608;&#xCE21;</button> <button class="v21-btn-sm" onclick="v21Aging.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Aging.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Aging.predict()">예측</button> <button class="v21-btn-sm" onclick="v21Aging.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Aging.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v21-vent" class="v21-panel"><div class="v21-box">' +
-      '<h2>&#x1F4A8; &#xAC74;&#xCD95; &#xD658;&#xAE30; &#xC2DC;&#xC2A4;&#xD15C; &#xBD84;&#xC11D;</h2>' +
-      '<p>8&#xC885; &#xD658;&#xAE30; &#xBC29;&#xC2DD; &#xBE44;&#xAD50; &#xBD84;&#xC11D;</p>' +
+      '<h2>💨 건축 환기 시스템 분석</h2>' +
+      '<p>8종 환기 방식 비교 분석</p>' +
       '<div class="v21-tabs" id="v21-vt-tabs"></div>' +
       '<canvas id="v21-vt-canvas" class="v21-canvas" width="620" height="400"></canvas>' +
       '<div id="v21-vt-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v21-stat" id="v21-vt-stat"></div>' +
-      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Vent.analyze()">&#xBD84;&#xC11D;</button> <button class="v21-btn-sm" onclick="v21Vent.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v21-close" onclick="v21Vent.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v21-btn-sm" onclick="v21Vent.analyze()">분석</button> <button class="v21-btn-sm" onclick="v21Vent.reset()">초기화</button></div>' +
+      '<button class="v21-close" onclick="v21Vent.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();

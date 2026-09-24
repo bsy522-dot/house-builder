@@ -50,82 +50,82 @@ window.__hbV19 = true;
   wrap.id = 'v19-panels';
   wrap.innerHTML =
     '<div id="v19-waterproof" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F4A7; &#xAC74;&#xCD95; &#xBC29;&#xC218;&#xB0A9;&#xC2B5; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>8&#xC885; &#xBC29;&#xC218;&#xACF5;&#xBC95; &#xBE44;&#xAD50; &#xBD84;&#xC11D;</p>' +
+      '<h2>💧 건축 방수납습 분석기</h2>' +
+      '<p>8종 방수공법 비교 분석</p>' +
       '<div class="v19-tabs" id="v19-wp-tabs"></div>' +
       '<canvas id="v19-wp-canvas" class="v19-canvas" width="620" height="400"></canvas>' +
       '<div id="v19-wp-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-wp-stat"></div>' +
-      '<button class="v19-close" onclick="v19Waterproof.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Waterproof.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-lighting" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F4A1; &#xAC74;&#xCD95; &#xC870;&#xBA85;&#xBC30;&#xCE58; &#xC2DC;&#xBBAC;</h2>' +
-      '<p>6&#xC2E4; 12&#xC885; &#xC870;&#xBA85; Lux &#xBD84;&#xC11D;</p>' +
+      '<h2>💡 건축 조명배치 시뮬</h2>' +
+      '<p>6실 12종 조명 Lux 분석</p>' +
       '<div class="v19-tabs" id="v19-lt-tabs"></div>' +
       '<canvas id="v19-lt-canvas" class="v19-canvas" width="600" height="380"></canvas>' +
       '<div id="v19-lt-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-lt-stat"></div>' +
-      '<button class="v19-close" onclick="v19Lighting.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Lighting.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-garden" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1FAB4; &#xC804;&#xD1B5; &#xC815;&#xC6D0; &#xC11D;&#xC870;&#xBB3C; &#xC124;&#xACC4;</h2>' +
-      '<p>10&#xC885; &#xC804;&#xD1B5; &#xC815;&#xC6D0; &#xC11D;&#xC870;&#xBB3C; &#xBC30;&#xCE58;</p>' +
+      '<h2>🪴 전통 정원 석조물 설계</h2>' +
+      '<p>10종 전통 정원 석조물 배치</p>' +
       '<div class="v19-tabs" id="v19-gd-tabs"></div>' +
       '<canvas id="v19-gd-canvas" class="v19-canvas" width="620" height="400"></canvas>' +
       '<div id="v19-gd-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-gd-stat"></div>' +
-      '<button class="v19-close" onclick="v19Garden.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Garden.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-thermal" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F321;&#xFE0F; &#xAC74;&#xCD95; &#xC5F4;&#xAD50; &#xC9C4;&#xB2E8; &#xC2DC;&#xBBAC;</h2>' +
-      '<p>8&#xBD80;&#xC704; &#xC5F4;&#xC190;&#xC2E4; Radar &#xBD84;&#xC11D;</p>' +
+      '<h2>🌡️ 건축 열교 진단 시뮬</h2>' +
+      '<p>8부위 열손실 Radar 분석</p>' +
       '<canvas id="v19-th-canvas" class="v19-canvas" width="600" height="380"></canvas>' +
       '<div id="v19-th-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-th-stat"></div>' +
       '<div style="display:flex;gap:10px;justify-content:center;margin:10px 0">' +
-        '<button class="v19-btn-sm" onclick="v19Thermal.randomize()">&#xBB34;&#xC791;&#xC704; &#xC9C4;&#xB2E8;</button>' +
-        '<button class="v19-btn-sm" onclick="v19Thermal.reset()">&#xCD08;&#xAE30;&#xD654;</button>' +
+        '<button class="v19-btn-sm" onclick="v19Thermal.randomize()">무작위 진단</button>' +
+        '<button class="v19-btn-sm" onclick="v19Thermal.reset()">초기화</button>' +
       '</div>' +
-      '<button class="v19-close" onclick="v19Thermal.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Thermal.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-space" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F4D0; &#xAC74;&#xCD95; &#xACF5;&#xAC04;&#xD65C;&#xC6A9; &#xCD5C;&#xC801;&#xD654;</h2>' +
-      '<p>6&#xC720;&#xD615; &#xACF5;&#xAC04; x 6&#xC9C0;&#xD45C; &#xBD84;&#xC11D;</p>' +
+      '<h2>📐 건축 공간활용 최적화</h2>' +
+      '<p>6유형 공간 x 6지표 분석</p>' +
       '<div class="v19-tabs" id="v19-sp-tabs"></div>' +
       '<canvas id="v19-sp-canvas" class="v19-canvas" width="620" height="380"></canvas>' +
       '<div id="v19-sp-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-sp-stat"></div>' +
-      '<button class="v19-close" onclick="v19Space.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Space.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-maint" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F527; &#xAC74;&#xCD95; &#xC720;&#xC9C0;&#xBCF4;&#xC218; &#xCE98;&#xB9B0;&#xB354;</h2>' +
-      '<p>12&#xC885; &#xC720;&#xC9C0;&#xBCF4;&#xC218; &#xC2A4;&#xCF00;&#xC904; &#xAD00;&#xB9AC;</p>' +
+      '<h2>🔧 건축 유지보수 캘린더</h2>' +
+      '<p>12종 유지보수 스케줄 관리</p>' +
       '<canvas id="v19-mt-canvas" class="v19-canvas" width="600" height="380"></canvas>' +
       '<div id="v19-mt-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-mt-stat"></div>' +
       '<div style="display:flex;gap:10px;justify-content:center;margin:10px 0">' +
-        '<button class="v19-btn-sm" onclick="v19Maint.simulate()">1&#xB144; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;</button>' +
-        '<button class="v19-btn-sm" onclick="v19Maint.reset()">&#xCD08;&#xAE30;&#xD654;</button>' +
+        '<button class="v19-btn-sm" onclick="v19Maint.simulate()">1년 시뮬레이션</button>' +
+        '<button class="v19-btn-sm" onclick="v19Maint.reset()">초기화</button>' +
       '</div>' +
-      '<button class="v19-close" onclick="v19Maint.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Maint.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-noise" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F507; &#xAC74;&#xCD95; &#xC18C;&#xC74C;&#xCC28;&#xB2E8; &#xC124;&#xACC4;</h2>' +
-      '<p>8&#xC18C;&#xC74C;&#xC6D0; STC/IIC &#xB4F1;&#xAE09; &#xBD84;&#xC11D;</p>' +
+      '<h2>🔇 건축 소음차단 설계</h2>' +
+      '<p>8소음원 STC/IIC 등급 분석</p>' +
       '<div class="v19-tabs" id="v19-ns-tabs"></div>' +
       '<canvas id="v19-ns-canvas" class="v19-canvas" width="600" height="380"></canvas>' +
       '<div id="v19-ns-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-ns-stat"></div>' +
-      '<button class="v19-close" onclick="v19Noise.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Noise.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v19-artisan" class="v19-panel"><div class="v19-box">' +
-      '<h2>&#x1F3DB;&#xFE0F; &#xC804;&#xD1B5; &#xAC74;&#xCD95; &#xC7A5;&#xC778; &#xB3C4;&#xAC10;</h2>' +
-      '<p>10&#xC7A5;&#xC778; 6&#xCD95; Radar &#xBE44;&#xAD50;</p>' +
+      '<h2>🏛️ 전통 건축 장인 도감</h2>' +
+      '<p>10장인 6축 Radar 비교</p>' +
       '<div class="v19-tabs" id="v19-ar-tabs"></div>' +
       '<canvas id="v19-ar-canvas" class="v19-canvas" width="620" height="400"></canvas>' +
       '<div id="v19-ar-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v19-stat" id="v19-ar-stat"></div>' +
-      '<button class="v19-close" onclick="v19Artisan.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v19-close" onclick="v19Artisan.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();

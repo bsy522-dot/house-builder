@@ -49,82 +49,82 @@ window.__hbV23 = true;
   wrap.id = 'v23-panels';
   wrap.innerHTML =
     '<div id="v23-choseok" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1FAA8; &#xC804;&#xD1B5; &#xCD08;&#xC11D; &#xC124;&#xACC4; &#xAC00;&#xC774;&#xB4DC;</h2>' +
-      '<p>10&#xC885; &#xCD08;&#xC11D;(&#xC8FC;&#xCD94;&#xB3CC;)&#xC758; &#xAC74;&#xCD95; &#xD2B9;&#xC131; &#xBE44;&#xAD50;</p>' +
+      '<h2>🪨 전통 초석 설계 가이드</h2>' +
+      '<p>10종 초석(주추돌)의 건축 특성 비교</p>' +
       '<div class="v23-tabs" id="v23-cs-tabs"></div>' +
       '<canvas id="v23-cs-canvas" class="v23-canvas" width="620" height="400"></canvas>' +
       '<div id="v23-cs-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-cs-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Choseok.compare()">&#xBE44;&#xAD50;</button> <button class="v23-btn-sm" onclick="v23Choseok.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Choseok.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Choseok.compare()">비교</button> <button class="v23-btn-sm" onclick="v23Choseok.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Choseok.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-drain" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F4A7; &#xC6B0;&#xC218; &#xBC30;&#xC218; &#xC2DC;&#xC2A4;&#xD15C; &#xC124;&#xACC4;</h2>' +
-      '<p>8&#xC885; &#xBC30;&#xC218; &#xBC29;&#xC2DD;&#xC758; &#xC131;&#xB2A5; &#xBE44;&#xAD50;</p>' +
+      '<h2>💧 우수 배수 시스템 설계</h2>' +
+      '<p>8종 배수 방식의 성능 비교</p>' +
       '<div class="v23-tabs" id="v23-dr-tabs"></div>' +
       '<canvas id="v23-dr-canvas" class="v23-canvas" width="600" height="380"></canvas>' +
       '<div id="v23-dr-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-dr-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Drain.simulate()">&#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;</button> <button class="v23-btn-sm" onclick="v23Drain.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Drain.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Drain.simulate()">시뮬레이션</button> <button class="v23-btn-sm" onclick="v23Drain.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Drain.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-changho" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1FA9F; &#xC804;&#xD1B5; &#xCC3D;&#xD638; &#xC720;&#xD615; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>10&#xC885; &#xC804;&#xD1B5; &#xCC3D;&#xD638;&#xC758; &#xAE30;&#xB2A5;&#xC131; &#xBE44;&#xAD50;</p>' +
+      '<h2>🪟 전통 창호 유형 분석기</h2>' +
+      '<p>10종 전통 창호의 기능성 비교</p>' +
       '<div class="v23-tabs" id="v23-ch-tabs"></div>' +
       '<canvas id="v23-ch-canvas" class="v23-canvas" width="620" height="400"></canvas>' +
       '<div id="v23-ch-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-ch-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Changho.compare()">&#xBE44;&#xAD50;</button> <button class="v23-btn-sm" onclick="v23Changho.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Changho.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Changho.compare()">비교</button> <button class="v23-btn-sm" onclick="v23Changho.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Changho.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-safety" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F6E1;&#xFE0F; &#xAD6C;&#xC870; &#xC548;&#xC804; &#xC9C4;&#xB2E8; &#xCE98;&#xB9B0;&#xB354;</h2>' +
-      '<p>12&#xC6D4; 6&#xD56D;&#xBAA9; &#xC548;&#xC804; &#xC810;&#xAC80; &#xC2A4;&#xCF00;&#xC904;</p>' +
+      '<h2>🛡️ 구조 안전 진단 캘린더</h2>' +
+      '<p>12월 6항목 안전 점검 스케줄</p>' +
       '<canvas id="v23-sf-canvas" class="v23-canvas" width="620" height="380"></canvas>' +
       '<div id="v23-sf-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-sf-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Safety.inspect()">&#xC810;&#xAC80;</button> <button class="v23-btn-sm" onclick="v23Safety.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Safety.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Safety.inspect()">점검</button> <button class="v23-btn-sm" onclick="v23Safety.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Safety.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-finish" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F3A8; &#xC804;&#xD1B5; &#xB9C8;&#xAC10;&#xC7AC; &#xBE44;&#xAD50; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>10&#xC885; &#xB9C8;&#xAC10;&#xC7AC;&#xC758; &#xC131;&#xB2A5; &#xBE44;&#xAD50;</p>' +
+      '<h2>🎨 전통 마감재 비교 분석기</h2>' +
+      '<p>10종 마감재의 성능 비교</p>' +
       '<div class="v23-tabs" id="v23-fn-tabs"></div>' +
       '<canvas id="v23-fn-canvas" class="v23-canvas" width="600" height="380"></canvas>' +
       '<div id="v23-fn-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-fn-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Finish.compare()">&#xBE44;&#xAD50;</button> <button class="v23-btn-sm" onclick="v23Finish.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Finish.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Finish.compare()">비교</button> <button class="v23-btn-sm" onclick="v23Finish.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Finish.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-remodel" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F4B0; &#xB9AC;&#xBAA8;&#xB378;&#xB9C1; ROI &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>8&#xD504;&#xB85C;&#xC81D;&#xD2B8; &#xD22C;&#xC790; &#xB300;&#xBE44; &#xAC00;&#xCE58; &#xBD84;&#xC11D;</p>' +
+      '<h2>💰 리모델링 ROI 시뮬레이터</h2>' +
+      '<p>8프로젝트 투자 대비 가치 분석</p>' +
       '<canvas id="v23-rm-canvas" class="v23-canvas" width="620" height="400"></canvas>' +
       '<div id="v23-rm-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-rm-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Remodel.simulate()">&#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;</button> <button class="v23-btn-sm" onclick="v23Remodel.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Remodel.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Remodel.simulate()">시뮬레이션</button> <button class="v23-btn-sm" onclick="v23Remodel.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Remodel.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-tempmap" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F321;&#xFE0F; &#xACF5;&#xAC04; &#xC628;&#xB3C4; &#xBD84;&#xD3EC;&#xB3C4;</h2>' +
-      '<p>8&#xC2E4; 4&#xACC4;&#xC808; &#xC628;&#xB3C4; &#xBD84;&#xD3EC; &#xBD84;&#xC11D;</p>' +
+      '<h2>🌡️ 공간 온도 분포도</h2>' +
+      '<p>8실 4계절 온도 분포 분석</p>' +
       '<div class="v23-tabs" id="v23-tm-tabs"></div>' +
       '<canvas id="v23-tm-canvas" class="v23-canvas" width="620" height="380"></canvas>' +
       '<div id="v23-tm-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-tm-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23TempMap.analyze()">&#xBD84;&#xC11D;</button> <button class="v23-btn-sm" onclick="v23TempMap.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23TempMap.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23TempMap.analyze()">분석</button> <button class="v23-btn-sm" onclick="v23TempMap.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23TempMap.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v23-stone" class="v23-panel"><div class="v23-box">' +
-      '<h2>&#x1F3DB;&#xFE0F; &#xC804;&#xD1B5; &#xC11D;&#xCD95;/&#xAE30;&#xB2E8; &#xC124;&#xACC4;</h2>' +
-      '<p>8&#xC885; &#xC11D;&#xCD95;&#xC758; &#xAC74;&#xCD95; &#xD2B9;&#xC131; &#xBE44;&#xAD50;</p>' +
+      '<h2>🏛️ 전통 석축/기단 설계</h2>' +
+      '<p>8종 석축의 건축 특성 비교</p>' +
       '<div class="v23-tabs" id="v23-st-tabs"></div>' +
       '<canvas id="v23-st-canvas" class="v23-canvas" width="600" height="380"></canvas>' +
       '<div id="v23-st-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v23-stat" id="v23-st-stat"></div>' +
-      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Stone.compare()">&#xBE44;&#xAD50;</button> <button class="v23-btn-sm" onclick="v23Stone.reset()">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v23-close" onclick="v23Stone.close()">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center"><button class="v23-btn-sm" onclick="v23Stone.compare()">비교</button> <button class="v23-btn-sm" onclick="v23Stone.reset()">초기화</button></div>' +
+      '<button class="v23-close" onclick="v23Stone.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();

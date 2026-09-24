@@ -77,79 +77,79 @@ window.__hbV13 = true;
   wrap.id = 'v13-panels';
   wrap.innerHTML =
     '<div id="v13-furniture" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F6CB;&#xFE0F; &#xAC00;&#xAD6C; &#xCEE4;&#xC2A4;&#xD130;&#xB9C8;&#xC774;&#xC9D5; &#xACF5;&#xBC29;</h2>' +
-      '<p>12&#xC885; &#xAC00;&#xAD6C;&#xC758; &#xC7AC;&#xC9C8;/&#xC0C9;&#xC0C1;&#xC744; &#xBCC0;&#xACBD;&#xD558;&#xACE0; &#xBBF8;&#xB9AC;&#xBCF4;&#xAE30;</p>' +
+      '<h2>🛋️ 가구 커스터마이징 공방</h2>' +
+      '<p>12종 가구의 재질/색상을 변경하고 미리보기</p>' +
       '<div class="v13-tabs" id="v13-furn-tabs"></div>' +
       '<div class="v13-tabs" id="v13-furn-mats"></div>' +
       '<div class="v13-tabs" id="v13-furn-colors"></div>' +
       '<canvas id="v13-furn-canvas" class="v13-canvas" width="480" height="360"></canvas>' +
       '<div id="v13-furn-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div>' +
-      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-furn-save">&#xC800;&#xC7A5;</button> <button class="v13-btn-outline" id="v13-furn-reset">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v13-close" onclick="v13Close(\'furniture\')">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-furn-save">저장</button> <button class="v13-btn-outline" id="v13-furn-reset">초기화</button></div>' +
+      '<button class="v13-close" onclick="v13Close(\'furniture\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-floorplan" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F4D0; &#xCE35;&#xBCC4; &#xD3C9;&#xBA74;&#xB3C4; &#xC5D0;&#xB514;&#xD130;</h2>' +
-      '<p>12x12 &#xADF8;&#xB9AC;&#xB4DC;&#xC5D0; &#xBCBD;/&#xBB38;/&#xCC3D;&#xBB38;/&#xACC4;&#xB2E8;&#xC744; &#xBC30;&#xCE58;&#xD558;&#xC138;&#xC694;</p>' +
+      '<h2>📐 층별 평면도 에디터</h2>' +
+      '<p>12x12 그리드에 벽/문/창문/계단을 배치하세요</p>' +
       '<div class="v13-tabs" id="v13-fp-tools"></div>' +
       '<div class="v13-tabs" id="v13-fp-floors"></div>' +
       '<canvas id="v13-fp-canvas" class="v13-canvas" width="504" height="504"></canvas>' +
       '<div id="v13-fp-stats" style="text-align:center;color:#c4956a;font-size:12px;margin:10px 0"></div>' +
-      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-fp-save">&#xC800;&#xC7A5;</button> <button class="v13-btn-outline" id="v13-fp-clear">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v13-close" onclick="v13Close(\'floorplan\')">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-fp-save">저장</button> <button class="v13-btn-outline" id="v13-fp-clear">초기화</button></div>' +
+      '<button class="v13-close" onclick="v13Close(\'floorplan\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-award" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F3C6; &#xAC74;&#xCD95; &#xC5B4;&#xC6CC;&#xB4DC; &#xC2DC;&#xC2A4;&#xD15C;</h2>' +
-      '<p>&#xBBF8;&#xD559;/&#xAE30;&#xB2A5;/&#xD601;&#xC2E0;/&#xC5ED;&#xC0AC;&#xC131;/&#xCE5C;&#xD658;&#xACBD; 5&#xCD95; Radar &#xD3C9;&#xAC00;</p>' +
+      '<h2>🏆 건축 어워드 시스템</h2>' +
+      '<p>미학/기능/혁신/역사성/친환경 5축 Radar 평가</p>' +
       '<div class="v13-tabs" id="v13-award-tabs"></div>' +
       '<canvas id="v13-award-canvas" class="v13-canvas" width="500" height="460"></canvas>' +
       '<div id="v13-award-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div>' +
       '<div id="v13-award-result" style="text-align:center;font-size:24px;font-weight:700;margin:10px 0"></div>' +
-      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-award-eval">&#xD3C9;&#xAC00;&#xD558;&#xAE30;</button> <button class="v13-btn-outline" id="v13-award-reset">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v13-close" onclick="v13Close(\'award\')">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-award-eval">평가하기</button> <button class="v13-btn-outline" id="v13-award-reset">초기화</button></div>' +
+      '<button class="v13-close" onclick="v13Close(\'award\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-material" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F9F1; &#xAC74;&#xCD95; &#xC18C;&#xC7AC; &#xBC31;&#xACFC;</h2>' +
-      '<p>12&#xC885; &#xC804;&#xD1B5;+&#xD604;&#xB300; &#xAC74;&#xCD95; &#xC18C;&#xC7AC; &#xC0C1;&#xC138; &#xCE74;&#xB4DC;</p>' +
+      '<h2>🧱 건축 소재 백과</h2>' +
+      '<p>12종 전통+현대 건축 소재 상세 카드</p>' +
       '<div class="v13-tabs" id="v13-mat-tabs"></div>' +
       '<div class="v13-grid" id="v13-mat-grid"></div>' +
-      '<button class="v13-close" onclick="v13Close(\'material\')">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v13-close" onclick="v13Close(\'material\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-lighting" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F4A1; &#xC870;&#xBA85; &#xB514;&#xC790;&#xC778; &#xC2A4;&#xD29C;&#xB514;&#xC624;</h2>' +
-      '<p>Canvas &#xBC29; &#xC870;&#xBA85; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;, 8&#xC885; &#xC870;&#xBA85;&#xAE30;&#xAD6C;</p>' +
+      '<h2>💡 조명 디자인 스튜디오</h2>' +
+      '<p>Canvas 방 조명 시뮬레이션, 8종 조명기구</p>' +
       '<div class="v13-tabs" id="v13-light-tabs"></div>' +
-      '<div class="v13-slider-row"><label>&#xBC1D;&#xAE30;</label><input type="range" id="v13-light-bright" min="10" max="100" value="70"><div class="val" id="v13-light-bright-val">70</div></div>' +
-      '<div class="v13-slider-row"><label>&#xC0C9;&#xC628;&#xB3C4; (K)</label><input type="range" id="v13-light-temp" min="2700" max="6500" value="4000" step="100"><div class="val" id="v13-light-temp-val">4000</div></div>' +
+      '<div class="v13-slider-row"><label>밝기</label><input type="range" id="v13-light-bright" min="10" max="100" value="70"><div class="val" id="v13-light-bright-val">70</div></div>' +
+      '<div class="v13-slider-row"><label>색온도 (K)</label><input type="range" id="v13-light-temp" min="2700" max="6500" value="4000" step="100"><div class="val" id="v13-light-temp-val">4000</div></div>' +
       '<canvas id="v13-light-canvas" class="v13-canvas" width="560" height="400"></canvas>' +
       '<div id="v13-light-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div>' +
-      '<button class="v13-close" onclick="v13Close(\'lighting\')">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v13-close" onclick="v13Close(\'lighting\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-colorsim" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F3A8; &#xBC29; &#xBC30;&#xC0C9; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>12&#xC0C9; &#xD314;&#xB808;&#xD2B8;&#xB85C; &#xBCBD;/&#xBC14;&#xB2E5;/&#xCC9C;&#xC7A5; &#xCEEC;&#xB7EC;&#xB9C1;</p>' +
+      '<h2>🎨 방 배색 시뮬레이터</h2>' +
+      '<p>12색 팔레트로 벽/바닥/천장 컬러링</p>' +
       '<div class="v13-tabs" id="v13-color-target"></div>' +
       '<div id="v13-color-palette" style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap;margin:12px 0"></div>' +
       '<canvas id="v13-color-canvas" class="v13-canvas" width="520" height="380"></canvas>' +
       '<div id="v13-color-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div>' +
-      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-color-save">&#xC800;&#xC7A5;</button> <button class="v13-btn-outline" id="v13-color-reset">&#xCD08;&#xAE30;&#xD654;</button></div>' +
-      '<button class="v13-close" onclick="v13Close(\'colorism\')">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-color-save">저장</button> <button class="v13-btn-outline" id="v13-color-reset">초기화</button></div>' +
+      '<button class="v13-close" onclick="v13Close(\'colorism\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-portfolio" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F4BC; &#xAC74;&#xCD95; &#xD3EC;&#xD2B8;&#xD3F4;&#xB9AC;&#xC624;</h2>' +
-      '<p>&#xC644;&#xC131; &#xAC74;&#xCD95;&#xBB3C; Canvas &#xCE74;&#xB4DC; + &#xC800;&#xC7A5;/&#xBE44;&#xAD50;/PNG &#xB2E4;&#xC6B4;&#xB85C;&#xB4DC;</p>' +
+      '<h2>💼 건축 포트폴리오</h2>' +
+      '<p>완성 건축물 Canvas 카드 + 저장/비교/PNG 다운로드</p>' +
       '<div class="v13-tabs" id="v13-port-tabs"></div>' +
       '<canvas id="v13-port-canvas" class="v13-canvas" width="560" height="400"></canvas>' +
       '<div id="v13-port-info" style="text-align:center;color:#c4956a;font-size:13px;margin:10px 0"></div>' +
-      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-port-add">&#xCD94;&#xAC00;</button> <button class="v13-btn-outline" id="v13-port-download">PNG &#xB2E4;&#xC6B4;&#xB85C;&#xB4DC;</button> <button class="v13-btn-outline" id="v13-port-compare">&#xBE44;&#xAD50;</button></div>' +
-      '<button class="v13-close" onclick="v13Close(\'portfolio\')">&#xB2EB;&#xAE30;</button>' +
+      '<div style="text-align:center;margin:10px 0"><button class="v13-btn-sm" id="v13-port-add">추가</button> <button class="v13-btn-outline" id="v13-port-download">PNG 다운로드</button> <button class="v13-btn-outline" id="v13-port-compare">비교</button></div>' +
+      '<button class="v13-close" onclick="v13Close(\'portfolio\')">닫기</button>' +
     '</div></div>' +
     '<div id="v13-repair" class="v13-panel"><div class="v13-box">' +
-      '<h2>&#x1F3EF; &#xD55C;&#xC625; &#xC218;&#xB9AC; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xD130;</h2>' +
-      '<p>8&#xC885; &#xC190;&#xC0C1;&#xC720;&#xD615; &#xC9C4;&#xB2E8; + &#xC218;&#xB9AC; Canvas &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;</p>' +
+      '<h2>🏯 한옥 수리 시뮬레이터</h2>' +
+      '<p>8종 손상유형 진단 + 수리 Canvas 시뮬레이션</p>' +
       '<div id="v13-repair-list"></div>' +
       '<canvas id="v13-repair-canvas" class="v13-canvas" width="560" height="400"></canvas>' +
       '<div id="v13-repair-grade" style="text-align:center;font-size:28px;font-weight:700;margin:10px 0"></div>' +
-      '<button class="v13-close" onclick="v13Close(\'repair\')">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v13-close" onclick="v13Close(\'repair\')">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();
@@ -340,7 +340,7 @@ var v13FloorPlan = (function(){
   }
   function renderFloors(){
     var el = document.getElementById('v13-fp-floors'); if(!el) return;
-    var labels = ['1&#xCE35;','2&#xCE35;','3&#xCE35;'];
+    var labels = ['1층','2층','3층'];
     el.innerHTML = labels.map(function(l,i){ return '<button class="v13-tab'+(i===currentFloor?' active':'')+'" data-idx="'+i+'">'+l+'</button>'; }).join('');
     el.querySelectorAll('.v13-tab').forEach(function(btn){ btn.onclick = function(){ currentFloor=parseInt(btn.dataset.idx); renderFloors(); drawCanvas(); }; });
   }

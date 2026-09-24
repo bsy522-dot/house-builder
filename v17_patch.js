@@ -60,71 +60,71 @@ window.__hbV17 = true;
   wrap.id = 'v17-panels';
   wrap.innerHTML =
     '<div id="v17-evolution" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F3DB;&#xFE0F; &#xAC74;&#xCD95; &#xC591;&#xC2DD; &#xC9C4;&#xD654;&#xB3C4;</h2>' +
-      '<p>&#xACE0;&#xC870;&#xC120;&#xBD80;&#xD130; &#xD604;&#xB300;&#xAE4C;&#xC9C0; 6&#xC2DC;&#xB300; &#xAC74;&#xCD95; &#xC591;&#xC2DD; &#xBCC0;&#xCC9C;&#xC0AC;</p>' +
+      '<h2>🏛️ 건축 양식 진화도</h2>' +
+      '<p>고조선부터 현대까지 6시대 건축 양식 변천사</p>' +
       '<div class="v17-tabs" id="v17-evo-tabs"></div>' +
       '<canvas id="v17-evo-canvas" class="v17-canvas" width="620" height="420"></canvas>' +
       '<div id="v17-evo-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v17-stat" id="v17-evo-stat"></div>' +
-      '<button class="v17-close" onclick="v17Evo.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Evo.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-daylight" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x2600;&#xFE0F; &#xC2E4;&#xB0B4; &#xCC44;&#xAD11; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>12&#xC2DC;&#xAC04;&#xB300;&#xBCC4; &#xD0DC;&#xC591; &#xACBD;&#xB85C;&#xC640; &#xC2E4;&#xB0B4; &#xC870;&#xB3C4; &#xBD84;&#xD3EC;</p>' +
+      '<h2>☀️ 실내 채광 분석기</h2>' +
+      '<p>12시간대별 태양 경로와 실내 조도 분포</p>' +
       '<div class="v17-tabs" id="v17-daylight-tabs"></div>' +
       '<canvas id="v17-daylight-canvas" class="v17-canvas" width="600" height="400"></canvas>' +
       '<div id="v17-daylight-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v17-close" onclick="v17Daylight.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Daylight.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-seismic" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F30D; &#xC9C0;&#xC9C4; &#xB0B4;&#xC9C4; &#xC124;&#xACC4; &#xD14C;&#xC2A4;&#xD2B8;</h2>' +
-      '<p>6&#xB4F1;&#xAE09; &#xC9C0;&#xC9C4; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;&#xC73C;&#xB85C; &#xAC74;&#xBB3C; &#xB0B4;&#xC9C4; &#xC131;&#xB2A5; &#xD3C9;&#xAC00;</p>' +
+      '<h2>🌍 지진 내진 설계 테스트</h2>' +
+      '<p>6등급 지진 시뮬레이션으로 건물 내진 성능 평가</p>' +
       '<div class="v17-tabs" id="v17-seismic-tabs"></div>' +
       '<canvas id="v17-seismic-canvas" class="v17-canvas" width="580" height="400"></canvas>' +
       '<div id="v17-seismic-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v17-stat" id="v17-seismic-stat"></div>' +
-      '<button class="v17-close" onclick="v17Seismic.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Seismic.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-carbon" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F331; &#xAC74;&#xCD95; &#xC18C;&#xC7AC; &#xD0C4;&#xC18C;&#xBC1C;&#xC790;&#xAD6D;</h2>' +
-      '<p>10&#xC885; &#xAC74;&#xCD95; &#xC790;&#xC7AC;&#xBCC4; CO2 &#xBC30;&#xCD9C;&#xB7C9; &#xBE44;&#xAD50; &#xBD84;&#xC11D;</p>' +
+      '<h2>🌱 건축 소재 탄소발자국</h2>' +
+      '<p>10종 건축 자재별 CO2 배출량 비교 분석</p>' +
       '<canvas id="v17-carbon-canvas" class="v17-canvas" width="600" height="380"></canvas>' +
       '<div id="v17-carbon-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v17-stat" id="v17-carbon-stat"></div>' +
-      '<button class="v17-close" onclick="v17Carbon.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Carbon.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-smarthome" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F4F1; &#xC2A4;&#xB9C8;&#xD2B8;&#xD648; &#xC790;&#xB3D9;&#xD654; &#xD50C;&#xB798;&#xB108;</h2>' +
-      '<p>12&#xAE30;&#xAE30; IoT &#xC790;&#xB3D9;&#xD654; &#xD50C;&#xB85C;&#xC6B0; &#xC124;&#xACC4;</p>' +
+      '<h2>📱 스마트홈 자동화 플래너</h2>' +
+      '<p>12기기 IoT 자동화 플로우 설계</p>' +
       '<div class="v17-tabs" id="v17-smart-tabs"></div>' +
       '<canvas id="v17-smart-canvas" class="v17-canvas" width="620" height="420"></canvas>' +
       '<div id="v17-smart-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v17-close" onclick="v17Smart.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Smart.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-acoustics" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F50A; &#xAC74;&#xCD95; &#xC74C;&#xD5A5; &#xBD84;&#xC11D;&#xAE30;</h2>' +
-      '<p>6&#xC2E4; &#xC18C;&#xC74C;/&#xBC29;&#xC74C;/&#xC794;&#xD5A5; &#xC74C;&#xD5A5; &#xC131;&#xB2A5; &#xBD84;&#xC11D;</p>' +
+      '<h2>🔊 건축 음향 분석기</h2>' +
+      '<p>6실 소음/방음/잔향 음향 성능 분석</p>' +
       '<div class="v17-tabs" id="v17-acoustics-tabs"></div>' +
       '<canvas id="v17-acoustics-canvas" class="v17-canvas" width="580" height="380"></canvas>' +
       '<div id="v17-acoustics-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
-      '<button class="v17-close" onclick="v17Acoustics.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Acoustics.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-durability" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F9F1; &#xAC74;&#xCD95; &#xC790;&#xC7AC; &#xB0B4;&#xAD6C;&#xC131; &#xD2B8;&#xB798;&#xCEE4;</h2>' +
-      '<p>8&#xC885; &#xC790;&#xC7AC; &#xC218;&#xBA85;/&#xB0B4;&#xAD6C;&#xB3C4;/&#xC720;&#xC9C0;&#xBE44; &#xBE44;&#xAD50;</p>' +
+      '<h2>🧱 건축 자재 내구성 트래커</h2>' +
+      '<p>8종 자재 수명/내구도/유지비 비교</p>' +
       '<canvas id="v17-durability-canvas" class="v17-canvas" width="600" height="380"></canvas>' +
       '<div id="v17-durability-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v17-stat" id="v17-durability-stat"></div>' +
-      '<button class="v17-close" onclick="v17Durability.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-close" onclick="v17Durability.close()">닫기</button>' +
     '</div></div>' +
     '<div id="v17-puzzle" class="v17-panel"><div class="v17-box">' +
-      '<h2>&#x1F9E9; &#xAC74;&#xCD95; &#xBBF8;&#xB2C8; &#xD37C;&#xC990; &#xCC4C;&#xB9B0;&#xC9C0;</h2>' +
-      '<p>4x4 &#xD0C0;&#xC77C; &#xD37C;&#xC990;&#xC73C;&#xB85C; &#xAC74;&#xCD95; &#xC9C0;&#xC2DD; &#xD14C;&#xC2A4;&#xD2B8;</p>' +
+      '<h2>🧩 건축 미니 퍼즐 챌린지</h2>' +
+      '<p>4x4 타일 퍼즐으로 건축 지식 테스트</p>' +
       '<canvas id="v17-puzzle-canvas" class="v17-canvas" width="320" height="380"></canvas>' +
       '<div id="v17-puzzle-info" style="color:#e8d5c0;font-size:12px;line-height:1.7;text-align:center;min-height:60px"></div>' +
       '<div class="v17-stat" id="v17-puzzle-stat"></div>' +
-      '<button class="v17-btn-sm" id="v17-puzzle-reset" style="display:block;margin:10px auto" onclick="v17Puzzle.reset()">&#xC0C8; &#xD37C;&#xC990;</button>' +
-      '<button class="v17-close" onclick="v17Puzzle.close()">&#xB2EB;&#xAE30;</button>' +
+      '<button class="v17-btn-sm" id="v17-puzzle-reset" style="display:block;margin:10px auto" onclick="v17Puzzle.reset()">새 퍼즐</button>' +
+      '<button class="v17-close" onclick="v17Puzzle.close()">닫기</button>' +
     '</div></div>';
   document.body.appendChild(wrap);
 })();
@@ -249,13 +249,13 @@ var v17Evo = (function(){
     // info
     var total = 0; keys.forEach(function(k){ total+=era.features[k]; });
     var avg = (total/n).toFixed(1);
-    document.getElementById('v17-evo-info').innerHTML = '<b>'+era.name+'</b> &#xC2DC;&#xB300; &#xC885;&#xD569;&#xC810;&#xC218;: '+total+'/60 (&#xD3C9;&#xADE0; '+avg+'/10)';
+    document.getElementById('v17-evo-info').innerHTML = '<b>'+era.name+'</b> 시대 종합점수: '+total+'/60 (평균 '+avg+'/10)';
     // stats
     var best = keys.reduce(function(a,b){ return era.features[a]>era.features[b]?a:b; });
     document.getElementById('v17-evo-stat').innerHTML =
-      '<div class="s"><div class="sv">'+total+'</div><div class="sl">&#xC885;&#xD569;&#xC810;</div></div>' +
-      '<div class="s"><div class="sv">'+avg+'</div><div class="sl">&#xD3C9;&#xADE0;</div></div>' +
-      '<div class="s"><div class="sv">'+best+'</div><div class="sl">&#xCD5C;&#xACE0;&#xD56D;&#xBAA9;</div></div>';
+      '<div class="s"><div class="sv">'+total+'</div><div class="sl">종합점</div></div>' +
+      '<div class="s"><div class="sv">'+avg+'</div><div class="sl">평균</div></div>' +
+      '<div class="s"><div class="sv">'+best+'</div><div class="sl">최고항목</div></div>';
   }
   return {open:open,close:close};
 })();
@@ -337,17 +337,17 @@ var v17Daylight = (function(){
     var comfortY=pad.t+gh-gh*300/800;
     ctx.beginPath(); ctx.moveTo(pad.l,comfortY); ctx.lineTo(W-pad.r,comfortY); ctx.stroke();
     ctx.fillStyle='#4a7c59'; ctx.font='10px sans-serif'; ctx.textAlign='left';
-    ctx.fillText('&#xC7E5;&#xC801; &#xAE30;&#xC900;(300lux)',pad.l+4,comfortY-4);
+    ctx.fillText('쟥적 기준(300lux)',pad.l+4,comfortY-4);
     ctx.setLineDash([]);
     // title
     ctx.fillStyle='#f5deb3'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(rooms[selRoom]+' - &#xC2DC;&#xAC04;&#xB300;&#xBCC4; &#xC870;&#xB3C4;(lux)',W/2,H-10);
+    ctx.fillText(rooms[selRoom]+' - 시간대별 조도(lux)',W/2,H-10);
     // info
     var avg=Math.round(data.reduce(function(a,b){return a+b;},0)/data.length);
     var peak=Math.max.apply(null,data);
     var comfort=data.filter(function(l){return l>=300;}).length;
     document.getElementById('v17-daylight-info').innerHTML =
-      rooms[selRoom]+': &#xD3C9;&#xADE0; '+avg+'lux, &#xCD5C;&#xB300; '+peak+'lux ('+hours[peakIdx]+'), &#xC7E5;&#xC801;&#xC2DC;&#xAC04; '+comfort+'h/12h';
+      rooms[selRoom]+': 평균 '+avg+'lux, 최대 '+peak+'lux ('+hours[peakIdx]+'), 쟥적시간 '+comfort+'h/12h';
   }
   return {open:open,close:close};
 })();
@@ -377,7 +377,7 @@ var v17Seismic = (function(){
     });
     var shakeBtn=document.createElement('button');
     shakeBtn.className='v17-btn-sm';
-    shakeBtn.textContent='&#xC9C0;&#xC9C4; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158;';
+    shakeBtn.textContent='지진 시뮬레이션';
     shakeBtn.style.marginLeft='10px';
     shakeBtn.onclick=function(){ simulateShake(); };
     box.appendChild(shakeBtn);
@@ -461,12 +461,12 @@ var v17Seismic = (function(){
     }
     // right side: metrics bars
     var metrics=[
-      {label:'&#xC720;&#xC5F0;&#xC131;',val:b.flex},
-      {label:'&#xAE30;&#xCD08;',val:b.found},
-      {label:'&#xB0B4;&#xB825;&#xBCBD;',val:b.wall},
-      {label:'&#xC81C;&#xC9C4;&#xC7A5;&#xCE58;',val:b.damper},
-      {label:'&#xAE30;&#xCD08;&#xD310;',val:b.base},
-      {label:'&#xC911;&#xB7C9;&#xADE0;&#xD615;',val:b.weight}
+      {label:'유연성',val:b.flex},
+      {label:'기초',val:b.found},
+      {label:'내력벽',val:b.wall},
+      {label:'제진장치',val:b.damper},
+      {label:'기초판',val:b.base},
+      {label:'중량균형',val:b.weight}
     ];
     var mx=310,mw=220;
     ctx.fillStyle='#f5deb3'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center';
@@ -485,14 +485,14 @@ var v17Seismic = (function(){
     });
     // grade
     ctx.fillStyle='#f5deb3'; ctx.font='bold 28px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xB4F1;&#xAE09;: '+b.grade,mx+mw/2,H-30);
+    ctx.fillText('등급: '+b.grade,mx+mw/2,H-30);
     // info
     var total=b.flex+b.found+b.wall+b.damper+b.base+b.weight;
-    document.getElementById('v17-seismic-info').innerHTML = b.name+' &#xB0B4;&#xC9C4;&#xC131;&#xB2A5; &#xC885;&#xD569;: '+total+'/60, &#xB4F1;&#xAE09; '+b.grade;
+    document.getElementById('v17-seismic-info').innerHTML = b.name+' 내진성능 종합: '+total+'/60, 등급 '+b.grade;
     document.getElementById('v17-seismic-stat').innerHTML =
-      '<div class="s"><div class="sv">'+b.grade+'</div><div class="sl">&#xB4F1;&#xAE09;</div></div>' +
-      '<div class="s"><div class="sv">'+total+'</div><div class="sl">&#xC885;&#xD569;&#xC810;</div></div>' +
-      '<div class="s"><div class="sv">'+b.flex+'</div><div class="sl">&#xC720;&#xC5F0;&#xC131;</div></div>';
+      '<div class="s"><div class="sv">'+b.grade+'</div><div class="sl">등급</div></div>' +
+      '<div class="s"><div class="sv">'+total+'</div><div class="sl">종합점</div></div>' +
+      '<div class="s"><div class="sv">'+b.flex+'</div><div class="sl">유연성</div></div>';
   }
   return {open:open,close:close};
 })();
@@ -500,16 +500,16 @@ var v17Seismic = (function(){
 // ── 6. 건축 소재 탄소발자국 (Building Material Carbon Footprint) ──
 var v17Carbon = (function(){
   var materials = [
-    {name:'&#xBAA9;&#xC7AC;(&#xC18C;&#xB098;&#xBB34;)',co2:40,recycle:85,energy:12,life:80,color:'#8B4513'},
-    {name:'&#xB300;&#xB098;&#xBB34;',co2:15,recycle:90,energy:8,life:30,color:'#228B22'},
-    {name:'&#xD669;&#xD1A0;/&#xD759;',co2:5,recycle:100,energy:3,life:100,color:'#DAA520'},
-    {name:'&#xC801;&#xBCBD;&#xB3CC;',co2:60,recycle:70,energy:25,life:150,color:'#CD853F'},
-    {name:'&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;',co2:410,recycle:40,energy:180,life:100,color:'#808080'},
-    {name:'&#xCCA0;&#xADFC;',co2:1800,recycle:95,energy:350,life:120,color:'#4682B4'},
-    {name:'&#xC54C;&#xB8E8;&#xBBF8;&#xB284;',co2:8000,recycle:98,energy:1500,life:80,color:'#C0C0C0'},
-    {name:'&#xC720;&#xB9AC;',co2:1200,recycle:80,energy:250,life:50,color:'#87CEEB'},
-    {name:'&#xAE30;&#xC640;',co2:200,recycle:60,energy:80,life:200,color:'#B22222'},
-    {name:'&#xC9DA;',co2:25,recycle:95,energy:10,life:40,color:'#9ACD32'}
+    {name:'목재(소나무)',co2:40,recycle:85,energy:12,life:80,color:'#8B4513'},
+    {name:'대나무',co2:15,recycle:90,energy:8,life:30,color:'#228B22'},
+    {name:'황토/흙',co2:5,recycle:100,energy:3,life:100,color:'#DAA520'},
+    {name:'적벽돌',co2:60,recycle:70,energy:25,life:150,color:'#CD853F'},
+    {name:'콘크리트',co2:410,recycle:40,energy:180,life:100,color:'#808080'},
+    {name:'철근',co2:1800,recycle:95,energy:350,life:120,color:'#4682B4'},
+    {name:'알루미늄',co2:8000,recycle:98,energy:1500,life:80,color:'#C0C0C0'},
+    {name:'유리',co2:1200,recycle:80,energy:250,life:50,color:'#87CEEB'},
+    {name:'기와',co2:200,recycle:60,energy:80,life:200,color:'#B22222'},
+    {name:'짚',co2:25,recycle:95,energy:10,life:40,color:'#9ACD32'}
   ];
   function open(){ document.getElementById('v17-carbon').classList.add('active'); v17SFX.play('menu_open'); draw(); localStorage.setItem('hb_carbon_v17','1'); }
   function close(){ document.getElementById('v17-carbon').classList.remove('active'); }
@@ -524,7 +524,7 @@ var v17Carbon = (function(){
     var maxCO2=Math.max.apply(null,materials.map(function(m){return m.co2;}));
     // title
     ctx.fillStyle='#f5deb3'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xAC74;&#xCD95; &#xC790;&#xC7AC;&#xBCC4; CO2 &#xBC30;&#xCD9C;&#xB7C9; (kg CO2/&#xD1A4;)',W/2,25);
+    ctx.fillText('건축 자재별 CO2 배출량 (kg CO2/톤)',W/2,25);
     // bars
     var bh=gh/materials.length*.7;
     var gap=gh/materials.length;
@@ -550,16 +550,16 @@ var v17Carbon = (function(){
     });
     // recycle header
     ctx.fillStyle='#c4956a'; ctx.font='9px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xC7AC;&#xD65C;&#xC6A9;',W-pad.r-40,pad.t-6);
+    ctx.fillText('재활용',W-pad.r-40,pad.t-6);
     // eco score
     v17SFX.play('carbon_calc');
     var greenest=materials.reduce(function(a,b){return a.co2<b.co2?a:b;});
     var worst=materials.reduce(function(a,b){return a.co2>b.co2?a:b;});
     document.getElementById('v17-carbon-info').innerHTML =
-      '&#xAC00;&#xC7A5; &#xCE5C;&#xD658;&#xACBD;: '+greenest.name+' ('+greenest.co2+'kg) | &#xAC00;&#xC7A5; &#xACE0;&#xD0C4;&#xC18C;: '+worst.name+' ('+worst.co2.toLocaleString()+'kg)';
+      '가장 친환경: '+greenest.name+' ('+greenest.co2+'kg) | 가장 고탄소: '+worst.name+' ('+worst.co2.toLocaleString()+'kg)';
     document.getElementById('v17-carbon-stat').innerHTML =
-      '<div class="s"><div class="sv">'+greenest.name+'</div><div class="sl">&#xCE5C;&#xD658;&#xACBD; 1&#xC704;</div></div>' +
-      '<div class="s"><div class="sv">'+materials.length+'</div><div class="sl">&#xBD84;&#xC11D; &#xC18C;&#xC7AC;</div></div>';
+      '<div class="s"><div class="sv">'+greenest.name+'</div><div class="sl">친환경 1위</div></div>' +
+      '<div class="s"><div class="sv">'+materials.length+'</div><div class="sl">분석 소재</div></div>';
   }
   return {open:open,close:close};
 })();
@@ -567,25 +567,25 @@ var v17Carbon = (function(){
 // ── 7. 스마트홈 자동화 플래너 (Smart Home Planner) ──
 var v17Smart = (function(){
   var zones = [
-    {name:'&#xAC70;&#xC2E4;',devices:[
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;&#xC870;&#xBA85;',icon:'&#x1F4A1;',auto:'&#xC77C;&#xBAB0;&#xC2DC; &#xC790;&#xB3D9; &#xC810;&#xB4F1;',energy:15},
-      {name:'&#xACF5;&#xAE30;&#xCCAD;&#xC815;&#xAE30;',icon:'&#x1F32C;&#xFE0F;',auto:'PM2.5 &#xAC10;&#xC9C0;&#xC2DC; &#xC790;&#xB3D9; &#xAC00;&#xB3D9;',energy:45},
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;TV',icon:'&#x1F4FA;',auto:'&#xC74C;&#xC131;&#xC778;&#xC2DD; ON/OFF',energy:120}
+    {name:'거실',devices:[
+      {name:'스마트조명',icon:'💡',auto:'일몰시 자동 점등',energy:15},
+      {name:'공기청정기',icon:'🌬️',auto:'PM2.5 감지시 자동 가동',energy:45},
+      {name:'스마트TV',icon:'📺',auto:'음성인식 ON/OFF',energy:120}
     ]},
-    {name:'&#xCE68;&#xC2E4;',devices:[
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;&#xCEE4;&#xD2BC;',icon:'&#x1F319;',auto:'&#xC218;&#xBA74;&#xBAA8;&#xB4DC; &#xC790;&#xB3D9; &#xCC28;&#xB2E8;',energy:5},
-      {name:'&#xC628;&#xC2B5;&#xB3C4;&#xC13C;&#xC11C;',icon:'&#x1F321;&#xFE0F;',auto:'&#xC7E5;&#xC801;&#xC628;&#xB3C4; &#xC790;&#xB3D9; &#xC720;&#xC9C0;',energy:2},
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;&#xC2A4;&#xD53C;&#xCEE4;',icon:'&#x1F50A;',auto:'&#xC54C;&#xB78C;/&#xBC31;&#xC0C9;&#xC18C;&#xC74C;',energy:10}
+    {name:'침실',devices:[
+      {name:'스마트커튼',icon:'🌙',auto:'수면모드 자동 차단',energy:5},
+      {name:'온습도센서',icon:'🌡️',auto:'쟥적온도 자동 유지',energy:2},
+      {name:'스마트스피커',icon:'🔊',auto:'알람/백색소음',energy:10}
     ]},
-    {name:'&#xC8FC;&#xBC29;',devices:[
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;&#xB0C9;&#xC7A5;&#xACE0;',icon:'&#x1F9CA;',auto:'&#xC2DD;&#xC7AC;&#xB8CC; &#xC720;&#xD1B5;&#xAE30;&#xD55C; &#xC54C;&#xB9BC;',energy:150},
-      {name:'&#xC778;&#xB355;&#xC158;&#xB808;&#xC778;&#xC9C0;',icon:'&#x1F373;',auto:'&#xC694;&#xB9AC; &#xD0C0;&#xC774;&#xBA38; &#xC5F0;&#xB3D9;',energy:2000},
-      {name:'&#xD658;&#xAE30;&#xD32C;',icon:'&#x1F4A8;',auto:'&#xC694;&#xB9AC;&#xC2DC; &#xC790;&#xB3D9; &#xAC00;&#xB3D9;',energy:30}
+    {name:'주방',devices:[
+      {name:'스마트냉장고',icon:'🧊',auto:'식재료 유통기한 알림',energy:150},
+      {name:'인덕션레인지',icon:'🍳',auto:'요리 타이머 연동',energy:2000},
+      {name:'환기팬',icon:'💨',auto:'요리시 자동 가동',energy:30}
     ]},
-    {name:'&#xD604;&#xAD00;',devices:[
-      {name:'&#xC2A4;&#xB9C8;&#xD2B8;&#xB3C4;&#xC5B4;&#xB77D;',icon:'&#x1F6AA;',auto:'&#xC5BC;&#xAD74;&#xC778;&#xC2DD;/&#xBE44;&#xBC00;&#xBC88;&#xD638;',energy:8},
-      {name:'CCTV',icon:'&#x1F4F7;',auto:'&#xC774;&#xC0C1;&#xAC10;&#xC9C0;&#xC2DC; &#xC2A4;&#xB9C8;&#xD2B8;&#xD3F0; &#xC54C;&#xB9BC;',energy:12},
-      {name:'&#xC2E0;&#xBC1C;&#xC7A5;',icon:'&#x1F45F;',auto:'&#xC790;&#xC678;&#xC120; &#xC0B4;&#xADE0;',energy:25}
+    {name:'현관',devices:[
+      {name:'스마트도어락',icon:'🚪',auto:'얼굴인식/비밀번호',energy:8},
+      {name:'CCTV',icon:'📷',auto:'이상감지시 스마트폰 알림',energy:12},
+      {name:'신발장',icon:'👟',auto:'자외선 살균',energy:25}
     ]}
   ];
   var selZone=0;
@@ -642,7 +642,7 @@ var v17Smart = (function(){
     });
     // automation rules at bottom
     ctx.fillStyle='#f5deb3'; ctx.font='bold 12px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xC790;&#xB3D9;&#xD654; &#xADDC;&#xCE59;',W/2,H-90);
+    ctx.fillText('자동화 규칙',W/2,H-90);
     zone.devices.forEach(function(d,i){
       ctx.fillStyle='#c4956a'; ctx.font='11px sans-serif';
       ctx.fillText(d.icon+' '+d.name+': '+d.auto,W/2,H-70+i*16);
@@ -650,7 +650,7 @@ var v17Smart = (function(){
     // total energy
     var totalE=zone.devices.reduce(function(a,b){return a+b.energy;},0);
     document.getElementById('v17-smart-info').innerHTML =
-      zone.name+' &#xCD1D; &#xC18C;&#xBE44;&#xC804;&#xB825;: '+totalE+'W | &#xAE30;&#xAE30; '+devCount+'&#xAC1C; &#xC5F0;&#xACB0;';
+      zone.name+' 총 소비전력: '+totalE+'W | 기기 '+devCount+'개 연결';
   }
   return {open:open,close:close};
 })();
@@ -658,12 +658,12 @@ var v17Smart = (function(){
 // ── 8. 건축 음향 분석기 (Building Acoustics Analyzer) ──
 var v17Acoustics = (function(){
   var rooms=[
-    {name:'&#xAC70;&#xC2E4;',noise:45,insul:38,reverb:0.8,bass:42,mid:48,high:52,grade:'B'},
-    {name:'&#xCE68;&#xC2E4;',noise:30,insul:45,reverb:0.5,bass:28,mid:32,high:35,grade:'A'},
-    {name:'&#xC8FC;&#xBC29;',noise:55,insul:30,reverb:0.6,bass:50,mid:58,high:62,grade:'C'},
-    {name:'&#xC11C;&#xC7AC;',noise:35,insul:42,reverb:0.7,bass:32,mid:38,high:40,grade:'A-'},
-    {name:'&#xC695;&#xC2E4;',noise:50,insul:35,reverb:1.2,bass:48,mid:52,high:55,grade:'B-'},
-    {name:'&#xB2E4;&#xC6A9;&#xB3C4;&#xC2E4;',noise:60,insul:25,reverb:1.0,bass:55,mid:62,high:65,grade:'C+'}
+    {name:'거실',noise:45,insul:38,reverb:0.8,bass:42,mid:48,high:52,grade:'B'},
+    {name:'침실',noise:30,insul:45,reverb:0.5,bass:28,mid:32,high:35,grade:'A'},
+    {name:'주방',noise:55,insul:30,reverb:0.6,bass:50,mid:58,high:62,grade:'C'},
+    {name:'서재',noise:35,insul:42,reverb:0.7,bass:32,mid:38,high:40,grade:'A-'},
+    {name:'욕실',noise:50,insul:35,reverb:1.2,bass:48,mid:52,high:55,grade:'B-'},
+    {name:'다용도실',noise:60,insul:25,reverb:1.0,bass:55,mid:62,high:65,grade:'C+'}
   ];
   var selRoom=0;
   function open(){ document.getElementById('v17-acoustics').classList.add('active'); v17SFX.play('menu_open'); renderTabs(); draw(); localStorage.setItem('hb_acoustics_v17','1'); }
@@ -689,15 +689,15 @@ var v17Acoustics = (function(){
     var gw=W-pad.l-pad.r,gh=H-pad.t-pad.b;
     // title
     ctx.fillStyle='#f5deb3'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(r.name+' &#xC74C;&#xD5A5; &#xBD84;&#xC11D; [&#xB4F1;&#xAE09;: '+r.grade+']',W/2,30);
+    ctx.fillText(r.name+' 음향 분석 [등급: '+r.grade+']',W/2,30);
     // frequency bands
     var bands=[
-      {label:'&#xC800;&#xC74C;(Bass)',val:r.bass,color:'#8B4513'},
-      {label:'&#xC911;&#xC74C;(Mid)',val:r.mid,color:'#DAA520'},
-      {label:'&#xACE0;&#xC74C;(High)',val:r.high,color:'#DC143C'},
-      {label:'&#xC18C;&#xC74C;&#xB808;&#xBCA8;',val:r.noise,color:'#4169E1'},
-      {label:'&#xBC29;&#xC74C;&#xC131;&#xB2A5;',val:r.insul,color:'#4a7c59'},
-      {label:'&#xC794;&#xD5A5;(s)',val:Math.round(r.reverb*50),color:'#9370DB'}
+      {label:'저음(Bass)',val:r.bass,color:'#8B4513'},
+      {label:'중음(Mid)',val:r.mid,color:'#DAA520'},
+      {label:'고음(High)',val:r.high,color:'#DC143C'},
+      {label:'소음레벨',val:r.noise,color:'#4169E1'},
+      {label:'방음성능',val:r.insul,color:'#4a7c59'},
+      {label:'잔향(s)',val:Math.round(r.reverb*50),color:'#9370DB'}
     ];
     var bw=gw/bands.length*.65;
     var gap=gw/bands.length;
@@ -726,11 +726,11 @@ var v17Acoustics = (function(){
     var threshY=pad.t+gh-gh*40/80;
     ctx.beginPath(); ctx.moveTo(pad.l,threshY); ctx.lineTo(W-pad.r,threshY); ctx.stroke();
     ctx.fillStyle='#4a7c59'; ctx.font='9px sans-serif'; ctx.textAlign='left';
-    ctx.fillText('&#xC7E5;&#xC801;&#xAE30;&#xC900; 40dB',pad.l,threshY-4);
+    ctx.fillText('쟥적기준 40dB',pad.l,threshY-4);
     ctx.setLineDash([]);
     // info
     document.getElementById('v17-acoustics-info').innerHTML =
-      r.name+': &#xC18C;&#xC74C; '+r.noise+'dB, &#xBC29;&#xC74C; STC'+r.insul+', &#xC794;&#xD5A5; '+r.reverb+'s | &#xB4F1;&#xAE09; '+r.grade;
+      r.name+': 소음 '+r.noise+'dB, 방음 STC'+r.insul+', 잔향 '+r.reverb+'s | 등급 '+r.grade;
   }
   return {open:open,close:close};
 })();
@@ -738,14 +738,14 @@ var v17Acoustics = (function(){
 // ── 9. 건축 자재 내구성 트래커 (Material Durability Tracker) ──
 var v17Durability = (function(){
   var mats=[
-    {name:'&#xD669;&#xD1A0;&#xBCBD;',life:100,maint:5,cost:2,weather:7,fire:8,pest:6,color:'#DAA520'},
-    {name:'&#xBAA9;&#xC7AC;(&#xC18C;&#xB098;&#xBB34;)',life:80,maint:15,cost:6,weather:5,fire:3,pest:4,color:'#8B4513'},
-    {name:'&#xAE30;&#xC640;',life:200,maint:8,cost:7,weather:9,fire:9,pest:9,color:'#B22222'},
-    {name:'&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;',life:100,maint:10,cost:5,weather:8,fire:9,pest:10,color:'#808080'},
-    {name:'&#xCCA0;&#xACE8;',life:120,maint:20,cost:9,weather:6,fire:7,pest:10,color:'#4682B4'},
-    {name:'&#xD55C;&#xC9C0;(&#xCC3D;&#xD638;&#xC9C0;)',life:10,maint:30,cost:1,weather:2,fire:1,pest:2,color:'#F5DEB3'},
-    {name:'&#xC9DA;',life:40,maint:25,cost:2,weather:3,fire:5,pest:3,color:'#9ACD32'},
-    {name:'&#xB3CC;/&#xD654;&#xAC15;&#xC554;',life:300,maint:3,cost:8,weather:10,fire:10,pest:10,color:'#696969'}
+    {name:'황토벽',life:100,maint:5,cost:2,weather:7,fire:8,pest:6,color:'#DAA520'},
+    {name:'목재(소나무)',life:80,maint:15,cost:6,weather:5,fire:3,pest:4,color:'#8B4513'},
+    {name:'기와',life:200,maint:8,cost:7,weather:9,fire:9,pest:9,color:'#B22222'},
+    {name:'콘크리트',life:100,maint:10,cost:5,weather:8,fire:9,pest:10,color:'#808080'},
+    {name:'철골',life:120,maint:20,cost:9,weather:6,fire:7,pest:10,color:'#4682B4'},
+    {name:'한지(창호지)',life:10,maint:30,cost:1,weather:2,fire:1,pest:2,color:'#F5DEB3'},
+    {name:'짚',life:40,maint:25,cost:2,weather:3,fire:5,pest:3,color:'#9ACD32'},
+    {name:'돌/화강암',life:300,maint:3,cost:8,weather:10,fire:10,pest:10,color:'#696969'}
   ];
   function open(){ document.getElementById('v17-durability').classList.add('active'); v17SFX.play('menu_open'); draw(); localStorage.setItem('hb_durability_v17','1'); }
   function close(){ document.getElementById('v17-durability').classList.remove('active'); }
@@ -760,7 +760,7 @@ var v17Durability = (function(){
     var maxLife=300;
     // title
     ctx.fillStyle='#f5deb3'; ctx.font='bold 13px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xAC74;&#xCD95; &#xC790;&#xC7AC; &#xC218;&#xBA85; &#xBE44;&#xAD50; (&#xB144;)',W/2,25);
+    ctx.fillText('건축 자재 수명 비교 (년)',W/2,25);
     // bars horizontal
     var bh=gh/mats.length*.7;
     var gap=gh/mats.length;
@@ -776,12 +776,12 @@ var v17Durability = (function(){
       ctx.fillText(m.name,pad.l-6,y+bh/2+4);
       // value
       ctx.fillStyle='#f5deb3'; ctx.font='bold 10px sans-serif'; ctx.textAlign='left';
-      ctx.fillText(m.life+'&#xB144;',pad.l+bw+6,y+bh/2+4);
+      ctx.fillText(m.life+'년',pad.l+bw+6,y+bh/2+4);
       // sub info circles at end
       var indicators=[
-        {val:m.weather,label:'&#xB0B4;&#xD6C4;'},
-        {val:m.fire,label:'&#xB0B4;&#xD654;'},
-        {val:m.pest,label:'&#xBC29;&#xCDA9;'}
+        {val:m.weather,label:'내후'},
+        {val:m.fire,label:'내화'},
+        {val:m.pest,label:'방충'}
       ];
       indicators.forEach(function(ind,j){
         var ix=W-pad.r-10-(2-j)*22;
@@ -796,16 +796,16 @@ var v17Durability = (function(){
     // legend
     ctx.fillStyle='#c4956a'; ctx.font='9px sans-serif'; ctx.textAlign='center';
     var lx=W-pad.r-10;
-    ctx.fillText('&#xBC29;&#xCDA9;',lx,pad.t-18);
-    ctx.fillText('&#xB0B4;&#xD654;',lx-22,pad.t-18);
-    ctx.fillText('&#xB0B4;&#xD6C4;',lx-44,pad.t-18);
+    ctx.fillText('방충',lx,pad.t-18);
+    ctx.fillText('내화',lx-22,pad.t-18);
+    ctx.fillText('내후',lx-44,pad.t-18);
     v17SFX.play('durability_check');
     var longest=mats.reduce(function(a,b){return a.life>b.life?a:b;});
     document.getElementById('v17-durability-info').innerHTML =
-      '&#xCD5C;&#xC7A5;&#xC218;&#xBA85;: '+longest.name+' ('+longest.life+'&#xB144;) | 8&#xC885; &#xC790;&#xC7AC; &#xB0B4;&#xAD6C;&#xC131; &#xBE44;&#xAD50;';
+      '최장수명: '+longest.name+' ('+longest.life+'년) | 8종 자재 내구성 비교';
     document.getElementById('v17-durability-stat').innerHTML =
-      '<div class="s"><div class="sv">'+longest.life+'&#xB144;</div><div class="sl">&#xCD5C;&#xC7A5;&#xC218;&#xBA85;</div></div>' +
-      '<div class="s"><div class="sv">'+mats.length+'</div><div class="sl">&#xBD84;&#xC11D; &#xC790;&#xC7AC;</div></div>';
+      '<div class="s"><div class="sv">'+longest.life+'년</div><div class="sl">최장수명</div></div>' +
+      '<div class="s"><div class="sv">'+mats.length+'</div><div class="sl">분석 자재</div></div>';
   }
   return {open:open,close:close};
 })();
@@ -813,9 +813,9 @@ var v17Durability = (function(){
 // ── 10. 건축 미니 퍼즐 챌린지 (Architecture Mini Puzzle) ──
 var v17Puzzle = (function(){
   var puzzles=[
-    {title:'&#xD55C;&#xC625; &#xAD6C;&#xC870;&#xBD80;&#xC704;',items:['&#xAE30;&#xB2E8;','&#xCD08;&#xC11D;','&#xAE30;&#xB465;','&#xBCF4;','&#xB3C4;&#xB9AC;','&#xC11C;&#xAE4C;&#xB798;','&#xCC98;&#xB9C8;','&#xC9C0;&#xBD95;','&#xCC3D;&#xD638;','&#xB300;&#xB4E4;&#xBCF4;','&#xCD94;&#xB140;','&#xB9C8;&#xB8E8;','&#xBB3C;&#xD655;&#xAE30;','&#xAC78;&#xC1E0;','&#xD480;&#xAC01;']},
-    {title:'&#xAC74;&#xCD95; &#xC591;&#xC2DD;',items:['&#xD55C;&#xC625;','&#xAE30;&#xC640;&#xC9D1;','&#xCD08;&#xAC00;&#xC9D1;','&#xC11C;&#xC6D0;','&#xC815;&#xC790;','RC&#xAD6C;&#xC870;','&#xCCA0;&#xACE8;','&#xBAA9;&#xC870;','&#xC870;&#xC801;&#xC870;','&#xCEE4;&#xD2BC;&#xC6D4;','&#xD2B8;&#xB7EC;&#xC2A4;','&#xC140;','&#xB3D4;','&#xBC15;&#xACF5;','&#xBAA8;&#xB4C8;&#xB7EC;']},
-    {title:'&#xAC74;&#xCD95; &#xC7AC;&#xB8CC;',items:['&#xD669;&#xD1A0;','&#xBAA9;&#xC7AC;','&#xAE30;&#xC640;','&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;','&#xCCA0;&#xADFC;','&#xC720;&#xB9AC;','&#xB3CC;','&#xD55C;&#xC9C0;','&#xC9DA;','&#xD68C;&#xBC18;&#xC8FD;','&#xC544;&#xC5F0;','&#xD611;&#xC7AC;','&#xBC95;&#xB3CC;','&#xC11D;&#xD68C;','&#xBA87;']}
+    {title:'한옥 구조부위',items:['기단','초석','기둥','보','도리','서까래','처마','지붕','창호','대들보','추녀','마루','물확기','걸쇠','풀각']},
+    {title:'건축 양식',items:['한옥','기와집','초가집','서원','정자','RC구조','철골','목조','조적조','커튼월','트러스','셀','돔','박공','모듈러']},
+    {title:'건축 재료',items:['황토','목재','기와','콘크리트','철근','유리','돌','한지','짚','회반죽','아연','협재','법돌','석회','몇']}
   ];
   var curPuzzle=0;
   var tiles=[];
@@ -866,7 +866,7 @@ var v17Puzzle = (function(){
     var p=puzzles[curPuzzle];
     // title
     ctx.fillStyle='#f5deb3'; ctx.font='bold 14px sans-serif'; ctx.textAlign='center';
-    ctx.fillText(p.title+' &#xD37C;&#xC990;',W/2,24);
+    ctx.fillText(p.title+' 퍼즐',W/2,24);
     // grid
     var cellSize=65;
     var gridW=cellSize*4;
@@ -890,18 +890,18 @@ var v17Puzzle = (function(){
     }
     // stats
     ctx.fillStyle='#c4956a'; ctx.font='12px sans-serif'; ctx.textAlign='center';
-    ctx.fillText('&#xC774;&#xB3D9;: '+moves+'&#xD68C;'+(bestMoves?' | &#xBCA0;&#xC2A4;&#xD2B8;: '+bestMoves+'&#xD68C;':''),W/2,oy+cellSize*4+24);
+    ctx.fillText('이동: '+moves+'회'+(bestMoves?' | 베스트: '+bestMoves+'회':''),W/2,oy+cellSize*4+24);
     if(solved){
       ctx.fillStyle='#4a7c59'; ctx.font='bold 16px sans-serif';
-      ctx.fillText('&#xD37C;&#xC990; &#xC644;&#xC131;!',W/2,oy+cellSize*4+48);
+      ctx.fillText('퍼즐 완성!',W/2,oy+cellSize*4+48);
     }
     // info
     document.getElementById('v17-puzzle-info').innerHTML = solved?
-      '&#xCD95;&#xD558;! '+moves+'&#xD68C; &#xB9CC;&#xC5D0; &#xC644;&#xC131;&#xD588;&#xC2B5;&#xB2C8;&#xB2E4;!' :
-      '&#xD0C0;&#xC77C;&#xC744; &#xD074;&#xB9AD;&#xD574; &#xC62C;&#xBC14;&#xB978; &#xC21C;&#xC11C;&#xB85C; &#xBC30;&#xCE58;&#xD558;&#xC138;&#xC694;';
+      '축하! '+moves+'회 만에 완성했습니다!' :
+      '타일을 클릭해 올바른 순서로 배치하세요';
     document.getElementById('v17-puzzle-stat').innerHTML =
-      '<div class="s"><div class="sv">'+moves+'</div><div class="sl">&#xC774;&#xB3D9;&#xD69F;&#xC218;</div></div>' +
-      '<div class="s"><div class="sv">'+(bestMoves||'-')+'</div><div class="sl">&#xBCA0;&#xC2A4;&#xD2B8;</div></div>';
+      '<div class="s"><div class="sv">'+moves+'</div><div class="sl">이동횟수</div></div>' +
+      '<div class="s"><div class="sv">'+(bestMoves||'-')+'</div><div class="sl">베스트</div></div>';
     // click handler
     c.onclick=function(ev){
       if(solved) return;
@@ -937,21 +937,21 @@ var v17Puzzle = (function(){
 // ── 11. Quiz v17 (+15 questions, 180->195) ──
 var v17Quiz = (function(){
   var qs = [
-    {q:'&#xB0B4;&#xC9C4;&#xC124;&#xACC4;&#xC5D0;&#xC11C; &#xAC74;&#xBB3C;&#xC758; &#xC9C4;&#xB3D9;&#xC744; &#xD761;&#xC218;&#xD558;&#xB294; &#xC7A5;&#xCE58;&#xB294;?',a:['&#xC81C;&#xC9C4;&#xC7A5;&#xCE58;','&#xBC29;&#xC74C;&#xBC31;','&#xB2E8;&#xC5F4;&#xC7AC;','&#xBC29;&#xC218;&#xB9C9;'],c:0},
-    {q:'&#xD669;&#xD1A0;&#xAC74;&#xCD95;&#xC758; &#xCD5C;&#xB300; &#xC7A5;&#xC810;&#xC740;?',a:['&#xCE5C;&#xD658;&#xACBD;&#xC131;','&#xAC15;&#xB3C4;','&#xBC29;&#xC218;&#xC131;','&#xC2DC;&#xACF5;&#xC18D;&#xB3C4;'],c:0},
-    {q:'&#xAC74;&#xBB3C;&#xC758; &#xC2E4;&#xB0B4; &#xC7E5;&#xC801; &#xC870;&#xB3C4;(lux) &#xAE30;&#xC900;&#xC740;?',a:['300 lux','100 lux','500 lux','50 lux'],c:0},
-    {q:'&#xD55C;&#xC625;&#xC758; &#x2018;&#xCC98;&#xB9C8;&#x2019;&#xB294; &#xC5B4;&#xB5A4; &#xBD80;&#xBD84;?',a:['&#xC9C0;&#xBD95; &#xB05D; &#xB0B4;&#xBC00;&#xC5B4;&#xC9C4; &#xBD80;&#xBD84;','&#xAE30;&#xB465; &#xC0C1;&#xBD80;','&#xBCBD;&#xCCB4; &#xD558;&#xBD80;','&#xB9C8;&#xB8E8; &#xBC14;&#xB2E5;'],c:0},
-    {q:'STC(Sound Transmission Class)&#xB294; &#xBB34;&#xC5C7;&#xC744; &#xCE21;&#xC815;?',a:['&#xBC29;&#xC74C; &#xC131;&#xB2A5;','&#xB0B4;&#xC9C4; &#xC131;&#xB2A5;','&#xB2E8;&#xC5F4; &#xC131;&#xB2A5;','&#xBC29;&#xC218; &#xC131;&#xB2A5;'],c:0},
-    {q:'&#xD0C4;&#xC18C;&#xBC1C;&#xC790;&#xAD6D;&#xC774; &#xAC00;&#xC7A5; &#xB192;&#xC740; &#xAC74;&#xCD95;&#xC790;&#xC7AC;&#xB294;?',a:['&#xC54C;&#xB8E8;&#xBBF8;&#xB284;','&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;','&#xBAA9;&#xC7AC;','&#xD669;&#xD1A0;'],c:0},
-    {q:'PMV(Predicted Mean Vote)&#xB294; &#xBB34;&#xC5C7;&#xC744; &#xD3C9;&#xAC00;?',a:['&#xC5F4;&#xC7E5;&#xC801;&#xB3C4;','&#xC74C;&#xD5A5; &#xC131;&#xB2A5;','&#xCC44;&#xAD11; &#xC131;&#xB2A5;','&#xAD6C;&#xC870; &#xAC15;&#xB3C4;'],c:0},
-    {q:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648;&#xC5D0;&#xC11C; IoT &#xAE30;&#xAE30; &#xD1B5;&#xC2E0;&#xC5D0; &#xC8FC;&#xB85C; &#xC0AC;&#xC6A9;&#xB418;&#xB294; &#xD504;&#xB85C;&#xD1A0;&#xCF5C;&#xC740;?',a:['Zigbee/Z-Wave','HTTP','FTP','SMTP'],c:0},
-    {q:'&#xAC74;&#xBB3C; &#xC218;&#xBA85;&#xC774; &#xAC00;&#xC7A5; &#xAE34; &#xC790;&#xC7AC;&#xB294;?',a:['&#xD654;&#xAC15;&#xC554;/&#xB3CC;','&#xCCA0;&#xACE8;','&#xCF58;&#xD06C;&#xB9AC;&#xD2B8;','&#xBAA9;&#xC7AC;'],c:0},
-    {q:'&#xD55C;&#xC625;&#xC758; &#x2018;&#xB300;&#xB4E4;&#xBCF4;&#x2019;&#xB294; &#xC5B4;&#xB5A4; &#xC5ED;&#xD560;?',a:['&#xC9C0;&#xBD95; &#xD558;&#xC911;&#xC744; &#xC9C0;&#xD0F1;&#xD558;&#xB294; &#xD070; &#xBCF4;','&#xBCBD;&#xCCB4; &#xC7A5;&#xC2DD;','&#xBC14;&#xB2E5;&#xC7AC;','&#xCC3D;&#xD2C0;'],c:0},
-    {q:'LEED &#xC778;&#xC99D;&#xC5D0;&#xC11C; &#xCD5C;&#xACE0; &#xB4F1;&#xAE09;&#xC740;?',a:['Platinum','Gold','Silver','Diamond'],c:0},
-    {q:'&#xAC74;&#xCD95;&#xBB3C;&#xC758; &#xC794;&#xD5A5;&#xC2DC;&#xAC04;(RT60)&#xC774; &#xAE38;&#xBA74;?',a:['&#xC74C;&#xC131;&#xC774; &#xC6C5;&#xC6C5;&#xAC70;&#xB9BC;','&#xC74C;&#xC131;&#xC774; &#xB9D1;&#xC544;&#xC9D0;','&#xBC29;&#xC74C; &#xC131;&#xB2A5; &#xC88B;&#xC74C;','&#xC5D0;&#xB108;&#xC9C0; &#xC808;&#xC57D;'],c:0},
-    {q:'&#xD48D;&#xC218;&#xC9C0;&#xB9AC;&#xC5D0;&#xC11C; &#xAC00;&#xC7A5; &#xC88B;&#xC740; &#xBC29;&#xD5A5;&#xC740;?',a:['&#xB0A8;&#xD5A5;','&#xBD81;&#xD5A5;','&#xC11C;&#xD5A5;','&#xB3D9;&#xD5A5;'],c:0},
-    {q:'4x4 &#xC2AC;&#xB77C;&#xC774;&#xB4DC; &#xD37C;&#xC990;&#xC758; &#xCD5C;&#xC18C; &#xC774;&#xB3D9; &#xD69F;&#xC218;&#xB294;?',a:['80&#xD68C; &#xC804;&#xD6C4;','15&#xD68C;','200&#xD68C;','500&#xD68C;'],c:0},
-    {q:'&#xAC74;&#xCD95;&#xC5D0;&#xC11C; &#x2018;&#xBAA8;&#xB4C8;&#xB7EC; &#xACF5;&#xBC95;&#x2019;&#xC758; &#xC7A5;&#xC810;&#xC740;?',a:['&#xACF5;&#xAE30; &#xB2E8;&#xCD95;','&#xBE44;&#xC6A9; &#xC99D;&#xAC00;','&#xC720;&#xC5F0;&#xC131; &#xC99D;&#xAC00;','&#xBBF8;&#xAD00; &#xD5A5;&#xC0C1;'],c:0}
+    {q:'내진설계에서 건물의 진동을 흡수하는 장치는?',a:['제진장치','방음백','단열재','방수막'],c:0},
+    {q:'황토건축의 최대 장점은?',a:['친환경성','강도','방수성','시공속도'],c:0},
+    {q:'건물의 실내 쟥적 조도(lux) 기준은?',a:['300 lux','100 lux','500 lux','50 lux'],c:0},
+    {q:'한옥의 ‘처마’는 어떤 부분?',a:['지붕 끝 내밀어진 부분','기둥 상부','벽체 하부','마루 바닥'],c:0},
+    {q:'STC(Sound Transmission Class)는 무엇을 측정?',a:['방음 성능','내진 성능','단열 성능','방수 성능'],c:0},
+    {q:'탄소발자국이 가장 높은 건축자재는?',a:['알루미늄','콘크리트','목재','황토'],c:0},
+    {q:'PMV(Predicted Mean Vote)는 무엇을 평가?',a:['열쟥적도','음향 성능','채광 성능','구조 강도'],c:0},
+    {q:'스마트홈에서 IoT 기기 통신에 주로 사용되는 프로토콜은?',a:['Zigbee/Z-Wave','HTTP','FTP','SMTP'],c:0},
+    {q:'건물 수명이 가장 긴 자재는?',a:['화강암/돌','철골','콘크리트','목재'],c:0},
+    {q:'한옥의 ‘대들보’는 어떤 역할?',a:['지붕 하중을 지탱하는 큰 보','벽체 장식','바닥재','창틀'],c:0},
+    {q:'LEED 인증에서 최고 등급은?',a:['Platinum','Gold','Silver','Diamond'],c:0},
+    {q:'건축물의 잔향시간(RT60)이 길면?',a:['음성이 웅웅거림','음성이 맑아짐','방음 성능 좋음','에너지 절약'],c:0},
+    {q:'풍수지리에서 가장 좋은 방향은?',a:['남향','북향','서향','동향'],c:0},
+    {q:'4x4 슬라이드 퍼즐의 최소 이동 횟수는?',a:['80회 전후','15회','200회','500회'],c:0},
+    {q:'건축에서 ‘모듈러 공법’의 장점은?',a:['공기 단축','비용 증가','유연성 증가','미관 향상'],c:0}
   ];
   function inject(){
     if(typeof window.quizQuestions!=='object'||!Array.isArray(window.quizQuestions)) return;
@@ -963,18 +963,18 @@ var v17Quiz = (function(){
 // ── 12. Achievements v17 (+12, 170->182) ──
 var v17Achieve = (function(){
   var defs = [
-    {id:'v17_evo_explorer',name:'&#xC591;&#xC2DD; &#xD0D0;&#xD5D8;&#xAC00;',desc:'&#xAC74;&#xCD95; &#xC591;&#xC2DD; &#xC9C4;&#xD654;&#xB3C4; &#xC5F4;&#xAE30;'},
-    {id:'v17_daylight_analyst',name:'&#xCC44;&#xAD11; &#xBD84;&#xC11D;&#xAC00;',desc:'&#xCC44;&#xAD11; &#xBD84;&#xC11D;&#xAE30; &#xC0AC;&#xC6A9;'},
-    {id:'v17_seismic_tester',name:'&#xB0B4;&#xC9C4; &#xD14C;&#xC2A4;&#xD130;',desc:'&#xC9C0;&#xC9C4; &#xC2DC;&#xBBAC;&#xB808;&#xC774;&#xC158; &#xC2E4;&#xD589;'},
-    {id:'v17_carbon_checker',name:'&#xD0C4;&#xC18C; &#xC810;&#xAC80;&#xC6D0;',desc:'&#xD0C4;&#xC18C;&#xBC1C;&#xC790;&#xAD6D; &#xBD84;&#xC11D; &#xC644;&#xB8CC;'},
-    {id:'v17_smart_planner',name:'IoT &#xD50C;&#xB798;&#xB108;',desc:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648; &#xC790;&#xB3D9;&#xD654; &#xC124;&#xACC4;'},
-    {id:'v17_acoustics_expert',name:'&#xC74C;&#xD5A5; &#xC804;&#xBB38;&#xAC00;',desc:'&#xC74C;&#xD5A5; &#xBD84;&#xC11D;&#xAE30; &#xC0AC;&#xC6A9;'},
-    {id:'v17_durability_pro',name:'&#xB0B4;&#xAD6C;&#xC131; &#xD504;&#xB85C;',desc:'&#xC790;&#xC7AC; &#xB0B4;&#xAD6C;&#xC131; &#xD2B8;&#xB798;&#xCEE4; &#xC0AC;&#xC6A9;'},
-    {id:'v17_puzzle_master',name:'&#xD37C;&#xC990; &#xB9C8;&#xC2A4;&#xD130;',desc:'&#xBBF8;&#xB2C8; &#xD37C;&#xC990; &#xC644;&#xC131;'},
-    {id:'v17_all_features',name:'v17 &#xCEF4;&#xD50C;&#xB9AC;&#xD2B8;',desc:'v17 &#xBAA8;&#xB4E0; &#xAE30;&#xB2A5; &#xC0AC;&#xC6A9;'},
-    {id:'v17_quiz_ace',name:'v17 &#xD035;&#xC988; &#xC5D0;&#xC774;&#xC2A4;',desc:'v17 &#xD035;&#xC988; &#xC804;&#xBB38; &#xC815;&#xB2F5;'},
-    {id:'v17_eco_builder',name:'&#xCE5C;&#xD658;&#xACBD; &#xAC74;&#xCD95;&#xAC00;',desc:'&#xD0C4;&#xC18C;&#xBC1C;&#xC790;&#xAD6D;+&#xCC44;&#xAD11; &#xBD84;&#xC11D; &#xC644;&#xB8CC;'},
-    {id:'v17_safety_expert',name:'&#xC548;&#xC804; &#xC804;&#xBB38;&#xAC00;',desc:'&#xB0B4;&#xC9C4;+&#xC74C;&#xD5A5;+&#xB0B4;&#xAD6C;&#xC131; &#xBD84;&#xC11D; &#xC644;&#xB8CC;'}
+    {id:'v17_evo_explorer',name:'양식 탐험가',desc:'건축 양식 진화도 열기'},
+    {id:'v17_daylight_analyst',name:'채광 분석가',desc:'채광 분석기 사용'},
+    {id:'v17_seismic_tester',name:'내진 테스터',desc:'지진 시뮬레이션 실행'},
+    {id:'v17_carbon_checker',name:'탄소 점검원',desc:'탄소발자국 분석 완료'},
+    {id:'v17_smart_planner',name:'IoT 플래너',desc:'스마트홈 자동화 설계'},
+    {id:'v17_acoustics_expert',name:'음향 전문가',desc:'음향 분석기 사용'},
+    {id:'v17_durability_pro',name:'내구성 프로',desc:'자재 내구성 트래커 사용'},
+    {id:'v17_puzzle_master',name:'퍼즐 마스터',desc:'미니 퍼즐 완성'},
+    {id:'v17_all_features',name:'v17 컴플리트',desc:'v17 모든 기능 사용'},
+    {id:'v17_quiz_ace',name:'v17 퀵즈 에이스',desc:'v17 퀵즈 전문 정답'},
+    {id:'v17_eco_builder',name:'친환경 건축가',desc:'탄소발자국+채광 분석 완료'},
+    {id:'v17_safety_expert',name:'안전 전문가',desc:'내진+음향+내구성 분석 완료'}
   ];
   function load(){
     try{ return JSON.parse(localStorage.getItem('hb_achievements_v17')||'[]'); }catch(e){ return []; }
@@ -1023,14 +1023,14 @@ var v17Achieve = (function(){
     menu.className='v17-menu';
     menu.id='v17-side-menu';
     var actions=[
-      {icon:'\u{1F3DB}',label:'&#xC591;&#xC2DD;&#xC9C4;&#xD654;',fn:function(){v17Evo.open();}},
-      {icon:'☀',label:'&#xCC44;&#xAD11;&#xBD84;&#xC11D;',fn:function(){v17Daylight.open();}},
-      {icon:'\u{1F30D}',label:'&#xB0B4;&#xC9C4;&#xC124;&#xACC4;',fn:function(){v17Seismic.open();}},
-      {icon:'\u{1F331}',label:'&#xD0C4;&#xC18C;&#xBC1C;&#xC790;&#xAD6D;',fn:function(){v17Carbon.open();}},
-      {icon:'\u{1F4F1}',label:'&#xC2A4;&#xB9C8;&#xD2B8;&#xD648;',fn:function(){v17Smart.open();}},
-      {icon:'\u{1F50A}',label:'&#xC74C;&#xD5A5;&#xBD84;&#xC11D;',fn:function(){v17Acoustics.open();}},
-      {icon:'\u{1F9F1}',label:'&#xB0B4;&#xAD6C;&#xC131;',fn:function(){v17Durability.open();}},
-      {icon:'\u{1F9E9}',label:'&#xD37C;&#xC990;',fn:function(){v17Puzzle.open();}}
+      {icon:'\u{1F3DB}',label:'양식진화',fn:function(){v17Evo.open();}},
+      {icon:'☀',label:'채광분석',fn:function(){v17Daylight.open();}},
+      {icon:'\u{1F30D}',label:'내진설계',fn:function(){v17Seismic.open();}},
+      {icon:'\u{1F331}',label:'탄소발자국',fn:function(){v17Carbon.open();}},
+      {icon:'\u{1F4F1}',label:'스마트홈',fn:function(){v17Smart.open();}},
+      {icon:'\u{1F50A}',label:'음향분석',fn:function(){v17Acoustics.open();}},
+      {icon:'\u{1F9F1}',label:'내구성',fn:function(){v17Durability.open();}},
+      {icon:'\u{1F9E9}',label:'퍼즐',fn:function(){v17Puzzle.open();}}
     ];
     actions.forEach(function(a){
       var btn=document.createElement('button');
