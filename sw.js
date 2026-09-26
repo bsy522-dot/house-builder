@@ -1,211 +1,32 @@
-// Service Worker for House Builder PWA v15
-var CACHE_NAME = 'house-builder-v29-hb1-m0924';
-var URLS = [
-  './',
-  './index.html',
-  './manifest.json',
-  './hub-back.js',
-  './v5_patch.js',
-  './v6_patch.js',
-  './v7_patch.js',
-  './v8_patch.js',
-  './v9_patch.js',
-  './v10_patch.js',
-  './v11_patch.js',
-  './v12_patch.js',
-  './v13_patch.js',
-  './v14_patch.js',
-  './v15_patch.js',
-  './v16_patch.js',
-  './v17_patch.js',
-  './v18_patch.js',
-  './v19_patch.js',
-  './v20_patch.js',
-  './v21_patch.js',
-  './v22_patch.js',
-  './v23_patch.js',
-  './v24_patch.js',
-  './v25_patch.js',
-  './v26_patch.js',
-  './v27_patch.js',
-  './v28_patch.js',
-  './v29_patch.js',
-  'https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js'
-];
-
-self.addEventListener('install', function(e) {
-  e.waitUntil(
-    caches.open(CACHE_NAME).then(function(cache) {
-      return cache.addAll(URLS);
-    }).catch(function() {})
-  );
+// 한국 건축 체험은 배움퀘스트(levelplay) 집짓기로 이사했습니다.
+// 예전 기기에 남은 서비스워커를 스스로 지우는 파일입니다.
+// 방식: NekR/self-destroying-sw (install -> skipWaiting, activate -> unregister -> 열린 창 이동)
+// 이 앱 이름의 캐시(house-builder-v*)만 지웁니다. 같은 주소를 쓰는 다른 앱(배움퀘스트 등)의 캐시는 건드리지 않습니다.
+// 이 앱 범위(/house-builder/)의 열린 창은 새 주소로 보냅니다.
+// - claim: 브라우저 임시저장(10분)에 남은 옛 화면이 이 파일을 새로 등록한 경우에도 그 창을 넘겨받아 보내기 위함
+// - 같은 주소로 새로고침하지 않음: 옛 index.html 이 임시저장에서 다시 떠 등록->해제->새로고침이 되풀이되기 때문
+var OWN = /^house-builder-v\d+(-[a-z0-9]+)*$/;
+var TO = 'https://bsy522-dot.github.io/levelplay/games/house-builder-v4.html';
+self.addEventListener('install', function () {
   self.skipWaiting();
 });
-
-self.addEventListener('activate', function(e) {
+self.addEventListener('activate', function (e) {
+  var scope = self.registration.scope;
   e.waitUntil(
-    caches.keys().then(function(keys) {
-      return Promise.all(
-        keys.filter(function(k) { return k !== CACHE_NAME; })
-            .map(function(k) { return caches.delete(k); })
-      );
-    })
-  );
-  self.clients.claim();
-});
-
-self.addEventListener('fetch', function(e) {
-  var req = e.request;
-  if (req.method !== 'GET') return;
-  var url = new URL(req.url);
-
-  // HTML pages: Network-first + inject v5~v15_patch.js
-  if (url.pathname.endsWith('.html') || url.pathname === '/' || url.pathname.endsWith('/')) {
-    e.respondWith(
-      Promise.all([
-        fetch(req).then(function(resp) {
-          if (resp && resp.status === 200) {
-            var copy = resp.clone();
-            caches.open(CACHE_NAME).then(function(c) { c.put(req, copy); }).catch(function() {});
-          }
-          return resp;
-        }).catch(function() { return caches.match(req); }),
-        caches.match('./v5_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v5_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v6_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v6_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v7_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v7_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v8_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v8_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v9_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v9_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v10_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v10_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v11_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v11_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v12_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v12_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v13_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v13_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v14_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v14_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v15_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v15_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v16_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v16_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v17_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v17_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v18_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v18_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v19_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v19_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v20_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v20_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v21_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v21_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v22_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v22_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v23_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v23_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v24_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v24_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v25_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v25_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v26_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v26_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v27_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v27_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v28_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v28_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; }),
-        caches.match('./v29_patch.js')
-          .then(function(r) { return r ? r.text() : fetch('./v29_patch.js').then(function(r2) { return r2.text(); }).catch(function() { return ''; }); })
-          .catch(function() { return ''; })
-      ]).then(function(results) {
-        var resp = results[0];
-        var patch5 = results[1];
-        var patch6 = results[2];
-        var patch7 = results[3];
-        var patch8 = results[4];
-        var patch9 = results[5];
-        var patch10 = results[6];
-        var patch11 = results[7];
-        var patch12 = results[8];
-        var patch13 = results[9];
-        var patch14 = results[10];
-        var patch15 = results[11];
-        var patch16 = results[12];
-        var patch17 = results[13];
-        var patch18 = results[14];
-        var patch19 = results[15];
-        var patch20 = results[16];
-        var patch21 = results[17];
-        var patch22 = results[18];
-        var patch23 = results[19];
-        var patch24 = results[20];
-        var patch25 = results[21];
-        var patch26 = results[22];
-        var patch27 = results[23];
-        var patch28 = results[24];
-        var patch29 = results[25];
-        if (!resp) return caches.match(req);
-        var patches = (patch5 || '') + '\n' + (patch6 || '') + '\n' + (patch7 || '') + '\n' + (patch8 || '') + '\n' + (patch9 || '') + '\n' + (patch10 || '') + '\n' + (patch11 || '') + '\n' + (patch12 || '') + '\n' + (patch13 || '') + '\n' + (patch14 || '') + '\n' + (patch15 || '') + '\n' + (patch16 || '') + '\n' + (patch17 || '') + '\n' + (patch18 || '') + '\n' + (patch19 || '') + '\n' + (patch20 || '') + '\n' + (patch21 || '') + '\n' + (patch22 || '') + '\n' + (patch23 || '') + '\n' + (patch24 || '') + '\n' + (patch25 || '') + '\n' + (patch26 || '') + '\n' + (patch27 || '') + '\n' + (patch28 || '') + '\n' + (patch29 || '');
-        if (!patches.trim()) return resp;
-        return resp.text().then(function(html) {
-          var lastIdx = html.lastIndexOf('</script>');
-          if (lastIdx >= 0) {
-            html = html.substring(0, lastIdx) + '\n' + patches + '\n' + html.substring(lastIdx);
-          }
-          if (html.indexOf('</html>') === -1) {
-            html += '\n</html>';
-          }
-          return new Response(html, {
-            status: 200,
-            statusText: 'OK',
-            headers: { 'Content-Type': 'text/html; charset=UTF-8' }
-          });
+    caches.keys()
+      .then(function (keys) {
+        return Promise.all(keys.filter(function (k) { return OWN.test(k); }).map(function (k) { return caches.delete(k); }));
+      })
+      .catch(function () {})
+      .then(function () { return self.clients.claim(); })
+      .catch(function () {})
+      .then(function () { return self.registration.unregister(); })
+      .then(function () { return self.clients.matchAll({ type: 'window' }); })
+      .then(function (clients) {
+        clients.forEach(function (c) {
+          try { if (c.navigate && c.url.indexOf(scope) === 0) c.navigate(TO).catch(function () {}); } catch (err) {}
         });
-      }).catch(function() { return caches.match(req); })
-    );
-    return;
-  }
-
-  // Non-HTML assets: Cache-first for same origin and cloudflare CDN
-  if (url.origin !== location.origin && !url.hostname.endsWith('cloudflare.com')) return;
-  e.respondWith(
-    caches.match(req).then(function(cached) {
-      if (cached) return cached;
-      return fetch(req).then(function(resp) {
-        if (resp && resp.status === 200) {
-          var copy = resp.clone();
-          caches.open(CACHE_NAME).then(function(c) { c.put(req, copy); }).catch(function() {});
-        }
-        return resp;
-      }).catch(function() { return cached; });
-    })
+      })
+      .catch(function () {})
   );
 });
